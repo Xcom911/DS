@@ -1,4 +1,4 @@
---[[Xcom 1.03
+--[[Xcom 1.04
 Add EvenPast#1133 For Any Dumbass Questions]]--
 local p = game.Players.LocalPlayer
 local whitelist = {
@@ -2050,12 +2050,14 @@ if _G.AutoInstantElder then
 	end
 end)
 end
-
+_G.AutoInstantElder = true
 --DNA Farm Script
 while true do
 wait()
 if not _G.AutoInstantElder then return end
     if not game.Players.LocalPlayer.Character then
+    	local a = (Eldereddinoplus.Text)
+		local targ = (Targetdinoplus.Text)
         local CountDown = 7
         local t = 1
         local c = game.Players.LocalPlayer.Character
@@ -5411,7 +5413,7 @@ EarRape.BorderColor3 = Color3.new(0, 0, 0)
 EarRape.Position = UDim2.new(0.393472821, 0, 0.29559797, 0)
 EarRape.Size = UDim2.new(0, 114, 0, 30)
 EarRape.Font = Enum.Font.Cartoon
-EarRape.Text = "Glass Spinosaurus"
+EarRape.Text = "Glass Lusotitan"
 EarRape.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 EarRape.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 EarRape.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -5424,8 +5426,8 @@ EarRape.BackgroundTransparency = 0.9
 EarRape.TextStrokeTransparency = 0.3
 EarRape.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 EarRape.MouseButton1Click:connect(function()
-	local a = "Glass Spinosaurus"
-local targ = "Glass Spinosaurus"
+	local a = "Glass Lusotitan"
+local targ = "Glass Lusotitan"
 workspace.GameEvents.ChangeDinosaur:FireServer(a)
 wait(2.5)
 workspace.GameEvents.StartPlayer:FireServer()
@@ -5723,7 +5725,7 @@ AlbinoTerror.BorderColor3 = Color3.new(0, 0, 0)
 AlbinoTerror.Position = UDim2.new(0.51824671, 0, 0.71469605, 0)
 AlbinoTerror.Size = UDim2.new(0, 114, 0, 30)
 AlbinoTerror.Font = Enum.Font.Cartoon
-AlbinoTerror.Text = "Pitch Wraith Terror"
+AlbinoTerror.Text = "Fossil Spinosaurus"
 AlbinoTerror.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AlbinoTerror.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AlbinoTerror.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -5736,8 +5738,8 @@ AlbinoTerror.BackgroundTransparency = 0.9
 AlbinoTerror.TextStrokeTransparency = 0.3
 AlbinoTerror.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 AlbinoTerror.MouseButton1Click:connect(function()
-	local a = "Pitch Wraith Terror"
-local targ = "Pitch Wraith Terror"
+	local a = "Fossil Spinosaurus"
+local targ = "Fossil Spinosaurus"
 workspace.GameEvents.ChangeDinosaur:FireServer(a)
 wait(2.5)
 workspace.GameEvents.StartPlayer:FireServer()
