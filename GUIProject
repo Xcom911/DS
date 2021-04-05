@@ -1,14 +1,14 @@
---[[Project Dino Fucker LMFAO
+--[[Xcom
 Add EvenPast#1133 For Any Dumbass Questions]]--
 local p = game.Players.LocalPlayer
 local whitelist = {
-   [p.Name] = true -- Ez Crack lmao
+   [p.Name] = true
 }
 
 if whitelist[p.Name] then
 	game.StarterGui:SetCore("SendNotification", {
-Title = "[Y] To Open and Close";
-Text = "Thank You for using my GUI <3";
+Title = "[Y] To Toggle The GUI";
+Text = "Thank You for using my GUI <3, [Y] also closes the GUI";
 Duration = 15;
 })
 local vu = game:GetService("VirtualUser")
@@ -19,13 +19,13 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
 end)
 game.StarterGui:SetCore("SendNotification", {
 Title = "Hehe";
-Text = "Anti-Afk Ran Naturally Upon Injection -EvenPast#1133"; 
+Text = "Anti-Afk Ran Naturally Upon Execution -EvenPast#1133"; 
 Duration = 10; })
 print("Anti-AFK Ran")
 end
 
 
-local HypGUIExclusive = Instance.new("ScreenGui")
+local Xcom911 = Instance.new("ScreenGui")
 local Main = Instance.new("Frame")
 local GUIHead = Instance.new("Frame")
 local text1 = Instance.new("TextLabel")
@@ -222,25 +222,42 @@ local Scylla_2 = Instance.new("TextButton")
 local OpenFrame = Instance.new("Frame")
 local Open = Instance.new("TextButton")
 
-HypGUIExclusive.Name = "HypGUIExclusive"
-HypGUIExclusive.Parent = game.CoreGui
+Xcom911.Name = "Xcom911"
+Xcom911.Parent = game.CoreGui
 
 Main.Name = "Main"
-Main.Parent = HypGUIExclusive
+Main.Parent = Xcom911
 Main.Active = true
-Main.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
-Main.BorderColor3 = Color3.fromRGB(175, 221, 255)
-Main.BorderSizePixel = 4
+Main.BackgroundColor3 = Color3.fromRGB(17,17,17)
+Main.BorderColor3 = Color3.fromRGB(248, 248, 248)
+Main.BorderSizePixel = 2
 Main.Position = UDim2.new(0.314186931, 0, 0.202702716, 0)
 Main.Selectable = true
 Main.Size = UDim2.new(0, 795, 0, 483)
 Main.Visible = false
 Main.Draggable = true
-Main.Transparency = 0.3
+Main.Transparency = 0.2
 
 local function bro()
 	local script = Instance.new('LocalScript', Main)
 	local script1 = Instance.new('LocalScript', GUIHead)
+	local script2 = Instance.new('LocalScript', FunFrame)
+	local script3 = Instance.new('LocalScript', DNAFarmFrame)
+	local script4 = Instance.new('LocalScript', ElderDinoFrame)
+	local script5 = Instance.new('LocalScript', ExclusiveFrame)
+	local script6 = Instance.new('LocalScript', LocalPlayerFrame)
+	local script7 = Instance.new('LocalScript', MapsFrame)
+	local script8 = Instance.new('LocalScript', Category)
+	local script9 = Instance.new('LocalScript', text2)
+	local script10 = Instance.new('LocalScript', MAINText)
+	local script11 = Instance.new('LocalScript', MISCText)
+	local script12 = Instance.new('LocalScript', LocalPlayer)
+	local script13 = Instance.new('LocalScript', Players)
+	local script14 = Instance.new('LocalScript', World)
+	local script15 = Instance.new('LocalScript', Maps)
+	local script16 = Instance.new('LocalScript', Elder)
+	local script17 = Instance.new('LocalScript', Trading)
+
 
 
 	function zigzag(X)return math.acos(math.cos(X*math.pi))/math.pi end
@@ -248,9 +265,31 @@ local function bro()
 	
 	while wait(0.1)do
 		script.Parent.BorderColor3=Color3.fromHSV(zigzag(counter),1,1)
-		counter = counter + 0.01
-		script1.Parent.BackgroundColor3=Color3.fromHSV(zigzag(counter),1,1)
-		counter = counter + 0.01
+		counter = counter + 0.001
+		script1.Parent.BorderColor3=Color3.fromHSV(zigzag(counter),1,1)
+		counter = counter + 0.001
+		script2.Parent.BorderColor3=Color3.fromHSV(zigzag(counter),1,1)
+		counter = counter + 0.001
+		script3.Parent.BorderColor3=Color3.fromHSV(zigzag(counter),1,1)
+		counter = counter + 0.001
+		script4.Parent.BorderColor3=Color3.fromHSV(zigzag(counter),1,1)
+		counter = counter + 0.001
+		script5.Parent.BorderColor3=Color3.fromHSV(zigzag(counter),1,1)
+		counter = counter + 0.001
+		script6.Parent.BorderColor3=Color3.fromHSV(zigzag(counter),1,1)
+		counter = counter + 0.001
+		script7.Parent.BorderColor3=Color3.fromHSV(zigzag(counter),1,1)
+		counter = counter + 0.001
+		script8.Parent.BorderColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script9.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script10.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script11.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script12.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script13.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script14.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script15.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script16.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script17.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 	end
 end
 coroutine.wrap(bro)()
@@ -258,23 +297,23 @@ coroutine.wrap(bro)()
 GUIHead.Name = "GUIHead"
 GUIHead.Parent = Main
 GUIHead.Active = true
-GUIHead.BackgroundColor3 = Color3.fromRGB(183, 215, 213)
-GUIHead.BorderColor3 = Color3.fromRGB(175, 221, 255)
-GUIHead.BorderSizePixel = 0
+GUIHead.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+GUIHead.BorderColor3 = Color3.fromRGB(248, 248, 248)
+GUIHead.BorderSizePixel = 2
 GUIHead.Selectable = true
 GUIHead.Size = UDim2.new(0, 795, 0, 63)
-GUIHead.Transparency = 0.3
+GUIHead.Transparency = 0.4
 
 
 text2.Name = "text2"
 text2.Parent = GUIHead
 text2.BackgroundColor3 = Color3.new(1, 1, 1)
 text2.BackgroundTransparency = 1
-text2.Position = UDim2.new(0.0125721674, 0, 0.111111112, 0)
+text2.Position = UDim2.new(0.0125721674, 0, 0, 0)
 text2.Size = UDim2.new(0, 189, 0, 55)
 text2.Font = Enum.Font.SciFi
-text2.Text = "ILMANGO"
-text2.TextColor3 = Color3.fromRGB(17, 17, 17)
+text2.Text = "Xcom.gg"
+text2.TextColor3 = Color3.fromRGB(242, 243, 243)
 text2.TextScaled = true
 text2.TextSize = 100
 text2.TextWrapped = true
@@ -288,7 +327,7 @@ Close.Position = UDim2.new(0.961006284, 0, 0, 0)
 Close.Size = UDim2.new(0, 31, 0, 31)
 Close.Font = Enum.Font.GothamSemibold
 Close.Text = "[-]"
-Close.TextColor3 = Color3.fromRGB(159, 243, 233)
+Close.TextColor3 = Color3.fromRGB(242, 243, 243)
 Close.TextSize = 12
 Close.TextWrapped = true
 Close.MouseButton1Down:connect(function()
@@ -299,8 +338,8 @@ end)
 Category.Name = "Category"
 Category.Parent = Main
 Category.Active = true
-Category.BackgroundColor3 = Color3.fromRGB(183, 215, 213)
-Category.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Category.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+Category.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Category.Position = UDim2.new(0.0251572579, 0, 0.175983429, 0)
 Category.Size = UDim2.new(0, 168, 0, 377)
 Category.ScrollBarThickness = 0
@@ -311,14 +350,14 @@ LocalPlayer.Name = "LocalPlayer"
 LocalPlayer.Parent = Category
 LocalPlayer.Position = UDim2.new(0.125, 0, 0.0531587042, 0)
 LocalPlayer.Size = UDim2.new(0, 125, 0, 30)
-LocalPlayer.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-LocalPlayer.BorderColor3 = Color3.fromRGB(175, 221, 255)
+LocalPlayer.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+LocalPlayer.BorderColor3 = Color3.fromRGB(248, 248, 248)
 LocalPlayer.Font = Enum.Font.Gotham
 LocalPlayer.Text = "Maneuverability"
-LocalPlayer.TextColor3 = Color3.fromRGB(175, 221, 255)
+LocalPlayer.TextColor3 = Color3.fromRGB(248, 248, 248)
 LocalPlayer.TextSize = 12
 LocalPlayer.TextWrapped = true
-LocalPlayer.BackgroundTransparency = 0.7
+LocalPlayer.BackgroundTransparency = 0.9
 LocalPlayer.TextStrokeTransparency = 0.7
 LocalPlayer.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 LocalPlayer.MouseButton1Down:connect(function()
@@ -342,7 +381,7 @@ MAINText.Position = UDim2.new(0.0892857164, 0, 0.0120615326, 0)
 MAINText.Size = UDim2.new(0, 136, 0, 30)
 MAINText.Font = Enum.Font.Gotham
 MAINText.Text = "CATEGORIZATION"
-MAINText.TextColor3 = Color3.fromRGB(159, 243, 233)
+MAINText.TextColor3 = Color3.fromRGB(242, 243, 243)
 MAINText.TextSize = 15
 MAINText.TextWrapped = true
 
@@ -352,13 +391,13 @@ Players.Position = UDim2.new(0.125, 0, 0.0997425541, 0)
 Players.Size = UDim2.new(0, 125, 0, 30)
 Players.Text = "Thoroughgoing"
 Players.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-Players.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Players.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Players.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Players.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Players.Font = Enum.Font.Gotham
-Players.TextColor3 = Color3.fromRGB(175, 221, 255)
+Players.TextColor3 = Color3.fromRGB(248, 248, 248)
 Players.TextSize = 12
 Players.TextWrapped = true
-Players.BackgroundTransparency = 0.7
+Players.BackgroundTransparency = 0.9
 Players.TextStrokeTransparency = 0.7
 Players.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Players.MouseButton1Down:connect(function()
@@ -376,13 +415,13 @@ World.Position = UDim2.new(0.125, 0, 0.146326408, 0)
 World.Size = UDim2.new(0, 125, 0, 30)
 World.Text = "War Deploy"
 World.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-World.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-World.BorderColor3 = Color3.fromRGB(175, 221, 255)
+World.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+World.BorderColor3 = Color3.fromRGB(248, 248, 248)
 World.Font = Enum.Font.Gotham
-World.TextColor3 = Color3.fromRGB(175, 221, 255)
+World.TextColor3 = Color3.fromRGB(248, 248, 248)
 World.TextSize = 12
 World.TextWrapped = true
-World.BackgroundTransparency = 0.7
+World.BackgroundTransparency = 0.9
 World.TextStrokeTransparency = 0.7
 World.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 World.MouseButton1Down:connect(function()
@@ -403,13 +442,13 @@ Maps.Position = UDim2.new(0.125, 0, 0.192910239, 0)
 Maps.Size = UDim2.new(0, 125, 0, 30)
 Maps.Text = "World Recourse"
 Maps.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-Maps.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Maps.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Maps.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Maps.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Maps.Font = Enum.Font.Gotham
-Maps.TextColor3 = Color3.fromRGB(175, 221, 255)
+Maps.TextColor3 = Color3.fromRGB(248, 248, 248)
 Maps.TextSize = 12
 Maps.TextWrapped = true
-Maps.BackgroundTransparency = 0.7
+Maps.BackgroundTransparency = 0.9
 Maps.TextStrokeTransparency = 0.7
 Maps.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Maps.MouseButton1Down:connect(function()
@@ -433,7 +472,7 @@ MISCText.Position = UDim2.new(0.0892857164, 0, 0.251191974, 0)
 MISCText.Size = UDim2.new(0, 136, 0, 30)
 MISCText.Font = Enum.Font.Gotham
 MISCText.Text = "MISCELLANEOUS"
-MISCText.TextColor3 = Color3.fromRGB(159, 243, 233)
+MISCText.TextColor3 = Color3.fromRGB(242, 243, 243)
 MISCText.TextSize = 15
 MISCText.TextWrapped = true
 
@@ -441,15 +480,15 @@ Elder.Name = "Elder"
 Elder.Parent = Category
 Elder.Position = UDim2.new(0.125, 0, 0.289183527, 0)
 Elder.Size = UDim2.new(0, 125, 0, 30)
-Elder.Text = "Elder Dinosaur"
+Elder.Text = "Revamped Elder Dinosaur"
 Elder.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Elder.TextWrapped = true
-Elder.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Elder.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Elder.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Elder.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Elder.Font = Enum.Font.Gotham
-Elder.TextColor3 = Color3.fromRGB(175, 221, 255)
+Elder.TextColor3 = Color3.fromRGB(248, 248, 248)
 Elder.TextSize = 12
-Elder.BackgroundTransparency = 0.7
+Elder.BackgroundTransparency = 0.9
 Elder.TextStrokeTransparency = 0.7
 Elder.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Elder.MouseButton1Down:connect(function()
@@ -471,13 +510,13 @@ Trading.Size = UDim2.new(0, 125, 0, 30)
 Trading.Text = "DNA Farm"
 Trading.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Trading.TextWrapped = true
-Trading.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Trading.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Trading.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Trading.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Trading.Font = Enum.Font.Gotham
-Trading.TextColor3 = Color3.fromRGB(175, 221, 255)
+Trading.TextColor3 = Color3.fromRGB(248, 248, 248)
 Trading.TextSize = 12
 Trading.TextWrapped = true
-Trading.BackgroundTransparency = 0.7
+Trading.BackgroundTransparency = 0.9
 Trading.TextStrokeTransparency = 0.7
 Trading.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Trading.MouseButton1Down:connect(function()
@@ -509,8 +548,8 @@ GUISText.TextWrapped = true
 LocalPlayerFrame.Name = "LocalPlayerFrame"
 LocalPlayerFrame.Parent = Main
 LocalPlayerFrame.Active = true
-LocalPlayerFrame.BackgroundColor3 = Color3.fromRGB(183, 215, 213)
-LocalPlayerFrame.BorderColor3 = Color3.fromRGB(175, 221, 255)
+LocalPlayerFrame.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+LocalPlayerFrame.BorderColor3 = Color3.fromRGB(248, 248, 248)
 LocalPlayerFrame.Position = UDim2.new(0.279245257, 0, 0.175983444, 0)
 LocalPlayerFrame.Selectable = true
 LocalPlayerFrame.Size = UDim2.new(0, 553, 0, 377)
@@ -524,8 +563,8 @@ localptext.BackgroundColor3 = Color3.new(1, 1, 1)
 localptext.BackgroundTransparency = 1
 localptext.Position = UDim2.new(0.271247745, 0, 0.135278508, 0)
 localptext.Size = UDim2.new(0, 252, 0, 30)
-localptext.Text = "Creds to Hypo for Most of the Functions; If you have questions EvenPast#1133"
-localptext.TextColor3 = Color3.fromRGB(159, 243, 233)
+localptext.Text = "Creds to Hypo, I fixed some of his shit; still updating EvenPast#1133"
+localptext.TextColor3 = Color3.fromRGB(242, 243, 243)
 localptext.Font = Enum.Font.Gotham
 localptext.TextScaled = true
 localptext.TextSize = 14
@@ -541,13 +580,13 @@ InfiniteJump.Font = Enum.Font.Cartoon
 InfiniteJump.Text = "Infinite Jump"
 InfiniteJump.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 InfiniteJump.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-InfiniteJump.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-InfiniteJump.BorderColor3 = Color3.fromRGB(175, 221, 255)
+InfiniteJump.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+InfiniteJump.BorderColor3 = Color3.fromRGB(248, 248, 248)
 InfiniteJump.Font = Enum.Font.Gotham
-InfiniteJump.TextColor3 = Color3.fromRGB(175, 221, 255)
+InfiniteJump.TextColor3 = Color3.fromRGB(248, 248, 248)
 InfiniteJump.TextSize = 12
 InfiniteJump.TextWrapped = true
-InfiniteJump.BackgroundTransparency = 0.7
+InfiniteJump.BackgroundTransparency = 0.9
 InfiniteJump.TextStrokeTransparency = 0.3
 InfiniteJump.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 InfiniteJump.MouseButton1Click:connect(function()
@@ -589,13 +628,13 @@ Fly.Size = UDim2.new(0, 114, 0, 30)
 Fly.Font = Enum.Font.Cartoon
 Fly.Text = "Fire Loop TP Beams/Chests"
 Fly.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-Fly.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Fly.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Fly.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Fly.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Fly.Font = Enum.Font.Gotham
-Fly.TextColor3 = Color3.fromRGB(175, 221, 255)
+Fly.TextColor3 = Color3.fromRGB(248, 248, 248)
 Fly.TextSize = 12
 Fly.TextWrapped = true
-Fly.BackgroundTransparency = 0.7
+Fly.BackgroundTransparency = 0.9
 Fly.TextStrokeTransparency = 0.3
 Fly.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Fly.MouseButton1Click:connect(function()
@@ -641,13 +680,13 @@ FishFly.Font = Enum.Font.Cartoon
 FishFly.Text = "Fish Fly"
 FishFly.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 FishFly.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-FishFly.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-FishFly.BorderColor3 = Color3.fromRGB(175, 221, 255)
+FishFly.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+FishFly.BorderColor3 = Color3.fromRGB(248, 248, 248)
 FishFly.Font = Enum.Font.Gotham
-FishFly.TextColor3 = Color3.fromRGB(175, 221, 255)
+FishFly.TextColor3 = Color3.fromRGB(248, 248, 248)
 FishFly.TextSize = 12
 FishFly.TextWrapped = true
-FishFly.BackgroundTransparency = 0.7
+FishFly.BackgroundTransparency = 0.9
 FishFly.TextStrokeTransparency = 0.3
 FishFly.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 FishFly.MouseButton1Click:connect(function()
@@ -663,10 +702,10 @@ WSValue.Size = UDim2.new(0, 114, 0, 23)
 WSValue.Font = Enum.Font.SourceSans
 WSValue.Text = "[--#--]"
 WSValue.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-WSValue.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-WSValue.BorderColor3 = Color3.fromRGB(175, 221, 255)
+WSValue.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+WSValue.BorderColor3 = Color3.fromRGB(248, 248, 248)
 WSValue.Font = Enum.Font.Gotham
-WSValue.TextColor3 = Color3.fromRGB(175, 221, 255)
+WSValue.TextColor3 = Color3.fromRGB(248, 248, 248)
 WSValue.TextSize = 12
 WSValue.TextWrapped = true
 WSValue.BackgroundTransparency = 0.9
@@ -683,13 +722,13 @@ InfHunger.Font = Enum.Font.Cartoon
 InfHunger.Text = "Inf Hunger/Thirst"
 InfHunger.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 InfHunger.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-InfHunger.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-InfHunger.BorderColor3 = Color3.fromRGB(175, 221, 255)
+InfHunger.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+InfHunger.BorderColor3 = Color3.fromRGB(248, 248, 248)
 InfHunger.Font = Enum.Font.Gotham
-InfHunger.TextColor3 = Color3.fromRGB(175, 221, 255)
+InfHunger.TextColor3 = Color3.fromRGB(248, 248, 248)
 InfHunger.TextSize = 12
 InfHunger.TextWrapped = true
-InfHunger.BackgroundTransparency = 0.7
+InfHunger.BackgroundTransparency = 0.9
 InfHunger.TextStrokeTransparency = 0.3
 InfHunger.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 InfHunger.MouseButton1Click:connect(function()
@@ -719,13 +758,13 @@ SetWalkSpeed.Font = Enum.Font.Cartoon
 SetWalkSpeed.Text = "Set WalkSpeed"
 SetWalkSpeed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 SetWalkSpeed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-SetWalkSpeed.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-SetWalkSpeed.BorderColor3 = Color3.fromRGB(175, 221, 255)
+SetWalkSpeed.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+SetWalkSpeed.BorderColor3 = Color3.fromRGB(248, 248, 248)
 SetWalkSpeed.Font = Enum.Font.Gotham
-SetWalkSpeed.TextColor3 = Color3.fromRGB(175, 221, 255)
+SetWalkSpeed.TextColor3 = Color3.fromRGB(248, 248, 248)
 SetWalkSpeed.TextSize = 12
 SetWalkSpeed.TextWrapped = true
-SetWalkSpeed.BackgroundTransparency = 0.7
+SetWalkSpeed.BackgroundTransparency = 0.9
 SetWalkSpeed.TextStrokeTransparency = 0.3
 SetWalkSpeed.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 SetWalkSpeed.MouseButton1Click:connect(function()
@@ -745,13 +784,13 @@ SetJumpPower.Font = Enum.Font.Cartoon
 SetJumpPower.Text = "Set JumpPower"
 SetJumpPower.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 SetJumpPower.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-SetJumpPower.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-SetJumpPower.BorderColor3 = Color3.fromRGB(175, 221, 255)
+SetJumpPower.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+SetJumpPower.BorderColor3 = Color3.fromRGB(248, 248, 248)
 SetJumpPower.Font = Enum.Font.Gotham
-SetJumpPower.TextColor3 = Color3.fromRGB(175, 221, 255)
+SetJumpPower.TextColor3 = Color3.fromRGB(248, 248, 248)
 SetJumpPower.TextSize = 12
 SetJumpPower.TextWrapped = true
-SetJumpPower.BackgroundTransparency = 0.7
+SetJumpPower.BackgroundTransparency = 0.9
 SetJumpPower.TextStrokeTransparency = 0.3
 SetJumpPower.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 SetJumpPower.MouseButton1Click:connect(function()
@@ -769,13 +808,13 @@ Omnivore.Font = Enum.Font.Cartoon
 Omnivore.Text = "Hunger Keybinds"
 Omnivore.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Omnivore.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-Omnivore.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Omnivore.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Omnivore.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Omnivore.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Omnivore.Font = Enum.Font.Gotham
-Omnivore.TextColor3 = Color3.fromRGB(175, 221, 255)
+Omnivore.TextColor3 = Color3.fromRGB(248, 248, 248)
 Omnivore.TextSize = 12
 Omnivore.TextWrapped = true
-Omnivore.BackgroundTransparency = 0.7
+Omnivore.BackgroundTransparency = 0.9
 Omnivore.TextStrokeTransparency = 0.3
 Omnivore.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Omnivore.MouseButton1Click:connect(function()
@@ -829,13 +868,13 @@ HugeZoom.Font = Enum.Font.Cartoon
 HugeZoom.Text = "Huge Zoom"
 HugeZoom.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 HugeZoom.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-HugeZoom.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-HugeZoom.BorderColor3 = Color3.fromRGB(175, 221, 255)
+HugeZoom.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+HugeZoom.BorderColor3 = Color3.fromRGB(248, 248, 248)
 HugeZoom.Font = Enum.Font.Gotham
-HugeZoom.TextColor3 = Color3.fromRGB(175, 221, 255)
+HugeZoom.TextColor3 = Color3.fromRGB(248, 248, 248)
 HugeZoom.TextSize = 12
 HugeZoom.TextWrapped = true
-HugeZoom.BackgroundTransparency = 0.7
+HugeZoom.BackgroundTransparency = 0.9
 HugeZoom.TextStrokeTransparency = 0.3
 HugeZoom.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 HugeZoom.MouseButton1Click:connect(function()
@@ -851,10 +890,10 @@ JPValue.Size = UDim2.new(0, 114, 0, 23)
 JPValue.Font = Enum.Font.SourceSans
 JPValue.Text = "[--#--]"
 JPValue.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-JPValue.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-JPValue.BorderColor3 = Color3.fromRGB(175, 221, 255)
+JPValue.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+JPValue.BorderColor3 = Color3.fromRGB(248, 248, 248)
 JPValue.Font = Enum.Font.Gotham
-JPValue.TextColor3 = Color3.fromRGB(175, 221, 255)
+JPValue.TextColor3 = Color3.fromRGB(248, 248, 248)
 JPValue.TextSize = 12
 JPValue.TextWrapped = true
 JPValue.BackgroundTransparency = 0.9
@@ -871,13 +910,13 @@ HungerLoop.Font = Enum.Font.Cartoon
 HungerLoop.Text = "Hunger/Thirst Loop"
 HungerLoop.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 HungerLoop.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-HungerLoop.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-HungerLoop.BorderColor3 = Color3.fromRGB(175, 221, 255)
+HungerLoop.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+HungerLoop.BorderColor3 = Color3.fromRGB(248, 248, 248)
 HungerLoop.Font = Enum.Font.Gotham
-HungerLoop.TextColor3 = Color3.fromRGB(175, 221, 255)
+HungerLoop.TextColor3 = Color3.fromRGB(248, 248, 248)
 HungerLoop.TextSize = 12
 HungerLoop.TextWrapped = true
-HungerLoop.BackgroundTransparency = 0.7
+HungerLoop.BackgroundTransparency = 0.9
 HungerLoop.TextStrokeTransparency = 0.3
 HungerLoop.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 HungerLoop.MouseButton1Click:connect(function()
@@ -907,13 +946,13 @@ AddHunger.Font = Enum.Font.Cartoon
 AddHunger.Text = "Add Hunger"
 AddHunger.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AddHunger.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-AddHunger.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-AddHunger.BorderColor3 = Color3.fromRGB(175, 221, 255)
+AddHunger.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+AddHunger.BorderColor3 = Color3.fromRGB(248, 248, 248)
 AddHunger.Font = Enum.Font.Gotham
-AddHunger.TextColor3 = Color3.fromRGB(175, 221, 255)
+AddHunger.TextColor3 = Color3.fromRGB(248, 248, 248)
 AddHunger.TextSize = 12
 AddHunger.TextWrapped = true
-AddHunger.BackgroundTransparency = 0.7
+AddHunger.BackgroundTransparency = 0.9
 AddHunger.TextStrokeTransparency = 0.3
 AddHunger.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 AddHunger.MouseButton1Click:connect(function()
@@ -930,13 +969,13 @@ AddThirst.Font = Enum.Font.Cartoon
 AddThirst.Text = "Add Thirst"
 AddThirst.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AddThirst.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-AddThirst.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-AddThirst.BorderColor3 = Color3.fromRGB(175, 221, 255)
+AddThirst.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+AddThirst.BorderColor3 = Color3.fromRGB(248, 248, 248)
 AddThirst.Font = Enum.Font.Gotham
-AddThirst.TextColor3 = Color3.fromRGB(175, 221, 255)
+AddThirst.TextColor3 = Color3.fromRGB(248, 248, 248)
 AddThirst.TextSize = 12
 AddThirst.TextWrapped = true
-AddThirst.BackgroundTransparency = 0.7
+AddThirst.BackgroundTransparency = 0.9
 AddThirst.TextStrokeTransparency = 0.3
 AddThirst.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 AddThirst.MouseButton1Click:connect(function()
@@ -956,13 +995,13 @@ ClickTP.Font = Enum.Font.Cartoon
 ClickTP.Text = "Pause Loop TP Beam/Chest"
 ClickTP.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 ClickTP.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-ClickTP.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-ClickTP.BorderColor3 = Color3.fromRGB(175, 221, 255)
+ClickTP.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+ClickTP.BorderColor3 = Color3.fromRGB(248, 248, 248)
 ClickTP.Font = Enum.Font.Gotham
-ClickTP.TextColor3 = Color3.fromRGB(175, 221, 255)
+ClickTP.TextColor3 = Color3.fromRGB(248, 248, 248)
 ClickTP.TextSize = 12
 ClickTP.TextWrapped = true
-ClickTP.BackgroundTransparency = 0.7
+ClickTP.BackgroundTransparency = 0.9
 ClickTP.TextStrokeTransparency = 0.3
 ClickTP.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 ClickTP.MouseButton1Click:connect(function()
@@ -996,7 +1035,7 @@ localptext2.BackgroundColor3 = Color3.new(1, 1, 1)
 localptext2.BackgroundTransparency = 1
 localptext2.Position = UDim2.new(0.271247745, 0, 0.424403191, 0)
 localptext2.Size = UDim2.new(0, 252, 0, 30)
-localptext2.TextColor3 = Color3.fromRGB(159, 243, 233)
+localptext2.TextColor3 = Color3.fromRGB(242, 243, 243)
 localptext2.Font = Enum.Font.Gotham
 localptext2.Text = "Statistique"
 localptext2.TextSize = 25
@@ -1012,13 +1051,13 @@ SubtractHunger.Font = Enum.Font.Cartoon
 SubtractHunger.Text = "Subtract Hunger"
 SubtractHunger.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 SubtractHunger.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-SubtractHunger.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-SubtractHunger.BorderColor3 = Color3.fromRGB(175, 221, 255)
+SubtractHunger.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+SubtractHunger.BorderColor3 = Color3.fromRGB(248, 248, 248)
 SubtractHunger.Font = Enum.Font.Gotham
-SubtractHunger.TextColor3 = Color3.fromRGB(175, 221, 255)
+SubtractHunger.TextColor3 = Color3.fromRGB(248, 248, 248)
 SubtractHunger.TextSize = 12
 SubtractHunger.TextWrapped = true
-SubtractHunger.BackgroundTransparency = 0.7
+SubtractHunger.BackgroundTransparency = 0.9
 SubtractHunger.TextStrokeTransparency = 0.3
 SubtractHunger.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 SubtractHunger.MouseButton1Click:Connect(function()
@@ -1035,13 +1074,13 @@ FixMenu.Font = Enum.Font.Cartoon
 FixMenu.Text = "Fix Menu"
 FixMenu.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 FixMenu.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-FixMenu.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-FixMenu.BorderColor3 = Color3.fromRGB(175, 221, 255)
+FixMenu.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+FixMenu.BorderColor3 = Color3.fromRGB(248, 248, 248)
 FixMenu.Font = Enum.Font.Gotham
-FixMenu.TextColor3 = Color3.fromRGB(175, 221, 255)
+FixMenu.TextColor3 = Color3.fromRGB(248, 248, 248)
 FixMenu.TextSize = 12
 FixMenu.TextWrapped = true
-FixMenu.BackgroundTransparency = 0.7
+FixMenu.BackgroundTransparency = 0.9
 FixMenu.TextStrokeTransparency = 0.3
 FixMenu.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 FixMenu.MouseButton1Click:connect(function()
@@ -1053,8 +1092,8 @@ end)
 MapsFrame.Name = "MapsFrame"
 MapsFrame.Parent = Main
 MapsFrame.Active = true
-MapsFrame.BackgroundColor3 = Color3.fromRGB(183, 215, 213)
-MapsFrame.BorderColor3 = Color3.fromRGB(175, 221, 255)
+MapsFrame.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+MapsFrame.BorderColor3 = Color3.fromRGB(248, 248, 248)
 MapsFrame.Transparency = 0.3
 MapsFrame.Position = UDim2.new(0.279245257, 0, 0.175983444, 0)
 MapsFrame.Selectable = true
@@ -1069,7 +1108,7 @@ Mapstext.Position = UDim2.new(0.271247745, 0, 0.135278523, 0)
 Mapstext.Size = UDim2.new(0, 252, 0, 30)
 Mapstext.Font = Enum.Font.Gotham
 Mapstext.Text = "Hit the button ONCE. YOU DON'T NEED TO SPAM IT LMFAO"
-Mapstext.TextColor3 =  Color3.fromRGB(159, 243, 233)
+Mapstext.TextColor3 =  Color3.fromRGB(242, 243, 243)
 Mapstext.TextScaled = true
 Mapstext.TextSize = 14
 Mapstext.TextWrapped = true
@@ -1084,13 +1123,13 @@ MainMap.Font = Enum.Font.Cartoon
 MainMap.Text = "Server Hop"
 MainMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 MainMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-MainMap.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-MainMap.BorderColor3 = Color3.fromRGB(175, 221, 255)
+MainMap.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+MainMap.BorderColor3 = Color3.fromRGB(248, 248, 248)
 MainMap.Font = Enum.Font.Gotham
-MainMap.TextColor3 = Color3.fromRGB(175, 221, 255)
+MainMap.TextColor3 = Color3.fromRGB(248, 248, 248)
 MainMap.TextSize = 12
 MainMap.TextWrapped = true
-MainMap.BackgroundTransparency = 0.7
+MainMap.BackgroundTransparency = 0.9
 MainMap.TextStrokeTransparency = 0.3
 MainMap.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 MainMap.MouseButton1Click:connect(function()
@@ -1117,13 +1156,13 @@ TradingMap.Font = Enum.Font.Cartoon
 TradingMap.Text = "Nifty Lighting (Use First)"
 TradingMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 TradingMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-TradingMap.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-TradingMap.BorderColor3 = Color3.fromRGB(175, 221, 255)
+TradingMap.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+TradingMap.BorderColor3 = Color3.fromRGB(248, 248, 248)
 TradingMap.Font = Enum.Font.Gotham
-TradingMap.TextColor3 = Color3.fromRGB(175, 221, 255)
+TradingMap.TextColor3 = Color3.fromRGB(248, 248, 248)
 TradingMap.TextSize = 12
 TradingMap.TextWrapped = true
-TradingMap.BackgroundTransparency = 0.7
+TradingMap.BackgroundTransparency = 0.9
 TradingMap.TextStrokeTransparency = 0.3
 TradingMap.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 TradingMap.MouseButton1Click:connect(function()
@@ -1134,12 +1173,12 @@ end
 Sky2 = Instance.new("Sky")
 Sky2.Parent = game:GetService("Lighting")
 Sky2.MoonAngularSize = 13
-Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=570557514"
-Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=570557775"
-Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=570557559"
-Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=570557620"
-Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=570557672"
-Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=570557727"
+Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=271042516"
+Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=271077243"
+Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=271042556"
+Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=271042310"
+Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=271042467"
+Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=271077958"
 Sky2.SunAngularSize = 20
 Sky2.SunTextureId = "rbxassetid://1168763430"
 
@@ -1174,7 +1213,7 @@ color.Enabled = true
 color.Contrast = 0.15
 color.Brightness = 0.074
 color.Saturation = 0.25
-color.TintColor = Color3.fromRGB(175, 221, 255)
+color.TintColor = Color3.fromRGB(248, 248, 248)
 
 sun.Enabled = true
 sun.Intensity = 0.2
@@ -1237,13 +1276,13 @@ DefaultMap.Font = Enum.Font.Cartoon
 DefaultMap.Text = "Rejoin"
 DefaultMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 DefaultMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-DefaultMap.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-DefaultMap.BorderColor3 = Color3.fromRGB(175, 221, 255)
+DefaultMap.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+DefaultMap.BorderColor3 = Color3.fromRGB(248, 248, 248)
 DefaultMap.Font = Enum.Font.Gotham
-DefaultMap.TextColor3 = Color3.fromRGB(175, 221, 255)
+DefaultMap.TextColor3 = Color3.fromRGB(248, 248, 248)
 DefaultMap.TextSize = 12
 DefaultMap.TextWrapped = true
-DefaultMap.BackgroundTransparency = 0.7
+DefaultMap.BackgroundTransparency = 0.9
 DefaultMap.TextStrokeTransparency = 0.3
 DefaultMap.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 DefaultMap.MouseButton1Click:connect(function()
@@ -1262,13 +1301,13 @@ GallusIsland.Font = Enum.Font.Cartoon
 GallusIsland.Text = "Nifty Shaders (Use Second)"
 GallusIsland.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 GallusIsland.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-GallusIsland.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-GallusIsland.BorderColor3 = Color3.fromRGB(175, 221, 255)
+GallusIsland.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+GallusIsland.BorderColor3 = Color3.fromRGB(248, 248, 248)
 GallusIsland.Font = Enum.Font.Gotham
-GallusIsland.TextColor3 = Color3.fromRGB(175, 221, 255)
+GallusIsland.TextColor3 = Color3.fromRGB(248, 248, 248)
 GallusIsland.TextSize = 12
 GallusIsland.TextWrapped = true
-GallusIsland.BackgroundTransparency = 0.7
+GallusIsland.BackgroundTransparency = 0.9
 GallusIsland.TextStrokeTransparency = 0.3
 GallusIsland.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 GallusIsland.MouseButton1Click:connect(function()
@@ -1614,7 +1653,7 @@ By default, players must have their graphics quality set to 6+ to see the blur e
 --]]
 
 --//Settings
-BlurAmount = 15 -- Change this to increase or decrease the blur size
+BlurAmount = 25 -- Change this to increase or decrease the blur size
 
 --//Declarations
 Camera 	= game.Workspace.CurrentCamera
@@ -1663,8 +1702,8 @@ ElderDinoFrame.Size = UDim2.new(0, 553, 0, 377)
 ElderDinoFrame.Visible = false
 ElderDinoFrame.Parent = Main
 ElderDinoFrame.Active = true
-ElderDinoFrame.BackgroundColor3 = Color3.fromRGB(183, 215, 213)
-ElderDinoFrame.BorderColor3 = Color3.fromRGB(175, 221, 255)
+ElderDinoFrame.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+ElderDinoFrame.BorderColor3 = Color3.fromRGB(248, 248, 248)
 ElderDinoFrame.Transparency = 0.3
 ElderDinoFrame.Selectable = true
 ElderDinoFrame.Size = UDim2.new(0, 553, 0, 377)
@@ -1678,11 +1717,11 @@ eldertext2.BackgroundTransparency = 1
 eldertext2.Position = UDim2.new(0.124773964, 0, 0.0848806351, 0)
 eldertext2.Size = UDim2.new(0, 415, 0, 30)
 eldertext2.Font = Enum.Font.Cartoon
-eldertext2.Text = "Reworked Stats Replacement"
+eldertext2.Text = "Revamped Stats Replacement"
 eldertext2.BackgroundColor3 = Color3.new(1, 1, 1)
 eldertext2.BackgroundTransparency = 1
 eldertext2.Font = Enum.Font.Gotham
-eldertext2.TextColor3 = Color3.fromRGB(159, 243, 233)
+eldertext2.TextColor3 = Color3.fromRGB(242, 243, 243)
 eldertext2.TextScaled = true
 eldertext2.TextSize = 14
 eldertext2.TextWrapped = true
@@ -1696,13 +1735,13 @@ Eldereddino.Size = UDim2.new(0, 145, 0, 25)
 Eldereddino.Font = Enum.Font.SourceSans
 Eldereddino.Text = "[--Eldered Stats--]"
 Eldereddino.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-Eldereddino.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Eldereddino.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Eldereddino.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Eldereddino.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Eldereddino.Font = Enum.Font.Gotham
-Eldereddino.TextColor3 = Color3.fromRGB(175, 221, 255)
+Eldereddino.TextColor3 = Color3.fromRGB(248, 248, 248)
 Eldereddino.TextSize = 12
 Eldereddino.TextWrapped = true
-Eldereddino.BackgroundTransparency = 0.7
+Eldereddino.BackgroundTransparency = 0.9
 Eldereddino.TextStrokeTransparency = 0.3
 Eldereddino.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 
@@ -1713,61 +1752,176 @@ Elder_2.BorderColor3 = Color3.new(0, 0, 0)
 Elder_2.Position = UDim2.new(0.395281106, 0, 0.32212314, 0)
 Elder_2.Size = UDim2.new(0, 114, 0, 30)
 Elder_2.Font = Enum.Font.Cartoon
-Elder_2.Text = "Fire (menu if failed)dw"
+Elder_2.Text = "Fire"
 Elder_2.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Elder_2.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-Elder_2.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Elder_2.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Elder_2.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Elder_2.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Elder_2.Font = Enum.Font.Gotham
-Elder_2.TextColor3 = Color3.fromRGB(175, 221, 255)
+Elder_2.TextColor3 = Color3.fromRGB(248, 248, 248)
 Elder_2.TextSize = 12
 Elder_2.TextWrapped = true
-Elder_2.BackgroundTransparency = 0.7
+Elder_2.BackgroundTransparency = 0.9
 Elder_2.TextStrokeTransparency = 0.3
 Elder_2.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Elder_2.MouseButton1Click:connect(function()
-	--[[ if not game.Players.LocalPlayer.Character then
+
+local b = (Targetdino.Text)
+local e = (Eldereddino.Text)
+
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+wait(1)
 workspace.GameEvents.StartPlayer:FireServer()
-wait(4)
-end
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+workspace.GameEvents.StartPlayer:FireServer()
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.StartPlayer:FireServer()
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
 
-local player = game.Players.LocalPlayer
-player.Character.HumanoidRootPart.CFrame = CFrame.new(99999, 717.906067, -99972.128204)
-wait(3)
-workspace.GameEvents.GoToMenu:FireServer(7) ]]
---DNA Farm Options | Spell DINO NAMES CORRECTLY!
-local a = (Eldereddino.Text)
-local targ = (Targetdino.Text)
-local no = false
-local yes = true
+wait(0.1)
+local b = (Targetdino.Text)
+local e = (Eldereddino.Text)
 
-_G.AutoStat = yes
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+wait(1)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+workspace.GameEvents.StartPlayer:FireServer()
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.StartPlayer:FireServer()
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+wait(0.1)
+local b = (Targetdino.Text)
+local e = (Eldereddino.Text)
 
-if not _G.AutoStat then
-    game.StarterGui:SetCore("SendNotification", {
-    Title = "Auto Replace Stats";
-    Text = "Message : Script Paused"; 
-    Duration = 5; })
-end
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+wait(1)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+workspace.GameEvents.StartPlayer:FireServer()
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.StartPlayer:FireServer()
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+wait(0.1)
+local b = (Targetdino.Text)
+local e = (Eldereddino.Text)
 
---DNA Farm Script
-while true do
-wait()
-if not _G.AutoStat then return end
-    if not game.Players.LocalPlayer.Character then
-        local CountDown = 7
-        local t = 1
-        local c = game.Players.LocalPlayer.Character
-        local Menu = workspace.GameEvents.GoToMenu
-        workspace.GameEvents.ChangeDinosaur:FireServer(targ)
-        wait(5)
-        workspace.GameEvents.StartPlayer:FireServer()
-        workspace.GameEvents.ChangeDinosaur:FireServer(a)
-        wait(6)
-        workspace.GameEvents.ChangeDinosaur:FireServer(a)
-        workspace.GameEvents.StartPlayer:FireServer()
-    end
-end
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+wait(1)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+workspace.GameEvents.StartPlayer:FireServer()
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.StartPlayer:FireServer()
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+wait(0.1)
+local b = (Targetdino.Text)
+local e = (Eldereddino.Text)
+
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+wait(1)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+workspace.GameEvents.StartPlayer:FireServer()
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.StartPlayer:FireServer()
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+wait(0.1)
+local b = (Targetdino.Text)
+local e = (Eldereddino.Text)
+
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+wait(1)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+workspace.GameEvents.StartPlayer:FireServer()
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.StartPlayer:FireServer()
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+wait(0.1)
+local b = (Targetdino.Text)
+local e = (Eldereddino.Text)
+
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+wait(1)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+workspace.GameEvents.StartPlayer:FireServer()
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.StartPlayer:FireServer()
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+wait(0.1)
+local b = (Targetdino.Text)
+local e = (Eldereddino.Text)
+
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+wait(1)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+workspace.GameEvents.StartPlayer:FireServer()
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.StartPlayer:FireServer()
+wait(.1)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+game.StarterGui:SetCore("SendNotification", {
+Title = "Message:";
+Text = "You cant fill your hunger as a baby elder!"; 
+Duration = 6; })
 end)
 
 Targetdino.Name = "Targetdino"
@@ -1777,15 +1931,15 @@ Targetdino.BorderColor3 = Color3.new(0, 0, 0)
 Targetdino.Position = UDim2.new(0.552604854, 0, 0.215785891, 0)
 Targetdino.Size = UDim2.new(0, 145, 0, 25)
 Targetdino.Font = Enum.Font.SourceSans
-Targetdino.Text = "[--Target DIno--]"
+Targetdino.Text = "[--Target Dino--]"
 Targetdino.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-Targetdino.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Targetdino.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Targetdino.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Targetdino.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Targetdino.Font = Enum.Font.Gotham
-Targetdino.TextColor3 = Color3.fromRGB(175, 221, 255)
+Targetdino.TextColor3 = Color3.fromRGB(248, 248, 248)
 Targetdino.TextSize = 12
 Targetdino.TextWrapped = true
-Targetdino.BackgroundTransparency = 0.7
+Targetdino.BackgroundTransparency = 0.9
 Targetdino.TextStrokeTransparency = 0.3
 Targetdino.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 
@@ -1796,12 +1950,12 @@ eldertext1.BackgroundTransparency = 1
 eldertext1.Position = UDim2.new(0.195392415, 0, 0.567639232, 0)
 eldertext1.Size = UDim2.new(0, 336, 0, 30)
 eldertext1.Font = Enum.Font.Cartoon
-eldertext1.Text = "Elder Dinosaur"
+eldertext1.Text = "Revamped Elder Dinosaur"
 eldertext1.TextColor3 = Color3.new(1, 1, 1)
 eldertext1.BackgroundColor3 = Color3.new(1, 1, 1)
 eldertext1.BackgroundTransparency = 1
 eldertext1.Font = Enum.Font.Gotham
-eldertext1.TextColor3 = Color3.fromRGB(159, 243, 233)
+eldertext1.TextColor3 = Color3.fromRGB(242, 243, 243)
 eldertext1.TextScaled = true
 eldertext1.TextSize = 14
 eldertext1.TextWrapped = true
@@ -1815,13 +1969,13 @@ Targetdinoplus.Size = UDim2.new(0, 145, 0, 25)
 Targetdinoplus.Font = Enum.Font.SourceSans
 Targetdinoplus.Text = "[--Target Dino--]"
 Targetdinoplus.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-Targetdinoplus.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Targetdinoplus.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Targetdinoplus.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Targetdinoplus.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Targetdinoplus.Font = Enum.Font.Gotham
-Targetdinoplus.TextColor3 = Color3.fromRGB(175, 221, 255)
+Targetdinoplus.TextColor3 = Color3.fromRGB(248, 248, 248)
 Targetdinoplus.TextSize = 12
 Targetdinoplus.TextWrapped = true
-Targetdinoplus.BackgroundTransparency = 0.7
+Targetdinoplus.BackgroundTransparency = 0.9
 Targetdinoplus.TextStrokeTransparency = 0.3
 Targetdinoplus.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 
@@ -1834,13 +1988,13 @@ Eldereddinoplus.Size = UDim2.new(0, 145, 0, 25)
 Eldereddinoplus.Font = Enum.Font.SourceSans
 Eldereddinoplus.Text = "[--Eldered Dino--]"
 Eldereddinoplus.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-Eldereddinoplus.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Eldereddinoplus.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Eldereddinoplus.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Eldereddinoplus.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Eldereddinoplus.Font = Enum.Font.Gotham
-Eldereddinoplus.TextColor3 = Color3.fromRGB(175, 221, 255)
+Eldereddinoplus.TextColor3 = Color3.fromRGB(248, 248, 248)
 Eldereddinoplus.TextSize = 12
 Eldereddinoplus.TextWrapped = true
-Eldereddinoplus.BackgroundTransparency = 0.7
+Eldereddinoplus.BackgroundTransparency = 0.9
 Eldereddinoplus.TextStrokeTransparency = 0.3
 Eldereddinoplus.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 
@@ -1851,32 +2005,20 @@ Elderplus.BorderColor3 = Color3.new(0, 0, 0)
 Elderplus.Position = UDim2.new(0.395281106, 0, 0.804881811, 0)
 Elderplus.Size = UDim2.new(0, 114, 0, 30)
 Elderplus.Font = Enum.Font.Cartoon
-Elderplus.Text = "Fire Loop (rejoin to stop)"
+Elderplus.Text = "Fire Loop"
 Elderplus.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Elderplus.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-Elderplus.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Elderplus.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Elderplus.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Elderplus.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Elderplus.Font = Enum.Font.Gotham
-Elderplus.TextColor3 = Color3.fromRGB(175, 221, 255)
+Elderplus.TextColor3 = Color3.fromRGB(248, 248, 248)
 Elderplus.TextSize = 12
 Elderplus.TextWrapped = true
-Elderplus.BackgroundTransparency = 0.7
+Elderplus.BackgroundTransparency = 0.9
 Elderplus.TextStrokeTransparency = 0.3
 Elderplus.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Elderplus.MouseButton1Click:connect(function()
-local a = (Eldereddinoplus.Text)
-local targ = (Targetdinoplus.Text)
-local no = false
-local yes = true
-
-_G.AutoInstantElder = yes
-
-if not _G.AutoInstantElder then
-    game.StarterGui:SetCore("SendNotification", {
-    Title = "Auto Instant Elder";
-    Text = "Message : Script Paused"; 
-    Duration = 5; })
-end
+_G.AutoInstantElder = true
 if _G.AutoInstantElder then
     local VU = game:GetService("VirtualUser")
     game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -1886,9 +2028,26 @@ if _G.AutoInstantElder then
     end)
     game.StarterGui:SetCore("SendNotification", {
     Title = "Auto Instant Elder";
-    Text = "Message : Script Fired; REJOIN WHEN YOU SPAWN AS AN ELDER DINO"; 
+    Text = "Message : Script Fired"; 
+    Duration = 10; })
+    game.StarterGui:SetCore("SendNotification", {
+    Title = "PRESS [-] TO PAUSE";
+    Text = "Press [-] when you see your target dino spawn in as an elder."; 
     Duration = 20; })
-    print("Anti-AFK Ran")
+    game.StarterGui:SetCore("SendNotification", {
+    Title = "Suggestion";
+    Text = "I recommend doing in public servers with 'TP Out Da Map' & a nest for best chances."; 
+    Duration = 15; })
+    bind7 = "-"
+	game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
+	if key == bind7 then
+		_G.AutoInstantElder = false
+		game.StarterGui:SetCore("SendNotification", {
+		Title = "Auto Instant Elder";
+		Text = "Message : Script Paused"; 
+		Duration = 5; })
+	end
+end)
 end
 
 --DNA Farm Script
@@ -2242,8 +2401,8 @@ end)
 ExclusiveFrame.Name = "ExclusiveFrame"
 ExclusiveFrame.Parent = Main
 ExclusiveFrame.Active = true
-ExclusiveFrame.BackgroundColor3 = Color3.fromRGB(183, 215, 213)
-ExclusiveFrame.BorderColor3 = Color3.fromRGB(175, 221, 255)
+ExclusiveFrame.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+ExclusiveFrame.BorderColor3 = Color3.fromRGB(248, 248, 248)
 ExclusiveFrame.Transparency = 0.3
 ExclusiveFrame.Position = UDim2.new(0.279245287, 0, 0.175983444, 0)
 ExclusiveFrame.Selectable = true
@@ -2259,7 +2418,7 @@ textspecial.Position = UDim2.new(0.271247745, 0, 0.0636604801, 0)
 textspecial.Size = UDim2.new(0, 252, 0, 30)
 textspecial.Font = Enum.Font.Gotham
 textspecial.Text = "Dinosaur Tings"
-textspecial.TextColor3 = Color3.fromRGB(159, 243, 233)
+textspecial.TextColor3 = Color3.fromRGB(242, 243, 243)
 textspecial.TextScaled = true
 textspecial.TextSize = 14
 textspecial.TextWrapped = true
@@ -2274,13 +2433,13 @@ God.Font = Enum.Font.Cartoon
 God.Text = "Semi-God Mode"
 God.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 God.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-God.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-God.BorderColor3 = Color3.fromRGB(175, 221, 255)
+God.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+God.BorderColor3 = Color3.fromRGB(248, 248, 248)
 God.Font = Enum.Font.Gotham
-God.TextColor3 = Color3.fromRGB(175, 221, 255)
+God.TextColor3 = Color3.fromRGB(248, 248, 248)
 God.TextSize = 12
 God.TextWrapped = true
-God.BackgroundTransparency = 0.7
+God.BackgroundTransparency = 0.9
 God.TextStrokeTransparency = 0.3
 God.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 God.MouseButton1Click:connect(function()
@@ -2299,13 +2458,13 @@ InvisibleFossil.Font = Enum.Font.Cartoon
 InvisibleFossil.Text = "Invisible Fossil"
 InvisibleFossil.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 InvisibleFossil.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-InvisibleFossil.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-InvisibleFossil.BorderColor3 = Color3.fromRGB(175, 221, 255)
+InvisibleFossil.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+InvisibleFossil.BorderColor3 = Color3.fromRGB(248, 248, 248)
 InvisibleFossil.Font = Enum.Font.Gotham
-InvisibleFossil.TextColor3 = Color3.fromRGB(175, 221, 255)
+InvisibleFossil.TextColor3 = Color3.fromRGB(248, 248, 248)
 InvisibleFossil.TextSize = 12
 InvisibleFossil.TextWrapped = true
-InvisibleFossil.BackgroundTransparency = 0.7
+InvisibleFossil.BackgroundTransparency = 0.9
 InvisibleFossil.TextStrokeTransparency = 0.3
 InvisibleFossil.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 InvisibleFossil.MouseButton1Click:connect(function()
@@ -2322,13 +2481,13 @@ NoBleed.Font = Enum.Font.Cartoon
 NoBleed.Text = "No Bleed"
 NoBleed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 NoBleed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-NoBleed.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-NoBleed.BorderColor3 = Color3.fromRGB(175, 221, 255)
+NoBleed.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+NoBleed.BorderColor3 = Color3.fromRGB(248, 248, 248)
 NoBleed.Font = Enum.Font.Gotham
-NoBleed.TextColor3 = Color3.fromRGB(175, 221, 255)
+NoBleed.TextColor3 = Color3.fromRGB(248, 248, 248)
 NoBleed.TextSize = 12
 NoBleed.TextWrapped = true
-NoBleed.BackgroundTransparency = 0.7
+NoBleed.BackgroundTransparency = 0.9
 NoBleed.TextStrokeTransparency = 0.3
 NoBleed.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 NoBleed.MouseButton1Click:connect(function()
@@ -2347,13 +2506,13 @@ SafeLog.Font = Enum.Font.Cartoon
 SafeLog.Text = "Safe Log"
 SafeLog.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 SafeLog.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-SafeLog.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-SafeLog.BorderColor3 = Color3.fromRGB(175, 221, 255)
+SafeLog.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+SafeLog.BorderColor3 = Color3.fromRGB(248, 248, 248)
 SafeLog.Font = Enum.Font.Gotham
-SafeLog.TextColor3 = Color3.fromRGB(175, 221, 255)
+SafeLog.TextColor3 = Color3.fromRGB(248, 248, 248)
 SafeLog.TextSize = 12
 SafeLog.TextWrapped = true
-SafeLog.BackgroundTransparency = 0.7
+SafeLog.BackgroundTransparency = 0.9
 SafeLog.TextStrokeTransparency = 0.3
 SafeLog.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 SafeLog.MouseButton1Click:Connect(function()
@@ -2389,13 +2548,13 @@ CanSwim.Font = Enum.Font.Cartoon
 CanSwim.Text = "Can Swim"
 CanSwim.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 CanSwim.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-CanSwim.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-CanSwim.BorderColor3 = Color3.fromRGB(175, 221, 255)
+CanSwim.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+CanSwim.BorderColor3 = Color3.fromRGB(248, 248, 248)
 CanSwim.Font = Enum.Font.Gotham
-CanSwim.TextColor3 = Color3.fromRGB(175, 221, 255)
+CanSwim.TextColor3 = Color3.fromRGB(248, 248, 248)
 CanSwim.TextSize = 12
 CanSwim.TextWrapped = true
-CanSwim.BackgroundTransparency = 0.7
+CanSwim.BackgroundTransparency = 0.9
 CanSwim.TextStrokeTransparency = 0.3
 CanSwim.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 CanSwim.MouseButton1Click:connect(function()
@@ -2410,7 +2569,7 @@ textspecial2.Position = UDim2.new(0.271247745, 0, 0.612732112, 0)
 textspecial2.Size = UDim2.new(0, 252, 0, 30)
 textspecial2.Font = Enum.Font.Gotham
 textspecial2.Text = "Hehe"
-textspecial2.TextColor3 =  Color3.fromRGB(159, 243, 233)
+textspecial2.TextColor3 =  Color3.fromRGB(242, 243, 243)
 textspecial2.TextScaled = true
 textspecial2.TextSize = 14
 textspecial2.TextWrapped = true
@@ -2425,13 +2584,13 @@ InstaMenu.Font = Enum.Font.Cartoon
 InstaMenu.Text = "Tree Swing+"
 InstaMenu.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 InstaMenu.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-InstaMenu.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-InstaMenu.BorderColor3 = Color3.fromRGB(175, 221, 255)
+InstaMenu.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+InstaMenu.BorderColor3 = Color3.fromRGB(248, 248, 248)
 InstaMenu.Font = Enum.Font.Gotham
-InstaMenu.TextColor3 = Color3.fromRGB(175, 221, 255)
+InstaMenu.TextColor3 = Color3.fromRGB(248, 248, 248)
 InstaMenu.TextSize = 12
 InstaMenu.TextWrapped = true
-InstaMenu.BackgroundTransparency = 0.7
+InstaMenu.BackgroundTransparency = 0.9
 InstaMenu.TextStrokeTransparency = 0.3
 InstaMenu.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 InstaMenu.MouseButton1Click:connect(function()
@@ -2496,16 +2655,16 @@ BetterSpeed.BorderColor3 = Color3.new(0, 0, 0)
 BetterSpeed.Position = UDim2.new(0.520055056, 0, 0.316818178, 0)
 BetterSpeed.Size = UDim2.new(0, 114, 0, 30)
 BetterSpeed.Font = Enum.Font.Cartoon
-BetterSpeed.Text = "TP Out the Map"
+BetterSpeed.Text = "TP Out Da Map With Nest Placed"
 BetterSpeed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 BetterSpeed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-BetterSpeed.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-BetterSpeed.BorderColor3 = Color3.fromRGB(175, 221, 255)
+BetterSpeed.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+BetterSpeed.BorderColor3 = Color3.fromRGB(248, 248, 248)
 BetterSpeed.Font = Enum.Font.Gotham
-BetterSpeed.TextColor3 = Color3.fromRGB(175, 221, 255)
+BetterSpeed.TextColor3 = Color3.fromRGB(248, 248, 248)
 BetterSpeed.TextSize = 12
 BetterSpeed.TextWrapped = true
-BetterSpeed.BackgroundTransparency = 0.7
+BetterSpeed.BackgroundTransparency = 0.9
 BetterSpeed.TextStrokeTransparency = 0.3
 BetterSpeed.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 BetterSpeed.MouseButton1Click:connect(function()
@@ -2515,9 +2674,16 @@ Part0.Transparency = 0
 Part0.Material = Enum.Material.ForceField
 Part0.Size = Vector3.new(2000, 1, 2000)
 Part0.CFrame = CFrame.new(24, 2.5, 30, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-Part0.Position = Vector3.new(99999, 700.906067, -99972.128204)
+Part0.Position = Vector3.new(99999, 900.906067, -99972.128204)
 Part0.Color = Color3.fromRGB(255, 0, 0)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(99999, 740.906067, -99972.128204) + Vector3.new(1,0,0)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(99999, 930.906067, -99972.128204) + Vector3.new(1,0,0)
+local pack = "ganggg"
+local event = game:GetService("Workspace").GameFunctions.PackFunctions.CreatePack
+event:InvokeServer(pack)
+local v1 = game:GetService("Workspace").Packs.ganggg
+local nest = "Bubble"
+local event = game:GetService("Workspace").GameFunctions.PackFunctions.CreateNest
+event:InvokeServer(v1, nest)
 end)
 
 InfOxygen.Name = "InfOxygen"
@@ -2530,13 +2696,13 @@ InfOxygen.Font = Enum.Font.Cartoon
 InfOxygen.Text = "Inf Oxygen/Moistness"
 InfOxygen.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 InfOxygen.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-InfOxygen.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-InfOxygen.BorderColor3 = Color3.fromRGB(175, 221, 255)
+InfOxygen.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+InfOxygen.BorderColor3 = Color3.fromRGB(248, 248, 248)
 InfOxygen.Font = Enum.Font.Gotham
-InfOxygen.TextColor3 = Color3.fromRGB(175, 221, 255)
+InfOxygen.TextColor3 = Color3.fromRGB(248, 248, 248)
 InfOxygen.TextSize = 12
 InfOxygen.TextWrapped = true
-InfOxygen.BackgroundTransparency = 0.7
+InfOxygen.BackgroundTransparency = 0.9
 InfOxygen.TextStrokeTransparency = 0.3
 InfOxygen.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 InfOxygen.MouseButton1Click:connect(function()
@@ -2554,13 +2720,13 @@ SuperPlio.Font = Enum.Font.Cartoon
 SuperPlio.Text = "God Tier ESP + IY"
 SuperPlio.TextColor3 = Color3.new(0.25098, 0.431373, 0.815686)
 SuperPlio.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-SuperPlio.BackgroundColor3 = Color3.fromRGB(183, 215, 213)
-SuperPlio.BorderColor3 = Color3.fromRGB(175, 221, 255)
+SuperPlio.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+SuperPlio.BorderColor3 = Color3.fromRGB(248, 248, 248)
 SuperPlio.Font = Enum.Font.Gotham
 SuperPlio.TextColor3 = Color3.fromRGB(248, 248, 248)
 SuperPlio.TextSize = 12
 SuperPlio.TextWrapped = true
-SuperPlio.BackgroundTransparency = 0.7
+SuperPlio.BackgroundTransparency = 0.9
 SuperPlio.TextStrokeTransparency = 0.3
 SuperPlio.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 SuperPlio.MouseButton1Click:connect(function()
@@ -3641,7 +3807,7 @@ do
     crosshair_settings.enabled = settings:Get("crosshair.enabled", false)
     crosshair_settings.size = settings:Get("crosshair.size", 40)
     crosshair_settings.thickness = settings:Get("crosshair.thickness", 1)
-    crosshair_settings.color = Color3.fromRGB(159, 243, 233)
+    crosshair_settings.color = Color3.fromRGB(242, 243, 243)
     crosshair_settings.transparency = settings:Get("crosshair.transparency", .1)
 
     setmetatable(crosshair, { -- yes I know it is easier ways to add this but that requires effort
@@ -3797,9 +3963,9 @@ do
     tracers_settings.drawdistance = settings:Get("tracers.drawdistance", 4000)
     tracers_settings.showvisible = settings:Get("tracers.showvisible", true)
 
-    tracers_settings.enemycolor = Color3.fromRGB(159, 243, 233) -- 238,38,37, 255,0,13, 255,7,58
-    tracers_settings.teamcolor = Color3.fromRGB(159, 243, 233) -- 121,255,97, 57,255,20
-    tracers_settings.visiblecolor = Color3.fromRGB(159, 243, 233)
+    tracers_settings.enemycolor = Color3.fromRGB(242, 243, 243) -- 238,38,37, 255,0,13, 255,7,58
+    tracers_settings.teamcolor = Color3.fromRGB(242, 243, 243) -- 121,255,97, 57,255,20
+    tracers_settings.visiblecolor = Color3.fromRGB(242, 243, 243)
 
     setmetatable(tracers, {
         __index = function(self, index)
@@ -3945,9 +4111,9 @@ do
     esp_settings.enabled = settings:Get("esp.enabled", true)
     esp_settings.showteam = settings:Get("esp.showteam", true)
     
-    esp_settings.teamcolor = Color3.fromRGB(159, 243, 233) -- 121,255,97, 57,255,20
-    esp_settings.enemycolor = Color3.fromRGB(159, 243, 233) -- 238,38,37, 255,0,13, 255,7,58
-    esp_settings.visiblecolor = Color3.fromRGB(159, 243, 233) -- 0, 141, 255
+    esp_settings.teamcolor = Color3.fromRGB(242, 243, 243) -- 121,255,97, 57,255,20
+    esp_settings.enemycolor = Color3.fromRGB(242, 243, 243) -- 238,38,37, 255,0,13, 255,7,58
+    esp_settings.visiblecolor = Color3.fromRGB(242, 243, 243) -- 0, 141, 255
 
 
     esp_settings.size = settings:Get("esp.size", 16)
@@ -4118,9 +4284,9 @@ do
     boxes_settings.thickness = settings:Get("boxes.thickness", 0.2)
     boxes_settings.showteam = settings:Get("boxes.showteam", true)
 
-    boxes_settings.teamcolor = Color3.fromRGB(159, 243, 233) -- 121,255,97,  57,255,20
-    boxes_settings.enemycolor = Color3.fromRGB(159, 243, 233) -- 238,38,37, 255,0,13, 255,7,58
-    boxes_settings.visiblecolor = Color3.fromRGB(159, 243, 233)
+    boxes_settings.teamcolor = Color3.fromRGB(242, 243, 243) -- 121,255,97,  57,255,20
+    boxes_settings.enemycolor = Color3.fromRGB(242, 243, 243) -- 238,38,37, 255,0,13, 255,7,58
+    boxes_settings.visiblecolor = Color3.fromRGB(242, 243, 243)
 
     boxes_settings.thirddimension = settings:Get("boxes.thirddimension", false)
 
@@ -4417,7 +4583,7 @@ do
                 circle = newdrawing("Circle", {
                     Position = v2new(mouse.X, mouse.Y+36),
                     Radius = aimbot.fovsize,
-                    Color = Color3.fromRGB(159, 243, 233),
+                    Color = Color3.fromRGB(242, 243, 243),
                     Thickness = aimbot.fovthickness,
                     Filled = false,
                     Transparency = 2,
@@ -5034,13 +5200,13 @@ Grab.Font = Enum.Font.Cartoon
 Grab.Text = "Grab Q/E"
 Grab.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Grab.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-Grab.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Grab.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Grab.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Grab.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Grab.Font = Enum.Font.Gotham
-Grab.TextColor3 = Color3.fromRGB(175, 221, 255)
+Grab.TextColor3 = Color3.fromRGB(248, 248, 248)
 Grab.TextSize = 12
 Grab.TextWrapped = true
-Grab.BackgroundTransparency = 0.7
+Grab.BackgroundTransparency = 0.9
 Grab.TextStrokeTransparency = 0.3
 Grab.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Grab.MouseButton1Click:connect(function()
@@ -5074,13 +5240,13 @@ RemoveParts.Font = Enum.Font.Cartoon
 RemoveParts.Text = "Remove Parts"
 RemoveParts.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 RemoveParts.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-RemoveParts.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-RemoveParts.BorderColor3 = Color3.fromRGB(175, 221, 255)
+RemoveParts.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+RemoveParts.BorderColor3 = Color3.fromRGB(248, 248, 248)
 RemoveParts.Font = Enum.Font.Gotham
-RemoveParts.TextColor3 = Color3.fromRGB(175, 221, 255)
+RemoveParts.TextColor3 = Color3.fromRGB(248, 248, 248)
 RemoveParts.TextSize = 12
 RemoveParts.TextWrapped = true
-RemoveParts.BackgroundTransparency = 0.7
+RemoveParts.BackgroundTransparency = 0.9
 RemoveParts.TextStrokeTransparency = 0.3
 RemoveParts.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 RemoveParts.MouseButton1Click:connect(function()
@@ -5098,13 +5264,13 @@ UnderLight.Font = Enum.Font.Cartoon
 UnderLight.Text = "UnderLight"
 UnderLight.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 UnderLight.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-UnderLight.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-UnderLight.BorderColor3 = Color3.fromRGB(175, 221, 255)
+UnderLight.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+UnderLight.BorderColor3 = Color3.fromRGB(248, 248, 248)
 UnderLight.Font = Enum.Font.Gotham
-UnderLight.TextColor3 = Color3.fromRGB(175, 221, 255)
+UnderLight.TextColor3 = Color3.fromRGB(248, 248, 248)
 UnderLight.TextSize = 12
 UnderLight.TextWrapped = true
-UnderLight.BackgroundTransparency = 0.7
+UnderLight.BackgroundTransparency = 0.9
 UnderLight.TextStrokeTransparency = 0.3
 UnderLight.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 UnderLight.MouseButton1Click:connect(function()
@@ -5124,13 +5290,13 @@ Sparkles.Font = Enum.Font.Cartoon
 Sparkles.Text = "Sparkles"
 Sparkles.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Sparkles.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-Sparkles.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Sparkles.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Sparkles.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Sparkles.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Sparkles.Font = Enum.Font.Gotham
-Sparkles.TextColor3 = Color3.fromRGB(175, 221, 255)
+Sparkles.TextColor3 = Color3.fromRGB(248, 248, 248)
 Sparkles.TextSize = 12
 Sparkles.TextWrapped = true
-Sparkles.BackgroundTransparency = 0.7
+Sparkles.BackgroundTransparency = 0.9
 Sparkles.TextStrokeTransparency = 0.3
 Sparkles.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Sparkles.MouseButton1Click:connect(function()
@@ -5147,13 +5313,13 @@ Fire.Font = Enum.Font.Cartoon
 Fire.Text = "Fire"
 Fire.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Fire.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-Fire.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Fire.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Fire.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Fire.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Fire.Font = Enum.Font.Gotham
-Fire.TextColor3 = Color3.fromRGB(175, 221, 255)
+Fire.TextColor3 = Color3.fromRGB(248, 248, 248)
 Fire.TextSize = 12
 Fire.TextWrapped = true
-Fire.BackgroundTransparency = 0.7
+Fire.BackgroundTransparency = 0.9
 Fire.TextStrokeTransparency = 0.3
 Fire.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Fire.MouseButton1Click:connect(function()
@@ -5171,13 +5337,13 @@ Headless.Font = Enum.Font.Cartoon
 Headless.Text = "Headless"
 Headless.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Headless.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-Headless.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Headless.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Headless.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Headless.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Headless.Font = Enum.Font.Gotham
-Headless.TextColor3 = Color3.fromRGB(175, 221, 255)
+Headless.TextColor3 = Color3.fromRGB(248, 248, 248)
 Headless.TextSize = 12
 Headless.TextWrapped = true
-Headless.BackgroundTransparency = 0.7
+Headless.BackgroundTransparency = 0.9
 Headless.TextStrokeTransparency = 0.3
 Headless.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Headless.MouseButton1Click:connect(function()
@@ -5187,8 +5353,8 @@ end)
 FunFrame.Name = "FunFrame"
 FunFrame.Parent = Main
 FunFrame.Active = true
-FunFrame.BackgroundColor3 = Color3.fromRGB(183, 215, 213)
-FunFrame.BorderColor3 = Color3.fromRGB(175, 221, 255)
+FunFrame.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+FunFrame.BorderColor3 = Color3.fromRGB(248, 248, 248)
 FunFrame.Transparency = 0.3
 FunFrame.Position = UDim2.new(0.279245257, 0, 0.175983444, 0)
 FunFrame.Selectable = true
@@ -5203,7 +5369,7 @@ Textfun2.Position = UDim2.new(0.269439429, 0, 0.0291777253, 0)
 Textfun2.Size = UDim2.new(0, 252, 0, 30)
 Textfun2.Font = Enum.Font.Gotham
 Textfun2.Text = "War Dinos I Recommend"
-Textfun2.TextColor3 = Color3.fromRGB(159, 243, 233)
+Textfun2.TextColor3 = Color3.fromRGB(242, 243, 243)
 Textfun2.TextScaled = true
 Textfun2.TextSize = 14
 Textfun2.TextWrapped = true
@@ -5218,13 +5384,13 @@ Sit.Font = Enum.Font.Cartoon
 Sit.Text = "Glass Apatosaurus"
 Sit.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Sit.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-Sit.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Sit.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Sit.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Sit.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Sit.Font = Enum.Font.Gotham
-Sit.TextColor3 = Color3.fromRGB(175, 221, 255)
+Sit.TextColor3 = Color3.fromRGB(248, 248, 248)
 Sit.TextSize = 12
 Sit.TextWrapped = true
-Sit.BackgroundTransparency = 0.7
+Sit.BackgroundTransparency = 0.9
 Sit.TextStrokeTransparency = 0.3
 Sit.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Sit.MouseButton1Click:connect(function()
@@ -5248,13 +5414,13 @@ EarRape.Font = Enum.Font.Cartoon
 EarRape.Text = "Glass Spinosaurus"
 EarRape.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 EarRape.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-EarRape.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-EarRape.BorderColor3 = Color3.fromRGB(175, 221, 255)
+EarRape.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+EarRape.BorderColor3 = Color3.fromRGB(248, 248, 248)
 EarRape.Font = Enum.Font.Gotham
-EarRape.TextColor3 = Color3.fromRGB(175, 221, 255)
+EarRape.TextColor3 = Color3.fromRGB(248, 248, 248)
 EarRape.TextSize = 12
 EarRape.TextWrapped = true
-EarRape.BackgroundTransparency = 0.7
+EarRape.BackgroundTransparency = 0.9
 EarRape.TextStrokeTransparency = 0.3
 EarRape.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 EarRape.MouseButton1Click:connect(function()
@@ -5278,13 +5444,13 @@ ChatTroll.Font = Enum.Font.Cartoon
 ChatTroll.Text = "Kaiju Giraffatitan"
 ChatTroll.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 ChatTroll.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-ChatTroll.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-ChatTroll.BorderColor3 = Color3.fromRGB(175, 221, 255)
+ChatTroll.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+ChatTroll.BorderColor3 = Color3.fromRGB(248, 248, 248)
 ChatTroll.Font = Enum.Font.Gotham
-ChatTroll.TextColor3 = Color3.fromRGB(175, 221, 255)
+ChatTroll.TextColor3 = Color3.fromRGB(248, 248, 248)
 ChatTroll.TextSize = 12
 ChatTroll.TextWrapped = true
-ChatTroll.BackgroundTransparency = 0.7
+ChatTroll.BackgroundTransparency = 0.9
 ChatTroll.TextStrokeTransparency = 0.3
 ChatTroll.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 ChatTroll.MouseButton1Click:connect(function()
@@ -5308,13 +5474,13 @@ FakeHealth.Font = Enum.Font.Cartoon
 FakeHealth.Text = "Glass Puertasaurus"
 FakeHealth.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 FakeHealth.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-FakeHealth.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-FakeHealth.BorderColor3 = Color3.fromRGB(175, 221, 255)
+FakeHealth.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+FakeHealth.BorderColor3 = Color3.fromRGB(248, 248, 248)
 FakeHealth.Font = Enum.Font.Gotham
-FakeHealth.TextColor3 = Color3.fromRGB(175, 221, 255)
+FakeHealth.TextColor3 = Color3.fromRGB(248, 248, 248)
 FakeHealth.TextSize = 12
 FakeHealth.TextWrapped = true
-FakeHealth.BackgroundTransparency = 0.7
+FakeHealth.BackgroundTransparency = 0.9
 FakeHealth.TextStrokeTransparency = 0.3
 FakeHealth.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 FakeHealth.MouseButton1Click:connect(function()
@@ -5338,13 +5504,13 @@ FakeArmor.Font = Enum.Font.Cartoon
 FakeArmor.Text = "Galactic Barosaurus"
 FakeArmor.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 FakeArmor.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-FakeArmor.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-FakeArmor.BorderColor3 = Color3.fromRGB(175, 221, 255)
+FakeArmor.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+FakeArmor.BorderColor3 = Color3.fromRGB(248, 248, 248)
 FakeArmor.Font = Enum.Font.Gotham
-FakeArmor.TextColor3 = Color3.fromRGB(175, 221, 255)
+FakeArmor.TextColor3 = Color3.fromRGB(248, 248, 248)
 FakeArmor.TextSize = 12
 FakeArmor.TextWrapped = true
-FakeArmor.BackgroundTransparency = 0.7
+FakeArmor.BackgroundTransparency = 0.9
 FakeArmor.TextStrokeTransparency = 0.3
 FakeArmor.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 FakeArmor.MouseButton1Click:connect(function()
@@ -5368,13 +5534,13 @@ FakeBleed.Font = Enum.Font.Cartoon
 FakeBleed.Text = "Glass Sauroposeidon"
 FakeBleed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 FakeBleed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-FakeBleed.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-FakeBleed.BorderColor3 = Color3.fromRGB(175, 221, 255)
+FakeBleed.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+FakeBleed.BorderColor3 = Color3.fromRGB(248, 248, 248)
 FakeBleed.Font = Enum.Font.Gotham
-FakeBleed.TextColor3 = Color3.fromRGB(175, 221, 255)
+FakeBleed.TextColor3 = Color3.fromRGB(248, 248, 248)
 FakeBleed.TextSize = 12
 FakeBleed.TextWrapped = true
-FakeBleed.BackgroundTransparency = 0.7
+FakeBleed.BackgroundTransparency = 0.9
 FakeBleed.TextStrokeTransparency = 0.3
 FakeBleed.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 FakeBleed.MouseButton1Click:connect(function()
@@ -5396,7 +5562,7 @@ Textfun.Position = UDim2.new(0.269439429, 0, 0.458885968, 0)
 Textfun.Size = UDim2.new(0, 252, 0, 30)
 Textfun.Font = Enum.Font.Gotham
 Textfun.Text = "You Need Their Skins In Order to Instantly Spawn Them."
-Textfun.TextColor3 = Color3.fromRGB(159, 243, 233)
+Textfun.TextColor3 = Color3.fromRGB(242, 243, 243)
 Textfun.TextSize = 14
 Textfun.TextWrapped = true
 
@@ -5410,13 +5576,13 @@ SetDays.Font = Enum.Font.Cartoon
 SetDays.Text = "RakeMother Brachiosaurus"
 SetDays.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 SetDays.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-SetDays.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-SetDays.BorderColor3 = Color3.fromRGB(175, 221, 255)
+SetDays.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+SetDays.BorderColor3 = Color3.fromRGB(248, 248, 248)
 SetDays.Font = Enum.Font.Gotham
-SetDays.TextColor3 = Color3.fromRGB(175, 221, 255)
+SetDays.TextColor3 = Color3.fromRGB(248, 248, 248)
 SetDays.TextSize = 12
 SetDays.TextWrapped = true
-SetDays.BackgroundTransparency = 0.7
+SetDays.BackgroundTransparency = 0.9
 SetDays.TextStrokeTransparency = 0.3
 SetDays.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 SetDays.MouseButton1Click:connect(function()
@@ -5440,13 +5606,13 @@ AdminsaurButton.Font = Enum.Font.Cartoon
 AdminsaurButton.Text = "Gargoyle Hatzegopteryx"
 AdminsaurButton.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AdminsaurButton.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-AdminsaurButton.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-AdminsaurButton.BorderColor3 = Color3.fromRGB(175, 221, 255)
+AdminsaurButton.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+AdminsaurButton.BorderColor3 = Color3.fromRGB(248, 248, 248)
 AdminsaurButton.Font = Enum.Font.Gotham
-AdminsaurButton.TextColor3 = Color3.fromRGB(175, 221, 255)
+AdminsaurButton.TextColor3 = Color3.fromRGB(248, 248, 248)
 AdminsaurButton.TextSize = 12
 AdminsaurButton.TextWrapped = true
-AdminsaurButton.BackgroundTransparency = 0.7
+AdminsaurButton.BackgroundTransparency = 0.9
 AdminsaurButton.TextStrokeTransparency = 0.3
 AdminsaurButton.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 AdminsaurButton.MouseButton1Click:connect(function()
@@ -5470,13 +5636,13 @@ Suicide.Font = Enum.Font.Cartoon
 Suicide.Text = "Fossil Mosasaurus"
 Suicide.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Suicide.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-Suicide.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Suicide.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Suicide.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Suicide.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Suicide.Font = Enum.Font.Gotham
-Suicide.TextColor3 = Color3.fromRGB(175, 221, 255)
+Suicide.TextColor3 = Color3.fromRGB(248, 248, 248)
 Suicide.TextSize = 12
 Suicide.TextWrapped = true
-Suicide.BackgroundTransparency = 0.7
+Suicide.BackgroundTransparency = 0.9
 Suicide.TextStrokeTransparency = 0.3
 Suicide.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Suicide.MouseButton1Click:connect(function()
@@ -5500,13 +5666,13 @@ DailyDNA.Font = Enum.Font.Cartoon
 DailyDNA.Text = "Fossil Thalassomedon"
 DailyDNA.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 DailyDNA.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-DailyDNA.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-DailyDNA.BorderColor3 = Color3.fromRGB(175, 221, 255)
+DailyDNA.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+DailyDNA.BorderColor3 = Color3.fromRGB(248, 248, 248)
 DailyDNA.Font = Enum.Font.Gotham
-DailyDNA.TextColor3 = Color3.fromRGB(175, 221, 255)
+DailyDNA.TextColor3 = Color3.fromRGB(248, 248, 248)
 DailyDNA.TextSize = 12
 DailyDNA.TextWrapped = true
-DailyDNA.BackgroundTransparency = 0.7
+DailyDNA.BackgroundTransparency = 0.9
 DailyDNA.TextStrokeTransparency = 0.3
 DailyDNA.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 DailyDNA.MouseButton1Click:connect(function()
@@ -5530,13 +5696,13 @@ BuySkin.Font = Enum.Font.Cartoon
 BuySkin.Text = "Withered Willow Futalognkosaurus"
 BuySkin.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 BuySkin.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-BuySkin.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-BuySkin.BorderColor3 = Color3.fromRGB(175, 221, 255)
+BuySkin.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+BuySkin.BorderColor3 = Color3.fromRGB(248, 248, 248)
 BuySkin.Font = Enum.Font.Gotham
-BuySkin.TextColor3 = Color3.fromRGB(175, 221, 255)
+BuySkin.TextColor3 = Color3.fromRGB(248, 248, 248)
 BuySkin.TextSize = 12
 BuySkin.TextWrapped = true
-BuySkin.BackgroundTransparency = 0.7
+BuySkin.BackgroundTransparency = 0.9
 BuySkin.TextStrokeTransparency = 0.3
 BuySkin.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 BuySkin.MouseButton1Click:connect(function()
@@ -5560,13 +5726,13 @@ AlbinoTerror.Font = Enum.Font.Cartoon
 AlbinoTerror.Text = "Pitch Wraith Terror"
 AlbinoTerror.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AlbinoTerror.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-AlbinoTerror.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-AlbinoTerror.BorderColor3 = Color3.fromRGB(175, 221, 255)
+AlbinoTerror.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+AlbinoTerror.BorderColor3 = Color3.fromRGB(248, 248, 248)
 AlbinoTerror.Font = Enum.Font.Gotham
-AlbinoTerror.TextColor3 = Color3.fromRGB(175, 221, 255)
+AlbinoTerror.TextColor3 = Color3.fromRGB(248, 248, 248)
 AlbinoTerror.TextSize = 12
 AlbinoTerror.TextWrapped = true
-AlbinoTerror.BackgroundTransparency = 0.7
+AlbinoTerror.BackgroundTransparency = 0.9
 AlbinoTerror.TextStrokeTransparency = 0.3
 AlbinoTerror.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 AlbinoTerror.MouseButton1Click:connect(function()
@@ -5590,13 +5756,13 @@ HotheadMegavore.Font = Enum.Font.Cartoon
 HotheadMegavore.Text = "Violex Filius"
 HotheadMegavore.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 HotheadMegavore.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-HotheadMegavore.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-HotheadMegavore.BorderColor3 = Color3.fromRGB(175, 221, 255)
+HotheadMegavore.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+HotheadMegavore.BorderColor3 = Color3.fromRGB(248, 248, 248)
 HotheadMegavore.Font = Enum.Font.Gotham
-HotheadMegavore.TextColor3 = Color3.fromRGB(175, 221, 255)
+HotheadMegavore.TextColor3 = Color3.fromRGB(248, 248, 248)
 HotheadMegavore.TextSize = 12
 HotheadMegavore.TextWrapped = true
-HotheadMegavore.BackgroundTransparency = 0.7
+HotheadMegavore.BackgroundTransparency = 0.9
 HotheadMegavore.TextStrokeTransparency = 0.3
 HotheadMegavore.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 HotheadMegavore.MouseButton1Click:connect(function()
@@ -5620,13 +5786,13 @@ Shake.Font = Enum.Font.Cartoon
 Shake.Text = "Hothead Megavore"
 Shake.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Shake.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-Shake.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-Shake.BorderColor3 = Color3.fromRGB(175, 221, 255)
+Shake.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Shake.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Shake.Font = Enum.Font.Gotham
-Shake.TextColor3 = Color3.fromRGB(175, 221, 255)
+Shake.TextColor3 = Color3.fromRGB(248, 248, 248)
 Shake.TextSize = 12
 Shake.TextWrapped = true
-Shake.BackgroundTransparency = 0.7
+Shake.BackgroundTransparency = 0.9
 Shake.TextStrokeTransparency = 0.3
 Shake.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Shake.MouseButton1Click:connect(function()
@@ -5650,13 +5816,13 @@ SwimAnimation.Font = Enum.Font.Cartoon
 SwimAnimation.Text = "Leviathan Shastasaurus"
 SwimAnimation.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 SwimAnimation.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-SwimAnimation.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-SwimAnimation.BorderColor3 = Color3.fromRGB(175, 221, 255)
+SwimAnimation.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+SwimAnimation.BorderColor3 = Color3.fromRGB(248, 248, 248)
 SwimAnimation.Font = Enum.Font.Gotham
-SwimAnimation.TextColor3 = Color3.fromRGB(175, 221, 255)
+SwimAnimation.TextColor3 = Color3.fromRGB(248, 248, 248)
 SwimAnimation.TextSize = 12
 SwimAnimation.TextWrapped = true
-SwimAnimation.BackgroundTransparency = 0.7
+SwimAnimation.BackgroundTransparency = 0.9
 SwimAnimation.TextStrokeTransparency = 0.3
 SwimAnimation.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 SwimAnimation.MouseButton1Click:connect(function()
@@ -5680,13 +5846,13 @@ AntiAFK.Font = Enum.Font.Cartoon
 AntiAFK.Text = "Galactic Terror"
 AntiAFK.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AntiAFK.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-AntiAFK.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-AntiAFK.BorderColor3 = Color3.fromRGB(175, 221, 255)
+AntiAFK.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+AntiAFK.BorderColor3 = Color3.fromRGB(248, 248, 248)
 AntiAFK.Font = Enum.Font.Gotham
-AntiAFK.TextColor3 = Color3.fromRGB(175, 221, 255)
+AntiAFK.TextColor3 = Color3.fromRGB(248, 248, 248)
 AntiAFK.TextSize = 12
 AntiAFK.TextWrapped = true
-AntiAFK.BackgroundTransparency = 0.7
+AntiAFK.BackgroundTransparency = 0.9
 AntiAFK.TextStrokeTransparency = 0.3
 AntiAFK.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 AntiAFK.MouseButton1Click:connect(function()
@@ -5710,13 +5876,13 @@ AntiBan.Font = Enum.Font.Cartoon
 AntiBan.Text = "Glass Avinychus"
 AntiBan.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AntiBan.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-AntiBan.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-AntiBan.BorderColor3 = Color3.fromRGB(175, 221, 255)
+AntiBan.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+AntiBan.BorderColor3 = Color3.fromRGB(248, 248, 248)
 AntiBan.Font = Enum.Font.Gotham
-AntiBan.TextColor3 = Color3.fromRGB(175, 221, 255)
+AntiBan.TextColor3 = Color3.fromRGB(248, 248, 248)
 AntiBan.TextSize = 12
 AntiBan.TextWrapped = true
-AntiBan.BackgroundTransparency = 0.7
+AntiBan.BackgroundTransparency = 0.9
 AntiBan.TextStrokeTransparency = 0.3
 AntiBan.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 AntiBan.MouseButton1Click:connect(function()
@@ -5931,8 +6097,8 @@ end)
 DNAFarmFrame.Name = "DNAFarmFrame"
 DNAFarmFrame.Parent = Main
 DNAFarmFrame.Active = true
-DNAFarmFrame.BackgroundColor3 = Color3.fromRGB(183, 215, 213)
-DNAFarmFrame.BorderColor3 = Color3.fromRGB(175, 221, 255)
+DNAFarmFrame.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+DNAFarmFrame.BorderColor3 = Color3.fromRGB(248, 248, 248)
 DNAFarmFrame.Transparency = 0.3
 DNAFarmFrame.Position = UDim2.new(0.279245257, 0, 0.175983444, 0)
 DNAFarmFrame.Selectable = true
@@ -5946,8 +6112,8 @@ TextDNAfarm.BackgroundTransparency = 1
 TextDNAfarm.Position = UDim2.new(0.271247745, 0, 0.335278523, 0)
 TextDNAfarm.Size = UDim2.new(0, 252, 0, 30)
 TextDNAfarm.Font = Enum.Font.Gotham
-TextDNAfarm.Text = "Barosaurus-97% Young Adult | Leedsichthys-1% Baby | EvenPast#1133 For Q's"
-TextDNAfarm.TextColor3 = Color3.fromRGB(159, 243, 233)
+TextDNAfarm.Text = "Baro 97% Young Adult | Leed 1% Baby | For best rates do in public servers with 'TP Out Da Map' & nest."
+TextDNAfarm.TextColor3 = Color3.fromRGB(242, 243, 243)
 TextDNAfarm.TextScaled = true
 TextDNAfarm.TextWrapped = true
 
@@ -5961,13 +6127,13 @@ StartDNALoop.Font = Enum.Font.Cartoon
 StartDNALoop.Text = "Fire Da DNA Farm"
 StartDNALoop.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 StartDNALoop.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-StartDNALoop.BackgroundColor3 = Color3.fromRGB(159, 243, 233)
-StartDNALoop.BorderColor3 = Color3.fromRGB(175, 221, 255)
+StartDNALoop.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+StartDNALoop.BorderColor3 = Color3.fromRGB(248, 248, 248)
 StartDNALoop.Font = Enum.Font.Gotham
-StartDNALoop.TextColor3 = Color3.fromRGB(175, 221, 255)
+StartDNALoop.TextColor3 = Color3.fromRGB(248, 248, 248)
 StartDNALoop.TextSize = 12
 StartDNALoop.TextWrapped = true
-StartDNALoop.BackgroundTransparency = 0.7
+StartDNALoop.BackgroundTransparency = 0.9
 StartDNALoop.TextStrokeTransparency = 0.3
 StartDNALoop.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 StartDNALoop.MouseButton1Click:connect(function()
