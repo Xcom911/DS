@@ -1,4 +1,4 @@
---[[Xcom 1.01
+--[[Xcom 1.02
 Add EvenPast#1133 For Any Dumbass Questions]]--
 local p = game.Players.LocalPlayer
 local whitelist = {
@@ -6112,7 +6112,7 @@ TextDNAfarm.BackgroundTransparency = 1
 TextDNAfarm.Position = UDim2.new(0.271247745, 0, 0.335278523, 0)
 TextDNAfarm.Size = UDim2.new(0, 252, 0, 30)
 TextDNAfarm.Font = Enum.Font.Gotham
-TextDNAfarm.Text = "Baro 97% Young Adult | Leed 1% Baby | For best rates do in public servers with 'TP Out Da Map' & nest."
+TextDNAfarm.Text = "Brachi 97% Young Adult | Diplo 1% Baby | For best rates do in public servers with 'TP Out Da Map & nest'"
 TextDNAfarm.TextColor3 = Color3.fromRGB(242, 243, 243)
 TextDNAfarm.TextScaled = true
 TextDNAfarm.TextWrapped = true
@@ -6148,8 +6148,8 @@ wait(3)
 workspace.GameEvents.GoToMenu:FireServer(7) ]]
 
 --DNA Farm Options | Spell DINO NAMES CORRECTLY!
-local YoungAdult = "Barosaurus" --Has to be 97% Young Adult (preferably: Baro)
-local Baby = "Leedsichthys" --Has to be Baby, any % will do (preferably: Pue, Leed, Shasta, Sauroposeidon)
+local YoungAdult = "Brachiosaurus" --Has to be 97% Young Adult (preferably: Baro)
+local Baby = "Diplodocus" --Has to be Baby, any % will do (preferably: Pue, Leed, Shasta, Sauroposeidon)
 local no = false
 local yes = true
 
