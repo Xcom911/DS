@@ -1,4 +1,4 @@
---[[Xcom 1.04
+--[[Xcom 1.05
 Add EvenPast#1133 For Any Dumbass Questions]]--
 local p = game.Players.LocalPlayer
 local whitelist = {
@@ -228,7 +228,7 @@ Xcom911.Parent = game.CoreGui
 Main.Name = "Main"
 Main.Parent = Xcom911
 Main.Active = true
-Main.BackgroundColor3 = Color3.fromRGB(17,17,17)
+Main.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
 Main.BorderColor3 = Color3.fromRGB(248, 248, 248)
 Main.BorderSizePixel = 2
 Main.Position = UDim2.new(0.314186931, 0, 0.202702716, 0)
@@ -257,6 +257,17 @@ local function bro()
 	local script15 = Instance.new('LocalScript', Maps)
 	local script16 = Instance.new('LocalScript', Elder)
 	local script17 = Instance.new('LocalScript', Trading)
+	local script18 = Instance.new('LocalScript', localptext)
+	local script19 = Instance.new('LocalScript', localptext2)
+	local script20 = Instance.new('LocalScript', textspecial)
+	local script21 = Instance.new('LocalScript', textspecial2)
+	local script22 = Instance.new('LocalScript', Textfun2)
+	local script23 = Instance.new('LocalScript', Textfun)
+	local script24 = Instance.new('LocalScript', Mapstext)
+	local script25 = Instance.new('LocalScript', eldertext2)
+	local script26 = Instance.new('LocalScript', eldertext1)
+	local script27 = Instance.new('LocalScript', TextDNAfarm)
+	local script28 = Instance.new('LocalScript', SuperPlio)
 
 
 
@@ -290,6 +301,17 @@ local function bro()
 		script15.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 		script16.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 		script17.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script18.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script19.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script20.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script21.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script22.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script23.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script24.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script25.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script26.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script27.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script28.Parent.TextStrokeColor3=Color3.fromHSV(zigzag(counter),1,1)
 	end
 end
 coroutine.wrap(bro)()
@@ -317,23 +339,6 @@ text2.TextColor3 = Color3.fromRGB(242, 243, 243)
 text2.TextScaled = true
 text2.TextSize = 100
 text2.TextWrapped = true
-
-
-Close.Name = "Close"
-Close.Parent = GUIHead
-Close.BackgroundColor3 = Color3.new(1, 1, 1)
-Close.BackgroundTransparency = 1
-Close.Position = UDim2.new(0.961006284, 0, 0, 0)
-Close.Size = UDim2.new(0, 31, 0, 31)
-Close.Font = Enum.Font.GothamSemibold
-Close.Text = "[-]"
-Close.TextColor3 = Color3.fromRGB(242, 243, 243)
-Close.TextSize = 12
-Close.TextWrapped = true
-Close.MouseButton1Down:connect(function()
-Main.Visible = false
-OpenFrame.Visible = true
-end)
 
 Category.Name = "Category"
 Category.Parent = Main
@@ -1753,7 +1758,7 @@ Elder_2.BorderColor3 = Color3.new(0, 0, 0)
 Elder_2.Position = UDim2.new(0.395281106, 0, 0.32212314, 0)
 Elder_2.Size = UDim2.new(0, 114, 0, 30)
 Elder_2.Font = Enum.Font.Cartoon
-Elder_2.Text = "Fish FLy"
+Elder_2.Text = "Fire"
 Elder_2.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Elder_2.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Elder_2.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -2714,25 +2719,525 @@ end)
 
 
 SuperPlio.Name = "SuperPlio"
-SuperPlio.Parent = ExclusiveFrame
+SuperPlio.Parent = GUIHead
 SuperPlio.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
 SuperPlio.BorderColor3 = Color3.new(0, 0, 0)
-SuperPlio.Position = UDim2.new(0.396507187, 0, 0.74652642, 0)
+SuperPlio.Position = UDim2.new(0.84, 0, 0.25, 0)
 SuperPlio.Size = UDim2.new(0, 114, 0, 30)
 SuperPlio.Font = Enum.Font.Cartoon
-SuperPlio.Text = "God Tier ESP + IY"
+SuperPlio.Text = "Click Me Once"
 SuperPlio.TextColor3 = Color3.new(0.25098, 0.431373, 0.815686)
 SuperPlio.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 SuperPlio.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
 SuperPlio.BorderColor3 = Color3.fromRGB(248, 248, 248)
 SuperPlio.Font = Enum.Font.Gotham
 SuperPlio.TextColor3 = Color3.fromRGB(248, 248, 248)
-SuperPlio.TextSize = 12
+SuperPlio.TextSize = 14
 SuperPlio.TextWrapped = true
-SuperPlio.BackgroundTransparency = 0.9
+SuperPlio.BackgroundTransparency = 1
 SuperPlio.TextStrokeTransparency = 0.3
 SuperPlio.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 SuperPlio.MouseButton1Click:connect(function()
+game.StarterGui:SetCore("SendNotification", {
+Title = "Fast-Hit Enabled";
+Text = "Spam R for fast hit."; 
+Duration = 20; })
+bind11 = "r"
+game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
+if key == bind11 then
+game.Workspace.GameEvents.Damage:FireServer()
+workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
+wait(0.1)
+game.Workspace.GameEvents.Damage:FireServer()
+workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
+wait(0.1)
+game.Workspace.GameEvents.Damage:FireServer()
+workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
+wait(0.1)
+game.Workspace.GameEvents.Damage:FireServer()
+workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
+wait(0.1)
+game.Workspace.GameEvents.Damage:FireServer()
+workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
+wait(0.1)
+game.Workspace.GameEvents.Damage:FireServer()
+workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
+end
+end)
+game.StarterGui:SetCore("SendNotification", {
+Title = "KEYBINDS";
+Text = "[K] +Hunger           [L] -HUNGER                [J] +Thirst"; 
+Duration = 30; })
+print("Keybinds: [K] +Hunger : [L] -HUNGER : [J] +Thirst")
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+bind12 = "j"
+bind2 = "k"
+bind3 = "l"
+mouse.KeyDown:connect(function(key)
+if key == bind12 then
+if game:GetService("Workspace").GameMap:FindFirstChild("Water") then
+local A_1 = game:GetService("Workspace").GameMap:FindFirstChild("Water")
+if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame.p then
+local A_2 = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.p
+local Event = game:GetService("Workspace").GameEvents.addThirst
+Event:FireServer(A_1, A_2)
+end
+end
+end
+end
+end)
+
+mouse.KeyDown:connect(function(key2)
+if key2 == bind2 then
+_G.Disabled = true
+if _G.Disabled then
+game.Workspace.GameEvents.EatPlant:FireServer(Workspace.GameMap.Ferns.Fern,3)
+end
+end
+end)
+mouse.KeyDown:connect(function(key3)
+if key3 == bind3 then
+_G.Disabled = true
+game.Workspace.GameEvents.EatPlant:FireServer(Workspace.GameMap.Ferns.Fern,-5)
+end
+end)
+game.StarterGui:SetCore("SendNotification", {
+Title = "HEAD KEYBINDS";
+Text = "[F] SHRINK           [V,B] ENLARGE"; 
+Duration = 30; })
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+bind5 = "f"
+bind1 = "v"
+bind6 = "b"
+mouse.KeyDown:connect(function(key)
+if key == bind5 then
+local v = game.Players.LocalPlayer
+v.Character.Head.Size = Vector3.new(0, 0, 0)
+v.Character.Head.Transparency = 0
+v.Character.Head.Color = Color3.fromRGB(0, 0, 255)
+v.Character.Head.Shape = "Block"
+v.Character.Head.Material = Enum.Material.ForceField
+game.StarterGui:SetCore("SendNotification", {
+Title = "Head-Hitbox";
+Text = "Head-Hitbox Changed: none."; 
+Duration = 1; })
+end
+end)
+mouse.KeyDown:connect(function(key2)
+if key2 == bind1 then
+local v = game.Players.LocalPlayer
+v.Character.Head.Size = Vector3.new(8, 7, 18)
+v.Character.Head.Transparency = 0
+v.Character.Head.Color = Color3.fromRGB(0, 0, 255)
+v.Character.Head.Shape = "Block"
+v.Character.Head.Material = Enum.Material.ForceField
+game.StarterGui:SetCore("SendNotification", {
+Title = "Head-Hitbox";
+Text = "Head-Hitbox Changed: medium."; 
+Duration = 1; })
+end
+end)
+mouse.KeyDown:connect(function(key3)
+if key3 == bind6 then
+_G.Disabled = true
+local v = game.Players.LocalPlayer
+v.Character.Head.Size = Vector3.new(19, 15, 45)
+v.Character.Head.Transparency = 0.5
+v.Character.Head.Color = Color3.fromRGB(0, 0, 255)
+v.Character.Head.Shape = "Block"
+v.Character.Head.Material = Enum.Material.ForceField
+game.StarterGui:SetCore("SendNotification", {
+Title = "Hitbox";
+Text = "Head-Hitbox Changed: large."; 
+Duration = 5; })
+end
+end)
+
+local v1 = game:GetService("Lighting"):GetChildren()
+for i,v in pairs(v1) do 
+	v:Destroy()
+end
+function sandbox(var,func)
+	local env = getfenv(func)
+	local newenv = setmetatable({},{
+		__index = function(Enum,k)
+			if k=="script" then
+				return var
+			else
+				return env[k]
+			end
+		end,
+	})
+	setfenv(func,newenv)
+	return func
+end
+cors = {}
+mas = Instance.new("Model",game:GetService("Lighting"))
+Script0 = Instance.new("Script")
+Script1 = Instance.new("Script")
+Sky2 = Instance.new("Sky")
+Sound3 = Instance.new("Sound")
+ScreenGui4 = Instance.new("ScreenGui")
+Frame5 = Instance.new("Frame")
+LocalScript6 = Instance.new("LocalScript")
+ImageLabel7 = Instance.new("ImageLabel")
+ImageLabel8 = Instance.new("ImageLabel")
+ImageLabel9 = Instance.new("ImageLabel")
+ImageLabel10 = Instance.new("ImageLabel")
+ImageLabel11 = Instance.new("ImageLabel")
+ImageLabel12 = Instance.new("ImageLabel")
+LocalScript13 = Instance.new("LocalScript")
+Script0.Name = "READ ME OR IT WILL NOT WORK"
+Script0.Parent = mas
+table.insert(cors,sandbox(Script0,function()
+--[[
+	TO USE THIS MAKE SURE PROPERTIES PANEL AND EXPLORER ARE OPEN AND SELECT LIGHTING IN THE EXPLORER
+	THEN, GO THE PROPERTIES PANEL AND FIND TECHNOLOGY, DOUBLE CLICK IT AND SELECT "ShadowMap"
+	
+	
+	Done!
+	
+	Now you can delete the read me script, But KEEP THE SHADERS SCRIPT!
+--]]
+end))
+Script1.Name = "Shaders"
+Script1.Parent = mas
+table.insert(cors,sandbox(Script1,function()
+--Leave script alone!
+
+
+game.Players.PlayerAdded:Connect(function(plr)
+	wait()
+	local SunFX = script.LensFlareGui:Clone()
+	SunFX.Parent = plr.PlayerGui
+end)
+
+
+
+print('Voxel: SEGI LIGHTING loaded..')
+
+wait(2)
+script.Beep:Play()
+
+Lighting = game:GetService("Lighting")
+
+wait(0.1)
+
+Lighting.Brightness = 2
+Lighting.ExposureCompensation = 1.5
+
+Lighting.ShadowSoftness = 0.2
+
+Lighting.OutdoorAmbient = Color3.new(139/255, 139/255, 139/255)
+Lighting.Ambient = Color3.new(2/255, 2/255, 2/255)
+
+SunFlare = Instance.new("SunRaysEffect", Lighting)
+SunFlare.Intensity = 0.04
+
+ColorCorrection = Instance.new("ColorCorrectionEffect", Lighting)
+ColorCorrection.TintColor = Color3.new(229/255, 231/255, 255/255)
+ColorCorrection.Contrast = 0.1
+ColorCorrection.Brightness = 0.05
+
+
+Lighting.FogEnd = 2999
+Lighting.FogStart = 0
+Lighting.FogColor = Color3.new(162/255, 195/255, 255/255)
+
+--- water
+
+workspace.Terrain.WaterTransparency = 1
+workspace.Terrain.WaterReflectance = 0.2
+
+sky = script.Sky
+sky.Parent = Lighting
+
+
+
+
+local Blur = Instance.new("BlurEffect")
+Blur.Parent = game.Lighting
+Blur.Size = 25
+wait(0.1)
+Blur.Size = 24
+wait(0.1)
+Blur.Size = 23
+wait(0.1)
+Blur.Size = 22
+wait(0.1)
+Blur.Size = 21
+wait(0.1)
+Blur.Size = 20
+wait(0.1)
+Blur.Size = 19
+wait(0.1)
+Blur.Size = 18
+wait(0.1)
+Blur.Size = 17
+wait(0.1)
+Blur.Size = 16
+wait(0.1)
+Blur.Size = 15
+wait(0.1)
+Blur.Size = 14
+wait(0.1)
+Blur.Size = 13
+wait(0.1)
+Blur.Size = 12
+wait(0.1)
+Blur.Size = 11
+wait(0.1)
+Blur.Size = 10
+wait(0.1)
+Blur.Size = 9
+wait(0.1)
+Blur.Size = 8
+wait(0.1)
+Blur.Size = 7
+wait(0.1)
+Blur.Size = 6
+wait(0.1)
+Blur.Size = 5
+wait(0.1)
+Blur.Size = 4
+wait(0.1)
+Blur.Size = 3
+wait(0.1)
+Blur.Size = 2
+wait(0.1)
+Blur.Size = 1
+wait(0.1)
+Blur.Size = 0
+
+
+
+
+print('Loading..Bloom')
+wait(2)
+print('Loading..Lens Flares')
+
+
+print("Done!")
+
+
+while wait(1) do
+	for i,v in pairs(game.Players:GetPlayers()) do
+		if v.PlayerGui:FindFirstChild("LensFlareGui") == nil then
+			gui = script.LensFlareGui:Clone()
+			gui.Parent = v.PlayerGui
+		end
+	end
+end
+end))
+Sky2.Parent = Script1
+Sky2.MoonAngularSize = 13
+Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=271042516"
+Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=271077243"
+Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=271042556"
+Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=271042310"
+Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=271042467"
+Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=271077958"
+Sky2.SunAngularSize = 20
+Sky2.SunTextureId = "rbxassetid://1168763430"
+Sound3.Name = "Beep"
+Sound3.Parent = Script1
+Sound3.SoundId = "rbxassetid://1029495337"
+Sound3.Volume = 1
+ScreenGui4.Name = "LensFlareGui"
+ScreenGui4.Parent = Script1
+Frame5.Name = "lensFlare"
+Frame5.Parent = ScreenGui4
+Frame5.Size = UDim2.new(1, 0, 1, 0)
+Frame5.BackgroundColor = BrickColor.new("Really black")
+Frame5.BackgroundColor3 = Color3.new(0, 0, 0)
+Frame5.BackgroundTransparency = 1
+Frame5.BorderColor = BrickColor.new("Really black")
+Frame5.BorderColor3 = Color3.new(0, 0, 0)
+Frame5.BorderSizePixel = 0
+LocalScript6.Name = "Lens Flare Script"
+LocalScript6.Parent = Frame5
+table.insert(cors,sandbox(LocalScript6,function()
+local player = game.Players.LocalPlayer
+local camera = workspace.CurrentCamera
+local gui = script.Parent
+local flares = {}
+local char
+
+repeat char = player.Character wait(1/30) until char
+
+for i, child in pairs(gui:GetChildren()) do
+	if child.Name:sub(1, 5) == "flare" then
+		flares[child] = tonumber(child.Name:match("flare%d+ : (%-?.+)"))
+	end
+end
+
+function project(cam, point)
+	local dif = cam:pointToObjectSpace(point)
+	local fov = math.atan(math.rad(camera.FieldOfView))
+	local z = -dif.z
+	if z > 0 then
+		local x = (dif.x / fov / 1.3) / (z + 1) * (gui.AbsoluteSize.y / gui.AbsoluteSize.x)
+		local y = (dif.y / fov / 1.3) / (z + 1) * -1
+		return x, y, true
+	else
+		return 0, 0, false
+	end
+end
+
+function rayCast(pos, dir, ignore)
+	return workspace:FindPartOnRayWithIgnoreList(Ray.new(pos, dir), ignore)
+end
+
+while wait(1/60) do
+	local suns = 0
+	for i = 1, 5 do
+		local frame = CFrame.new(camera.CoordinateFrame.p, camera.CoordinateFrame.p + game.Lighting:GetSunDirection())
+		frame = frame * CFrame.Angles(0, 0, i/5 * math.pi*2)
+		frame = frame * CFrame.Angles(math.rad(5), 0, 0)
+		if not rayCast(frame.p, frame.lookVector*999, {char}) then
+			suns = suns + 1
+		end
+	end
+	if suns > 0 then
+		local x, y, z = project(camera.CoordinateFrame, camera.CoordinateFrame.p + game.Lighting:GetSunDirection()*25)
+		if z then
+			for flare, pos in pairs(flares) do
+				flare.Position = UDim2.new(0.5 + x*pos, -flare.AbsoluteSize.x/2, 0.5 + y*pos, -flare.AbsoluteSize.y/2)
+				flare.Visible = true
+			end
+		else
+			for flare in pairs(flares) do
+				flare.Visible = false
+			end
+		end
+	else
+		for flare, pos in pairs(flares) do
+			flare.Visible = false
+		end
+	end
+end
+
+end))
+ImageLabel7.Name = "flare2 : 0.5"
+ImageLabel7.Parent = Frame5
+ImageLabel7.Size = UDim2.new(0.0625, 0, 0.0625, 0)
+ImageLabel7.BackgroundColor = BrickColor.new("Really black")
+ImageLabel7.BackgroundColor3 = Color3.new(0, 0, 0)
+ImageLabel7.BackgroundTransparency = 1
+ImageLabel7.BorderColor = BrickColor.new("Really black")
+ImageLabel7.BorderColor3 = Color3.new(0, 0, 0)
+ImageLabel7.BorderSizePixel = 0
+ImageLabel7.SizeConstraint = Enum.SizeConstraint.RelativeXX
+ImageLabel7.ZIndex = 2
+ImageLabel7.Image = "http://www.roblox.com/asset/?id=109801097"
+ImageLabel8.Name = "flare3 : -0.1"
+ImageLabel8.Parent = Frame5
+ImageLabel8.Size = UDim2.new(0.03125, 0, 0.03125, 0)
+ImageLabel8.BackgroundColor = BrickColor.new("Really black")
+ImageLabel8.BackgroundColor3 = Color3.new(0, 0, 0)
+ImageLabel8.BackgroundTransparency = 1
+ImageLabel8.BorderColor = BrickColor.new("Really black")
+ImageLabel8.BorderColor3 = Color3.new(0, 0, 0)
+ImageLabel8.BorderSizePixel = 0
+ImageLabel8.SizeConstraint = Enum.SizeConstraint.RelativeXX
+ImageLabel8.ZIndex = 3
+ImageLabel8.Image = "http://www.roblox.com/asset/?id=109801097"
+ImageLabel9.Name = "flare1 : -0.5"
+ImageLabel9.Parent = Frame5
+ImageLabel9.Size = UDim2.new(0.100000001, 0, 0.100000001, 0)
+ImageLabel9.BackgroundColor = BrickColor.new("Really black")
+ImageLabel9.BackgroundColor3 = Color3.new(0, 0, 0)
+ImageLabel9.BackgroundTransparency = 1
+ImageLabel9.BorderColor = BrickColor.new("Really black")
+ImageLabel9.BorderColor3 = Color3.new(0, 0, 0)
+ImageLabel9.BorderSizePixel = 0
+ImageLabel9.SizeConstraint = Enum.SizeConstraint.RelativeXX
+ImageLabel9.ZIndex = 2
+ImageLabel9.Image = "http://www.roblox.com/asset/?id=109801097"
+ImageLabel10.Name = "flare4 : 1"
+ImageLabel10.Parent = Frame5
+ImageLabel10.Size = UDim2.new(1, 0, 1, 0)
+ImageLabel10.BackgroundColor = BrickColor.new("Really black")
+ImageLabel10.BackgroundColor3 = Color3.new(0, 0, 0)
+ImageLabel10.BackgroundTransparency = 1
+ImageLabel10.BorderColor = BrickColor.new("Really black")
+ImageLabel10.BorderColor3 = Color3.new(0, 0, 0)
+ImageLabel10.BorderSizePixel = 0
+ImageLabel10.SizeConstraint = Enum.SizeConstraint.RelativeXX
+ImageLabel10.ZIndex = 3
+ImageLabel10.Image = "http://www.roblox.com/asset/?id=109801097"
+ImageLabel11.Name = "flare5 : -1.1"
+ImageLabel11.Parent = Frame5
+ImageLabel11.Size = UDim2.new(0.150000006, 0, 0.150000006, 0)
+ImageLabel11.BackgroundColor = BrickColor.new("Really black")
+ImageLabel11.BackgroundColor3 = Color3.new(0, 0, 0)
+ImageLabel11.BackgroundTransparency = 1
+ImageLabel11.BorderColor = BrickColor.new("Really black")
+ImageLabel11.BorderColor3 = Color3.new(0, 0, 0)
+ImageLabel11.BorderSizePixel = 0
+ImageLabel11.SizeConstraint = Enum.SizeConstraint.RelativeXX
+ImageLabel11.ZIndex = 2
+ImageLabel11.Image = "http://www.roblox.com/asset/?id=109801061"
+ImageLabel12.Name = "vignette"
+ImageLabel12.Parent = ScreenGui4
+ImageLabel12.Size = UDim2.new(1, 0, 1, 0)
+ImageLabel12.BackgroundColor = BrickColor.new("Institutional white")
+ImageLabel12.BackgroundColor3 = Color3.new(1, 1, 1)
+ImageLabel12.BackgroundTransparency = 1
+ImageLabel12.BorderSizePixel = 0
+ImageLabel12.Image = "rbxassetid://192776775"
+ImageLabel12.ImageTransparency = 0.69999998807907
+LocalScript13.Name = "MotionBlur"
+LocalScript13.Parent = ScreenGui4
+table.insert(cors,sandbox(LocalScript13,function()
+--[[
+By AstroCode on August 17, 2016
+
+This motion blur script is activated by the rotation of the camera.
+Place this script in StarterPlayer > StarterPlayerScripts
+By default, players must have their graphics quality set to 6+ to see the blur effect.
+--]]
+
+--//Settings
+BlurAmount = 15 -- Change this to increase or decrease the blur size
+
+--//Declarations
+Camera 	= game.Workspace.CurrentCamera
+Last 	= Camera.CFrame.lookVector
+Blur 	= Instance.new("BlurEffect",Camera)
+
+--//Logic
+game.Workspace.Changed:connect(function(p) -- Feels a bit hacky. Updates the Camera and Blur if the Camera object is changed.
+	if p == "CurrentCamera" then
+		Camera = game.Workspace.CurrentCamera
+		if Blur and Blur.Parent then
+			Blur.Parent = Camera
+		else
+			Blur = Instance.new("BlurEffect",Camera)
+		end
+	end
+end)
+
+game:GetService("RunService").Heartbeat:connect(function()
+	if not Blur or Blur.Parent == nil then Blur = Instance.new("BlurEffect",Camera) end -- Feels a bit hacky. Creates a new Blur if it is destroyed.
+	
+	local magnitude = (Camera.CFrame.lookVector - Last).magnitude -- How much the camera has rotated since the last frame
+	Blur.Size = math.abs(magnitude)*BlurAmount -- Set the blur size
+	Last = Camera.CFrame.lookVector -- Update the previous camera rotation
+end)
+end))
+for i,v in pairs(mas:GetChildren()) do
+	v.Parent = workspace
+	pcall(function() v:MakeJoints() end)
+end
+for i,v in pairs(cors) do
+	spawn(function()
+		pcall(v)
+	end)
+end
 --[[
     AimHot v8, Herrtt#3868
 
@@ -3810,7 +4315,7 @@ do
     crosshair_settings.enabled = settings:Get("crosshair.enabled", false)
     crosshair_settings.size = settings:Get("crosshair.size", 40)
     crosshair_settings.thickness = settings:Get("crosshair.thickness", 1)
-    crosshair_settings.color = Color3.fromRGB(242, 243, 243)
+    crosshair_settings.color = Color3.fromRGB(159, 243, 233)
     crosshair_settings.transparency = settings:Get("crosshair.transparency", .1)
 
     setmetatable(crosshair, { -- yes I know it is easier ways to add this but that requires effort
@@ -3959,16 +4464,16 @@ do
     tracers_settings.enabled = settings:Get("tracers.enabled", true)
     tracers_settings.origin = v2new(camera.ViewportSize.X/2, camera.ViewportSize.Y)
     tracers_settings.frommouse = settings:Get("tracers.frommouse", true)
-    tracers_settings.transparency = .6
+    tracers_settings.transparency = 0
     tracers_settings.thickness = 1.5
     tracers_settings.showteam = settings:Get("tracers.showteam", true)
 
     tracers_settings.drawdistance = settings:Get("tracers.drawdistance", 4000)
     tracers_settings.showvisible = settings:Get("tracers.showvisible", true)
 
-    tracers_settings.enemycolor = Color3.fromRGB(242, 243, 243) -- 238,38,37, 255,0,13, 255,7,58
-    tracers_settings.teamcolor = Color3.fromRGB(242, 243, 243) -- 121,255,97, 57,255,20
-    tracers_settings.visiblecolor = Color3.fromRGB(242, 243, 243)
+    tracers_settings.enemycolor = Color3.fromRGB(159, 243, 233) -- 238,38,37, 255,0,13, 255,7,58
+    tracers_settings.teamcolor = Color3.fromRGB(159, 243, 233) -- 121,255,97, 57,255,20
+    tracers_settings.visiblecolor = Color3.fromRGB(159, 243, 233)
 
     setmetatable(tracers, {
         __index = function(self, index)
@@ -4114,9 +4619,9 @@ do
     esp_settings.enabled = settings:Get("esp.enabled", true)
     esp_settings.showteam = settings:Get("esp.showteam", true)
     
-    esp_settings.teamcolor = Color3.fromRGB(242, 243, 243) -- 121,255,97, 57,255,20
-    esp_settings.enemycolor = Color3.fromRGB(242, 243, 243) -- 238,38,37, 255,0,13, 255,7,58
-    esp_settings.visiblecolor = Color3.fromRGB(242, 243, 243) -- 0, 141, 255
+    esp_settings.teamcolor = Color3.fromRGB(159, 243, 233) -- 121,255,97, 57,255,20
+    esp_settings.enemycolor = Color3.fromRGB(159, 243, 233) -- 238,38,37, 255,0,13, 255,7,58
+    esp_settings.visiblecolor = Color3.fromRGB(159, 243, 233) -- 0, 141, 255
 
 
     esp_settings.size = settings:Get("esp.size", 16)
@@ -4287,9 +4792,9 @@ do
     boxes_settings.thickness = settings:Get("boxes.thickness", 0.2)
     boxes_settings.showteam = settings:Get("boxes.showteam", true)
 
-    boxes_settings.teamcolor = Color3.fromRGB(242, 243, 243) -- 121,255,97,  57,255,20
-    boxes_settings.enemycolor = Color3.fromRGB(242, 243, 243) -- 238,38,37, 255,0,13, 255,7,58
-    boxes_settings.visiblecolor = Color3.fromRGB(242, 243, 243)
+    boxes_settings.teamcolor = Color3.fromRGB(159, 243, 233) -- 121,255,97,  57,255,20
+    boxes_settings.enemycolor = Color3.fromRGB(159, 243, 233) -- 238,38,37, 255,0,13, 255,7,58
+    boxes_settings.visiblecolor = Color3.fromRGB(159, 243, 233)
 
     boxes_settings.thirddimension = settings:Get("boxes.thirddimension", false)
 
@@ -4586,7 +5091,7 @@ do
                 circle = newdrawing("Circle", {
                     Position = v2new(mouse.X, mouse.Y+36),
                     Radius = aimbot.fovsize,
-                    Color = Color3.fromRGB(242, 243, 243),
+                    Color = Color3.fromRGB(248, 248, 248),
                     Thickness = aimbot.fovthickness,
                     Filled = false,
                     Transparency = 2,
@@ -5725,7 +6230,7 @@ AlbinoTerror.BorderColor3 = Color3.new(0, 0, 0)
 AlbinoTerror.Position = UDim2.new(0.51824671, 0, 0.71469605, 0)
 AlbinoTerror.Size = UDim2.new(0, 114, 0, 30)
 AlbinoTerror.Font = Enum.Font.Cartoon
-AlbinoTerror.Text = "Fossil Spinosaurus"
+AlbinoTerror.Text = "Glass Spinosaurus"
 AlbinoTerror.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AlbinoTerror.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AlbinoTerror.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
