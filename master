@@ -2607,6 +2607,33 @@ SuperPlio.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 SuperPlio.MouseButton1Click:connect(function()
 game.StarterGui:SetCore("SendNotification", {
 Title = "KEYBINDS";
+Text = "[G] Attack (no anims)             [E] Sprint (no energy)"; 
+Duration = 30; })
+bind99 = "e"
+toggle = false
+game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
+if key == bind99 then
+	if toggle == false then
+		toggle = true
+		local v = game.Players.LocalPlayer.Character
+		v.Stats:FindFirstChild("IsSprinting").Value = true
+		else
+		local v = game.Players.LocalPlayer.Character
+		v.Stats:FindFirstChild("IsSprinting").Value = false
+		toggle = false
+	end
+end
+end)
+
+bind98 = "g"
+game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
+if key == bind98 then
+game.Workspace.GameEvents.Damage:FireServer()
+workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
+end
+end)
+game.StarterGui:SetCore("SendNotification", {
+Title = "KEYBINDS";
 Text = "[K] +Hunger           [L] -HUNGER                [J] +Thirst"; 
 Duration = 30; })
 print("Keybinds: [K] +Hunger : [L] -HUNGER : [J] +Thirst")
