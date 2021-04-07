@@ -1,4 +1,4 @@
---[[Xcom 1.05
+--[[Xcom 1.06
 Add EvenPast#1133 For Any Dumbass Questions]]--
 local p = game.Players.LocalPlayer
 local whitelist = {
@@ -2679,11 +2679,22 @@ BetterSpeed.MouseButton1Click:connect(function()
 Part0 = Instance.new("Part", game.Workspace)
 Part0.Anchored = true
 Part0.Transparency = 0
-Part0.Material = Enum.Material.ForceField
+Part0.Material = Enum.Material.Glass
 Part0.Size = Vector3.new(2000, 1, 2000)
 Part0.CFrame = CFrame.new(24, 2.5, 30, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 Part0.Position = Vector3.new(99999, 900.906067, -99972.128204)
-Part0.Color = Color3.fromRGB(255, 0, 0)
+local function bro()
+	local script40 = Instance.new('LocalScript', Part0)
+	
+	function zigzag(X)return math.acos(math.cos(X*math.pi))/math.pi end
+	counter=0
+	
+	while wait(0.1)do
+		script40.Parent.Color=Color3.fromHSV(zigzag(counter),1,1)
+		counter = counter + 0.0005
+	end
+end
+coroutine.wrap(bro)()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(99999, 930.906067, -99972.128204) + Vector3.new(1,0,0)
 local pack = "ganggg"
 local event = game:GetService("Workspace").GameFunctions.PackFunctions.CreatePack
@@ -6080,7 +6091,7 @@ SetDays.BorderColor3 = Color3.new(0, 0, 0)
 SetDays.Position = UDim2.new(0.0336173773, 0, 0.71469605, 0)
 SetDays.Size = UDim2.new(0, 114, 0, 30)
 SetDays.Font = Enum.Font.Cartoon
-SetDays.Text = "RakeMother Brachiosaurus"
+SetDays.Text = "Glass Tyrannotitan"
 SetDays.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 SetDays.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 SetDays.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -6093,8 +6104,8 @@ SetDays.BackgroundTransparency = 0.9
 SetDays.TextStrokeTransparency = 0.3
 SetDays.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 SetDays.MouseButton1Click:connect(function()
-	local a = "RakeMother Brachiosaurus"
-local targ = "RakeMother Brachiosaurus"
+	local a = "Glass Tyrannotitan"
+local targ = "Glass Tyrannotitan"
 workspace.GameEvents.ChangeDinosaur:FireServer(a)
 wait(2.5)
 workspace.GameEvents.StartPlayer:FireServer()
@@ -6230,7 +6241,7 @@ AlbinoTerror.BorderColor3 = Color3.new(0, 0, 0)
 AlbinoTerror.Position = UDim2.new(0.51824671, 0, 0.71469605, 0)
 AlbinoTerror.Size = UDim2.new(0, 114, 0, 30)
 AlbinoTerror.Font = Enum.Font.Cartoon
-AlbinoTerror.Text = "Glass Spinosaurus"
+AlbinoTerror.Text = "Plush Spinosaurus"
 AlbinoTerror.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AlbinoTerror.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AlbinoTerror.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -6243,8 +6254,8 @@ AlbinoTerror.BackgroundTransparency = 0.9
 AlbinoTerror.TextStrokeTransparency = 0.3
 AlbinoTerror.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 AlbinoTerror.MouseButton1Click:connect(function()
-	local a = "Fossil Spinosaurus"
-local targ = "Fossil Spinosaurus"
+	local a = "Plush Spinosaurus"
+local targ = "Plush Spinosaurus"
 workspace.GameEvents.ChangeDinosaur:FireServer(a)
 wait(2.5)
 workspace.GameEvents.StartPlayer:FireServer()
