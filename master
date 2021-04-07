@@ -1,4 +1,4 @@
---[[Xcom 1.06
+--[[Xcom 1.07
 Add EvenPast#1133 For Any Dumbass Questions]]--
 local p = game.Players.LocalPlayer
 local whitelist = {
@@ -2679,7 +2679,7 @@ BetterSpeed.MouseButton1Click:connect(function()
 Part0 = Instance.new("Part", game.Workspace)
 Part0.Anchored = true
 Part0.Transparency = 0
-Part0.Material = Enum.Material.Glass
+Part0.Material = Enum.Material.ForceField
 Part0.Size = Vector3.new(2000, 1, 2000)
 Part0.CFrame = CFrame.new(24, 2.5, 30, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 Part0.Position = Vector3.new(99999, 900.906067, -99972.128204)
