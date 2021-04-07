@@ -1,5 +1,5 @@
 --[[Xcom 1.08
-Add EvenPast#1133 For Any Dumbass Questions]]--
+Add EvenPast#1133 For Any Questions]]--
 local p = game.Players.LocalPlayer
 local whitelist = {
    [p.Name] = true
