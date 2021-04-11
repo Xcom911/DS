@@ -2698,19 +2698,6 @@ game.Players.LocalPlayer.Character.Stats.Armor:Remove()
 end
 end)
 
-textspecial3.Name = "textspecial3"
-textspecial3.Parent = ExclusiveFrame
-textspecial3.BackgroundColor3 = Color3.new(1, 1, 1)
-textspecial3.BackgroundTransparency = 1
-textspecial3.Position = UDim2.new(0.1354257748, 0, 0.849974632, 0)
-textspecial3.Size = UDim2.new(0, 114, 0, 15)
-textspecial3.Font = Enum.Font.Cartoon
-textspecial3.Text = "(Barosaurus)"
-textspecial3.TextColor3 = Color3.new(1, 1, 1)
-textspecial3.TextScaled = true
-textspecial3.TextSize = 14
-textspecial3.TextWrapped = true
-
 textspecial5.Name = "textspecial5"
 textspecial5.Parent = ExclusiveFrame
 textspecial5.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -2723,20 +2710,6 @@ textspecial5.TextColor3 = Color3.new(1, 1, 1)
 textspecial5.TextScaled = true
 textspecial5.TextSize = 14
 textspecial5.TextWrapped = true
-
-textspecial6.Name = "textspecial6"
-textspecial6.Parent = ExclusiveFrame
-textspecial6.BackgroundColor3 = Color3.new(1, 1, 1)
-textspecial6.BackgroundTransparency = 1
-textspecial6.Position = UDim2.new(0.658753061, 0, 0.849974573, 0)
-textspecial6.Size = UDim2.new(0, 114, 0, 15)
-textspecial6.Font = Enum.Font.Cartoon
-textspecial6.Text = "(Fossil Rex)"
-textspecial6.TextColor3 = Color3.new(1, 1, 1)
-textspecial6.TextScaled = true
-textspecial6.TextSize = 14
-textspecial6.TextWrapped = true
-
 
 SuperPlio.Name = "SuperPlio"
 SuperPlio.Parent = GUIHead
