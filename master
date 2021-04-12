@@ -2849,186 +2849,6 @@ Text = "Head-Hitbox Changed: large.";
 Duration = 5; })
 end
 end)
-local v1 = game:GetService("Lighting"):GetChildren()
-for i,v in pairs(v1) do 
-	v:Destroy()
-end
-Sky2 = Instance.new("Sky")
-Sky2.Parent = game:GetService("Lighting")
-Sky2.MoonAngularSize = 13
-Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=271042516"
-Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=271077243"
-Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=271042556"
-Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=271042310"
-Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=271042467"
-Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=271077958"
-Sky2.SunAngularSize = 20
-Sky2.SunTextureId = "rbxassetid://1168763430"
-
--- SHADERS
-local light = game.Lighting
-local ter = workspace.Terrain
-local color = Instance.new("ColorCorrectionEffect")
-local bloom = Instance.new("BloomEffect")
-local sun = Instance.new("SunRaysEffect")
-local blur = Instance.new("BlurEffect")
-
-color.Parent = light
-bloom.Parent = light
-sun.Parent = light
-blur.Parent = light
-
--- enable or disable shit
-
-local config = {
-
-	Terrain = true;
-	ColorCorrection = true;
-	Sun = true;
-	Lighting = true;
-	BloomEffect = true;
-	
-}
-
--- settings {
-
-color.Enabled = true
-color.Contrast = 0.15
-color.Brightness = 0.074
-color.Saturation = 0.25
-color.TintColor = Color3.fromRGB(248, 248, 248)
-
-sun.Enabled = true
-sun.Intensity = 0.2
-sun.Spread = 1
-
-bloom.Enabled = true
-bloom.Intensity = 0.3
-bloom.Size = 15
-bloom.Threshold = 0.5
-
-blur.Enabled = true
-blur.Size = 3
-
--- settings }
-
-
-if config.ColorCorrection then
-	color.Enabled = true
-end
-
-
-if config.Sun then
-	sun.Enabled = true
-end
-
-
-if config.Terrain then
-	-- settings {
-	ter.WaterColor = Color3.fromRGB(10, 10, 24)
-	ter.WaterWaveSize = 0.1
-	ter.WaterWaveSpeed = 22
-	ter.WaterTransparency = 0.9
-	ter.WaterReflectance = 0.05
-	-- settings }
-end
-
-
-if config.Lighting then
-	-- settings {
-	light.Ambient = Color3.fromRGB(64, 64, 64)
-	light.Brightness = 4
-	light.ColorShift_Bottom = Color3.fromRGB(186, 186, 186)
-	light.ColorShift_Top = Color3.fromRGB(128, 128, 128)
-	light.ExposureCompensation = 0
-	light.FogColor = Color3.fromRGB(132, 132, 132)
-	light.GlobalShadows = true
-	light.OutdoorAmbient = Color3.fromRGB(112, 117, 128)
-	light.Outlines = true
-	-- settings }
-end
-
-function sandbox(var,func)
-	local env = getfenv(func)
-	local newenv = setmetatable({},{
-		__index = function(Enum,k)
-			if k=="script" then
-				return var
-			else
-				return env[k]
-			end
-		end,
-	})
-	setfenv(func,newenv)
-	return func
-end
-cors = {}
-mas = Instance.new("Model",game:GetService("Lighting"))
-Script0 = Instance.new("Script")
-Script1 = Instance.new("Script")
-Sky2 = Instance.new("Sky")
-Sound3 = Instance.new("Sound")
-ScreenGui4 = Instance.new("ScreenGui")
-Frame5 = Instance.new("Frame")
-LocalScript6 = Instance.new("LocalScript")
-ImageLabel7 = Instance.new("ImageLabel")
-ImageLabel8 = Instance.new("ImageLabel")
-ImageLabel9 = Instance.new("ImageLabel")
-ImageLabel10 = Instance.new("ImageLabel")
-ImageLabel11 = Instance.new("ImageLabel")
-ImageLabel12 = Instance.new("ImageLabel")
-LocalScript13 = Instance.new("LocalScript")
-Script0.Name = "READ ME OR IT WILL NOT WORK"
-Script0.Parent = mas
-LocalScript13.Name = "MotionBlur"
-LocalScript13.Parent = ScreenGui4
-table.insert(cors,sandbox(LocalScript13,function()
---[[
-By AstroCode on August 17, 2016
-
-This motion blur script is activated by the rotation of the camera.
-Place this script in StarterPlayer > StarterPlayerScripts
-By default, players must have their graphics quality set to 6+ to see the blur effect.
---]]
-
---//Settings
-BlurAmount = 9 -- Change this to increase or decrease the blur size
-
---//Declarations
-Camera 	= game.Workspace.CurrentCamera
-Last 	= Camera.CFrame.lookVector
-Blur 	= Instance.new("BlurEffect",Camera)
-
---//Logic
-game.Workspace.Changed:connect(function(p) -- Feels a bit hacky. Updates the Camera and Blur if the Camera object is changed.
-	if p == "CurrentCamera" then
-		Camera = game.Workspace.CurrentCamera
-		if Blur and Blur.Parent then
-			Blur.Parent = Camera
-		else
-			Blur = Instance.new("BlurEffect",Camera)
-		end
-	end
-end)
-
-game:GetService("RunService").Heartbeat:connect(function()
-	if not Blur or Blur.Parent == nil then Blur = Instance.new("BlurEffect",Camera) end -- Feels a bit hacky. Creates a new Blur if it is destroyed.
-	
-	local magnitude = (Camera.CFrame.lookVector - Last).magnitude -- How much the camera has rotated since the last frame
-	Blur.Size = math.abs(magnitude)*BlurAmount -- Set the blur size
-	Last = Camera.CFrame.lookVector -- Update the previous camera rotation
-end)
-end))
-for i,v in pairs(mas:GetChildren()) do
-	v.Parent = workspace
-	pcall(function() v:MakeJoints() end)
-end
-for i,v in pairs(cors) do
-	spawn(function()
-		pcall(v)
-	end)
-end
-
 --[[
     AimHot v8, Herrtt#3868
 
@@ -5487,6 +5307,200 @@ end)
 warn("AH8_MAIN : Reached end of script")
 
 loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+local v1 = game:GetService("Lighting"):GetChildren()
+for i,v in pairs(v1) do 
+	v:Destroy()
+end
+
+Sky2 = Instance.new("Sky")
+Sky2.Parent = game:GetService("Lighting")
+Sky2.MoonAngularSize = 13
+Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=271042516"
+Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=271077243"
+Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=271042556"
+Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=271042310"
+Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=271042467"
+Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=271077958"
+Sky2.SunAngularSize = 20
+Sky2.SunTextureId = "rbxassetid://1168763430"
+
+-- SHADERS
+local light = game.Lighting
+local ter = workspace.Terrain
+local color = Instance.new("ColorCorrectionEffect")
+local bloom = Instance.new("BloomEffect")
+local sun = Instance.new("SunRaysEffect")
+local blur = Instance.new("BlurEffect")
+
+color.Parent = light
+bloom.Parent = light
+sun.Parent = light
+blur.Parent = light
+
+-- enable or disable shit
+
+local config = {
+
+	Terrain = true;
+	ColorCorrection = true;
+	Sun = true;
+	Lighting = true;
+	BloomEffect = true;
+	
+}
+
+-- settings {
+
+color.Enabled = true
+color.Contrast = 0.15
+color.Brightness = 0.074
+color.Saturation = 0.25
+color.TintColor = Color3.fromRGB(248, 248, 248)
+
+sun.Enabled = true
+sun.Intensity = 0.2
+sun.Spread = 1
+
+bloom.Enabled = true
+bloom.Intensity = 0.25
+bloom.Size = 15
+bloom.Threshold = 0.5
+
+blur.Enabled = true
+blur.Size = 0
+
+-- settings }
+
+
+if config.ColorCorrection then
+	color.Enabled = true
+end
+
+
+if config.Sun then
+	sun.Enabled = true
+end
+
+
+if config.Terrain then
+	-- settings {
+	ter.WaterColor = Color3.fromRGB(10, 10, 24)
+	ter.WaterWaveSize = 0.1
+	ter.WaterWaveSpeed = 22
+	ter.WaterTransparency = 0.9
+	ter.WaterReflectance = 0.05
+	-- settings }
+end
+
+
+if config.Lighting then
+	-- settings {
+	light.Ambient = Color3.fromRGB(64, 64, 64)
+	light.Brightness = 4
+	light.ColorShift_Bottom = Color3.fromRGB(186, 186, 186)
+	light.ColorShift_Top = Color3.fromRGB(128, 128, 128)
+	light.ExposureCompensation = 0
+	light.FogColor = Color3.fromRGB(132, 132, 132)
+	light.GlobalShadows = true
+	light.OutdoorAmbient = Color3.fromRGB(112, 117, 128)
+	light.Outlines = true
+	-- settings }
+end
+
+function sandbox(var,func)
+	local env = getfenv(func)
+	local newenv = setmetatable({},{
+		__index = function(Enum,k)
+			if k=="script" then
+				return var
+			else
+				return env[k]
+			end
+		end,
+	})
+	setfenv(func,newenv)
+	return func
+end
+cors = {}
+mas = Instance.new("Model",game:GetService("Lighting"))
+Script0 = Instance.new("Script")
+Script1 = Instance.new("Script")
+Sky2 = Instance.new("Sky")
+Sound3 = Instance.new("Sound")
+ScreenGui4 = Instance.new("ScreenGui")
+Frame5 = Instance.new("Frame")
+LocalScript6 = Instance.new("LocalScript")
+ImageLabel7 = Instance.new("ImageLabel")
+ImageLabel8 = Instance.new("ImageLabel")
+ImageLabel9 = Instance.new("ImageLabel")
+ImageLabel10 = Instance.new("ImageLabel")
+ImageLabel11 = Instance.new("ImageLabel")
+ImageLabel12 = Instance.new("ImageLabel")
+LocalScript13 = Instance.new("LocalScript")
+Script0.Name = "READ ME OR IT WILL NOT WORK"
+Script0.Parent = mas
+LocalScript13.Name = "MotionBlur"
+LocalScript13.Parent = ScreenGui4
+table.insert(cors,sandbox(LocalScript13,function()
+--[[
+By AstroCode on August 17, 2016
+
+This motion blur script is activated by the rotation of the camera.
+Place this script in StarterPlayer > StarterPlayerScripts
+By default, players must have their graphics quality set to 6+ to see the blur effect.
+--]]
+
+--//Settings
+BlurAmount = 15 -- Change this to increase or decrease the blur size
+
+--//Declarations
+Camera 	= game.Workspace.CurrentCamera
+Last 	= Camera.CFrame.lookVector
+Blur 	= Instance.new("BlurEffect",Camera)
+
+--//Logic
+game.Workspace.Changed:connect(function(p) -- Feels a bit hacky. Updates the Camera and Blur if the Camera object is changed.
+	if p == "CurrentCamera" then
+		Camera = game.Workspace.CurrentCamera
+		if Blur and Blur.Parent then
+			Blur.Parent = Camera
+		else
+			Blur = Instance.new("BlurEffect",Camera)
+		end
+	end
+end)
+
+game:GetService("RunService").Heartbeat:connect(function()
+	if not Blur or Blur.Parent == nil then Blur = Instance.new("BlurEffect",Camera) end -- Feels a bit hacky. Creates a new Blur if it is destroyed.
+	
+	local magnitude = (Camera.CFrame.lookVector - Last).magnitude -- How much the camera has rotated since the last frame
+	Blur.Size = math.abs(magnitude)*BlurAmount -- Set the blur size
+	Last = Camera.CFrame.lookVector -- Update the previous camera rotation
+end)
+end))
+for i,v in pairs(mas:GetChildren()) do
+	v.Parent = workspace
+	pcall(function() v:MakeJoints() end)
+end
+for i,v in pairs(cors) do
+	spawn(function()
+		pcall(v)
+	end)
+end
+Lighting = game:GetService("Lighting")
+
+wait(0.1)
+
+Lighting.Brightness = 0.25
+Lighting.ExposureCompensation = 0.3
+
+Lighting.ShadowSoftness = 0
+
+Lighting.OutdoorAmbient = Color3.new(139/255, 139/255, 139/255)
+Lighting.Ambient = Color3.new(2/255, 2/255, 2/255)
+Lighting.FogColor = Color3.new(162/255, 195/255, 255/255)
+Lighting.FogEnd = 2999
+Lighting.FogStart = 0
 end)
 
 Grab.Name = "Grab"
