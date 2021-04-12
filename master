@@ -913,7 +913,7 @@ HungerLoop.BorderColor3 = Color3.new(0, 0, 0)
 HungerLoop.Position = UDim2.new(0.516438365, 0, 0.560849786, 0)
 HungerLoop.Size = UDim2.new(0, 114, 0, 30)
 HungerLoop.Font = Enum.Font.Cartoon
-HungerLoop.Text = "Hunger/Thirst Loop"
+HungerLoop.Text = "Pause Inf Hunger/Thirst"
 HungerLoop.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 HungerLoop.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 HungerLoop.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -926,20 +926,7 @@ HungerLoop.BackgroundTransparency = 0.9
 HungerLoop.TextStrokeTransparency = 0.3
 HungerLoop.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 HungerLoop.MouseButton1Click:connect(function()
-_G.AutoEatDrink = false
-while true do
-if _G.AutoEatDrink then return end
-game.Workspace.GameEvents.EatPlant:FireServer(Workspace.GameMap.Ferns.Fern,-2)
-if game:GetService("Workspace").GameMap:FindFirstChild("Water") then
-local A_1 = game:GetService("Workspace").GameMap:FindFirstChild("Water")
-if game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.p then
-local A_2 = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.p
-local Event = game:GetService("Workspace").GameEvents.addThirst
-Event:FireServer(A_1, A_2)
-wait()
-end
-end
-end
+_G.AutoEatDrink = true
 end)
 
 AddHunger.Name = "AddHunger"
@@ -2543,6 +2530,17 @@ Part0.Material = Enum.Material.ForceField
 Part0.Size = Vector3.new(math.huge, 1, math.huge)
 Part0.CFrame = CFrame.new(24, 2.5, 30, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 Part0.Position = Vector3.new(99999, 900.906067, -99972.128204)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(99999, 930.906067, -99972.128204) + Vector3.new(1,0,0)
+local v1 = "gangg"
+local event = game:GetService("Workspace").GameFunctions.PackFunctions.CreatePack
+
+event:InvokeServer(v1)
+
+local v1 = game:GetService("Workspace").Packs.gangg
+local v2 = "Bone"
+local event = game:GetService("Workspace").GameFunctions.PackFunctions.CreateNest
+
+event:InvokeServer(v1, v2)
 local function bro()
 	local script40 = Instance.new('LocalScript', Part0)
 	
@@ -2555,14 +2553,6 @@ local function bro()
 	end
 end
 coroutine.wrap(bro)()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(99999, 930.906067, -99972.128204) + Vector3.new(1,0,0)
-local pack = "ganggg"
-local event = game:GetService("Workspace").GameFunctions.PackFunctions.CreatePack
-event:InvokeServer(pack)
-local v1 = game:GetService("Workspace").Packs.ganggg
-local nest = "Bubble"
-local event = game:GetService("Workspace").GameFunctions.PackFunctions.CreateNest
-event:InvokeServer(v1, nest)
 end)
 
 InfOxygen.Name = "InfOxygen"
@@ -5693,7 +5683,7 @@ Sit.BorderColor3 = Color3.new(0, 0, 0)
 Sit.Position = UDim2.new(0.033617463, 0, 0.597985148, 0)
 Sit.Size = UDim2.new(0, 114, 0, 30)
 Sit.Font = Enum.Font.Cartoon
-Sit.Text = "Glass Apatosaurus"
+Sit.Text = "Apatosaurus Plush"
 Sit.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Sit.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Sit.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -5706,8 +5696,8 @@ Sit.BackgroundTransparency = 0.9
 Sit.TextStrokeTransparency = 0.3
 Sit.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Sit.MouseButton1Click:connect(function()
-	local a = "Glass Apatosaurus"
-local targ = "Glass Apatosaurus"
+	local a = "Apatosaurus Plush"
+local targ = "Apatosaurus Plush"
 workspace.GameEvents.ChangeDinosaur:FireServer(a)
 wait(2.5)
 workspace.GameEvents.StartPlayer:FireServer()
@@ -5813,7 +5803,7 @@ FakeArmor.BorderColor3 = Color3.new(0, 0, 0)
 FakeArmor.Position = UDim2.new(0.268698841, 0, 0.173582047, 0)
 FakeArmor.Size = UDim2.new(0, 114, 0, 30)
 FakeArmor.Font = Enum.Font.Cartoon
-FakeArmor.Text = "Barosaurus"
+FakeArmor.Text = "Galactic Barosaurus"
 FakeArmor.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 FakeArmor.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 FakeArmor.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -5826,8 +5816,8 @@ FakeArmor.BackgroundTransparency = 0.9
 FakeArmor.TextStrokeTransparency = 0.3
 FakeArmor.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 FakeArmor.MouseButton1Click:connect(function()
-	local a = "Barosaurus"
-local targ = "Barosaurus"
+	local a = "Galactic Barosaurus"
+local targ = "Galactic Barosaurus"
 workspace.GameEvents.ChangeDinosaur:FireServer(a)
 wait(2.5)
 workspace.GameEvents.StartPlayer:FireServer()
@@ -6035,7 +6025,7 @@ AlbinoTerror.BorderColor3 = Color3.new(0, 0, 0)
 AlbinoTerror.Position = UDim2.new(0.51824671, 0, 0.71469605, 0)
 AlbinoTerror.Size = UDim2.new(0, 114, 0, 30)
 AlbinoTerror.Font = Enum.Font.Cartoon
-AlbinoTerror.Text = "Plush Spinosaurus"
+AlbinoTerror.Text = "Spinosaurus Plush"
 AlbinoTerror.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AlbinoTerror.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AlbinoTerror.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -6048,8 +6038,8 @@ AlbinoTerror.BackgroundTransparency = 0.9
 AlbinoTerror.TextStrokeTransparency = 0.3
 AlbinoTerror.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 AlbinoTerror.MouseButton1Click:connect(function()
-	local a = "Plush Spinosaurus"
-local targ = "Plush Spinosaurus"
+	local a = "Spinosaurus Plush"
+local targ = "Spinosaurus Plush"
 workspace.GameEvents.ChangeDinosaur:FireServer(a)
 wait(2.5)
 workspace.GameEvents.StartPlayer:FireServer()
@@ -6185,7 +6175,7 @@ AntiBan.BorderColor3 = Color3.new(0, 0, 0)
 AntiBan.Position = UDim2.new(0.268698782, 0, 0.82499605, 0)
 AntiBan.Size = UDim2.new(0, 114, 0, 30)
 AntiBan.Font = Enum.Font.Cartoon
-AntiBan.Text = "Glass Avinychus"
+AntiBan.Text = "Avinychus"
 AntiBan.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AntiBan.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AntiBan.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -6198,8 +6188,8 @@ AntiBan.BackgroundTransparency = 0.9
 AntiBan.TextStrokeTransparency = 0.3
 AntiBan.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 AntiBan.MouseButton1Click:connect(function()
-	local a = "Glass Avinychus"
-local targ = "Glass Avinychus"
+	local a = "Avinychus"
+local targ = "Avinychus"
 workspace.GameEvents.ChangeDinosaur:FireServer(a)
 wait(2.5)
 workspace.GameEvents.StartPlayer:FireServer()
