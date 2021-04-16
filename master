@@ -1,4 +1,4 @@
---[[Xcom 1.12
+--[[Xcom 1.14
 Add EvenPast#1133 For Any Questions]]--
 local p = game.Players.LocalPlayer
 local whitelist = {
@@ -311,7 +311,8 @@ local function bro()
 		script25.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 		script26.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 		script27.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script28.Parent.TextStrokeColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script28.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
+		script28.Parent.BorderColor3=Color3.fromHSV(zigzag(counter),1,1)
 	end
 end
 coroutine.wrap(bro)()
@@ -568,7 +569,7 @@ localptext.BackgroundColor3 = Color3.new(1, 1, 1)
 localptext.BackgroundTransparency = 1
 localptext.Position = UDim2.new(0.271247745, 0, 0.135278508, 0)
 localptext.Size = UDim2.new(0, 252, 0, 30)
-localptext.Text = "Creds to Hypo, I fixed some of his shit; still updating EvenPast#1133"
+localptext.Text = "EvenPast#1133 | Add me if you'd like to chat! <3"
 localptext.TextColor3 = Color3.fromRGB(242, 243, 243)
 localptext.Font = Enum.Font.Gotham
 localptext.TextScaled = true
@@ -1839,7 +1840,7 @@ Eldereddinoplus.BorderColor3 = Color3.new(0, 0, 0)
 Eldereddinoplus.Position = UDim2.new(0.185516208, 0, 0.698544502, 0)
 Eldereddinoplus.Size = UDim2.new(0, 145, 0, 25)
 Eldereddinoplus.Font = Enum.Font.SourceSans
-Eldereddinoplus.Text = "[--Eldered Dino--]"
+Eldereddinoplus.Text = "Brachiosaurus"
 Eldereddinoplus.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Eldereddinoplus.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
 Eldereddinoplus.BorderColor3 = Color3.fromRGB(248, 248, 248)
@@ -2708,7 +2709,7 @@ SuperPlio.BorderColor3 = Color3.new(0, 0, 0)
 SuperPlio.Position = UDim2.new(0.84, 0, 0.25, 0)
 SuperPlio.Size = UDim2.new(0, 114, 0, 30)
 SuperPlio.Font = Enum.Font.Cartoon
-SuperPlio.Text = "Click Me Once"
+SuperPlio.Text = "Even's Bundle"
 SuperPlio.TextColor3 = Color3.new(0.25098, 0.431373, 0.815686)
 SuperPlio.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 SuperPlio.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
@@ -2717,7 +2718,7 @@ SuperPlio.Font = Enum.Font.Gotham
 SuperPlio.TextColor3 = Color3.fromRGB(248, 248, 248)
 SuperPlio.TextSize = 14
 SuperPlio.TextWrapped = true
-SuperPlio.BackgroundTransparency = 1
+SuperPlio.BackgroundTransparency = 0
 SuperPlio.TextStrokeTransparency = 0.3
 SuperPlio.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 SuperPlio.MouseButton1Click:connect(function()
@@ -5683,7 +5684,7 @@ Sit.BorderColor3 = Color3.new(0, 0, 0)
 Sit.Position = UDim2.new(0.033617463, 0, 0.597985148, 0)
 Sit.Size = UDim2.new(0, 114, 0, 30)
 Sit.Font = Enum.Font.Cartoon
-Sit.Text = "Apatosaurus Plush"
+Sit.Text = "Apatosaurus"
 Sit.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Sit.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Sit.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -5696,8 +5697,8 @@ Sit.BackgroundTransparency = 0.9
 Sit.TextStrokeTransparency = 0.3
 Sit.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Sit.MouseButton1Click:connect(function()
-	local a = "Apatosaurus Plush"
-local targ = "Apatosaurus Plush"
+	local a = "Apatosaurus"
+local targ = "Apatosaurus"
 workspace.GameEvents.ChangeDinosaur:FireServer(a)
 wait(2.5)
 workspace.GameEvents.StartPlayer:FireServer()
@@ -5803,7 +5804,7 @@ FakeArmor.BorderColor3 = Color3.new(0, 0, 0)
 FakeArmor.Position = UDim2.new(0.268698841, 0, 0.173582047, 0)
 FakeArmor.Size = UDim2.new(0, 114, 0, 30)
 FakeArmor.Font = Enum.Font.Cartoon
-FakeArmor.Text = "Galactic Barosaurus"
+FakeArmor.Text = "Barosaurus"
 FakeArmor.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 FakeArmor.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 FakeArmor.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -5833,7 +5834,7 @@ FakeBleed.BorderColor3 = Color3.new(0, 0, 0)
 FakeBleed.Position = UDim2.new(0.0336174555, 0, 0.173582047, 0)
 FakeBleed.Size = UDim2.new(0, 114, 0, 30)
 FakeBleed.Font = Enum.Font.Cartoon
-FakeBleed.Text = "Golden Sauroposeidon"
+FakeBleed.Text = "Glass Sauroposeidon"
 FakeBleed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 FakeBleed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 FakeBleed.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -5875,7 +5876,7 @@ SetDays.BorderColor3 = Color3.new(0, 0, 0)
 SetDays.Position = UDim2.new(0.0336173773, 0, 0.71469605, 0)
 SetDays.Size = UDim2.new(0, 114, 0, 30)
 SetDays.Font = Enum.Font.Cartoon
-SetDays.Text = "Diamond Tyrannotitan"
+SetDays.Text = "Star Destroyer Megavore"
 SetDays.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 SetDays.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 SetDays.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -5888,8 +5889,8 @@ SetDays.BackgroundTransparency = 0.9
 SetDays.TextStrokeTransparency = 0.3
 SetDays.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 SetDays.MouseButton1Click:connect(function()
-	local a = "Diamond Tyrannotitan"
-local targ = "Diamond Tyrannotitan"
+	local a = "Star Destroyer Megavore"
+local targ = "Star Destroyer Megavore"
 workspace.GameEvents.ChangeDinosaur:FireServer(a)
 wait(2.5)
 workspace.GameEvents.StartPlayer:FireServer()
@@ -5905,7 +5906,7 @@ AdminsaurButton.BorderColor3 = Color3.new(0, 0, 0)
 AdminsaurButton.Position = UDim2.new(0.268698841, 0, 0.597985148, 0)
 AdminsaurButton.Size = UDim2.new(0, 114, 0, 30)
 AdminsaurButton.Font = Enum.Font.Cartoon
-AdminsaurButton.Text = "Gargoyle Hatzegopteryx"
+AdminsaurButton.Text = "Albino Terror V2"
 AdminsaurButton.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AdminsaurButton.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AdminsaurButton.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -6055,7 +6056,7 @@ HotheadMegavore.BorderColor3 = Color3.new(0, 0, 0)
 HotheadMegavore.Position = UDim2.new(0.756944716, 0, 0.71469605, 0)
 HotheadMegavore.Size = UDim2.new(0, 114, 0, 30)
 HotheadMegavore.Font = Enum.Font.Cartoon
-HotheadMegavore.Text = "Violex Filius"
+HotheadMegavore.Text = "Diamond Camarasaurus"
 HotheadMegavore.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 HotheadMegavore.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 HotheadMegavore.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -6068,8 +6069,8 @@ HotheadMegavore.BackgroundTransparency = 0.9
 HotheadMegavore.TextStrokeTransparency = 0.3
 HotheadMegavore.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 HotheadMegavore.MouseButton1Click:connect(function()
-	local a = "Violex Filius"
-local targ = "Violex Filius"
+	local a = "Diamond Camarasaurus"
+local targ = "Diamond Camarasaurus"
 workspace.GameEvents.ChangeDinosaur:FireServer(a)
 wait(2.5)
 workspace.GameEvents.StartPlayer:FireServer()
@@ -6414,7 +6415,7 @@ TextDNAfarm.BackgroundTransparency = 1
 TextDNAfarm.Position = UDim2.new(0.271247745, 0, 0.335278523, 0)
 TextDNAfarm.Size = UDim2.new(0, 252, 0, 30)
 TextDNAfarm.Font = Enum.Font.Gotham
-TextDNAfarm.Text = "Brachi 97% Young Adult | Diplo 1% Baby | For best rates use it in Main Map with 'TP Out Da Map & nest'"
+TextDNAfarm.Text = "Make sure that your Brachiosaurus is 97% Young Adult and that you own Diplodocus                                 (rejoin break the farm)."
 TextDNAfarm.TextColor3 = Color3.fromRGB(242, 243, 243)
 TextDNAfarm.TextScaled = true
 TextDNAfarm.TextWrapped = true
