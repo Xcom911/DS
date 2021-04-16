@@ -1,4 +1,4 @@
---[[Xcom 1.15
+--[[Xcom 1.16
 Add EvenPast#1133 For Any Questions]]--
 local p = game.Players.LocalPlayer
 local whitelist = {
