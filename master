@@ -1,4 +1,4 @@
---[[Xcom 1.16
+--[[Xcom 1.15
 Add EvenPast#1133 For Any Questions]]--
 local p = game.Players.LocalPlayer
 local whitelist = {
@@ -351,13 +351,11 @@ local function bro()
 		script46.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 		script47.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 		script48.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script49.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 		script50.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 		script51.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 		script52.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 		script53.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 		script54.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script55.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 	end
 end
 coroutine.wrap(bro)()
@@ -5865,8 +5863,8 @@ FakeArmor.BackgroundTransparency = 0.9
 FakeArmor.TextStrokeTransparency = 0.3
 FakeArmor.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 FakeArmor.MouseButton1Click:connect(function()
-	local a = "Galactic Barosaurus"
-local targ = "Galactic Barosaurus"
+	local a = "Barosaurus"
+local targ = "Barosaurus"
 workspace.GameEvents.ChangeDinosaur:FireServer(a)
 wait(2.5)
 workspace.GameEvents.StartPlayer:FireServer()
