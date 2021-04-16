@@ -286,22 +286,11 @@ local function bro()
 	local script46 = Instance.new('LocalScript', TradingMap)
 	local script47 = Instance.new('LocalScript', DefaultMap)
 	local script48 = Instance.new('LocalScript', GallusIsland)
-	local script49 = Instance.new('LocalScript', Sit)
 	local script50 = Instance.new('LocalScript', EarRape)
 	local script51 = Instance.new('LocalScript', ChatTroll)
 	local script52 = Instance.new('LocalScript', FakeHealth)
 	local script53 = Instance.new('LocalScript', FakeArmor)
 	local script54 = Instance.new('LocalScript', FakeBleed)
-	local script55 = Instance.new('LocalScript', SetDays)
-	local script56 = Instance.new('LocalScript', AdminsaurButton)
-	local script57 = Instance.new('LocalScript', Suicide)
-	local script58 = Instance.new('LocalScript', DailyDNA)
-	local script59 = Instance.new('LocalScript', AntiBan)
-	local script60 = Instance.new('LocalScript', Shake)
-	local script61 = Instance.new('LocalScript', HotheadMegavore)
-	local script62 = Instance.new('LocalScript', AntiBan)
-	local script63 = Instance.new('LocalScript', AntiBan)
-	local script64 = Instance.new('LocalScript', AntiBan)
 
 
 
@@ -369,15 +358,6 @@ local function bro()
 		script53.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 		script54.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 		script55.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script56.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script57.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script58.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script59.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script60.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script61.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script62.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script63.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script64.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 	end
 end
 coroutine.wrap(bro)()
@@ -6483,7 +6463,7 @@ TextDNAfarm.BackgroundTransparency = 1
 TextDNAfarm.Position = UDim2.new(0.271247745, 0, 0.335278523, 0)
 TextDNAfarm.Size = UDim2.new(0, 252, 0, 30)
 TextDNAfarm.Font = Enum.Font.Nunito
-TextDNAfarm.Text = "Make sure that your Brachiosaurus is 97% Young Adult and that you own Diplodocus rejoin break the farm)."
+TextDNAfarm.Text = "Make your Brachiosaurus 97% Young Adult and hit fire da farm (USABLE IN PRIV SERVERS NOW!)"
 TextDNAfarm.TextColor3 = Color3.fromRGB(242, 243, 243)
 TextDNAfarm.TextScaled = true
 TextDNAfarm.TextWrapped = true
