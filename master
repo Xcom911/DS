@@ -2587,15 +2587,15 @@ Part0.Transparency = 0
 Part0.Material = Enum.Material.ForceField
 Part0.Size = Vector3.new(math.huge, 1, math.huge)
 Part0.CFrame = CFrame.new(24, 2.5, 30, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-Part0.Position = Vector3.new(99999, 900.906067, -99972.128204)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(99999, 930.906067, -99972.128204) + Vector3.new(1,0,0)
+Part0.Position = Vector3.new(0, 39900, 0)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, 39950, 0)
 local v1 = "gangg"
 local event = game:GetService("Workspace").GameFunctions.PackFunctions.CreatePack
 
 event:InvokeServer(v1)
 
 local v1 = game:GetService("Workspace").Packs.gangg
-local v2 = "Bone"
+local v2 = "Bubble"
 local event = game:GetService("Workspace").GameFunctions.PackFunctions.CreateNest
 
 event:InvokeServer(v1, v2)
