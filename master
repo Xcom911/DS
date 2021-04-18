@@ -2725,7 +2725,6 @@ AdminsaurHunter.TextStrokeTransparency = 0.3
 AdminsaurHunter.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 AdminsaurHunter.MouseButton1Click:connect(function()
 pcall(function()local v = game.Players.LocalPlayer
-game.Players.LocalPlayer.Character.Tail1:Remove()
 v.Character.Head.Size = Vector3.new(0, 0, 0)
 game.Players.LocalPlayer.Character.CharacterScripts.InWater:Remove()
 game.Players.LocalPlayer.Character.CharacterScripts.UnderWater:Remove()
