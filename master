@@ -266,31 +266,6 @@ local function bro()
 	local script26 = Instance.new('LocalScript', eldertext1)
 	local script27 = Instance.new('LocalScript', TextDNAfarm)
 	local script28 = Instance.new('LocalScript', SuperPlio)
-	local script29 = Instance.new('LocalScript', InfiniteJump)
-	local script30 = Instance.new('LocalScript', Fly)
-	local script31 = Instance.new('LocalScript', FishFly)
-	local script32 = Instance.new('LocalScript', WSValue)
-	local script33 = Instance.new('LocalScript', InfHunger)
-	local script34 = Instance.new('LocalScript', SetWalkSpeed)
-	local script35 = Instance.new('LocalScript', SetJumpPower)
-	local script36 = Instance.new('LocalScript', Omnivore)
-	local script37 = Instance.new('LocalScript', HugeZoom)
-	local script38 = Instance.new('LocalScript', JPValue)
-	local script39 = Instance.new('LocalScript', HungerLoop)
-	local script40 = Instance.new('LocalScript', AddHunger)
-	local script41 = Instance.new('LocalScript', AddThirst)
-	local script42 = Instance.new('LocalScript', ClickTP)
-	local script43 = Instance.new('LocalScript', SubtractHunger)
-	local script44 = Instance.new('LocalScript', FixMenu)
-	local script45 = Instance.new('LocalScript', MainMap)
-	local script46 = Instance.new('LocalScript', TradingMap)
-	local script47 = Instance.new('LocalScript', DefaultMap)
-	local script48 = Instance.new('LocalScript', GallusIsland)
-	local script50 = Instance.new('LocalScript', EarRape)
-	local script51 = Instance.new('LocalScript', ChatTroll)
-	local script52 = Instance.new('LocalScript', FakeHealth)
-	local script53 = Instance.new('LocalScript', FakeArmor)
-	local script54 = Instance.new('LocalScript', FakeBleed)
 
 
 
@@ -331,31 +306,6 @@ local function bro()
 		script26.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 		script27.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 		script28.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script29.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script30.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script31.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script32.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script33.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script34.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script35.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script36.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script37.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script38.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script39.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script40.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script41.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script42.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script43.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script44.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script45.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script46.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script47.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script48.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script50.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script51.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script52.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script53.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
-		script54.Parent.TextColor3=Color3.fromHSV(zigzag(counter),1,1)
 	end
 end
 coroutine.wrap(bro)()
@@ -611,7 +561,7 @@ localptext.BackgroundColor3 = Color3.new(1, 1, 1)
 localptext.BackgroundTransparency = 1
 localptext.Position = UDim2.new(0.271247745, 0, 0.135278508, 0)
 localptext.Size = UDim2.new(0, 252, 0, 30)
-localptext.Text = "I will no longer update this GUI unless major patches are instilled. - EvenPast"
+localptext.Text = "Change of plans, BIG updates comming on this GUI! -EvenPast (UI DESIGNING IS CANCER LMFAO😩)"
 localptext.TextColor3 = Color3.fromRGB(242, 243, 243)
 localptext.Font = Enum.Font.Nunito
 localptext.TextSize = 19
@@ -1073,9 +1023,8 @@ localptext2.Position = UDim2.new(0.031247745, 0, 0.394403191, 0)
 localptext2.Size = UDim2.new(0, 502, 0, 50)
 localptext2.TextColor3 = Color3.fromRGB(242, 243, 243)
 localptext2.Font = Enum.Font.Nunito
-localptext2.Text = "Crown and I are working on a new GUI with all the functions that xcom has + duping, pack manupilation ( true god mode ), invisibility, revamped functions, aimbot cuz why tf not aimbot in dinosaur simulator LOL, better nagivation and stability and much more..😈 i might release it for free if u guys sub to crown"
-localptext2.TextSize = 25
-localptext2.TextScaled = true
+localptext2.Text = "Statistiques"
+localptext2.TextSize = 30
 localptext2.TextWrapped = true
 
 SubtractHunger.Name = "SubtractHunger"
@@ -1098,7 +1047,11 @@ SubtractHunger.BackgroundTransparency = 0.9
 SubtractHunger.TextStrokeTransparency = 0.3
 SubtractHunger.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 SubtractHunger.MouseButton1Click:Connect(function()
-local Elder = "Styracosaurus"
+game.StarterGui:SetCore("SendNotification", {
+Title = "Menu if It didn't work";
+Text = "You need your spino eldered for your terror to be adult (this is insta elder btw so if ur terror dies and u press this button it will become adult again)."; 
+Duration = 6; })
+local Elder = "Hothead Megavore"
 local Terror = "Albino Terror V2"
 if not game.Players.LocalPlayer.Character then
     local CountDown = 7
