@@ -6074,7 +6074,7 @@ HotheadMegavore.BorderColor3 = Color3.new(0, 0, 0)
 HotheadMegavore.Position = UDim2.new(0.756944716, 0, 0.71469605, 0)
 HotheadMegavore.Size = UDim2.new(0, 114, 0, 30)
 HotheadMegavore.Font = Enum.Font.Cartoon
-HotheadMegavore.Text = "Camarasaurus"
+HotheadMegavore.Text = "Violex Filius"
 HotheadMegavore.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 HotheadMegavore.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 HotheadMegavore.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -6087,8 +6087,8 @@ HotheadMegavore.BackgroundTransparency = 0.95
 HotheadMegavore.TextStrokeTransparency = 0.3
 HotheadMegavore.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 HotheadMegavore.MouseButton1Click:connect(function()
-	local a = "Camarasaurus"
-local targ = "Camarasaurus"
+	local a = "Violex Filius"
+local targ = "Violex Filius"
 workspace.GameEvents.ChangeDinosaur:FireServer(a)
 wait(2.5)
 workspace.GameEvents.StartPlayer:FireServer()
