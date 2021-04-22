@@ -1,4 +1,4 @@
---[[Xcom 2.3
+--[[Xcom 2.4
 Add EvenPast#1133 For Any Questions]]--
 local p = game.Players.LocalPlayer
 local whitelist = {
@@ -1389,19 +1389,19 @@ local v1 = game:GetService("Lighting"):GetChildren()
 for i,v in pairs(v1) do 
 	v:Destroy()
 end
-Lighting = game:GetService("Lighting")
-Lighting.FogEnd = 3500
-Lighting.FogStart = 0
-Lighting.FogColor = Color3.new(162/255, 195/255, 255/255)
+
+_G.loopgraphics = false
+
 Sky2 = Instance.new("Sky")
 Sky2.Parent = game:GetService("Lighting")
 Sky2.MoonAngularSize = 13
-Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=271042516"
-Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=271077243"
-Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=271042556"
-Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=271042310"
-Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=271042467"
-Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=271077958"
+Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=600830446"
+Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=600831635"
+Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=600832720"
+Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=600886090"
+Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=600833862"
+Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=600835177"
+Sky2.StarCount = 5000
 Sky2.SunAngularSize = 20
 Sky2.SunTextureId = "rbxassetid://1168763430"
 
@@ -1443,12 +1443,12 @@ sun.Intensity = 0.2
 sun.Spread = 1
 
 bloom.Enabled = true
-bloom.Intensity = 0.3
+bloom.Intensity = 0.25
 bloom.Size = 15
 bloom.Threshold = 0.5
 
 blur.Enabled = true
-blur.Size = 3
+blur.Size = 0
 
 -- settings }
 
@@ -1486,6 +1486,107 @@ if config.Lighting then
 	light.OutdoorAmbient = Color3.fromRGB(112, 117, 128)
 	light.Outlines = true
 	-- settings }
+end
+
+function sandbox(var,func)
+	local env = getfenv(func)
+	local newenv = setmetatable({},{
+		__index = function(Enum,k)
+			if k=="script" then
+				return var
+			else
+				return env[k]
+			end
+		end,
+	})
+	setfenv(func,newenv)
+	return func
+end
+cors = {}
+mas = Instance.new("Model",game:GetService("Lighting"))
+Script0 = Instance.new("Script")
+Script1 = Instance.new("Script")
+Sky2 = Instance.new("Sky")
+Sound3 = Instance.new("Sound")
+ScreenGui4 = Instance.new("ScreenGui")
+Frame5 = Instance.new("Frame")
+LocalScript6 = Instance.new("LocalScript")
+ImageLabel7 = Instance.new("ImageLabel")
+ImageLabel8 = Instance.new("ImageLabel")
+ImageLabel9 = Instance.new("ImageLabel")
+ImageLabel10 = Instance.new("ImageLabel")
+ImageLabel11 = Instance.new("ImageLabel")
+ImageLabel12 = Instance.new("ImageLabel")
+LocalScript13 = Instance.new("LocalScript")
+Script0.Name = "READ ME OR IT WILL NOT WORK"
+Script0.Parent = mas
+LocalScript13.Name = "MotionBlur"
+LocalScript13.Parent = ScreenGui4
+table.insert(cors,sandbox(LocalScript13,function()
+--[[
+By AstroCode on August 17, 2016
+
+This motion blur script is activated by the rotation of the camera.
+Place this script in StarterPlayer > StarterPlayerScripts
+By default, players must have their graphics quality set to 6+ to see the blur effect.
+--]]
+
+--//Settings
+BlurAmount = 15 -- Change this to increase or decrease the blur size
+
+--//Declarations
+Camera 	= game.Workspace.CurrentCamera
+Last 	= Camera.CFrame.lookVector
+Blur 	= Instance.new("BlurEffect",Camera)
+
+--//Logic
+game.Workspace.Changed:connect(function(p) -- Feels a bit hacky. Updates the Camera and Blur if the Camera object is changed.
+	if p == "CurrentCamera" then
+		Camera = game.Workspace.CurrentCamera
+		if Blur and Blur.Parent then
+			Blur.Parent = Camera
+		else
+			Blur = Instance.new("BlurEffect",Camera)
+		end
+	end
+end)
+
+game:GetService("RunService").Heartbeat:connect(function()
+	if not Blur or Blur.Parent == nil then Blur = Instance.new("BlurEffect",Camera) end -- Feels a bit hacky. Creates a new Blur if it is destroyed.
+	
+	local magnitude = (Camera.CFrame.lookVector - Last).magnitude -- How much the camera has rotated since the last frame
+	Blur.Size = math.abs(magnitude)*BlurAmount -- Set the blur size
+	Last = Camera.CFrame.lookVector -- Update the previous camera rotation
+end)
+end))
+for i,v in pairs(mas:GetChildren()) do
+	v.Parent = workspace
+	pcall(function() v:MakeJoints() end)
+end
+for i,v in pairs(cors) do
+	spawn(function()
+		pcall(v)
+	end)
+end
+Lighting = game:GetService("Lighting")
+
+wait(0.1)
+_G.loopgraphicsss = true
+while true do
+    wait()
+    if not _G.loopgraphicsss then
+        return
+    end
+Lighting.Brightness = 1
+Lighting.ExposureCompensation = 0.3
+
+Lighting.ShadowSoftness = 0
+
+Lighting.OutdoorAmbient = Color3.fromRGB(255, 201, 201)
+Lighting.Ambient = Color3.fromRGB(177, 167, 255)
+Lighting.FogColor = Color3.fromRGB(255, 201, 201)
+Lighting.FogEnd = 2099
+Lighting.FogStart = 0
 end
 end)
 
@@ -2970,9 +3071,9 @@ SuperPlio.TextStrokeTransparency = 0.7
 SuperPlio.MouseButton1Click:connect(function()
 game.StarterGui:SetCore("SendNotification", {
 Title = "KEYBINDS";
-Text = "[C] Attack (no anims)             [T] Sprint Animation Toggle"; 
+Text = "[G] Attack (no anims)             [T] Sprint Animation Toggle"; 
 Duration = 30; })
-bind99 = "t"
+bind99 = "T"
 toggle = false
 game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
 if key == bind99 then
@@ -2988,7 +3089,7 @@ if key == bind99 then
 end
 end)
 
-bind98 = "c"
+bind98 = "g"
 game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
 if key == bind98 then
 game.Workspace.GameEvents.Damage:FireServer()
@@ -5557,21 +5658,23 @@ end)
 
 warn("AH8_MAIN : Reached end of script")
 loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-
 local v1 = game:GetService("Lighting"):GetChildren()
 for i,v in pairs(v1) do 
 	v:Destroy()
 end
 
+_G.loopgraphics = false
+
 Sky2 = Instance.new("Sky")
 Sky2.Parent = game:GetService("Lighting")
 Sky2.MoonAngularSize = 13
-Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=271042516"
-Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=271077243"
-Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=271042556"
-Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=271042310"
-Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=271042467"
-Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=271077958"
+Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=600830446"
+Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=600831635"
+Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=600832720"
+Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=600886090"
+Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=600833862"
+Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=600835177"
+Sky2.StarCount = 5000
 Sky2.SunAngularSize = 20
 Sky2.SunTextureId = "rbxassetid://1168763430"
 
@@ -5741,17 +5844,23 @@ end
 Lighting = game:GetService("Lighting")
 
 wait(0.1)
-
-Lighting.Brightness = 0.25
+_G.loopgraphicsss = true
+while true do
+    wait()
+    if not _G.loopgraphicsss then
+        return
+    end
+Lighting.Brightness = 1
 Lighting.ExposureCompensation = 0.3
 
 Lighting.ShadowSoftness = 0
 
-Lighting.OutdoorAmbient = Color3.new(139/255, 139/255, 139/255)
-Lighting.Ambient = Color3.new(2/255, 2/255, 2/255)
-Lighting.FogColor = Color3.new(162/255, 195/255, 255/255)
-Lighting.FogEnd = 2999
+Lighting.OutdoorAmbient = Color3.fromRGB(255, 201, 201)
+Lighting.Ambient = Color3.fromRGB(177, 167, 255)
+Lighting.FogColor = Color3.fromRGB(255, 201, 201)
+Lighting.FogEnd = 2099
 Lighting.FogStart = 0
+end
 end)
 
 Grab.Name = "Grab"
@@ -5761,7 +5870,7 @@ Grab.BorderColor3 = Color3.new(0, 0, 0)
 Grab.Position = UDim2.new(0.270507187, 0, 0.452096701, 0)
 Grab.Size = UDim2.new(0, 114, 0, 30)
 Grab.Font = Enum.Font.Cartoon
-Grab.Text = "Grab Q/E"
+Grab.Text = "Domain Expansion"
 Grab.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Grab.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Grab.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -5774,23 +5883,223 @@ Grab.BackgroundTransparency = 0.95
 Grab.TextStrokeTransparency = 0.3
 Grab.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Grab.MouseButton1Click:connect(function()
-last = nil
-game:service"UserInputService".InputBegan:connect(function(key, proc)
-if key.KeyCode == Enum.KeyCode.J and not proc then
-for i,v in next, game.Players:GetPlayers() do
-if v~=game.Players.LocalPlayer and v.Character~=nil and (v.Character.HumanoidRootPart.Position-game.Players.LocalPlayer.Character.Torso.Position).magnitude<20 then
-local target = v.Character
-workspace.GameEvents.Grab:FireServer(target, Vector3.new(0,0,0), "Grab")
-workspace.GameEvents.Grab:FireServer(target, Vector3.new(0,-90000,9000), "Drop")
+_G.loopgraphicsss = false
+local v1 = game:GetService("Lighting"):GetChildren()
+for i,v in pairs(v1) do 
+	v:Destroy()
 end
+
+if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+local s = Instance.new("Sound")
+s.Name = "Sound"
+s.SoundId = "http://www.roblox.com/asset/?id=6590147536"
+s.Volume = 1000
+s.archivable = false
+s.Parent = game.Workspace
+s:play()
+local s = Instance.new("Fire", game.Players.LocalPlayer.Character:FindFirstChild("Head"))
+s.Size =  5
+s.Heat = 25
+s.Color = Color3.fromRGB(17, 17, 17)
+s.SecondaryColor = Color3.fromRGB(255, 201, 201)
 end
-elseif key.KeyCode == Enum.KeyCode.Q and not proc then
-last = game.Players.LocalPlayer:GetMouse().Target.Parent
-workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
-elseif key.KeyCode == Enum.KeyCode.E and not proc then
-workspace.GameEvents.Grab:FireServer(last, game.Players.LocalPlayer:GetMouse().Hit.p, "Drop")
+
+
+Sky2 = Instance.new("Sky")
+Sky2.Parent = game:GetService("Lighting")
+Sky2.MoonAngularSize = 13
+Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=401664839"
+Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=401664862"
+Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=401664960"
+Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=401664881"
+Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=401664901"
+Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=401664936"
+Sky2.SunAngularSize = 20
+Sky2.SunTextureId = "rbxassetid://1168763430"
+
+-- SHADERS
+local light = game.Lighting
+local ter = workspace.Terrain
+local color = Instance.new("ColorCorrectionEffect")
+local bloom = Instance.new("BloomEffect")
+local sun = Instance.new("SunRaysEffect")
+local blur = Instance.new("BlurEffect")
+
+color.Parent = light
+bloom.Parent = light
+sun.Parent = light
+blur.Parent = light
+
+-- enable or disable shit
+
+local config = {
+
+	Terrain = true;
+	ColorCorrection = true;
+	Sun = true;
+	Lighting = true;
+	BloomEffect = true;
+	
+}
+
+-- settings {
+
+color.Enabled = true
+color.Contrast = 0.15
+color.Brightness = 0.074
+color.Saturation = 0.25
+color.TintColor = Color3.fromRGB(248, 248, 248)
+
+sun.Enabled = true
+sun.Intensity = 0.2
+sun.Spread = 1
+
+bloom.Enabled = true
+bloom.Intensity = 0.25
+bloom.Size = 15
+bloom.Threshold = 0.5
+
+blur.Enabled = true
+blur.Size = 0
+
+-- settings }
+
+
+if config.ColorCorrection then
+	color.Enabled = true
 end
+
+
+if config.Sun then
+	sun.Enabled = true
+end
+
+
+if config.Terrain then
+	-- settings {
+	ter.WaterColor = Color3.fromRGB(10, 10, 24)
+	ter.WaterWaveSize = 0.1
+	ter.WaterWaveSpeed = 22
+	ter.WaterTransparency = 0.9
+	ter.WaterReflectance = 0.05
+	-- settings }
+end
+
+
+if config.Lighting then
+	-- settings {
+	light.Ambient = Color3.fromRGB(64, 64, 64)
+	light.Brightness = 4
+	light.ColorShift_Bottom = Color3.fromRGB(186, 186, 186)
+	light.ColorShift_Top = Color3.fromRGB(128, 128, 128)
+	light.ExposureCompensation = 0
+	light.FogColor = Color3.fromRGB(132, 132, 132)
+	light.GlobalShadows = true
+	light.OutdoorAmbient = Color3.fromRGB(112, 117, 128)
+	light.Outlines = true
+	-- settings }
+end
+
+function sandbox(var,func)
+	local env = getfenv(func)
+	local newenv = setmetatable({},{
+		__index = function(Enum,k)
+			if k=="script" then
+				return var
+			else
+				return env[k]
+			end
+		end,
+	})
+	setfenv(func,newenv)
+	return func
+end
+cors = {}
+mas = Instance.new("Model",game:GetService("Lighting"))
+Script0 = Instance.new("Script")
+Script1 = Instance.new("Script")
+Sky2 = Instance.new("Sky")
+Sound3 = Instance.new("Sound")
+ScreenGui4 = Instance.new("ScreenGui")
+Frame5 = Instance.new("Frame")
+LocalScript6 = Instance.new("LocalScript")
+ImageLabel7 = Instance.new("ImageLabel")
+ImageLabel8 = Instance.new("ImageLabel")
+ImageLabel9 = Instance.new("ImageLabel")
+ImageLabel10 = Instance.new("ImageLabel")
+ImageLabel11 = Instance.new("ImageLabel")
+ImageLabel12 = Instance.new("ImageLabel")
+LocalScript13 = Instance.new("LocalScript")
+Script0.Name = "READ ME OR IT WILL NOT WORK"
+Script0.Parent = mas
+LocalScript13.Name = "MotionBlur"
+LocalScript13.Parent = ScreenGui4
+table.insert(cors,sandbox(LocalScript13,function()
+--[[
+By AstroCode on August 17, 2016
+
+This motion blur script is activated by the rotation of the camera.
+Place this script in StarterPlayer > StarterPlayerScripts
+By default, players must have their graphics quality set to 6+ to see the blur effect.
+--]]
+
+--//Settings
+BlurAmount = 15 -- Change this to increase or decrease the blur size
+
+--//Declarations
+Camera 	= game.Workspace.CurrentCamera
+Last 	= Camera.CFrame.lookVector
+Blur 	= Instance.new("BlurEffect",Camera)
+
+--//Logic
+game.Workspace.Changed:connect(function(p) -- Feels a bit hacky. Updates the Camera and Blur if the Camera object is changed.
+	if p == "CurrentCamera" then
+		Camera = game.Workspace.CurrentCamera
+		if Blur and Blur.Parent then
+			Blur.Parent = Camera
+		else
+			Blur = Instance.new("BlurEffect",Camera)
+		end
+	end
 end)
+
+game:GetService("RunService").Heartbeat:connect(function()
+	if not Blur or Blur.Parent == nil then Blur = Instance.new("BlurEffect",Camera) end -- Feels a bit hacky. Creates a new Blur if it is destroyed.
+	
+	local magnitude = (Camera.CFrame.lookVector - Last).magnitude -- How much the camera has rotated since the last frame
+	Blur.Size = math.abs(magnitude)*BlurAmount -- Set the blur size
+	Last = Camera.CFrame.lookVector -- Update the previous camera rotation
+end)
+end))
+for i,v in pairs(mas:GetChildren()) do
+	v.Parent = workspace
+	pcall(function() v:MakeJoints() end)
+end
+for i,v in pairs(cors) do
+	spawn(function()
+		pcall(v)
+	end)
+end
+Lighting = game:GetService("Lighting")
+
+wait(0.1)
+_G.loopgraphics = true
+while true do
+    wait()
+    if not _G.loopgraphics then
+        return
+    end
+Lighting.Brightness = 1
+Lighting.ExposureCompensation = 0.3
+
+Lighting.ShadowSoftness = 0
+
+Lighting.OutdoorAmbient = Color3.fromRGB(17, 17, 17)
+Lighting.Ambient = Color3.fromRGB(17, 17, 17)
+Lighting.FogColor = Color3.fromRGB(94, 0, 0)
+Lighting.FogEnd = 999
+Lighting.FogStart = 0
+end
 end)
 
 
@@ -5825,7 +6134,7 @@ UnderLight.BorderColor3 = Color3.new(0, 0, 0)
 UnderLight.Position = UDim2.new(0.035425812, 0, 0.452096701, 0)
 UnderLight.Size = UDim2.new(0, 114, 0, 30)
 UnderLight.Font = Enum.Font.Cartoon
-UnderLight.Text = "UnderLight"
+UnderLight.Text = "Invite All"
 UnderLight.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 UnderLight.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 UnderLight.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -5838,10 +6147,19 @@ UnderLight.BackgroundTransparency = 0.95
 UnderLight.TextStrokeTransparency = 0.3
 UnderLight.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 UnderLight.MouseButton1Click:connect(function()
-	local s = Instance.new("PointLight", game.Players.LocalPlayer.Character.Torso)
-s.Brightness = 5
-s.Color = Color3.new(255, 0, 0)
-s.Range = 12
+for i,v in pairs(game.Workspace.Packs:GetChildren()) do
+for x,z in pairs(game.Players:GetChildren()) do
+if v.PackLeader.Value == game.Players.LocalPlayer.Name then
+v = v.PackLeader.Parent
+	if z ~= game.Players.LocalPlayer.Name then
+local A_1 = z
+local A_2 = game:GetService("Workspace").Packs[v.Name]
+local Event = game:GetService("Workspace").GameFunctions.PackFunctions.InviteToPack
+Event:InvokeServer(A_1, A_2)
+	end
+end
+end
+end
 end)
 
 Sparkles.Name = "Sparkles"
@@ -5851,7 +6169,7 @@ Sparkles.BorderColor3 = Color3.new(0, 0, 0)
 Sparkles.Position = UDim2.new(0.035425812, 0, 0.579417646, 0)
 Sparkles.Size = UDim2.new(0, 114, 0, 30)
 Sparkles.Font = Enum.Font.Cartoon
-Sparkles.Text = "Sparkles"
+Sparkles.Text = "Sparkles & Flames"
 Sparkles.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Sparkles.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Sparkles.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -5864,7 +6182,58 @@ Sparkles.BackgroundTransparency = 0.95
 Sparkles.TextStrokeTransparency = 0.3
 Sparkles.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Sparkles.MouseButton1Click:connect(function()
-	local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character.Torso)
+if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+local s = Instance.new("PointLight", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.Brightness = 3
+s.Color = Color3.fromRGB(175, 221, 255)
+s.Range = 60
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Fire", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.Size =  15
+s.Color = Color3.fromRGB(125, 187, 221)
+s.SecondaryColor = Color3.fromRGB(180, 128, 255)
+end
 end)
 
 Fire.Name = "Fire"
@@ -5897,7 +6266,7 @@ Headless.BorderColor3 = Color3.new(0, 0, 0)
 Headless.Position = UDim2.new(0.756944776, 0, 0.57676512, 0)
 Headless.Size = UDim2.new(0, 114, 0, 30)
 Headless.Font = Enum.Font.Cartoon
-Headless.Text = "Headless"
+Headless.Text = "Turn Into Glass (Only for you)"
 Headless.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Headless.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Headless.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -5910,7 +6279,15 @@ Headless.BackgroundTransparency = 0.95
 Headless.TextStrokeTransparency = 0.3
 Headless.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Headless.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.FakeHead:Remove()
+if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+if v.ClassName == "UnionOperation" then
+v.Transparency = 0.6
+v.Material = Enum.Material.Glass
+v.Size = v.Size*Vector3.new(1,1,1)
+end
+end
+end
 end)
 
 FunFrame.Name = "FunFrame"
