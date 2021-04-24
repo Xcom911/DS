@@ -1395,15 +1395,16 @@ _G.loopgraphics = false
 Sky2 = Instance.new("Sky")
 Sky2.Parent = game:GetService("Lighting")
 Sky2.MoonAngularSize = 13
-Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=600830446"
-Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=600831635"
-Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=600832720"
-Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=600886090"
-Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=600833862"
-Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=600835177"
-Sky2.StarCount = 5000
+Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=166509999"
+Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=166510057"
+Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=166510116"
+Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=166510092"
+Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=166510131"
+Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=166510114"
 Sky2.SunAngularSize = 20
 Sky2.SunTextureId = "rbxassetid://1168763430"
+Sky2.StarCount = 5000
+--earth
 
 -- SHADERS
 local light = game.Lighting
@@ -1809,14 +1810,16 @@ end
 end))
 Sky2.Parent = Script1
 Sky2.MoonAngularSize = 13
-Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=271042516"
-Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=271077243"
-Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=271042556"
-Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=271042310"
-Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=271042467"
-Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=271077958"
+Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=166509999"
+Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=166510057"
+Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=166510116"
+Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=166510092"
+Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=166510131"
+Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=166510114"
 Sky2.SunAngularSize = 20
 Sky2.SunTextureId = "rbxassetid://1168763430"
+Sky2.StarCount = 5000
+--earth
 Sound3.Name = "Beep"
 Sound3.Parent = Script1
 Sound3.SoundId = "rbxassetid://1029495337"
@@ -5668,15 +5671,16 @@ _G.loopgraphics = false
 Sky2 = Instance.new("Sky")
 Sky2.Parent = game:GetService("Lighting")
 Sky2.MoonAngularSize = 13
-Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=600830446"
-Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=600831635"
-Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=600832720"
-Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=600886090"
-Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=600833862"
-Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=600835177"
-Sky2.StarCount = 5000
+Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=166509999"
+Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=166510057"
+Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=166510116"
+Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=166510092"
+Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=166510131"
+Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=166510114"
 Sky2.SunAngularSize = 20
 Sky2.SunTextureId = "rbxassetid://1168763430"
+Sky2.StarCount = 5000
+--earth
 
 -- SHADERS
 local light = game.Lighting
@@ -5857,7 +5861,7 @@ Lighting.ShadowSoftness = 0
 
 Lighting.OutdoorAmbient = Color3.fromRGB(255, 201, 201)
 Lighting.Ambient = Color3.fromRGB(177, 167, 255)
-Lighting.FogColor = Color3.fromRGB(255, 201, 201)
+Lighting.FogColor = Color3.fromRGB(203, 189, 255)
 Lighting.FogEnd = 2099
 Lighting.FogStart = 0
 end
