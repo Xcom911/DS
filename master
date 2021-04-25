@@ -1395,7 +1395,7 @@ _G.loopgraphics = false
 
 Sky2 = Instance.new("Sky")
 Sky2.Parent = game:GetService("Lighting")
-Sky2.MoonAngularSize = 13
+Sky2.MoonAngularSize = 35
 Sky2.MoonTextureId = "rbxassetid://231170531"
 Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=1735468027"
 Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=1735500192"
@@ -1403,7 +1403,7 @@ Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=1735467260"
 Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=1735467682"
 Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=1735466772"
 Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=1735500898"
-Sky2.SunAngularSize = 20
+Sky2.SunAngularSize = 55
 Sky2.SunTextureId = "rbxassetid://1541734964"
 Sky2.StarCount = 5000
 --earth
@@ -1535,7 +1535,7 @@ By default, players must have their graphics quality set to 6+ to see the blur e
 --]]
 
 --//Settings
-BlurAmount = 25 -- Change this to increase or decrease the blur size
+BlurAmount = 15 -- Change this to increase or decrease the blur size
 
 --//Declarations
 Camera 	= game.Workspace.CurrentCamera
@@ -5672,7 +5672,7 @@ _G.loopgraphics = false
 
 Sky2 = Instance.new("Sky")
 Sky2.Parent = game:GetService("Lighting")
-Sky2.MoonAngularSize = 13
+Sky2.MoonAngularSize = 35
 Sky2.MoonTextureId = "rbxassetid://231170531"
 Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=1735468027"
 Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=1735500192"
@@ -5680,7 +5680,7 @@ Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=1735467260"
 Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=1735467682"
 Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=1735466772"
 Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=1735500898"
-Sky2.SunAngularSize = 20
+Sky2.SunAngularSize = 55
 Sky2.SunTextureId = "rbxassetid://1541734964"
 Sky2.StarCount = 5000
 --earth
@@ -5812,7 +5812,7 @@ By default, players must have their graphics quality set to 6+ to see the blur e
 --]]
 
 --//Settings
-BlurAmount = 25 -- Change this to increase or decrease the blur size
+BlurAmount = 15 -- Change this to increase or decrease the blur size
 
 --//Declarations
 Camera 	= game.Workspace.CurrentCamera
