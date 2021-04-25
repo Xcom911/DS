@@ -1,4 +1,4 @@
---[[Xcom 2.4
+--[[Xcom 2.5
 Add EvenPast#1133 For Any Questions]]--
 local p = game.Players.LocalPlayer
 local whitelist = {
@@ -1390,19 +1390,21 @@ for i,v in pairs(v1) do
 	v:Destroy()
 end
 
+_G.loopgraphicsss = true
 _G.loopgraphics = false
 
 Sky2 = Instance.new("Sky")
 Sky2.Parent = game:GetService("Lighting")
 Sky2.MoonAngularSize = 13
-Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=166509999"
-Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=166510057"
-Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=166510116"
-Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=166510092"
-Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=166510131"
-Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=166510114"
+Sky2.MoonTextureId = "rbxassetid://231170531"
+Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=1735468027"
+Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=1735500192"
+Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=1735467260"
+Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=1735467682"
+Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=1735466772"
+Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=1735500898"
 Sky2.SunAngularSize = 20
-Sky2.SunTextureId = "rbxassetid://1168763430"
+Sky2.SunTextureId = "rbxassetid://1541734964"
 Sky2.StarCount = 5000
 --earth
 
@@ -1533,7 +1535,7 @@ By default, players must have their graphics quality set to 6+ to see the blur e
 --]]
 
 --//Settings
-BlurAmount = 15 -- Change this to increase or decrease the blur size
+BlurAmount = 25 -- Change this to increase or decrease the blur size
 
 --//Declarations
 Camera 	= game.Workspace.CurrentCamera
@@ -1572,7 +1574,6 @@ end
 Lighting = game:GetService("Lighting")
 
 wait(0.1)
-_G.loopgraphicsss = true
 while true do
     wait()
     if not _G.loopgraphicsss then
@@ -1585,7 +1586,7 @@ Lighting.ShadowSoftness = 0
 
 Lighting.OutdoorAmbient = Color3.fromRGB(255, 201, 201)
 Lighting.Ambient = Color3.fromRGB(177, 167, 255)
-Lighting.FogColor = Color3.fromRGB(255, 201, 201)
+Lighting.FogColor = Color3.fromRGB(201, 176, 255)
 Lighting.FogEnd = 2099
 Lighting.FogStart = 0
 end
@@ -5666,19 +5667,21 @@ for i,v in pairs(v1) do
 	v:Destroy()
 end
 
+_G.loopgraphicsss = true
 _G.loopgraphics = false
 
 Sky2 = Instance.new("Sky")
 Sky2.Parent = game:GetService("Lighting")
 Sky2.MoonAngularSize = 13
-Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=166509999"
-Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=166510057"
-Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=166510116"
-Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=166510092"
-Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=166510131"
-Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=166510114"
+Sky2.MoonTextureId = "rbxassetid://231170531"
+Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=1735468027"
+Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=1735500192"
+Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=1735467260"
+Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=1735467682"
+Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=1735466772"
+Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=1735500898"
 Sky2.SunAngularSize = 20
-Sky2.SunTextureId = "rbxassetid://1168763430"
+Sky2.SunTextureId = "rbxassetid://1541734964"
 Sky2.StarCount = 5000
 --earth
 
@@ -5809,7 +5812,7 @@ By default, players must have their graphics quality set to 6+ to see the blur e
 --]]
 
 --//Settings
-BlurAmount = 15 -- Change this to increase or decrease the blur size
+BlurAmount = 25 -- Change this to increase or decrease the blur size
 
 --//Declarations
 Camera 	= game.Workspace.CurrentCamera
@@ -5848,7 +5851,6 @@ end
 Lighting = game:GetService("Lighting")
 
 wait(0.1)
-_G.loopgraphicsss = true
 while true do
     wait()
     if not _G.loopgraphicsss then
@@ -5861,7 +5863,7 @@ Lighting.ShadowSoftness = 0
 
 Lighting.OutdoorAmbient = Color3.fromRGB(255, 201, 201)
 Lighting.Ambient = Color3.fromRGB(177, 167, 255)
-Lighting.FogColor = Color3.fromRGB(203, 189, 255)
+Lighting.FogColor = Color3.fromRGB(201, 176, 255)
 Lighting.FogEnd = 2099
 Lighting.FogStart = 0
 end
