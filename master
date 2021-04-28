@@ -7712,2220 +7712,2462 @@ v.Character.Head.Shape = "Block"
 v.Character.Head.Material = Enum.Material.ForceField
 end
 end)
-assert(Drawing, 'exploit not supported')
+--[[
+    AimHot v8, Herrtt#3868
 
-if not syn and not PROTOSMASHER_LOADED then print'Unnamed ESP only officially supports Synapse and Protosmasher! If you\'re an exploit developer and have added drawing API to your exploit, try setting syn as true then checking if that works, otherwise, DM me on discord @ cppbook.org#1968 or add an issue to the Unnamed ESP Github Repository and I\'ll see it through email!' end
+    I decided to make it open source for all the new scripters out there (including me), don't ripoff or claim this as your own.
+    When I get time I will comment a lot of the stuff here.
 
-local UserInputService	= game:GetService'UserInputService';
-local HttpService		= game:GetService'HttpService';
-local GUIService		= game:GetService'GuiService';
-local TweenService		= game:GetService'TweenService';
-local RunService		= game:GetService'RunService';
-local Players			= game:GetService'Players';
-local LocalPlayer		= Players.LocalPlayer;
-local Camera			= workspace.CurrentCamera;
-local Mouse				= LocalPlayer:GetMouse();
-local V2New				= Vector2.new;
-local V3New				= Vector3.new;
-local WTVP				= Camera.WorldToViewportPoint;
-local WorldToViewport	= function(...) return WTVP(Camera, ...) end;
-local Menu				= {};
-local MouseHeld			= false;
-local LastRefresh		= 0;
-local OptionsFile		= 'IC3_ESP_SETTINGS.dat';
-local Binding			= false;
-local BindedKey			= nil;
-local OIndex			= 0;
-local LineBox			= {};
-local UIButtons			= {};
-local Sliders			= {};
-local ColorPicker		= { Loading = false; LastGenerated = 0 };
-local Dragging			= false;
-local DraggingUI		= false;
-local Rainbow			= false;
-local DragOffset		= V2New();
-local DraggingWhat		= nil;
-local OldData			= {};
-local IgnoreList		= {};
-local EnemyColor		= Color3.new(1, 0, 0);
-local TeamColor			= Color3.new(0, 1, 0);
-local MenuLoaded		= false;
-local ErrorLogging		= false;
-local TracerPosition	= V2New(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y - 135);
-local DragTracerPosition= false;
-local SubMenu 			= {};
-local IsSynapse 		= syn and not PROTOSMASHER_LOADED;
-local Connections 		= { Active = {} };
-local Signal 			= {}; Signal.__index = Signal;
-local GetCharacter;
-local CurrentColorPicker;
-local Spectating;
+]]
 
--- if not PROTOSMASHER_LOADED then Drawing.UseCompatTransparency = true; end -- For Elysian
 
-shared.MenuDrawingData	= shared.MenuDrawingData or { Instances = {} };
-shared.InstanceData		= shared.InstanceData or {};
-shared.RSName			= shared.RSName or ('UnnamedESP_by_ic3-' .. HttpService:GenerateGUID(false));
 
-local GetDataName		= shared.RSName .. '-GetData';
-local UpdateName		= shared.RSName .. '-Update';
+-- Extremly bad code starts below here
 
-local Debounce			= setmetatable({}, {
-	__index = function(t, i)
-		return rawget(t, i) or false
-	end;
-});
+local DEBUG_MODE = false -- warnings, prints and profiles dont change idiot thanks
 
-if shared.UESP_InputChangedCon then shared.UESP_InputChangedCon:Disconnect() end
-if shared.UESP_InputBeganCon then shared.UESP_InputBeganCon:Disconnect() end
-if shared.UESP_InputEndedCon then shared.UESP_InputEndedCon:Disconnect() end
-if shared.CurrentColorPicker then shared.CurrentColorPicker:Dispose() end
+-- Ok I declare some variables here for micro optimization. I might declare again in the blocks because I am lazy to check here
+local game, workspace = game, workspace
 
-local RealPrint, LastPrintTick = print, 0;
-local LatestPrints = setmetatable({}, { __index = function(t, i) return rawget(t, i) or 0 end });
+local cf, v3, v2, udim2 = CFrame, Vector3, Vector2, UDim2
+local string, math, table, Color3, tonumber, tostring = string, math, table, Color3, tonumber, tostring
 
-local function print(...)
-	local Content = unpack{...};
-	local print = RealPrint;
+local cfnew = cf.new
+local cf0 = cfnew()
 
-	if tick() - LatestPrints[Content] > 5 then
-		LatestPrints[Content] = tick();
-		print(Content);
-	end
+local v3new = v3.new
+local v30 = v3new()
+
+local v2new = v2.new
+local v20 = v2new()
+
+local setmetatable = setmetatable
+local getmetatable = getmetatable
+
+local type, typeof = type, typeof
+
+local Instance = Instance
+
+local drawing = Drawing or drawing
+
+local mousemoverel = mousemoverel or (Input and Input.MouseMove)
+
+local readfile = readfile
+local writefile = writefile
+local appendfile = appendfile
+
+local warn, print = DEBUG_MODE and warn or function() end, DEBUG_MODE and print or function() end
+
+
+local required = {
+    mousemoverel, drawing, readfile, writefile, appendfile, game.HttpGet, game.GetObjects
+}
+
+for i,v in pairs(required) do
+    if v == nil then
+        warn("Your exploit is not supported (may consider purchasing a better one?)!")
+        return -- Only pros return in top-level function
+    end
 end
 
-local function FromHex(HEX)
-	HEX = HEX:gsub('#', '');
-	
-	return Color3.fromRGB(tonumber('0x' .. HEX:sub(1, 2)), tonumber('0x' .. HEX:sub(3, 4)), tonumber('0x' .. HEX:sub(5, 6)));
-end
-
-local function IsStringEmpty(String)
-	if type(String) == 'string' then
-		return String:match'^%s+$' ~= nil or #String == 0 or String == '' or false;
-	end
-	
-	return false;
-end
-
-local function Set(t, i, v)
-	t[i] = v;
-end
-
-local Teams = {};
-local CustomTeams = { -- Games that don't use roblox's team system
-	[2563455047] = {
-		Initialize = function()
-			Teams.Sheriffs = {}; -- prevent big error
-			Teams.Bandits = {}; -- prevent big error
-			local Func = game:GetService'ReplicatedStorage':WaitForChild('RogueFunc', 1);
-			local Event = game:GetService'ReplicatedStorage':WaitForChild('RogueEvent', 1);
-			local S, B = Func:InvokeServer'AllTeamData';
-
-			Teams.Sheriffs = S;
-			Teams.Bandits = B;
-
-			Event.OnClientEvent:Connect(function(id, PlayerName, Team, Remove) -- stolen straight from decompiled src lul
-				if id == 'UpdateTeam' then
-					local TeamTable, NotTeamTable
-					if Team == 'Bandits' then
-						TeamTable = TDM.Bandits
-						NotTeamTable = TDM.Sheriffs
-					else
-						TeamTable = TDM.Sheriffs
-						NotTeamTable = TDM.Bandits
-					end
-					if Remove then
-						TeamTable[PlayerName] = nil
-					else
-						TeamTable[PlayerName] = true
-						NotTeamTable[PlayerName] = nil
-					end
-					if PlayerName == LocalPlayer.Name then
-						TDM.Friendlys = TeamTable
-						TDM.Enemies = NotTeamTable
-					end
-				end
-			end)
-		end;
-		CheckTeam = function(Player)
-			local LocalTeam = Teams.Sheriffs[LocalPlayer.Name] and Teams.Sheriffs or Teams.Bandits;
-			
-			return LocalTeam[Player.Name] and true or false;
-		end;
-	};
-	[3016661674] = {
-		CheckTeam = function(Player)
-			local LocalStats = LocalPlayer:FindFirstChild'leaderstats';
-			local LocalLastName = LocalStats and LocalStats:FindFirstChild'LastName'; if not LocalLastName or IsStringEmpty(LocalLastName.Value) then return true; end
-			local PlayerStats = Player:FindFirstChild'leaderstats';
-			local PlayerLastName = PlayerStats and PlayerStats:FindFirstChild'LastName'; if not PlayerLastName then return false; end
-
-			return PlayerLastName.Value == LocalLastName.Value;
-		end;
-	};
-};
-
-CustomTeams[5208655184] = CustomTeams[3016661674]; -- rogue gaia
-CustomTeams[3541987450] = CustomTeams[3016661674]; -- rogue khei
-
-local RenderList = {Instances = {}};
-
-function RenderList:AddOrUpdateInstance(Instance, Obj2Draw, Text, Color)
-	RenderList.Instances[Instance] = { ParentInstance = Instance; Instance = Obj2Draw; Text = Text; Color = Color };
-	return RenderList.Instances[Instance];
-end
-
-local CustomPlayerTag;
-local CustomESP;
-local CustomCharacter;
-
-local Modules = {
-	[292439477] = {
-		CustomESP = function()
-			if not shared.PF_Replication then
-				for i, v in pairs(getgc(true)) do
-					if typeof(v) == 'table' and rawget(v, 'getbodyparts') then
-						shared.PF_Replication = v;
-						break;
-					end
-				end
-			else
-				for Index, Player in pairs(Players:GetPlayers()) do
-					if Player == LocalPlayer then continue end
-
-					local Body = shared.PF_Replication.getbodyparts(Player);
-
-					if Body and typeof(Body) == 'table' and rawget(Body, 'rootpart') then
-						Player.Character = Body.rootpart.Parent;
-					else
-						Player.Character = nil;
-					end
-				end
-			end
-		end
-	};
-	[2950983942] = {
-		CustomCharacter = function(Player)
-			if workspace:FindFirstChild'Players' then
-				return workspace.Players:FindFirstChild(Player.Name);
-			end
-		end
-	};
-	[2262441883] = {
-		CustomPlayerTag = function(Player)
-			return Player:FindFirstChild'Job' and (' [' .. Player.Job.Value .. ']') or '';
-		end;
-		CustomESP = function()
-			if workspace:FindFirstChild'MoneyPrinters' then
-				for i, v in pairs(workspace.MoneyPrinters:GetChildren()) do
-					local Main	= v:FindFirstChild'Main';
-					local Owner	= v:FindFirstChild'TrueOwner';
-					local Money	= v:FindFirstChild'Int' and v.Int:FindFirstChild'Money' or nil;
-					if Main and Owner and Money then
-						local O = tostring(Owner.Value);
-						local M = tostring(Money.Value);
-
-						pcall(RenderList.AddOrUpdateInstance, RenderList, v, Main, string.format('Money Printer\nOwned by %s\n[%s]', O, M), Color3.fromRGB(13, 255, 227));
-					end
-				end
-			end
-		end;
-	};
-	[4801598506] = {
-		CustomESP = function()
-			if workspace:FindFirstChild'Mobs' and workspace.Mobs:FindFirstChild'Forest1' then
-				for i, v in pairs(workspace.Mobs.Forest1:GetChildren()) do
-					local Main	= v:FindFirstChild'Head';
-					local Hum	= v:FindFirstChild'Mob';
-
-					if Main and Hum then
-						pcall(RenderList.AddOrUpdateInstance, RenderList, v, Main, string.format('[%s] [%s/%s]', v.Name, Hum.Health, Hum.MaxHealth), Color3.fromRGB(13, 255, 227));
-					end
-				end
-			end
-		end;
-	};
-	[2555873122] = {
-		CustomESP = function()
-			if workspace:FindFirstChild'WoodPlanks' then
-				for i, v in pairs(workspace:GetChildren()) do
-					if v.Name == 'WoodPlanks' then
-						local Main = v:FindFirstChild'Wood';
-
-						if Main then
-							pcall(RenderList.AddOrUpdateInstance, RenderList, v, Main, 'Wood Planks', Color3.fromRGB(13, 255, 227));
-						end
-					end
-				end
-			end
-		end;
-	};
-	[5208655184] = {
-		CustomPlayerTag = function(Player)
-			local Name = '';
-
-			if Player:FindFirstChild'leaderstats' then
-				local Prefix = '';
-				local Extra = {};
-				Name = Name .. '\n[';
-
-				if Player.leaderstats:FindFirstChild'Prestige' and Player.leaderstats.Prestige.ClassName == 'IntValue' and Player.leaderstats.Prestige.Value > 0 then
-					Name = Name .. '#' .. tostring(Player.leaderstats.Prestige.Value) .. ' ';
-				end
-				if Player.leaderstats:FindFirstChild'HouseRank' and Player.leaderstats:FindFirstChild'Gender' and Player.leaderstats.HouseRank.ClassName == 'StringValue' and not IsStringEmpty(Player.leaderstats.HouseRank.Value) then
-					Prefix = Player.leaderstats.HouseRank.Value == 'Owner' and (Player.leaderstats.Gender.Value == 'Female' and 'Lady ' or 'Lord ') or '';
-				end
-				if Player.leaderstats:FindFirstChild'FirstName' and Player.leaderstats.FirstName.ClassName == 'StringValue' and not IsStringEmpty(Player.leaderstats.FirstName.Value) then
-					Name = Name .. '' .. Prefix .. Player.leaderstats.FirstName.Value;
-				end
-				if Player.leaderstats:FindFirstChild'LastName' and Player.leaderstats.LastName.ClassName == 'StringValue' and not IsStringEmpty(Player.leaderstats.LastName.Value) then
-					Name = Name .. ' ' .. Player.leaderstats.LastName.Value;
-				end
-
-				if not IsStringEmpty(Name) then Name = Name .. ']'; end
-
-				local Character = GetCharacter(Player);
-
-				if Character then
-					if Character and Character:FindFirstChild'Danger' then table.insert(Extra, 'D'); end
-					if Character:FindFirstChild'ManaAbilities' and Character.ManaAbilities:FindFirstChild'ManaSprint' then table.insert(Extra, 'D1'); end
-
-					if Character:FindFirstChild'Mana'	 		then table.insert(Extra, 'M' .. math.floor(Character.Mana.Value)); end
-					if Character:FindFirstChild'Vampirism' 		then table.insert(Extra, 'V'); end
-					if Character:FindFirstChild'Observe'			then table.insert(Extra, 'ILL'); end
-					if Character:FindFirstChild'Inferi'			then table.insert(Extra, 'NEC'); end
-					if Character:FindFirstChild'World\'s Pulse' 	then table.insert(Extra, 'DZIN'); end
-					if Character:FindFirstChild'Shift'		 	then table.insert(Extra, 'MAD'); end
-					if Character:FindFirstChild'Head' and Character.Head:FindFirstChild'FacialMarking' then
-						local FM = Character.Head:FindFirstChild'FacialMarking';
-						if FM.Texture == 'http://www.roblox.com/asset/?id=4072968006' then
-							table.insert(Extra, 'HEALER');
-						elseif FM.Texture == 'http://www.roblox.com/asset/?id=4072914434' then
-							table.insert(Extra, 'SEER');
-						elseif FM.Texture == 'http://www.roblox.com/asset/?id=4094417635' then
-							table.insert(Extra, 'JESTER');
-						end
-					end
-				end
-				if Player:FindFirstChild'Backpack' then
-					if Player.Backpack:FindFirstChild'Observe' 			then table.insert(Extra, 'ILL');  end
-					if Player.Backpack:FindFirstChild'Inferi'			then table.insert(Extra, 'NEC');  end
-					if Player.Backpack:FindFirstChild'World\'s Pulse' 	then table.insert(Extra, 'DZIN'); end
-					if Player.Backpack:FindFirstChild'Shift'		 	then table.insert(Extra, 'MAD'); end
-				end
-
-				if #Extra > 0 then Name = Name .. ' [' .. table.concat(Extra, '-') .. ']'; end
-			end
-
-			return Name;
-		end;
-	};
-	[3541987450] = {
-		CustomPlayerTag = function(Player)
-			local Name = '';
-
-			if Player:FindFirstChild'leaderstats' then
-				Name = Name .. '\n[';
-				local Prefix = '';
-				local Extra = {};
-				if Player.leaderstats:FindFirstChild'Prestige' and Player.leaderstats.Prestige.ClassName == 'IntValue' and Player.leaderstats.Prestige.Value > 0 then
-					Name = Name .. '#' .. tostring(Player.leaderstats.Prestige.Value) .. ' ';
-				end
-				if Player.leaderstats:FindFirstChild'HouseRank' and Player.leaderstats:FindFirstChild'Gender' and Player.leaderstats.HouseRank.ClassName == 'StringValue' and not IsStringEmpty(Player.leaderstats.HouseRank.Value) then
-					Prefix = Player.leaderstats.HouseRank.Value == 'Owner' and (Player.leaderstats.Gender.Value == 'Female' and 'Lady ' or 'Lord ') or '';
-				end
-				if Player.leaderstats:FindFirstChild'FirstName' and Player.leaderstats.FirstName.ClassName == 'StringValue' and not IsStringEmpty(Player.leaderstats.FirstName.Value) then
-					Name = Name .. '' .. Prefix .. Player.leaderstats.FirstName.Value;
-				end
-				if Player.leaderstats:FindFirstChild'LastName' and Player.leaderstats.LastName.ClassName == 'StringValue' and not IsStringEmpty(Player.leaderstats.LastName.Value) then
-					Name = Name .. ' ' .. Player.leaderstats.LastName.Value;
-				end
-				if Player.leaderstats:FindFirstChild'UberTitle' and Player.leaderstats.UberTitle.ClassName == 'StringValue' and not IsStringEmpty(Player.leaderstats.UberTitle.Value) then
-					Name = Name .. ', ' .. Player.leaderstats.UberTitle.Value;
-				end
-
-				if not IsStringEmpty(Name) then Name = Name .. ']'; end
-
-				local Character = GetCharacter(Player);
-
-				if Character then
-					if Character and Character:FindFirstChild'Danger' then table.insert(Extra, 'D'); end
-					if Character:FindFirstChild'ManaAbilities' and Character.ManaAbilities:FindFirstChild'ManaSprint' then table.insert(Extra, 'D1'); end
-
-					if Character:FindFirstChild'Mana'	 		then table.insert(Extra, 'M' .. math.floor(Character.Mana.Value)); end
-					if Character:FindFirstChild'Vampirism' 		then table.insert(Extra, 'V');    end
-					if Character:FindFirstChild'Observe'			then table.insert(Extra, 'ILL');  end
-					if Character:FindFirstChild'Inferi'			then table.insert(Extra, 'NEC');  end
-					
-					if Character:FindFirstChild'World\'s Pulse' 	then table.insert(Extra, 'DZIN'); end
-					if Character:FindFirstChild'Head' and Character.Head:FindFirstChild'FacialMarking' then
-						local FM = Character.Head:FindFirstChild'FacialMarking';
-						if FM.Texture == 'http://www.roblox.com/asset/?id=4072968006' then
-							table.insert(Extra, 'HEALER');
-						elseif FM.Texture == 'http://www.roblox.com/asset/?id=4072914434' then
-							table.insert(Extra, 'SEER');
-						elseif FM.Texture == 'http://www.roblox.com/asset/?id=4094417635' then
-							table.insert(Extra, 'JESTER');
-						end
-					end
-				end
-				if Player:FindFirstChild'Backpack' then
-					if Player.Backpack:FindFirstChild'Observe' 			then table.insert(Extra, 'ILL');  end
-					if Player.Backpack:FindFirstChild'Inferi'			then table.insert(Extra, 'NEC');  end
-					if Player.Backpack:FindFirstChild'World\'s Pulse' 	then table.insert(Extra, 'DZIN'); end
-				end
-
-				if #Extra > 0 then Name = Name .. ' [' .. table.concat(Extra, '-') .. ']'; end
-			end
-
-			return Name;
-		end;
-	};
-};
-
-if Modules[game.PlaceId] ~= nil then
-	local Module = Modules[game.PlaceId];
-	CustomPlayerTag = Module.CustomPlayerTag or nil;
-	CustomESP = Module.CustomESP or nil;
-	CustomCharacter = Module.CustomCharacter or nil;
-end
-
-function GetCharacter(Player)
-	return Player.Character or (CustomCharacter and CustomCharacter(Player));
-end
-
-function GetMouseLocation()
-	return UserInputService:GetMouseLocation();
-end
-
-function MouseHoveringOver(Values)
-	local X1, Y1, X2, Y2 = Values[1], Values[2], Values[3], Values[4]
-	local MLocation = GetMouseLocation();
-	return (MLocation.x >= X1 and MLocation.x <= (X1 + (X2 - X1))) and (MLocation.y >= Y1 and MLocation.y <= (Y1 + (Y2 - Y1)));
-end
-
-function GetTableData(t) -- basically table.foreach i dont even know why i made this
-	if typeof(t) ~= 'table' then return end
-
-	return setmetatable(t, {
-		__call = function(t, func)
-			if typeof(func) ~= 'function' then return end;
-			for i, v in pairs(t) do
-				pcall(func, i, v);
-			end
-		end;
-	});
-end
-local function Format(format, ...)
-	return string.format(format, ...);
-end
-function CalculateValue(Min, Max, Percent)
-	return Min + math.floor(((Max - Min) * Percent) + .5);
-end
-
-function NewDrawing(InstanceName)
-	local Instance = Drawing.new(InstanceName);
-	return (function(Properties)
-		for i, v in pairs(Properties) do
-			pcall(Set, Instance, i, v);
-		end
-		return Instance;
-	end)
-end
-
-function Menu:AddMenuInstance(Name, DrawingType, Properties)
-	local Instance;
-
-	if shared.MenuDrawingData.Instances[Name] ~= nil then
-		Instance = shared.MenuDrawingData.Instances[Name];
-		for i, v in pairs(Properties) do
-			pcall(Set, Instance, i, v);
-		end
-	else
-		Instance = NewDrawing(DrawingType)(Properties);
-	end
-
-	shared.MenuDrawingData.Instances[Name] = Instance;
-
-	return Instance;
-end
-function Menu:UpdateMenuInstance(Name)
-	local Instance = shared.MenuDrawingData.Instances[Name];
-	if Instance ~= nil then
-		return (function(Properties)
-			for i, v in pairs(Properties) do
-				pcall(Set, Instance, i, v);
-			end
-			return Instance;
-		end)
-	end
-end
-function Menu:GetInstance(Name)
-	return shared.MenuDrawingData.Instances[Name];
-end
-
-local Options = setmetatable({}, {
-	__call = function(t, ...)
-		local Arguments = {...};
-		local Name = Arguments[1];
-		OIndex = OIndex + 1;
-		rawset(t, Name, setmetatable({
-			Name			= Arguments[1];
-			Text			= Arguments[2];
-			Value			= Arguments[3];
-			DefaultValue	= Arguments[3];
-			AllArgs			= Arguments;
-			Index			= OIndex;
-		}, {
-			__call = function(t, v, force)
-				local self = t;
-
-				if typeof(t.Value) == 'function' then
-					t.Value();
-				elseif typeof(t.Value) == 'EnumItem' then
-					local BT = Menu:GetInstance(Format('%s_BindText', t.Name));
-					if not force then
-						Binding = true;
-						local Val = 0
-						while Binding do
-							wait();
-							Val = (Val + 1) % 17;
-							BT.Text = Val <= 8 and '|' or '';
-						end
-					end
-					t.Value = force and v or BindedKey;
-					if BT and t.BasePosition and t.BaseSize then
-						BT.Text = tostring(t.Value):match'%w+%.%w+%.(.+)';
-						BT.Position = t.BasePosition + V2New(t.BaseSize.X - BT.TextBounds.X - 20, -10);
-					end
-				else
-					local NewValue = v;
-					if NewValue == nil then NewValue = not t.Value; end
-					rawset(t, 'Value', NewValue);
-
-					if Arguments[2] ~= nil and Menu:GetInstance'TopBar'.Visible then
-						if typeof(Arguments[3]) == 'number' then
-							local AMT = Menu:GetInstance(Format('%s_AmountText', t.Name));
-							if AMT then
-								AMT.Text = tostring(t.Value);
-							end
-						else
-							local Inner = Menu:GetInstance(Format('%s_InnerCircle', t.Name));
-							if Inner then Inner.Visible = t.Value; end
-						end
-					end
-				end
-			end;
-		}));
-	end;
+local servs
+servs = setmetatable(
+{
+    Get = function(self, serv)
+        if servs[serv] then return servs[serv] end
+        local s = game:GetService(serv)
+        if s then servs[serv] = s end
+        return s
+    end;
+}, {
+    __index = function(self, index)
+        local s = game:GetService(index)
+        if s then servs[index] = s end
+        return s
+    end;
 })
 
-function Load()
-	local _, Result = pcall(readfile, OptionsFile);
-	
-	if _ then -- extremely ugly code yea i know but i dont care p.s. i hate pcall
-		local _, Table = pcall(HttpService.JSONDecode, HttpService, Result);
-		if _ and typeof(Table) == 'table' then
-			for i, v in pairs(Table) do
-				if typeof(Options[i]) == 'table' and Options[i].Value ~= nil and (typeof(Options[i].Value) == 'boolean' or typeof(Options[i].Value) == 'number') then
-					Options[i].Value = v.Value;
-					pcall(Options[i], v.Value);
-				end
-			end
-
-			if Table.TeamColor then TeamColor = Color3.new(Table.TeamColor.R, Table.TeamColor.G, Table.TeamColor.B) end
-			if Table.EnemyColor then EnemyColor = Color3.new(Table.EnemyColor.R, Table.EnemyColor.G, Table.EnemyColor.B) end
-
-			if typeof(Table.MenuKey) == 'string' then Options.MenuKey(Enum.KeyCode[Table.MenuKey], true) end
-			if typeof(Table.ToggleKey) == 'string' then Options.ToggleKey(Enum.KeyCode[Table.ToggleKey], true) end
-		end
-	end
+local connections = {}
+local function bindEvent(event, callback) -- Let me disconnect in peace
+    local con = event:Connect(callback)
+    table.insert(connections, con)
+    return con
 end
 
-Options('Enabled', 'ESP Enabled', true);
-Options('ShowTeam', 'Show Team', true);
-Options('ShowTeamColor', 'Show Team Color', false);
-Options('ShowName', 'Show Names', true);
-Options('ShowDistance', 'Show Distance', true);
-Options('ShowHealth', 'Show Health', true);
-Options('ShowBoxes', 'Show Boxes', true);
-Options('ShowTracers', 'Show Tracers', true);
-Options('ShowDot', 'Show Head Dot', false);
-Options('VisCheck', 'Visibility Check', false);
-Options('Crosshair', 'Crosshair', false);
-Options('TextOutline', 'Text Outline', true);
--- Options('Rainbow', 'Rainbow Mode', false);
-Options('TextSize', 'Text Size', syn and 18 or 14, 10, 24); -- cuz synapse fonts look weird???
-Options('MaxDistance', 'Max Distance', 2500, 100, 25000);
-Options('RefreshRate', 'Refresh Rate (ms)', 5, 1, 200);
-Options('YOffset', 'Y Offset', 0, -200, 200);
-Options('MenuKey', 'Menu Key', Enum.KeyCode.F4, 1);
-Options('ToggleKey', 'Toggle Key', Enum.KeyCode.F3, 1);
-Options('ChangeColors', SENTINEL_LOADED and 'Sentinel Unsupported' or 'Change Colors', function()
-	if SENTINEL_LOADED then return end
+local players = servs.Players
+local runservice = servs.RunService
+local http = servs.HttpService
+local uis = servs.UserInputService
 
-	SubMenu:Show(GetMouseLocation(), 'Unnamed Colors', {
-		{
-			Type = 'Color'; Text = 'Team Color'; Color = TeamColor;
-
-			Function = function(Circ, Position)
-				if tick() - ColorPicker.LastGenerated < 1 then return; end
-
-				if shared.CurrentColorPicker then shared.CurrentColorPicker:Dispose() end
-				local ColorPicker = ColorPicker.new(Position - V2New(-10, 50));
-				CurrentColorPicker = ColorPicker;
-				shared.CurrentColorPicker = CurrentColorPicker;
-				ColorPicker.ColorChanged:Connect(function(Color) Circ.Color = Color TeamColor = Color Options.TeamColor = Color end);
-			end
-		};
-		{
-			Type = 'Color'; Text = 'Enemy Color'; Color = EnemyColor;
-
-			Function = function(Circ, Position)
-				if tick() - ColorPicker.LastGenerated < 1 then return; end
-
-				if shared.CurrentColorPicker then shared.CurrentColorPicker:Dispose() end
-				local ColorPicker = ColorPicker.new(Position - V2New(-10, 50));
-				CurrentColorPicker = ColorPicker;
-				shared.CurrentColorPicker = CurrentColorPicker;
-				ColorPicker.ColorChanged:Connect(function(Color) Circ.Color = Color EnemyColor = Color Options.EnemyColor = Color end);
-			end
-		};
-		{
-			Type = 'Button'; Text = 'Reset Colors';
-
-			Function = function()
-				EnemyColor = Color3.new(1, 0, 0);
-				TeamColor = Color3.new(0, 1, 0);
-
-				local C1 = Menu:GetInstance'Sub-ColorPreview.1'; if C1 then C1.Color = TeamColor end
-				local C2 = Menu:GetInstance'Sub-ColorPreview.2'; if C2 then C2.Color = EnemyColor end
-			end
-		};
-		{
-			Type = 'Button'; Text = 'Rainbow Mode';
-
-			Function = function()
-				Rainbow = not Rainbow;
-			end
-		};
-	});
-end, 2);
-Options('ResetSettings', 'Reset Settings', function()
-	for i, v in pairs(Options) do
-		if Options[i] ~= nil and Options[i].Value ~= nil and Options[i].Text ~= nil and (typeof(Options[i].Value) == 'boolean' or typeof(Options[i].Value) == 'number' or typeof(Options[i].Value) == 'EnumItem') then
-			Options[i](Options[i].DefaultValue, true);
-		end
-	end
-end, 5);
-Options('LoadSettings', 'Load Settings', Load, 4);
-Options('SaveSettings', 'Save Settings', function()
-	local COptions = {};
-
-	for i, v in pairs(Options) do
-		COptions[i] = v;
-	end
-	
-	if typeof(COptions.TeamColor) == 'Color3' then COptions.TeamColor = { R = COptions.TeamColor.R; G = COptions.TeamColor.G; B = COptions.TeamColor.B } end
-	if typeof(COptions.EnemyColor) == 'Color3' then COptions.EnemyColor = { R = COptions.EnemyColor.R; G = COptions.EnemyColor.G; B = COptions.EnemyColor.B } end
-	
-	if typeof(COptions.MenuKey.Value) == 'EnumItem' then COptions.MenuKey = COptions.MenuKey.Value.Name end
-	if typeof(COptions.ToggleKey.Value) == 'EnumItem' then COptions.ToggleKey = COptions.ToggleKey.Value.Name end
-
-	writefile(OptionsFile, HttpService:JSONEncode(COptions));
-end, 3);
-
-Load(1);
-
-Options('MenuOpen', nil, true);
-
-local function Combine(...)
-	local Output = {};
-	for i, v in pairs{...} do
-		if typeof(v) == 'table' then
-			table.foreach(v, function(i, v)
-				Output[i] = v;
-			end)
-		end
-	end
-	return Output
+local function jsonEncode(t)
+    return http:JSONEncode(t)
+end
+local function jsonDecode(t)
+    return http:JSONDecode(t)
 end
 
-function LineBox:Create(Properties)
-	local Box = { Visible = true }; -- prevent errors not really though dont worry bout the Visible = true thing
-
-	local Properties = Combine({
-		Transparency	= 1;
-		Thickness		= 3;
-		Visible			= true;
-	}, Properties);
-
-	if syn then
-		Box['Quad']			= NewDrawing'Quad'(Properties);
-	else
-		Box['TopLeft']		= NewDrawing'Line'(Properties);
-		Box['TopRight']		= NewDrawing'Line'(Properties);
-		Box['BottomLeft']	= NewDrawing'Line'(Properties);
-		Box['BottomRight']	= NewDrawing'Line'(Properties);
-	end
-
-	function Box:Update(CF, Size, Color, Properties)
-		if not CF or not Size then return end
-
-		local TLPos, Visible1	= WorldToViewport((CF * CFrame.new( Size.X,  Size.Y, 0)).Position);
-		local TRPos, Visible2	= WorldToViewport((CF * CFrame.new(-Size.X,  Size.Y, 0)).Position);
-		local BLPos, Visible3	= WorldToViewport((CF * CFrame.new( Size.X, -Size.Y, 0)).Position);
-		local BRPos, Visible4	= WorldToViewport((CF * CFrame.new(-Size.X, -Size.Y, 0)).Position);
-
-		local Quad = Box['Quad'];
-
-		if syn then
-			if Visible1 and Visible2 and Visible3 and Visible4 then
-				Quad.Visible = true;
-				Quad.Color	= Color;
-				Quad.PointA = V2New(TLPos.X, TLPos.Y);
-				Quad.PointB = V2New(TRPos.X, TRPos.Y);
-				Quad.PointC = V2New(BRPos.X, BRPos.Y);
-				Quad.PointD = V2New(BLPos.X, BLPos.Y);
-			else
-				Box['Quad'].Visible = false;
-			end
-		else
-			Visible1 = TLPos.Z > 0 -- (commented | reason: random flashes);
-			Visible2 = TRPos.Z > 0 -- (commented | reason: random flashes);
-			Visible3 = BLPos.Z > 0 -- (commented | reason: random flashes);
-			Visible4 = BRPos.Z > 0 -- (commented | reason: random flashes);
-
-			-- ## BEGIN UGLY CODE
-			if Visible1 then
-				Box['TopLeft'].Visible		= true;
-				Box['TopLeft'].Color		= Color;
-				Box['TopLeft'].From			= V2New(TLPos.X, TLPos.Y);
-				Box['TopLeft'].To			= V2New(TRPos.X, TRPos.Y);
-			else
-				Box['TopLeft'].Visible		= false;
-			end
-			if Visible2 then
-				Box['TopRight'].Visible		= true;
-				Box['TopRight'].Color		= Color;
-				Box['TopRight'].From		= V2New(TRPos.X, TRPos.Y);
-				Box['TopRight'].To			= V2New(BRPos.X, BRPos.Y);
-			else
-				Box['TopRight'].Visible		= false;
-			end
-			if Visible3 then
-				Box['BottomLeft'].Visible	= true;
-				Box['BottomLeft'].Color		= Color;
-				Box['BottomLeft'].From		= V2New(BLPos.X, BLPos.Y);
-				Box['BottomLeft'].To		= V2New(TLPos.X, TLPos.Y);
-			else
-				Box['BottomLeft'].Visible	= false;
-			end
-			if Visible4 then
-				Box['BottomRight'].Visible	= true;
-				Box['BottomRight'].Color	= Color;
-				Box['BottomRight'].From		= V2New(BRPos.X, BRPos.Y);
-				Box['BottomRight'].To		= V2New(BLPos.X, BLPos.Y);
-			else
-				Box['BottomRight'].Visible	= false;
-			end
-			-- ## END UGLY CODE
-			if Properties and typeof(Properties) == 'table' then
-				GetTableData(Properties)(function(i, v)
-					pcall(Set, Box['TopLeft'],		i, v);
-					pcall(Set, Box['TopRight'],		i, v);
-					pcall(Set, Box['BottomLeft'],	i, v);
-					pcall(Set, Box['BottomRight'],	i, v);
-				end)
-			end
-		end
-	end
-	function Box:SetVisible(bool)
-		pcall(Set, Box['Quad'],				'Visible', bool);
-		-- pcall(Set, Box['TopLeft'],		'Visible', bool);
-		-- pcall(Set, Box['TopRight'],		'Visible', bool);
-		-- pcall(Set, Box['BottomLeft'],	'Visible', bool);
-		-- pcall(Set, Box['BottomRight'],	'Visible', bool);
-	end
-	function Box:Remove()
-		self:SetVisible(false);
-		Box['Quad']:Remove();
-		-- Box['TopLeft']:Remove();
-		-- Box['TopRight']:Remove();
-		-- Box['BottomLeft']:Remove();
-		-- Box['BottomRight']:Remove();
-	end
-
-	return Box;
+local function existsFile(name)
+    return pcall(function()
+        return readfile(name)
+    end)
 end
 
-local Colors = {
-	White = FromHex'ffffff';
-	Primary = {
-		Main	= FromHex'424242';
-		Light	= FromHex'6d6d6d';
-		Dark	= FromHex'1b1b1b';
-	};
-	Secondary = {
-		Main	= FromHex'e0e0e0';
-		Light	= FromHex'ffffff';
-		Dark	= FromHex'aeaeae';
-	};
-};
-
-function Connections:Listen(Connection, Function)
-    local NewConnection = Connection:Connect(Function);
-    table.insert(self.Active, NewConnection);
-    return NewConnection;
+local function mergetab(a,b)
+    local c = a or {}
+    for i,v in pairs(b or {}) do 
+        c[i] = v 
+    end
+    return c
 end
 
-function Connections:DisconnectAll()
-    for Index, Connection in pairs(self.Active) do
-        if Connection.Connected then
-            Connection:Disconnect();
+local locpl = players.LocalPlayer
+local mouse = locpl:GetMouse()
+local camera = workspace.CurrentCamera
+
+local findFirstChild = game.FindFirstChild
+local findFirstChildOfClass = game.FindFirstChildOfClass
+local isDescendantOf = game.IsDescendantOf
+
+-- Just to check another aimhot instance is running and close it
+local uid = tick() .. math.random(1,100000) .. math.random(1,100000)
+if shared.ah8 and shared.ah8.close and shared.ah8.uid~=uid then shared.ah8:close() end
+
+-- Main shitty script should start below here
+
+warn("AH8_MAIN : Running script...")
+
+local event = {} 
+local utility = {}
+local serializer = {}
+
+local settings = {}
+
+local hud = loadstring(game:HttpGet("https://pastebin.com/raw/3hREvLEU", DEBUG_MODE == false and true or DEBUG_MODE == true and false))() -- Ugly ui do not care
+
+local aimbot = {}
+
+local visuals = {}
+
+local crosshair = {}
+local esp = {}
+local boxes = {}
+local tracers = {}
+
+local run = {}
+local ah8 = {enabled = true;}
+
+
+local visiblekids = {} -- no need to check twice each frame yes? todo :(
+-- Some libraries
+
+do
+    --/ Events : custom event system, bindables = gay
+
+    local type = type;
+    local coroutine = coroutine;
+    local create = coroutine.create;
+    local resume = coroutine.resume;
+
+    local function spawn(f, ...)
+        resume(create(f), ...)
+    end
+
+    function event.new(t)
+        local self = t or {}
+        
+        local n = 0
+        local connections = {}
+        function self:connect(func)
+            if type(func) ~= "function" then return end
+
+            n = n + 1
+            local my = n
+            connections[n] = func
+
+            local connected = true
+            local function disconnect()
+                if connected ~= true then return end
+                connected = false
+
+                connections[n] = nil
+            end
+
+            return disconnect
+        end
+
+
+        local function fire(...)
+            for i,v in pairs(connections) do
+                v(...)
+            end
+        end
+
+        return fire, self
+    end
+end
+
+do
+    --/ Utility : To make it easier for me to edit
+
+    local getPlayers = players.GetPlayers
+    local getPartsObscuringTarget = camera.GetPartsObscuringTarget
+    local worldToViewportPoint = camera.WorldToViewportPoint
+    local worldToScreenPoint = camera.WorldToScreenPoint
+    local raynew = Ray.new
+    local findPartOnRayWithIgnoreList = workspace.FindPartOnRayWithIgnoreList
+    local findPartOnRay = workspace.FindPartOnRay
+    local findFirstChild = game.FindFirstChild
+
+    local function raycast(ray, ignore, callback)
+        local ignore = ignore or {}
+
+        local hit, pos, normal, material = findPartOnRayWithIgnoreList(workspace, ray, ignore)
+        while hit and callback do
+            local Continue, _ignore = callback(hit)
+            if not Continue then
+                break
+            end
+            if _ignore then
+                table.insert(ignore, _ignore)
+            else
+                table.insert(ignore, hit)
+            end
+            hit, pos, normal, material = findPartOnRayWithIgnoreList(workspace, ray, ignore)
+        end
+        return hit, pos, normal, material
+    end
+
+    local function badraycastnotevensure(pos, ignore) -- 1 ray > 1 obscuringthing | 100 rays < 1 obscuring thing
+        local hitparts = getPartsObscuringTarget(camera, {pos}, ignore or {})
+        return hitparts
+    end
+
+    local charshit = {}
+    function utility.getcharacter(player) -- Change this or something if you want to add support for other games.
+        if (player == nil) then return end
+        if (charshit[player]) then return charshit[player] end
+
+        local char = player.Character
+        if (char == nil or isDescendantOf(char, game) == false) then
+            char = findFirstChild(workspace, player.Name)
+        end
+
+        return char
+    end
+
+    utility.mychar = nil
+    utility.myroot = nil
+
+    local rootshit = {}
+    function utility.getroot(player)
+        if (player == nil) then return end
+        if (rootshit[player]) then return rootshit[player] end
+
+        local char
+        if (player:IsA("Player")) then
+            char = utility.getcharacter(player)
+        else
+            char = player
+        end
+
+        if (char ~= nil) then
+            local root = (findFirstChild(char, "HumanoidRootPart") or char.PrimaryPart)
+            if (root ~= nil) then -- idk
+                --bindEvent(root.AncestryChanged, function(_, parent)
+                --    if (parent == nil) then
+                --        roostshit[player] = nil
+                --    end
+                --end)
+            end
+
+            --rootshit[player] = root
+            return root
+        end
+
+        return
+    end
+
+    spawn(function()
+        while ah8 and ah8.enabled do -- Some games are gay
+            utility.mychar = utility.getcharacter(locpl)
+            if (utility.mychar ~= nil) then
+                utility.myroot = utility.getroot(locpl)
+            end
+            wait(.5)
+        end
+    end)
+    --[[local utility.mychar = locpl.Character
+    local utility.myroot = utility.mychar and findFirstChild(utility.mychar, "HumanoidRootPart") or utility.mychar and utility.mychar.PrimaryPart
+    bindEvent(locpl.CharacterAdded, function(char)
+        utility.mychar = char
+        wait(.1)
+        utility.myroot = utility.mychar and findFirstChild(utility.mychar, "HumanoidRootPart") or utility.mychar.PrimaryPart
+    end)
+    bindEvent(locpl.CharacterRemoving, function()
+        utility.mychar = nil
+        utility.myroot = nil
+    end)--]]
+    
+
+    function utility.isalive(_1, _2)
+        if _1 == nil then return end
+        local Char, RootPart
+        if _2 ~= nil then
+            Char, RootPart = _1,_2
+        else
+            Char = utility.getcharacter(_1)
+            RootPart = Char and (Char:FindFirstChild("HumanoidRootPart") or Char.PrimaryPart)
+        end
+
+        if Char and RootPart then
+            local Human = findFirstChildOfClass(Char, "Humanoid")
+            if RootPart and Human then
+                if Human.Health > 0 then
+                    return true
+                end
+            elseif RootPart and isDescendantOf(Char, game) then
+                return true
+            end
+        end
+
+        return false
+    end
+
+    local shit = false
+    function utility.isvisible(char, root, max, ...)
+        local pos = root.Position
+        if shit or max > 4 then
+            local parts = badraycastnotevensure(pos, {utility.mychar, ..., camera, char, root})
+            
+            return parts == 0
+        else
+            local camp = camera.CFrame.p
+            local dist = (camp - pos).Magnitude
+
+            local hitt = 0
+            local hit = raycast(raynew(camp, (pos - camp).unit * dist), {utility.mychar, ..., camera}, function(hit)
+
+                if hit.CanCollide ~= false then-- hit.Transparency ~= 1 then¨
+                    hitt = hitt + 1
+                    return hitt < max
+                end
+            
+                if isDescendantOf(hit, char) then
+                    return
+                end
+                return true
+            end)
+
+            return hit == nil and true or isDescendantOf(hit, char), hitt
         end
     end
-    
-    self.Active = {};
-end
-
-function Signal.new()
-	local self = setmetatable({ _BindableEvent = Instance.new'BindableEvent' }, Signal);
-    
-	return self;
-end
-
-function Signal:Connect(Callback)
-    assert(typeof(Callback) == 'function', 'function expected; got ' .. typeof(Callback));
-
-	return self._BindableEvent.Event:Connect(function(...) Callback(...) end);
-end
-
-function Signal:Fire(...)
-    self._BindableEvent:Fire(...);
-end
-
-function Signal:Wait()
-    local Arguments = self._BindableEvent:Wait();
-
-    return Arguments;
-end
-
-function Signal:Disconnect()
-    if self._BindableEvent then
-        self._BindableEvent:Destroy();
+    function utility.sameteam(player, p1)
+        local p0 = p1 or locpl
+        return (player.Team~=nil and player.Team==p0.Team) and player.Neutral == false or false
     end
-end
+    function utility.getDistanceFromMouse(position)
+        local screenpos, vis = worldToViewportPoint(camera, position)
+        if vis and screenpos.Z > 0 then
+            return (v2new(mouse.X, mouse.Y) - v2new(screenpos.X, screenpos.Y)).Magnitude
+        end
+        return math.huge
+    end
 
-local function GetMouseLocation()
-	return UserInputService:GetMouseLocation();
-end
 
-local function IsMouseOverDrawing(Drawing, MousePosition)
-	local TopLeft = Drawing.Position;
-	local BottomRight = Drawing.Position + Drawing.Size;
-    local MousePosition = MousePosition or GetMouseLocation();
-    
-    return MousePosition.X > TopLeft.X and MousePosition.Y > TopLeft.Y and MousePosition.X < BottomRight.X and MousePosition.Y < BottomRight.Y;
-end
+    local hashes = {}
+    function utility.getClosestMouseTarget(settings)
+        local closest, temp = nil, settings.fov or math.huge
+        local plr
 
-local ImageCache = {};
+        for i,v in pairs(getPlayers(players)) do
+            if (locpl ~= v and (settings.ignoreteam==true and utility.sameteam(v)==false or settings.ignoreteam == false)) then
+                local character = utility.getcharacter(v)
+                if character and isDescendantOf(character, game) == true then
+                    local hash = hashes[v]
+                    local part = hash or findFirstChild(character, settings.name or "HumanoidRootPart") or findFirstChild(character, "HumanoidRootPart") or character.PrimaryPart
+                    if hash == nil then hashes[v] = part end
+                    if part and isDescendantOf(part, game) == true then
+                        local legal = true
 
-local function SetImage(Drawing, Url)
-	local Data = IsSynapse and game:HttpGet(Url) or Url;
+                        local rp = part:GetRenderCFrame().p
+                        local distance = utility.getDistanceFromMouse(rp)
+                        if temp <= distance then
+                            legal = false
+                        end
 
-	Drawing[IsSynapse and 'Data' or 'Uri'] = ImageCache[Url] or Data;
-	ImageCache[Url] = Data;
-    
-    if not IsSynapse then repeat wait() until Drawing.Loaded; end
-end
-
--- oh god unnamed esp needs an entire rewrite, someone make a better one pls im too lazy
--- btw the color picker was made seperately so it doesnt fit with the code of unnamed esp
-
-local function CreateDrawingsTable()
-    local Drawings = { __Objects = {} };
-    local Metatable = {};
-
-    function Metatable.__index(self, Index)
-        local Object = rawget(self.__Objects, Index);
-        
-        if not Object or (IsSynapse and not Object.__SELF.__OBJECT_EXISTS) then
-            local Type = Index:sub(1, Index:find'-' - 1);
-
-            Success, Object = pcall(Drawing.new, Type);
-
-            if not Object or not Success then return function() end; end
-
-            self.__Objects[Index] = setmetatable({ __SELF = Object; Type = Type }, {
-                __call = function(self, Properties)
-                    local Object = rawget(self, '__SELF'); if IsSynapse and not Object.__OBJECT_EXISTS then return false, 'render object destroyed'; end
-
-                    if Properties == false then
-                        Object.Visible = false;
-                        Object.Transparency = 0;
-                        Object:Remove();
-                        
-                        return true;
-                    end
-                    
-                    if typeof(Properties) == 'table' then
-                        for Property, Value in pairs(Properties) do
-                            local CanSet = true;
-
-                            if self.Type == 'Image' and not IsSynapse and Property == 'Size' and typeof(Value) == 'Vector2' then
-                                CanSet = false;
-
-                                spawn(function()
-                                    repeat wait() until Object.Loaded;
-                                    if not self.DefaultSize then rawset(self, 'DefaultSize', Object.Size) end
-
-                                    Property = 'ScaleFactor';
-                                    Value = Value.X / self.DefaultSize.X;
-
-                                    Object[Property] = Value
-                                end)
+                        if legal then
+                            if settings.checkifalive then
+                                local isalive = utility.isalive(character, part)
+                                if not isalive then
+                                    legal = false
+                                end
                             end
-                            
-                            if CanSet then Object[Property] = Value end
+                        end
+
+                        if legal then
+                            local visible = true
+                            if settings.ignorewalls == false then
+                                local vis = utility.isvisible(character, part, (settings.maxobscuringparts or 0))
+                                if not vis then
+                                    legal = false
+                                end
+                            end
+                        end
+
+                        if legal then
+                            local dist1
+                            temp = distance
+                            closest = part
+                            plr = v
                         end
                     end
-
-                    return Object;
                 end
-            });
-
-            Object.Visible = true;
-            Object.Transparency = 1; -- Transparency is really Opacity with drawing api (1 being visible, 0 being invisible)
-            
-            if Type == 'Text' then
-                if Drawing.Fonts then Object.Font = Drawing.Fonts.Monospace end
-                Object.Size = 20;
-                Object.Color = Color3.new(1, 1, 1);
-                Object.Center = true;
-                Object.Outline = true;
-            elseif Type == 'Square' or Type == 'Rectangle' then
-                Object.Thickness = 2;
-                Object.Filled = false;
             end
+        end -- who doesnt love 5 ends in a row?
 
-            return self.__Objects[Index];
-        end
-
-        return Object;
+        return closest, temp, plr
     end
+    function utility.getClosestTarget(settings)
 
-    function Metatable.__call(self, Delete, ...)
-        local Arguments = {Delete, ...};
+        local closest, temp = nil, math.huge
+        --local utility.myroot = utility.mychar and (findFirstChild(utility.mychar, settings.name or "HumanoidRootPart") or findFirstChild(utility.mychar, "HumanoidRootPart"))
         
-        if Delete == false then
-            for Index, Drawing in pairs(rawget(self, '__Objects')) do
-                Drawing(false);
+        if utility.myroot then
+            for i,v in pairs(getPlayers(players)) do
+                if (locpl ~= v) and (settings.ignoreteam==true and utility.sameteam(v)==false or settings.ignoreteam == false) then
+                    local character = utility.getcharacter(v)
+                    if character then
+                        local hash = hashes[v]
+                        local part = hash or findFirstChild(character, settings.name or "HumanoidRootPart") or findFirstChild(character, "HumanoidRootPart")
+                        if hash == nil then hashes[v] = part end
+
+                        if part then
+                            local visible = true
+                            if settings.ignorewalls == false then
+                                local vis, p = utility.isvisible(character, part, (settings.maxobscuringparts or 0))
+                                if p <= (settings.maxobscuringparts or 0) then
+                                    visible = vis
+                                end
+                            end
+
+                            if visible then
+                                local distance = (utility.myroot.Position - part.Position).Magnitude
+                                if temp > distance then
+                                    temp = distance
+                                    closest = part
+                                end
+                            end
+                        end
+                    end
+                end
             end
         end
+
+        return closest, temp
     end
 
-    return setmetatable(Drawings, Metatable);
+    spawn(function()
+        while ah8 and ah8.enabled do
+            for i,v in pairs(hashes) do
+                hashes[i] = nil
+                wait()
+            end
+            wait(4)
+            --hashes = {}
+        end
+    end)
 end
 
-local Images = {};
 
-spawn(function()
-	Images.Ring = 'https://i.imgur.com/q4qx26f.png';
-	Images.Overlay = 'https://i.imgur.com/gOCxbsR.png';
-end)
+local serialize
+local deserialize
+do
+    --/ Serializer : garbage : slow as fuck
+	
+	local function hex_encode(IN, len)
+	    local B,K,OUT,I,D=16,"0123456789ABCDEF","",0,nil
+	    while IN>0 do
+	        I=I+1
+	        IN,D=math.floor(IN/B), IN%B+1
+	        OUT=string.sub(K,D,D)..OUT
+	    end
+		if len then
+			OUT = ('0'):rep(len - #OUT) .. OUT
+		end
+	    return OUT
+	end
+	local function hex_decode(IN) 
+		return tonumber(IN, 16) 
+	end
 
-function ColorPicker.new(Position, Size, Color)
-	ColorPicker.LastGenerated = tick();
-	ColorPicker.Loading = true;
+    local types = {
+        ["nil"] = "0";
+        ["boolean"] = "1";
+        ["number"] = "2";
+        ["string"] = "3";
+        ["table"] = "4";
 
-    local Picker = { Color = Color or Color3.new(1, 1, 1); HSV = { H = 0, S = 1, V = 1 } };
-    local Drawings = CreateDrawingsTable();
-    local Position = Position or V2New();
-    local Size = Size or 150;
-    local Padding = { 10, 10, 10, 10 };
-    
-    Picker.ColorChanged = Signal.new();
-
-    local Background = Drawings['Square-Background'] {
-        Color = Color3.fromRGB(33, 33, 33);
-		Filled = false;
-		Visible = false;
-        Position = Position - V2New(Padding[4], Padding[1]);
-        Size = V2New(Size, Size) + V2New(Padding[4] + Padding[2], Padding[1] + Padding[3]);
-    };
-    local ColorPreview = Drawings['Circle-Preview'] {
-        Position = Position + (V2New(Size, Size) / 2);
-        Radius = Size / 2 - 8;
-        Filled = true;
-        Thickness = 0;
-        NumSides = 20;
-        Color = Color3.new(1, 0, 0);
-    };
-    local Main = Drawings['Image-Main'] {
-        Position = Position;
-        Size = V2New(Size, Size);
-    }; SetImage(Main, Images.Ring);
-    local Preview = Drawings['Square-Preview'] {
-        Position = Main.Position + (Main.Size / 4.5);
-        Size = Main.Size / 1.75;
-        Color = Color3.new(1, 0, 0);
-        Filled = true;
-        Thickness = 0;
-    };
-    local Overlay = Drawings['Image-Overlay'] {
-        Position = Preview.Position;
-        Size = Preview.Size;
-        Transparency = 1;
-    }; SetImage(Overlay, Images.Overlay);
-    local CursorOutline = Drawings['Circle-CursorOutline'] {
-        Radius = 4;
-        Thickness = 2;
-        Filled = false;
-        Color = Color3.new(0.2, 0.2, 0.2);
-        Position = V2New(Main.Position.X + Main.Size.X - 10, Main.Position.Y + (Main.Size.Y / 2));
-    };
-    local Cursor = Drawings['Circle-Cursor'] {
-        Radius = 3;
-        Transparency = 1;
-        Filled = true;
-        Color = Color3.new(1, 1, 1);
-        Position = CursorOutline.Position;
-    };
-    local CursorOutline = Drawings['Circle-CursorOutlineSquare'] {
-        Radius = 4;
-        Thickness = 2;
-        Filled = false;
-        Color = Color3.new(0.2, 0.2, 0.2);
-        Position = V2New(Preview.Position.X + Preview.Size.X - 2, Preview.Position.Y + 2);
-    };
-    Drawings['Circle-CursorSquare'] {
-        Radius = 3;
-        Transparency = 1;
-        Filled = true;
-        Color = Color3.new(1, 1, 1);
-        Position = CursorOutline.Position;
-    };
-    
-    function Picker:UpdatePosition(Input)
-        local MousePosition = V2New(Input.Position.X, Input.Position.Y + 33);
-
-        if self.MouseHeld then
-            if self.Item == 'Ring' then
-                local Main = self.Drawings['Image-Main'] ();
-                local Preview = self.Drawings['Square-Preview'] ();
-                local Bounds = Main.Size / 2;
-                local Center = Main.Position + Bounds;
-                local Relative = MousePosition - Center;
-                local Direction = Relative.unit;
-                local Position = Center + Direction * Main.Size.X / 2.15;
-                local H = (math.atan2(Position.Y - Center.Y, Position.X - Center.X)) * 60;
-                if H < 0 then H = 360 + H; end
-                H = H / 360;
-                self.HSV.H = H;
-                local EndColor = Color3.fromHSV(H, self.HSV.S, self.HSV.V); if EndColor ~= self.Color then self.ColorChanged:Fire(self.Color); end
-                local Pointer = self.Drawings['Circle-Cursor'] { Position = Position };
-                self.Drawings['Circle-CursorOutline'] { Position = Pointer.Position };
-                Bounds = Bounds * 2;
-                Preview.Color = Color3.fromHSV(H, 1, 1);
-                self.Color = EndColor;
-                self.Drawings['Circle-Preview'] { Color = EndColor };
-            elseif self.Item == 'HL' then
-                local Preview = self.Drawings['Square-Preview'] ();
-                local HSV = self.HSV;
-                local Position = V2New(math.clamp(MousePosition.X, Preview.Position.X, Preview.Position.X + Preview.Size.X), math.clamp(MousePosition.Y, Preview.Position.Y, Preview.Position.Y + Preview.Size.Y));
-                HSV.S = (Position.X - Preview.Position.X) / Preview.Size.X;
-                HSV.V = 1 - (Position.Y - Preview.Position.Y) / Preview.Size.Y;
-                local EndColor = Color3.fromHSV(HSV.H, HSV.S, HSV.V); if EndColor ~= self.Color then self.ColorChanged:Fire(self.Color); end
-                self.Color = EndColor;
-                self.Drawings['Circle-Preview'] { Color = EndColor };
-                local Pointer = self.Drawings['Circle-CursorSquare'] { Position = Position };
-                self.Drawings['Circle-CursorOutlineSquare'] { Position = Pointer.Position };
-            end
+		["Vector3"] = "5";
+		["CFrame"] = "6";
+        ["Instance"] = "7";
+	
+		["Color3"] = "8";
+    }
+    local rtypes = (function()
+        local a = {}
+        for i,v in pairs(types) do
+            a[v] = i
         end
+        return a
+    end)()
+
+    local typeof = typeof or type
+    local function encode(t, ...)
+        local type = typeof(t)
+        local s = types[type]
+        local c = ''
+        if type == "nil" then
+            c = types[type] .. "0"
+        elseif type == "boolean" then
+            local t = t == true and '1' or '0'
+            c = s .. t
+        elseif type == "number" then
+            local new = tostring(t)
+            local len = #new
+            c = s .. len .. "." .. new
+        elseif type == "string" then
+            local new = t
+            local len = #new
+            c = s .. len .. "." .. new
+		elseif type == "Vector3" then
+			local x,y,z = tostring(t.X), tostring(t.Y), tostring(t.Z)
+			local new = hex_encode(#x, 2) .. x .. hex_encode(#y, 2) .. y .. hex_encode(#z, 2) .. z
+			c = s .. new
+		elseif type == "CFrame" then
+			local a = {t:GetComponents()}
+			local new = ''
+			for i,v in pairs(a) do
+				local l = tostring(v)
+				new = new .. hex_encode(#l, 2) .. l
+			end
+			c = s .. new
+		elseif type == "Color3" then
+			local a = {t.R, t.G, t.B}
+			local new = ''
+			for i,v in pairs(a) do
+				local l = tostring(v)
+				new = new .. hex_encode(#l, 2) .. l
+			end
+			c = s .. new
+        elseif type == "table" then
+            return serialize(t, ...)
+        end
+        return c
+    end
+    local function decode(t, extra)
+        local p = 0
+        local function read(l)
+            l = l or 1
+            p = p + l
+            return t:sub(p-l + 1, p)
+        end
+        local function get(a)
+            local k = ""
+            while p < #t do
+                if t:sub(p+1,p+1) == a then
+                    break
+                else
+                    k = k .. read()
+                end
+            end
+            return k
+        end
+        local type = rtypes[read()]
+        local c
+
+        if type == "nil" then
+            read()
+        elseif type == "boolean" then
+            local d = read()
+            c = d == "1" and true or false
+        elseif type == "number" then
+            local length = tonumber(get("."))
+            local d = read(length+1):sub(2,-1)
+            c = tonumber(d)
+        elseif type == "string" then
+            local length = tonumber(get(".")) --read()
+            local d = read(length+1):sub(2,-1)
+            c = d
+		elseif type == "Vector3" then
+			local function getnext()
+				local length = hex_decode(read(2))
+				local a = read(tonumber(length))
+				return tonumber(a)
+			end
+			local x,y,z = getnext(),getnext(),getnext()
+			c = Vector3.new(x, y, z)
+		elseif type == "CFrame" then
+			local a = {}
+			for i = 1,12 do
+				local l = hex_decode(read(2))
+				local b = read(tonumber(l))
+				a[i] = tonumber(b)
+			end
+			c = CFrame.new(unpack(a))
+        elseif type == "Instance" then
+			local pos = hex_decode(read(2))
+			c = extra[tonumber(pos)]
+		elseif type == "Color3" then
+			local a = {}
+			for i = 1,3 do
+				local l = hex_decode(read(2))
+				local b = read(tonumber(l))
+				a[i] = tonumber(b)
+			end
+			c = Color3.new(unpack(a))
+        end
+        return c
     end
 
-    function Picker:HandleInput(Input, P, Type)
-        if Type == 'Began' then
-            if Input.UserInputType.Name == 'MouseButton1' then
-                local Main = self.Drawings['Image-Main'] ();
-                local SquareSV = self.Drawings['Square-Preview'] ();
-                local MousePosition = V2New(Input.Position.X, Input.Position.Y + 33);
-                self.MouseHeld = true;
-                local Bounds = Main.Size / 2;
-                local Center = Main.Position + Bounds;
-                local R = (MousePosition - Center);
-        
-                if R.Magnitude < Bounds.X and R.Magnitude > Bounds.X - 20 then
-                    self.Item = 'Ring';
+    function serialize(data, p)
+		if data == nil then return end
+        local type = typeof(data)
+        if type == "table" then
+            local extra = {}
+            local s = types[type]
+            local new = ""
+            local p = p or 0
+            for i,v in pairs(data) do
+                local i1,v1
+                local t0,t1 = typeof(i), typeof(v)
+
+				local a,b
+                if t0 == "Instance" then
+                    p = p + 1
+                    extra[p] = i
+                    i1 = types[t0] .. hex_encode(p, 2)
+                else
+                    i1, a = encode(i, p)
+					if a then
+						for i,v in pairs(a) do
+							extra[i] = v
+						end
+					end
                 end
                 
-                if MousePosition.X > SquareSV.Position.X and MousePosition.Y > SquareSV.Position.Y and MousePosition.X < SquareSV.Position.X + SquareSV.Size.X and MousePosition.Y < SquareSV.Position.Y + SquareSV.Size.Y then
-                    self.Item = 'HL';
+                if t1 == "Instance" then
+                    p = p + 1
+                    extra[p] = v
+                    v1 = types[t1] .. hex_encode(p, 2)
+                else
+                    v1, b = encode(v, p)
+					if b then
+						for i,v in pairs(b) do
+							extra[i] = v
+						end
+					end
+                end
+                new = new .. i1 .. v1
+            end
+            return s .. #new .. "." .. new, extra
+		elseif type == "Instance" then
+			return types[type] .. hex_encode(1, 2), {data}
+        else
+            return encode(data), {}
+        end
+    end
+
+    function deserialize(data, extra)
+		if data == nil then return end
+		extra = extra or {}
+		
+        local type = rtypes[data:sub(1,1)]
+        if type == "table" then
+
+            local p = 0
+            local function read(l)
+                l = l or 1
+                p = p + l
+                return data:sub(p-l + 1, p)
+            end
+            local function get(a)
+                local k = ""
+                while p < #data do
+                    if data:sub(p+1,p+1) == a then
+                        break
+                    else
+                        k = k .. read()
+                    end
+                end
+                return k
+            end
+
+            local length = tonumber(get("."):sub(2, -1))
+            read()
+
+            local new = {}
+
+            local l = 0
+            while p <= length do
+                l = l + 1
+
+				local function getnext()
+					local i
+                    local t = read()
+                    local type = rtypes[t]
+
+                    if type == "nil" then
+                        i = decode(t .. read())
+                    elseif type == "boolean" then
+                        i = decode(t .. read())
+                    elseif type == "number" then
+                        local l = get(".")
+                        
+                        local dc = t .. l .. read()
+                        local a = read(tonumber(l))
+                        dc = dc .. a
+
+                        i = decode(dc)
+                 	elseif type == "string" then
+                        local l = get(".")
+                        local dc = t .. l .. read()
+                        local a = read(tonumber(l))
+                        dc = dc .. a
+
+                        i = decode(dc)
+					 elseif type == "Vector3" then
+						local function getnext()
+							local length = hex_decode(read(2))
+							local a = read(tonumber(length))
+							return tonumber(a)
+						end
+						local x,y,z = getnext(),getnext(),getnext()
+						i = Vector3.new(x, y, z)
+					elseif type == "CFrame" then
+						local a = {}
+						for i = 1,12 do
+							local l = hex_decode(read(2))
+							local b = read(tonumber(l)) -- why did I decide to do this
+							a[i] = tonumber(b)
+						end
+						i = CFrame.new(unpack(a))
+					elseif type == "Instance" then
+						local pos = hex_decode(read(2))
+						i = extra[tonumber(pos)]
+					elseif type == "Color3" then
+						local a = {}
+						for i = 1,3 do
+							local l = hex_decode(read(2))
+							local b = read(tonumber(l))
+							a[i] = tonumber(b)
+						end
+						i = Color3.new(unpack(a))
+                    elseif type == "table" then
+                        local l = get(".")
+                        local dc = t .. l .. read() .. read(tonumber(l))
+                        i = deserialize(dc, extra)
+                    end
+					return i
+				end
+                local i = getnext()
+                local v = getnext()
+
+               new[(typeof(i) ~= "nil" and i or l)] =  v
+            end
+
+
+            return new
+		elseif type == "Instance" then
+			local pos = tonumber(hex_decode(data:sub(2,3)))
+			return extra[pos]
+        else
+            return decode(data, extra)
+        end
+    end
+end
+
+
+-- great you have come a far way now stop before my horrible scripting will infect you moron
+
+do
+    --/ Settings
+
+    -- TODO: Other datatypes.
+    settings.fileName = "AimHot_v8_settings.txt" -- Lovely
+    settings.saved = {}
+
+    function settings:Get(name, default)
+        local self = {}
+        local value = settings.saved[name]
+        if value == nil and default ~= nil then
+            value = default
+            settings.saved[name] = value
+        end
+        self.Value = value
+        function self:Set(val)
+            self.Value = val
+            settings.saved[name] = val
+        end
+        return self  --value or default
+    end
+
+    function settings:Set(name, value)
+        local r = settings.saved[name]
+        settings.saved[name] = value
+        return r
+    end
+
+    function settings:Save()
+        local savesettings = settings:GetAll() or {}
+        local new = mergetab(savesettings, settings.saved)
+        local js = serialize(new)
+
+        writefile(settings.fileName, js)
+    end
+
+    function settings:GetAll()
+        if not existsFile(settings.fileName) then
+            return
+        end
+        local fileContents = readfile(settings.fileName)
+
+        local data
+        pcall(function()
+            data = deserialize(fileContents)
+        end)
+        return data
+    end
+
+    function settings:Load()
+        if not existsFile(settings.fileName) then
+            return
+        end
+        local fileContents = readfile(settings.fileName)
+
+        local data
+        pcall(function()
+            data = deserialize(fileContents)
+        end)
+
+        if data then
+            data = mergetab(settings.saved, data)
+        end
+        settings.saved = data
+        return data
+    end
+    settings:Load()
+
+    spawn(function()
+        while ah8 and ah8.enabled do
+            settings:Save()
+            wait(5)
+        end
+    end)
+end
+
+-- Aiming aim bot aim aim stuff bot
+
+do
+    --/ Aimbot
+
+    -- Do I want to make this decent?
+    local aimbot_settings = {}
+    aimbot_settings.ignoreteam = settings:Get("aimbot.ignoreteam", false)
+    aimbot_settings.sensitivity = settings:Get("aimbot.sensitivity", .5)
+    aimbot_settings.locktotarget = settings:Get("aimbot.locktotarget", true)
+    aimbot_settings.checkifalive = settings:Get("aimbot.checkifalive", false)
+
+    aimbot_settings.ignorewalls = settings:Get("aimbot.ignorewalls", true)
+    aimbot_settings.maxobscuringparts = settings:Get("aimbot.maxobscuringparts", 0)
+
+
+    aimbot_settings.enabled = settings:Get("aimbot.enabled", false)
+    aimbot_settings.keybind = settings:Get("aimbot.keybind", "MouseButton2")
+    aimbot_settings.presstoenable = settings:Get("aimbot.presstoenable", true)
+
+    aimbot_settings.fovsize = settings:Get("aimbot.fovsize", 400)
+    aimbot_settings.fovenabled = settings:Get("aimbot.fovenabled", true)
+    aimbot_settings.fovsides = settings:Get("aimbot.fovsides", 10)
+    aimbot_settings.fovthickness = settings:Get("aimbot.fovthickness", 1)
+    
+    aimbot.fovshow = aimbot_settings.fovenabled.Value
+
+    setmetatable(aimbot, {
+        __index = function(self, index)
+            if aimbot_settings[index] ~= nil then
+                local Value = aimbot_settings[index]
+                if typeof(Value) == "table" then
+                    return typeof(Value) == "table" and Value.Value
+                else
+                    return Value
+                end
+            end
+            warn(("AH8_ERROR : AimbotSettings : Tried to index %s"):format(tostring(index)))
+        end;
+        __newindex = function(self, index, value)
+            if typeof(value) ~= "function" then
+                if aimbot_settings[index] then
+                    local v = aimbot_settings[index]
+                    if typeof(v) ~= "table" then
+                        aimbot_settings[index] = value
+                        return
+                    elseif v.Set then
+                        v:Set(value)
+                        return
+                    end
+                end
+            end
+            rawset(self, index, value)
+        end; -- ew
+    })
+
+
+    local worldToScreenPoint = camera.WorldToScreenPoint -- why did I start this
+    local target, _, closestplr = nil, nil, nil;
+    local completeStop = false
+
+    local enabled = false
+    bindEvent(uis.InputBegan, function(key,gpe)
+        if aimbot.enabled == false then return end
+
+        if aimbot.presstoenable then
+            aimbot.fovshow = true
+        else
+            aimbot.fovshow = enabled == true
+        end
+
+        local keyc = key.KeyCode == Enum.KeyCode.Unknown and key.UserInputType or key.KeyCode
+        if keyc.Name == aimbot.keybind then
+            if aimbot.presstoenable then
+                enabled = true
+                aimbot.fovshow = true
+            else
+                enabled = not enabled
+                aimbot.fovshow = enabled == true
+            end
+        end
+    end)
+    bindEvent(uis.InputEnded, function(key)
+        if aimbot.enabled == false then enabled = false aimbot.fovshow = false end
+        if aimbot.presstoenable then
+            aimbot.fovshow = true
+        else
+            aimbot.fovshow = enabled == true
+        end
+
+        local keyc = key.KeyCode == Enum.KeyCode.Unknown and key.UserInputType or key.KeyCode
+        if keyc.Name == aimbot.keybind then
+            if aimbot.presstoenable then
+                enabled = false
+            end
+        end
+    end)
+
+
+    local function calculateTrajectory()
+        -- my math is a bit rusty atm
+    end
+
+    local function aimAt(vector)
+        if completeStop then return end
+        local newpos = worldToScreenPoint(camera, vector)
+        mousemoverel((newpos.X - mouse.X) * aimbot.sensitivity, (newpos.Y - mouse.Y) * aimbot.sensitivity)
+    end
+
+    function aimbot.step()
+        if completeStop or aimbot.enabled == false or enabled == false or utility.mychar == nil or isDescendantOf(utility.mychar, game) == false then 
+            if target or closestplr then
+                target, closestplr, _ = nil, nil, _
+            end
+            return 
+        end
+        
+        if aimbot.locktotarget == true then
+            local cchar = utility.getcharacter(closestplr)
+            if target == nil or isDescendantOf(target, game) == false or closestplr == nil or closestplr.Parent == nil or cchar  == nil or isDescendantOf(cchar, game) == false then
+                target, _, closestplr = utility.getClosestMouseTarget({ -- closest to mouse or camera mode later just wait
+                    ignoreteam = aimbot.ignoreteam;
+                    ignorewalls = aimbot.ignorewalls;
+                    maxobscuringparts = aimbot.maxobscuringparts;
+                    name = 'Head';
+                    fov = aimbot.fovsize;
+                    checkifalive = aimbot.checkifalive;
+                    -- mode = "mouse";
+                })
+            else
+                --target = target
+                local stop = false
+                if stop == false and not (aimbot.ignoreteam==true and utility.sameteam(closestplr)==false or aimbot.ignoreteam == false) then
+                    stop = true
+                end
+                local visible = true
+
+                if stop == false and aimbot.ignorewalls == false then
+                    local vis = utility.isvisible(target.Parent, target, (aimbot.maxobscuringparts or 0))
+                    if not vis then
+                        stop = true
+                    end
                 end
 
-                self:UpdatePosition(Input, P);
+                if stop == false and aimbot.checkifalive then
+                    local isalive = utility.isalive(character, part)
+                    if not isalive then
+                        stop = true
+                    end
+                end
+
+                if stop then
+                    -- getClosestTarget({mode = "mouse"}) later
+                    target, _, closestplr = utility.getClosestMouseTarget({
+                        ignoreteam = aimbot.ignoreteam;
+                        ignorewalls = aimbot.ignorewalls;
+                        maxobscuringparts = aimbot.maxobscuringparts;
+                        name = 'Head';
+                        fov = aimbot.fovsize;
+                        checkifalive = aimbot.checkifalive;
+                    })
+                end
             end
-        elseif Type == 'Changed' then
-            if Input.UserInputType.Name == 'MouseMovement' then
-                self:UpdatePosition(Input, P);
-            end
-        elseif Type == 'Ended' and Input.UserInputType.Name == 'MouseButton1' then
-            self.Item = nil;
+        else
+            target = utility.getClosestMouseTarget({
+                ignoreteam = aimbot.ignoreteam;
+                ignorewalls = aimbot.ignorewalls;
+                maxobscuringparts = aimbot.maxobscuringparts;
+                name = 'Head';
+                fov = aimbot.fovsize;
+                checkifalive = aimbot.checkifalive;
+            })
         end
-	end
-	
-	function Picker:Dispose()
-		self.Drawings(false);
-		self.UpdatePosition = nil;
-		self.HandleInput = nil;
-		Connections:DisconnectAll(); -- scuffed tbh
-	end
 
-	Connections:Listen(UserInputService.InputBegan, function(Input, Process)
-		Picker:HandleInput(Input, Process, 'Began');
-	end);
-	Connections:Listen(UserInputService.InputChanged, function(Input, Process)
-		if Input.UserInputType.Name == 'MouseMovement' then
-			local MousePosition = V2New(Input.Position.X, Input.Position.Y + 33);
-			local Cursor = Picker.Drawings['Triangle-Cursor'] {
-				Filled = true;
-				Color = Color3.new(0.9, 0.9, 0.9);
-				PointA = MousePosition + V2New(0, 0);
-				PointB = MousePosition + V2New(12, 14);
-				PointC = MousePosition + V2New(0, 18);
-				Thickness = 0;
-			};
-		end
-		Picker:HandleInput(Input, Process, 'Changed');
-	end);
-	Connections:Listen(UserInputService.InputEnded, function(Input, Process)
-		Picker:HandleInput(Input, Process, 'Ended');
-		
-		if Input.UserInputType.Name == 'MouseButton1' then
-			Picker.MouseHeld = false;
-		end
-	end);
+        if target then
+            aimAt(target:GetRenderCFrame().Position)
+            -- hot or not?
+        end
+    end
 
-	ColorPicker.Loading = false;
-
-    Picker.Drawings = Drawings;
-    return Picker;
+    function aimbot:End()
+        completeStop = true
+        target = nil
+    end
 end
 
-function SubMenu:Show(Position, Title, Options)
-	self.Open = true;
 
-	local Visible = true;
-	local BasePosition = Position;
-	local BaseSize = V2New(200, 140);
-	local End = BasePosition + BaseSize;
+-- Mostly visuals below here
+local clearDrawn, newdrawing
+do
+    --/ Drawing extra functions
 
-	self.Bounds = { BasePosition.X, BasePosition.Y, End.X, End.Y };
+    local insert = table.insert
+    local newd = drawing.new
 
-	delay(.025, function()
-		if not self.Open then return; end
+    local drawn = {}
+    function clearDrawn() -- who doesnt love drawing library
+        for i,v in pairs(drawn) do
+            pcall(function() v:Remove() end)
+            drawn[i] = nil
+        end
+        drawn = {}
+    end
 
-		Menu:AddMenuInstance('Sub-Main', 'Square', {
-			Size		= BaseSize;
-			Position	= BasePosition;
-			Filled		= false;
-			Color		= Colors.Primary.Main;
-			Thickness	= 3;
-			Visible		= Visible;
-		});
-	end);
-	Menu:AddMenuInstance('Sub-TopBar', 'Square', {
-		Position	= BasePosition;
-		Size		= V2New(BaseSize.X, 10);
-		Color		= Colors.Primary.Dark;
-		Filled		= true;
-		Visible		= Visible;
-	});
-	Menu:AddMenuInstance('Sub-TopBarTwo', 'Square', {
-		Position 	= BasePosition + V2New(0, 10);
-		Size		= V2New(BaseSize.X, 20);
-		Color		= Colors.Primary.Main;
-		Filled		= true;
-		Visible		= Visible;
-	});
-	Menu:AddMenuInstance('Sub-TopBarText', 'Text', {
-		Size 		= 20;
-		Position	= shared.MenuDrawingData.Instances['Sub-TopBarTwo'].Position + V2New(15, -3);
-		Text		= Title or '';
-		Color		= Colors.Secondary.Light;
-		Visible		= Visible;
-	});
-	Menu:AddMenuInstance('Sub-Filling', 'Square', {
-		Size		= BaseSize - V2New(0, 30);
-		Position	= BasePosition + V2New(0, 30);
-		Filled		= true;
-		Color		= Colors.Secondary.Main;
-		Transparency= .75;
-		Visible		= Visible;
-	});
-
-	if Options then
-		for Index, Option in pairs(Options) do -- currently only supports color and button(but color is a button so), planning on fully rewriting or something
-			local function GetName(Name) return ('Sub-%s.%d'):format(Name, Index) end
-			local Position = shared.MenuDrawingData.Instances['Sub-Filling'].Position + V2New(20, Index * 25 - 10);
-			-- local BasePosition	= shared.MenuDrawingData.Instances.Filling.Position + V2New(30, v.Index * 25 - 10);
-
-			if Option.Type == 'Color' then
-				local ColorPreview = Menu:AddMenuInstance(GetName'ColorPreview', 'Circle', {
-					Position = Position;
-					Color = Option.Color;
-					Radius = IsSynapse and 10 or 10;
-					NumSides = 10;
-					Filled = true;
-					Visible = true;
-				});
-				local Text = Menu:AddMenuInstance(GetName'Text', 'Text', {
-					Text = Option.Text;
-					Position = ColorPreview.Position + V2New(15, -8);
-					Size = 16;
-					Color = Colors.Primary.Dark;
-					Visible = true;
-				});
-				UIButtons[#UIButtons + 1] = {
-					FromSubMenu = true;
-					Option = function() return Option.Function(ColorPreview, BasePosition + V2New(BaseSize.X, 0)) end;
-					Instance = Menu:AddMenuInstance(Format('%s_Hitbox', GetName'Button'), 'Square', {
-						Position	= Position - V2New(20, 12);
-						Size		= V2New(BaseSize.X, 25);
-						Visible		= false;
-					});
-				};
-			elseif Option.Type == 'Button' then
-				UIButtons[#UIButtons + 1] = {
-					FromSubMenu = true;
-					Option = Option.Function;
-					Instance = Menu:AddMenuInstance(Format('%s_Hitbox', GetName'Button'), 'Square', {
-						Size		= V2New(BaseSize.X, 20) - V2New(20, 0);
-						Visible		= true;
-						Transparency= .5;
-						Position	= Position - V2New(10, 10);
-						Color		= Colors.Secondary.Light;
-						Filled		= true;
-					});
-				};
-				local Text		= Menu:AddMenuInstance(Format('%s_Text', GetName'Text'), 'Text', {
-					Text		= Option.Text;
-					Size		= 18;
-					Position	= Position + V2New(5, -10);
-					Visible		= true;
-					Color		= Colors.Primary.Dark;
-				});
-			end
-		end
-	end
+    function newdrawing(class, props)
+        --if visuals.enabled ~= true then
+        --    return
+        --end
+        local new = newd(class)
+        for i,v in pairs(props) do
+            new[i] = v
+        end
+        insert(drawn, new)
+        return new
+    end
 end
 
-function SubMenu:Hide()
-	self.Open = false;
 
-	for i, v in pairs(shared.MenuDrawingData.Instances) do
-		if i:sub(1, 3) == 'Sub' then
-			v.Visible = false;
+do
+    --/ Crosshair
+    local crosshair_settings = {}
+    crosshair_settings.enabled = settings:Get("crosshair.enabled", false)
+    crosshair_settings.size = settings:Get("crosshair.size", 40)
+    crosshair_settings.thickness = settings:Get("crosshair.thickness", 1)
+    crosshair_settings.color = Color3.fromRGB(159, 243, 233)
+    crosshair_settings.transparency = settings:Get("crosshair.transparency", .1)
 
-			if i:sub(4, 4) == ':' then -- ';' = Temporary so remove
-				v:Remove();
-				shared.MenuDrawingData.Instance[i] = nil;
-			end
-		end
-	end
+    setmetatable(crosshair, { -- yes I know it is easier ways to add this but that requires effort
+        __index = function(self, index)
+            if crosshair_settings[index] ~= nil then
+                local Value = crosshair_settings[index]
+                if typeof(Value) == "table" then
+                    return typeof(Value) == "table" and Value.Value
+                else
+                    return Value
+                end
+            end
+            warn(("AH8_ERROR : CrosshairSettings : Tried to index %s"):format(tostring(index)))
+        end;
+        __newindex = function(self, index, value)
+            if typeof(value) ~= "function" then
+                if crosshair_settings[index] then
+                    local v = crosshair_settings[index]
+                    if typeof(v) ~= "table" then
+                        crosshair_settings[index] = value
+                        return
+                    elseif v.Set then
+                        v:Set(value)
+                        return
+                    end
+                end
+            end
+            rawset(self, index, value)
+        end;
+    })
 
-	for i, Button in pairs(UIButtons) do
-		if Button.FromSubMenu then
-			UIButtons[i] = nil;
-		end
-	end
+    local crossHor
+    local crossVer
 
-	spawn(function() -- stupid bug happens if i dont use this
-		for i = 1, 10 do
-			if shared.CurrentColorPicker then -- dont know why 'CurrentColorPicker' isnt a variable in this
-				shared.CurrentColorPicker:Dispose();
-			end
-			wait(0.1);
-		end
-	end)
+    local camera = workspace.CurrentCamera
+    local vpSize = camera.ViewportSize
 
-	CurrentColorPicker = nil;
+    local completeStop = false
+    local function drawCrosshair()
+        if completeStop then return crosshair:Remove() end
+        if crossHor ~= nil or crossVer ~= nil then
+            return
+        end
+
+        local self = {
+            Visible = true;
+            Transparency = (1 - crosshair.transparency);
+            Thickness = crosshair.thickness;
+            Color = crosshair.color;
+        }
+
+        if crosshair.enabled ~= true then
+            self.Visible = false
+        end
+        local h,v = newdrawing("Line", self), newdrawing("Line", self)
+
+        if self.Visible then
+            local vpSize = camera.ViewportSize/2
+            local size = crosshair.size/2
+            local x,y = vpSize.X, vpSize.Y
+
+            h.From = v2new(x - size, y)
+            h.To = v2new(x + size, y)
+            
+            v.From = v2new(x, y - size)
+            v.To = v2new(x, y + size)
+        end
+
+        crossHor = h
+        crossVer = v
+    end
+
+    local function updateCrosshair() -- no reason at all to update this each frame
+        -- I will replace with ViewportSize.Changed later
+        if completeStop then return end
+
+        if crossHor == nil or crossVer == nil then
+            return drawCrosshair()
+        end
+
+        local visible = crosshair.enabled
+
+        crossHor.Visible = visible
+        crossVer.Visible = visible
+
+        if visible then
+            local vpSize = camera.ViewportSize / 2
+            local size = crosshair.size/2
+            local x,y = vpSize.X, vpSize.Y
+
+            local color = crosshair.color
+            crossHor.Color = color
+            crossVer.Color = color
+            
+            local trans = (1 - crosshair.transparency)
+            crossHor.Transparency = trans
+            crossVer.Transparency = trans
+
+            local thick = crosshair.thickness
+            crossHor.Thickness = thick
+            crossVer.Thickness = thick
+
+            crossHor.From = v2new(x - size, y)
+            crossHor.To = v2new(x + size, y)
+        
+            crossVer.From = v2new(x, y - size)
+            crossVer.To = v2new(x, y + size)
+        end
+    end
+
+    function crosshair:Remove()
+        if crossHor ~= nil then
+            crossHor:Remove()
+            crossHor = nil
+        end
+        if crossVer ~= nil then
+            crossVer:Remove()
+            crossVer = nil
+        end
+    end
+
+    function crosshair:End()
+        completeStop = true
+        if crossHor ~= nil then
+            crossHor:Remove()
+            crossHor = nil
+        end
+        if crossVer ~= nil then
+            crossVer:Remove()
+            crossVer = nil
+        end
+        crosshair.enabled = false
+    end
+
+    crosshair.step = updateCrosshair
+    --function crosshair.step()
+    --    updateCrosshair()        
+    --end
 end
 
-function CreateMenu(NewPosition) -- Create Menu
-	MenuLoaded = false;
-	UIButtons  = {};
-	Sliders	   = {};
 
-	local BaseSize = V2New(300, 625);
-	local BasePosition = NewPosition or V2New(Camera.ViewportSize.X / 8 - (BaseSize.X / 2), Camera.ViewportSize.Y / 2 - (BaseSize.Y / 2));
+do
+    --/ Tracers
 
-	BasePosition = V2New(math.clamp(BasePosition.X, 0, Camera.ViewportSize.X), math.clamp(BasePosition.Y, 0, Camera.ViewportSize.Y));
+    local tracers_settings = {}
+    tracers_settings.enabled = settings:Get("tracers.enabled", true)
+    tracers_settings.origin = v2new(camera.ViewportSize.X/2, camera.ViewportSize.Y)
+    tracers_settings.frommouse = settings:Get("tracers.frommouse", true)
+    tracers_settings.transparency = .6
+    tracers_settings.thickness = 1.5
+    tracers_settings.showteam = settings:Get("tracers.showteam", true)
 
-	Menu:AddMenuInstance('CrosshairX', 'Line', {
-		Visible			= false;
-		Color			= Color3.new(0, 1, 0);
-		Transparency	= 1;
-		Thickness		= 1;
-	});
-	Menu:AddMenuInstance('CrosshairY', 'Line', {
-		Visible			= false;
-		Color			= Color3.new(0, 1, 0);
-		Transparency	= 1;
-		Thickness		= 1;
-	});
+    tracers_settings.drawdistance = settings:Get("tracers.drawdistance", 4000)
+    tracers_settings.showvisible = settings:Get("tracers.showvisible", true)
 
-	delay(.025, function() -- since zindex doesnt exist
-		Menu:AddMenuInstance('Main', 'Square', {
-			Size		= BaseSize;
-			Position	= BasePosition;
-			Filled		= false;
-			Color		= Colors.Primary.Main;
-			Thickness	= 3;
-			Visible		= true;
-		});
-	end);
-	Menu:AddMenuInstance('TopBar', 'Square', {
-		Position	= BasePosition;
-		Size		= V2New(BaseSize.X, 15);
-		Color		= Colors.Primary.Dark;
-		Filled		= true;
-		Visible		= true;
-	});
-	Menu:AddMenuInstance('TopBarTwo', 'Square', {
-		Position 	= BasePosition + V2New(0, 15);
-		Size		= V2New(BaseSize.X, 45);
-		Color		= Colors.Primary.Main;
-		Filled		= true;
-		Visible		= true;
-	});
-	Menu:AddMenuInstance('TopBarText', 'Text', {
-		Size 		= 25;
-		Position	= shared.MenuDrawingData.Instances.TopBarTwo.Position + V2New(25, 10);
-		Text		= 'Unnamed ESP';
-		Color		= Colors.Secondary.Light;
-		Visible		= true;
-		Transparency= 1; -- proto outline fix
-		Outline 	= true;
-	});
-	Menu:AddMenuInstance('TopBarTextBR', 'Text', {
-		Size 		= 18;
-		Position	= shared.MenuDrawingData.Instances.TopBarTwo.Position + V2New(BaseSize.X - 75, 25);
-		Text		= 'by ic3w0lf';
-		Color		= Colors.Secondary.Light;
-		Visible		= true;
-		Transparency= 1;
-		Outline 	= true;
-	});
-	Menu:AddMenuInstance('Filling', 'Square', {
-		Size		= BaseSize - V2New(0, 60);
-		Position	= BasePosition + V2New(0, 60);
-		Filled		= true;
-		Color		= Colors.Secondary.Main;
-		Transparency= .5;
-		Visible		= true;
-	});
+    tracers_settings.enemycolor = Color3.fromRGB(0, 251, 255) -- 238,38,37, 255,0,13, 255,7,58
+    tracers_settings.teamcolor = Color3.fromRGB(255, 254, 250) -- 121,255,97, 57,255,20
+    tracers_settings.visiblecolor = Color3.fromRGB(255, 0, 0)
 
-	local CPos = 0;
+    setmetatable(tracers, {
+        __index = function(self, index)
+            if tracers_settings[index] ~= nil then
+                local Value = tracers_settings[index]
+                if typeof(Value) == "table" then
+                    return typeof(Value) == "table" and Value.Value
+                else
+                    return Value
+                end
+            end
+            warn(("AH8_ERROR : TracersSettings : Tried to index %s"):format(tostring(index)))
+        end;
+        __newindex = function(self, index, value)
+            if typeof(value) ~= "function" then
+                if tracers_settings[index] then
+                    local v = tracers_settings[index]
+                    if typeof(v) ~= "table" then
+                        tracers_settings[index] = value
+                        return
+                    elseif v.Set then
+                        v:Set(value)
+                        return
+                    end
+                end
+            end
+            rawset(self, index, value)
+        end;
+    })
 
-	GetTableData(Options)(function(i, v)
-		if typeof(v.Value) == 'boolean' and not IsStringEmpty(v.Text) and v.Text ~= nil then
-			CPos 				= CPos + 25;
-			local BaseSize		= V2New(BaseSize.X, 30);
-			local BasePosition	= shared.MenuDrawingData.Instances.Filling.Position + V2New(30, v.Index * 25 - 10);
-			UIButtons[#UIButtons + 1] = {
-				Option = v;
-				Instance = Menu:AddMenuInstance(Format('%s_Hitbox', v.Name), 'Square', {
-					Position	= BasePosition - V2New(30, 15);
-					Size		= BaseSize;
-					Visible		= false;
-				});
-			};
-			Menu:AddMenuInstance(Format('%s_OuterCircle', v.Name), 'Circle', {
-				Radius		= 10;
-				Position	= BasePosition;
-				Color		= Colors.Secondary.Light;
-				Filled		= true;
-				Visible		= true;
-			});
-			Menu:AddMenuInstance(Format('%s_InnerCircle', v.Name), 'Circle', {
-				Radius		= 7;
-				Position	= BasePosition;
-				Color		= Colors.Secondary.Dark;
-				Filled		= true;
-				Visible		= v.Value;
-			});
-			Menu:AddMenuInstance(Format('%s_Text', v.Name), 'Text', {
-				Text		= v.Text;
-				Size		= 20;
-				Position	= BasePosition + V2New(20, -10);
-				Visible		= true;
-				Color		= Colors.Secondary.Light;
-				Transparency= 1;
-				Outline		= true;
-			});
-		end
-	end)
-	GetTableData(Options)(function(i, v) -- just to make sure certain things are drawn before or after others, too lazy to actually sort table
-		if typeof(v.Value) == 'number' then
-			CPos 				= CPos + 25;
+    local worldToViewportPoint = camera.WorldToViewportPoint
 
-			local BaseSize		= V2New(BaseSize.X, 30);
-			local BasePosition	= shared.MenuDrawingData.Instances.Filling.Position + V2New(0, CPos - 10);
+    local completeStop = false
+    local drawn = {}
 
-			local Line			= Menu:AddMenuInstance(Format('%s_SliderLine', v.Name), 'Square', {
-				Transparency	= 1;
-				Color			= Colors.Secondary.Light;
-				-- Thickness		= 3;
-				Filled			= true;
-				Visible			= true;
-				Position 		= BasePosition + V2New(15, -5);
-				Size 			= BaseSize - V2New(30, 10);
-				Transparency	= 0.5;
-			});
-			local Slider		= Menu:AddMenuInstance(Format('%s_Slider', v.Name), 'Square', {
-				Visible			= true;
-				Filled			= true;
-				Color			= Colors.Primary.Dark;
-				Size			= V2New(5, Line.Size.Y);
-				Transparency	= 0.5;
-			});
-			local Text			= Menu:AddMenuInstance(Format('%s_Text', v.Name), 'Text', {
-				Text			= v.Text;
-				Size			= 20;
-				Center			= true;
-				Transparency	= 1;
-				Outline			= true;
-				Visible			= true;
-				Color			= Colors.White;
-			}); Text.Position	= Line.Position + (Line.Size / 2) - V2New(0, Text.TextBounds.Y / 1.75);
-			local AMT			= Menu:AddMenuInstance(Format('%s_AmountText', v.Name), 'Text', {
-				Text			= tostring(v.Value);
-				Size			= 22;
-				Center			= true;
-				Transparency	= 1;
-				Outline			= true;
-				Visible			= true;
-				Color			= Colors.White;
-				Position		= Text.Position;
-			});
+    local function drawTemplate(player)
+        if completeStop then return end
 
-			local CSlider = {Slider = Slider; Line = Line; Min = v.AllArgs[4]; Max = v.AllArgs[5]; Option = v};
-			local Dummy = Instance.new'NumberValue';
+        if drawn[player] then
+            return drawn[player]
+           --tracers:Remove(player)
+        end
 
-			Dummy:GetPropertyChangedSignal'Value':Connect(function()
-				Text.Transparency = Dummy.Value;
-				AMT.Transparency = 1 - Dummy.Value;
-			end);
 
-			Dummy.Value = 1;
+        local a = newdrawing("Line", {
+            Color = tracers.enemycolor;
+            Thickness = tracers.thickness;
+            Transparency = 1 - tracers.transparency;
+            Visible = false;
+        })
+        drawn[player] = a
+        return a
+    end
 
-			function CSlider:ShowValue(Bool)
-				self.ShowingValue = Bool;
+    function tracers:Draw(player, character, root, humanoid, onscreen, isteam, dist, screenpos)
+        if completeStop then return end
 
-				TweenService:Create(Dummy, TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), { Value = Bool and 0 or 1 }):Play();
-			end
+        if tracers.enabled ~= true then return tracers:Remove(player) end
+        if character == nil then return tracers:Remove(player) end
 
-			Sliders[#Sliders + 1] = CSlider;
+        if tracers.showteam~=true and isteam then return tracers:Remove(player) end
 
-			-- local Percent = (v.Value / CSlider.Max) * 100;
-			-- local Size = math.abs(Line.From.X - Line.To.X);
-			-- local Value = Size * (Percent / 100); -- this shit's inaccurate but fuck it i'm not even gonna bother fixing it
+        if root == nil then return tracers:Remove(player) end
 
-			Slider.Position = Line.Position + V2New(35, 0);
-			
-			v.BaseSize = BaseSize;
-			v.BasePosition = BasePosition;
-			-- AMT.Position = BasePosition + V2New(BaseSize.X - AMT.TextBounds.X - 10, -10)
-		end
-	end)
-	local FirstItem = false;
-	GetTableData(Options)(function(i, v) -- just to make sure certain things are drawn before or after others, too lazy to actually sort table
-		if typeof(v.Value) == 'EnumItem' then
-			CPos 				= CPos + (not FirstItem and 30 or 25);
-			FirstItem			= true;
+        if dist then
+            if dist > tracers.drawdistance then
+                return tracers:Remove(player)
+            end
+        end
 
-			local BaseSize		= V2New(BaseSize.X, FirstItem and 30 or 25);
-			local BasePosition	= shared.MenuDrawingData.Instances.Filling.Position + V2New(0, CPos - 10);
+        local screenpos = worldToViewportPoint(camera, root.Position)
 
-			UIButtons[#UIButtons + 1] = {
-				Option = v;
-				Instance = Menu:AddMenuInstance(Format('%s_Hitbox', v.Name), 'Square', {
-					Size		= V2New(BaseSize.X, 20) - V2New(30, 0);
-					Visible		= true;
-					Transparency= .5;
-					Position	= BasePosition + V2New(15, -10);
-					Color		= Colors.Secondary.Light;
-					Filled		= true;
-				});
-			};
-			local Text		= Menu:AddMenuInstance(Format('%s_Text', v.Name), 'Text', {
-				Text		= v.Text;
-				Size		= 20;
-				Position	= BasePosition + V2New(20, -10);
-				Visible		= true;
-				Color		= Colors.Secondary.Light;
-				Transparency= 1;
-				Outline		= true;
-			});
-			local BindText	= Menu:AddMenuInstance(Format('%s_BindText', v.Name), 'Text', {
-				Text		= tostring(v.Value):match'%w+%.%w+%.(.+)';
-				Size		= 20;
-				Position	= BasePosition;
-				Visible		= true;
-				Color		= Colors.Secondary.Light;
-				Transparency= 1;
-				Outline		= true;
-			});
+        local line
+        if drawn[player] ~= nil then
+            line = drawn[player]
+        elseif onscreen then
+            line = drawTemplate(player)
+        end
+        if line then
+            if onscreen then
+                line.From = tracers.origin
+                line.To = v2new(screenpos.X, screenpos.Y)
+        
+                local color
+                if isteam == false and tracers.showvisible then
+                    if utility.isvisible(character, root, 0) then
+                        color = tracers.visiblecolor
+                    else
+                        color = isteam and tracers.teamcolor or tracers.enemycolor
+                    end
+                else
+                    color = isteam and tracers.teamcolor or tracers.enemycolor
+                end
 
-			Options[i].BaseSize = BaseSize;
-			Options[i].BasePosition = BasePosition;
-			BindText.Position = BasePosition + V2New(BaseSize.X - BindText.TextBounds.X - 20, -10);
-		end
-	end)
-	GetTableData(Options)(function(i, v) -- just to make sure certain things are drawn before or after others, too lazy to actually sort table
-		if typeof(v.Value) == 'function' then
-			local BaseSize		= V2New(BaseSize.X, 30);
-			local BasePosition	= shared.MenuDrawingData.Instances.Filling.Position + V2New(0, CPos + (25 * v.AllArgs[4]) - 35);
+                line.Color = color
+            end
+            line.Visible = onscreen
+        end
+        --return line
+    end
 
-			UIButtons[#UIButtons + 1] = {
-				Option = v;
-				Instance = Menu:AddMenuInstance(Format('%s_Hitbox', v.Name), 'Square', {
-					Size		= V2New(BaseSize.X, 20) - V2New(30, 0);
-					Visible		= true;
-					Transparency= .5;
-					Position	= BasePosition + V2New(15, -10);
-					Color		= Colors.Secondary.Light;
-					Filled		= true;
-				});
-			};
-			local Text		= Menu:AddMenuInstance(Format('%s_Text', v.Name), 'Text', {
-				Text		= v.Text;
-				Size		= 20;
-				Position	= BasePosition + V2New(20, -10);
-				Visible		= true;
-				Color		= Colors.Secondary.Light;
-				Transparency= 1;
-				Outline		= true;
-			});
+    function tracers:Hide(player)
+        if completeStop then return end
 
-			-- BindText.Position = BasePosition + V2New(BaseSize.X - BindText.TextBounds.X - 10, -10);
-		end
-	end)
+        local line = drawn[player]
+        if line then
+            line.Visible = false
+        end
+    end
 
-	delay(.1, function()
-		MenuLoaded = true;
-	end);
+    function tracers:Remove(player)
+        if drawn[player] ~= nil then
+            drawn[player]:Remove()
+            drawn[player] = nil
+        end
+    end
 
-	-- this has to be at the bottom cuz proto drawing api doesnt have zindex :triumph:	
-	Menu:AddMenuInstance('Cursor1', 'Line', {
-		Visible			= false;
-		Color			= Color3.new(1, 0, 0);
-		Transparency	= 1;
-		Thickness		= 2;
-	});
-	Menu:AddMenuInstance('Cursor2', 'Line', {
-		Visible			= false;
-		Color			= Color3.new(1, 0, 0);
-		Transparency	= 1;
-		Thickness		= 2;
-	});
-	Menu:AddMenuInstance('Cursor3', 'Line', {
-		Visible			= false;
-		Color			= Color3.new(1, 0, 0);
-		Transparency	= 1;
-		Thickness		= 2;
-	});
+    function tracers:RemoveAll()
+        for i,v in pairs(drawn) do
+            pcall(function()
+                v:Remove()
+            end)
+            drawn[i] = nil
+        end
+        drawn = {}
+    end
+    function tracers:End()
+        completeStop = true
+        for i,v in pairs(drawn) do
+            pcall(function()
+                v:Remove()
+            end)
+            drawn[i] = nil
+        end
+        drawn = {}
+    end
 end
 
-CreateMenu();
-delay(0.1, function()
-	SubMenu:Show(V2New()); -- Create the submenu
-	SubMenu:Hide();
-end);
+do
+    --/ ESP
+    local esp_settings = {}
 
-shared.UESP_InputChangedCon = UserInputService.InputChanged:Connect(function(input)
-	if input.UserInputType.Name == 'MouseMovement' and Options.MenuOpen.Value then
-		for i, v in pairs(Sliders) do
-			local Values = {
-				v.Line.Position.X;
-				v.Line.Position.Y;
-				v.Line.Position.X + v.Line.Size.X;
-				v.Line.Position.Y + v.Line.Size.Y;
-			};
-			if MouseHoveringOver(Values) then
-				v:ShowValue(true);
-			else
-				if not MouseHeld then v:ShowValue(false); end
-			end
-		end
-	end
+    esp_settings.enabled = settings:Get("esp.enabled", true)
+    esp_settings.showteam = settings:Get("esp.showteam", true)
+    
+    esp_settings.teamcolor = Color3.fromRGB(255, 254, 250) -- 121,255,97, 57,255,20
+    esp_settings.enemycolor = Color3.fromRGB(0, 251, 255) -- 238,38,37, 255,0,13, 255,7,58
+    esp_settings.visiblecolor = Color3.fromRGB(255, 0, 0) -- 0, 141, 255
+
+
+    esp_settings.size = settings:Get("esp.size", 16)
+    esp_settings.centertext = settings:Get("esp.centertext", true)
+    esp_settings.outline = settings:Get("esp.outline", true)
+    esp_settings.transparency = settings:Get("esp.transparency", 0.1)
+
+    esp_settings.drawdistance = settings:Get("esp.drawdistance", 1500)
+
+
+    esp_settings.showvisible = settings:Get("esp.showvisible", true)
+
+    esp_settings.yoffset = settings:Get("esp.yoffset", 0)
+
+    esp_settings.showhealth = settings:Get("esp.showhealth", true)
+    esp_settings.showdistance = settings:Get("esp.showdistance", true)
+
+
+    setmetatable(esp, {
+        __index = function(self, index)
+            if esp_settings[index] ~= nil then
+                local Value = esp_settings[index]
+                if typeof(Value) == "table" then
+                    return typeof(Value) == "table" and Value.Value
+                else
+                    return Value
+                end
+            end
+            warn(("AH8_ERROR : EspSettings : Tried to index %s"):format(tostring(index)))
+        end;
+        __newindex = function(self, index, value)
+            if typeof(value) ~= "function" then
+                if esp_settings[index] then
+                    local v = esp_settings[index]
+                    if typeof(v) ~= "table" then
+                        esp_settings[index] = value
+                        return
+                    elseif v.Set then
+                        v:Set(value)
+                        return
+                    end
+                end
+            end
+            rawset(self, index, value)
+        end;
+    })
+
+    local unpack = unpack
+    local findFirstChild = Instance.new("Part").FindFirstChild
+    local worldToViewportPoint = camera.WorldToViewportPoint
+    local getBoundingBox = Instance.new("Model").GetBoundingBox
+    local getExtentsSize = Instance.new("Model").GetExtentsSize
+
+    local floor = math.floor
+    local insert = table.insert
+    local concat = table.concat
+
+    local drawn = {}
+    local completeStop = false
+
+    local function drawTemplate(player)
+        if completeStop then return end
+        if drawn[player] then return drawn[player] end
+
+        local obj = newdrawing("Text", {
+            Text = "n/a",
+            Size = esp.size,
+            Color = esp.enemycolor,
+            Center = esp.centertext,
+            Outline = esp.outline,
+            Transparency = (1 - esp.transparency),
+        })
+        return obj
+    end
+
+    function esp:Draw(player, character, root, humanoid, onscreen, isteam, dist)
+        if completeStop then return end
+        if character == nil then return esp:Remove(player) end
+        if root == nil then return esp:Remove(player) end
+        if esp.showteam~=true and isteam then return esp:Remove(player) end
+
+        if dist then
+            if dist > esp.drawdistance then
+                return esp:Remove(player)
+            end
+        end
+
+        local where, isvis = worldToViewportPoint(camera, (root.CFrame * esp.offset).p);
+        --if not isvis then return esp:Remove(player) end
+
+
+        local oesp = drawn[player]
+        if oesp == nil then
+            oesp = drawTemplate(player)
+            drawn[player] = oesp
+        end
+        
+        if oesp then
+            oesp.Visible = isvis
+            if isvis then
+                oesp.Position = v2new(where.X, where.Y)
+
+                local color
+                if isteam == false and esp.showvisible then
+                    if utility.isvisible(character, root, 0) then
+                        color = esp.visiblecolor
+                    else
+                        color = isteam and esp.teamcolor or esp.enemycolor
+                    end
+                else
+                    color = isteam and esp.teamcolor or esp.enemycolor
+                end
+
+                oesp.Color = color
+
+                oesp.Center = esp.centertext
+                oesp.Size = esp.size
+                oesp.Outline = esp.outline
+                oesp.Transparency = (1 - esp.transparency)
+
+                local texts = {
+                    player.Name,
+                }
+                
+                local b = humanoid and esp.showhealth and ("%s/%s"):format(floor(humanoid.Health + .5), floor(humanoid.MaxHealth + .5))
+                if b then
+                    insert(texts, b)
+                end
+                local c = dist and esp.showdistance and ("%s"):format(floor(dist + .5))
+                if c then
+                    insert(texts, c)
+                end
+
+                local text = "[  " .. concat(texts, " | ") .. " ]"
+                oesp.Text = text
+            end
+        end
+    end
+
+    function esp:Remove(player)
+        local data = drawn[player]
+        if data ~= nil then
+            data:Remove()
+            drawn[player] = nil
+        end
+    end
+
+    function esp:RemoveAll()
+        for i,v in pairs(drawn) do
+            pcall(function() v:Remove() end)
+            drawn[i] = nil
+        end
+    end
+
+    function esp:End()
+        completeStop = true
+        esp:RemoveAll()
+    end
+end
+
+
+do
+    --/ Boxes
+
+    local boxes_settings = {}
+    boxes_settings.enabled = settings:Get("boxes.enabled", true)
+    boxes_settings.transparency = settings:Get("boxes.transparency", .2)
+    boxes_settings.thickness = settings:Get("boxes.thickness", 0.2)
+    boxes_settings.showteam = settings:Get("boxes.showteam", true)
+
+    boxes_settings.teamcolor = Color3.fromRGB(255, 254, 250) -- 121,255,97,  57,255,20
+    boxes_settings.enemycolor = Color3.fromRGB(0, 251, 255) -- 238,38,37, 255,0,13, 255,7,58
+    boxes_settings.visiblecolor = Color3.fromRGB(255, 0, 0)
+
+    boxes_settings.thirddimension = settings:Get("boxes.thirddimension", false)
+
+    boxes_settings.showvisible = settings:Get("boxes.showvisible", true)
+
+    boxes_settings.dist3d = settings:Get("boxes.dist3d", 1000)
+    boxes_settings.drawdistance = settings:Get("boxes.drawdistance", 4000)
+    boxes_settings.color = Color3.fromRGB(255, 50, 50)
+
+    setmetatable(boxes, {
+        __index = function(self, index)
+            if boxes_settings[index] ~= nil then
+                local Value = boxes_settings[index]
+                if typeof(Value) == "table" then
+                    return typeof(Value) == "table" and Value.Value
+                else
+                    return Value
+                end
+            end
+            warn(("AH8_ERROR : BoxesSettings : Tried to index %s"):format(tostring(index)))
+        end;
+        __newindex = function(self, index, value)
+            if typeof(value) ~= "function" then
+                if boxes_settings[index] then
+                    local v = boxes_settings[index]
+                    if typeof(v) ~= "table" then
+                        boxes_settings[index] = value
+                        return
+                    elseif v.Set then
+                        v:Set(value)
+                        return
+                    end
+                end
+            end
+            rawset(self, index, value)
+        end;
+    })
+
+    local unpack = unpack
+    local findFirstChild = Instance.new("Part").FindFirstChild
+    local worldToViewportPoint = camera.WorldToViewportPoint
+    local worldToScreenPoint = camera.WorldToScreenPoint
+    local getBoundingBox = Instance.new("Model").GetBoundingBox
+    local getExtentsSize = Instance.new("Model").GetExtentsSize
+
+    local completeStop = false
+    local drawn = {}
+    local function drawTemplate(player, amount)
+        if completeStop then return end
+
+        if drawn[player] then
+            if #drawn[player] == amount then
+                return drawn[player]
+            end
+            boxes:Remove(player)
+        end
+
+        local props = {
+            Visible = true;
+            Transparency = 1 - boxes.transparency;
+            Thickness = boxes.thickness;
+            Color = boxes.color;
+        }
+
+        local a = {}
+        for i = 1,amount or 4 do
+            a[i] = newdrawing("Line", props)
+        end
+
+        drawn[player] = {unpack(a)}
+        return unpack(a)
+    end
+
+    local function updateLine(line, from, to, vis, color)
+        if line == nil then return end
+
+        line.Visible = vis
+        if vis then
+            line.From = from
+            line.To = to
+            line.Color = color
+        end
+    end
+
+    function boxes:Draw(player, character, root, humanoid, onscreen, isteam, dist) -- No skid plox
+        if completeStop then return end
+        if character == nil then return boxes:Remove(player) end
+        if root == nil then return boxes:Remove(player) end
+        if not onscreen then return boxes:Remove(player) end
+        if boxes.showteam == false and isteam then return boxes:Remove(player) end
+
+        local _3dimension = boxes.thirddimension
+        if dist ~= nil then
+            if dist > boxes.drawdistance then
+                return boxes:Remove(player)
+            elseif _3dimension and dist > boxes.dist3d then
+                _3dimension = false
+            end
+        end
+
+        local color
+        if isteam == false and boxes.showvisible then
+            if utility.isvisible(character, root, 0) then
+                color = boxes.visiblecolor
+            else
+                color = isteam and boxes.teamcolor or boxes.enemycolor
+            end
+        else
+            color = isteam and boxes.teamcolor or boxes.enemycolor
+        end
+
+        --size = ... lastsize--, v3new(5,8,0) --getBoundingBox(character)--]] root.CFrame, getExtentsSize(character)--]] -- Might change this later idk + idc
+        if _3dimension then
+
+            local tlb, trb, blb, brb, tlf, trf, blf, brf, tlf0, trf0, blf0, brf0
+            if drawn[player] == nil or #drawn[player] ~= 12 then
+                tlb, trb, blb, brb, tlf, trf ,blf, brf, tlf0, trf0, blf0, brf0 = drawTemplate(player, 12)
+            else
+                tlb, trb, blb, brb, tlf, trf ,blf, brf, tlf0, trf0, blf0, brf0 = unpack(drawn[player])
+            end
+
+            local pos, size = root.CFrame, root.Size--lastsize--, v3new(5,8,0)
+
+            local topleftback, topleftbackvisible = worldToViewportPoint(camera, (pos * cfnew(-size.X, size.Y, size.Z)).p);
+            local toprightback, toprightbackvisible = worldToViewportPoint(camera, (pos * cfnew(size.X, size.Y, size.Z)).p);
+            local btmleftback, btmleftbackvisible = worldToViewportPoint(camera, (pos * cfnew(-size.X, -size.Y, size.Z)).p);
+            local btmrightback, btmrightbackvisible = worldToViewportPoint(camera, (pos * cfnew(size.X, -size.Y, size.Z)).p);
+
+            local topleftfront, topleftfrontvisible = worldToViewportPoint(camera, (pos * cfnew(-size.X, size.Y, -size.Z)).p);
+            local toprightfront, toprightfrontvisible = worldToViewportPoint(camera, (pos * cfnew(size.X, size.Y, -size.Z)).p);
+            local btmleftfront, btmleftfrontvisible = worldToViewportPoint(camera, (pos * cfnew(-size.X, -size.Y, -size.Z)).p);
+            local btmrightfront, btmrightfrontvisible = worldToViewportPoint(camera, (pos * cfnew(size.X, -size.Y, -size.Z)).p);
+
+            local topleftback = v2new(topleftback.X, topleftback.Y)
+            local toprightback = v2new(toprightback.X, toprightback.Y)
+            local btmleftback = v2new(btmleftback.X, btmleftback.Y)
+            local btmrightback = v2new(btmrightback.X, btmrightback.Y)
+
+            local topleftfront = v2new(topleftfront.X, topleftfront.Y)
+            local toprightfront = v2new(toprightfront.X, toprightfront.Y)
+            local btmleftfront = v2new(btmleftfront.X, btmleftfront.Y)
+            local btmrightfront = v2new(btmrightfront.X, btmrightfront.Y)
+
+            -- pls don't copy this bad code
+			updateLine(tlb, topleftback, toprightback, topleftbackvisible, color)
+            updateLine(trb, toprightback, btmrightback, toprightbackvisible, color)
+            updateLine(blb, btmleftback, topleftback, btmleftbackvisible, color)
+            updateLine(brb, btmleftback, btmrightback, btmrightbackvisible, color)
+
+            --
+
+            updateLine(brf, btmrightfront, btmleftfront, btmrightfrontvisible, color)
+            updateLine(tlf, topleftfront, toprightfront, topleftfrontvisible, color)
+            updateLine(trf, toprightfront, btmrightfront, toprightfrontvisible, color)
+            updateLine(blf, btmleftfront, topleftfront, btmleftfrontvisible, color)
+
+            --
+
+            updateLine(brf0, btmrightfront, btmrightback, btmrightfrontvisible, color)
+            updateLine(tlf0, topleftfront, topleftback, topleftfrontvisible, color)
+            updateLine(trf0, toprightfront, toprightback, toprightfrontvisible, color)
+            updateLine(blf0, btmleftfront, btmleftback, btmleftfrontvisible, color)
+            return
+        else
+
+            local tl, tr, bl, br
+            if drawn[player] == nil or #drawn[player] ~= 4 then
+                tl, tr, bl, br = drawTemplate(player, 4)
+            else
+                tl, tr, bl, br = unpack(drawn[player])
+            end
+
+            local pos, size = root.CFrame, root.Size
+
+            local topleft, topleftvisible = worldToViewportPoint(camera, (pos * cfnew(-size.X, size.Y, 0)).p);
+            local topright, toprightvisible = worldToViewportPoint(camera, (pos * cfnew(size.X, size.Y, 0)).p);
+            local btmleft, btmleftvisible = worldToViewportPoint(camera, (pos * cfnew(-size.X, -size.Y, 0)).p);
+            local btmright, btmrightvisible = worldToViewportPoint(camera, (pos * cfnew(size.X, -size.Y, 0)).p);
+
+            local topleft = v2new(topleft.X, topleft.Y)
+            local topright = v2new(topright.X, topright.Y)
+            local btmleft = v2new(btmleft.X, btmleft.Y)
+            local btmright = v2new(btmright.X, btmright.Y)
+
+            updateLine(tl, topleft, topright, topleftvisible, color)
+            updateLine(tr, topright, btmright, toprightvisible, color)
+            updateLine(bl, btmleft, topleft, btmleftvisible, color)
+            updateLine(br, btmleft, btmright, btmrightvisible, color)
+            return
+        end
+
+
+        -- I have never been more bored when doing 3d boxes.
+    end
+
+    function boxes:Remove(player)
+        local data = drawn[player]
+        if data == nil then return end
+
+        if data then
+            for i,v in pairs(data) do
+                v:Remove()
+                data[i] = nil
+            end
+        end
+        drawn[player] = nil
+    end
+
+    function boxes:RemoveAll()
+        for i,v in pairs(drawn) do
+            pcall(function()
+                for i2,v2 in pairs(v) do
+                    v2:Remove()
+                    v[i] = nil
+                end
+            end)
+            drawn[i] = nil
+        end
+        drawn = {}
+    end
+
+    function boxes:End()
+        completeStop = true
+        for i,v in pairs(drawn) do
+            for i2,v2 in pairs(v) do
+                pcall(function()
+                    v2:Remove()
+                    v[i2] = nil
+                end)
+            end
+            drawn[i] = nil
+        end
+        drawn = {}
+    end
+end
+
+
+do
+    --/ Visuals
+
+    visuals.enabled = settings:Get("visuals.enabled", true)
+
+    local getPlayers = players.GetPlayers
+
+    local credits
+    local circle
+
+    local completeStop = false
+    bindEvent(players.PlayerRemoving, function(p)
+        if completeStop then return end
+        tracers:Remove(p)
+        boxes:Remove(p)
+        esp:Remove(p)
+    end)
+
+    local profilebegin = DEBUG_MODE and debug.profilebegin or function() end
+    local profileend = DEBUG_MODE and debug.profileend or function() end
+
+
+    local unpack = unpack
+    local findFirstChild = Instance.new("Part").FindFirstChild
+    local worldToViewportPoint = camera.WorldToViewportPoint
+
+    local function remove(p)
+        esp:Remove(p)
+        boxes:Remove(p)
+        tracers:Remove(p)
+    end
+
+    local hashes = {}
+    function visuals.step()
+        --if visuals.enabled ~= true then return clearDrawn() end
+        if completeStop then return end
+
+
+        local viewportsize = camera.ViewportSize
+        if credits == nil then
+            credits = newdrawing("Text", {
+                Text = "AimHot v8, Herrtt#3868"; -- yes now be happy this is free
+                Color = Color3.new(255,255,255);
+                Size = 25.0;
+                Transparency = .8;
+                Position = v2new(viewportsize.X/8, 6);
+                Outline = true;
+                Visible = true;
+            })
+        else
+            credits.Position = v2new(viewportsize.X/8, 6);
+        end
+
+        if aimbot.enabled and aimbot.fovenabled and visuals.enabled then
+            profilebegin("fov.step")
+            if circle == nil then
+                circle = newdrawing("Circle", {
+                    Position = v2new(mouse.X, mouse.Y+36),
+                    Radius = aimbot.fovsize,
+                    Color = Color3.fromRGB(248, 248, 248),
+                    Thickness = aimbot.fovthickness,
+                    Filled = false,
+                    Transparency = 2,
+                    NumSides = aimbot.fovsides,
+                    Visible = aimbot.fovshow;
+                })
+            else
+                if aimbot.fovshow then                    
+                    circle.Position = v2new(mouse.X, mouse.Y+36)
+                    circle.Radius = aimbot.fovsize
+                    circle.NumSides = aimbot.fovsides
+                    circle.Thickness = aimbot.fovthickness
+                end
+                circle.Visible = aimbot.fovshow
+            end
+            profileend("fov.step")
+        elseif circle ~= nil then
+            circle:Remove()
+            circle = nil
+        end
+
+        if visuals.enabled and crosshair.enabled then
+            profilebegin("crosshair.step")
+            crosshair.step()
+            profileend("crosshair.step")
+        else
+            crosshair:Remove()
+        end
+
+        if visuals.enabled and (esp.enabled or boxes.enabled or tracers.enabled) then
+            profilebegin("tracers.origin")
+            if tracers.frommouse then 
+                tracers.origin = v2new(mouse.X, mouse.Y+36) -- thanks roblox
+            else
+                tracers.origin = v2new(viewportsize.X/2, viewportsize.Y)
+            end
+            profileend("tracers.origin")
+
+            if esp.enabled then
+                esp.offset = cfnew(0, esp.yoffset, 0)
+            end
+
+            for i,v in pairs(getPlayers(players)) do
+                if (v~=locpl) then
+                    local character = utility.getcharacter(v)
+                    if character and isDescendantOf(character, game) == true then
+                        local root = utility.getroot(character)
+                        local humanoid = findFirstChildOfClass(character, "Humanoid")
+                        if root and isDescendantOf(character, game) == true then
+                            local screenpos, onscreen = worldToViewportPoint(camera, root.Position)
+                            local dist = utility.myroot and (utility.myroot.Position - root.Position).Magnitude
+                            local isteam = (v.Team~=nil and v.Team==locpl.Team) and not v.Neutral or false
+
+                            if boxes.enabled then -- Profilebegin is life
+                                profilebegin("boxes.draw")
+                                boxes:Draw(v, character, root, humanoid, onscreen, isteam, dist)
+                                profileend("boxes.draw")
+                            else
+                                boxes:Remove(v)
+                            end
+                            if tracers.enabled then
+                                profilebegin("tracers.draw")
+                                tracers:Draw(v, character, root, humanoid, onscreen, isteam, dist, screenpos)
+                                profileend("tracers.draw")
+                            else
+                                tracers:Remove(v)
+                            end
+        
+                            if esp.enabled then
+                                profilebegin("esp.draw")
+                                esp:Draw(v, character, root, humanoid, onscreen, isteam, dist)
+                                profileend("esp.draw")
+                            else
+                                esp:Remove(v)
+                            end
+                        else
+                            remove(v)
+                        end
+                    else
+                        remove(v)
+                    end
+                end
+            end
+        else
+            -- mhm
+            tracers:RemoveAll()
+            boxes:RemoveAll()
+            esp:RemoveAll()
+            crosshair:Remove()
+        end
+    end
+
+    function visuals:End()
+        completeStop = true
+        crosshair:End()
+        boxes:End()
+        tracers:End()
+        esp:End()
+
+        clearDrawn()
+    end
+
+    spawn(function()
+        while ah8 and ah8.enabled do -- I dont know why I am doing this
+            for i,v in pairs(hashes) do
+                hashes[i] = nil
+                wait()
+            end
+            wait(3)
+        end
+    end)
+end
+
+
+
+-- Ok yes
+do
+    --/ Run
+
+    local pcall = pcall;
+    local tostring = tostring;
+    local warn = warn;
+    local debug = debug;
+    local profilebegin = DEBUG_MODE and debug.profilebegin or function() end
+    local profileend = DEBUG_MODE and debug.profileend or function() end
+
+    local renderstep = runservice.RenderStepped
+    local heartbeat = runservice.Heartbeat
+    local stepped = runservice.Stepped
+    local wait = renderstep.wait
+
+    local function Warn(a, ...) -- ok frosty get to bed
+        warn(tostring(a):format(...))
+    end
+    
+    run.dt = 0
+    run.time = tick()
+
+    local engine = {
+        {
+            name = 'visuals.step',
+            func = visuals.step
+        };
+    }
+    local heartengine = {
+        {
+            name = 'aimbot.step',
+            func = aimbot.step
+        };
+    }
+    local whilerender = {
+    }
+
+    run.onstep = {}
+    run.onthink = {}
+    run.onrender = {}
+    function run.wait()
+        wait(renderstep)
+    end
+
+    local fireonstep = event.new(run.onstep)
+    local fireonthink = event.new(run.onthink)
+    local fireonrender = event.new(run.onrender)
+
+    local rstname = "AH.Renderstep"
+    bindEvent(renderstep, function(delta)
+        profilebegin(rstname)
+        local ntime = tick()
+        run.dt = ntime - run.time
+        run.time = ntime
+
+        for i,v in pairs(engine) do
+
+            profilebegin(v.name)
+            xpcall(v.func, function(err)
+                if (DEBUG_MODE == true) then
+                    Warn("AH8_ERROR (RENDERSTEPPED) : Failed to run %s! %s | %s", v.name, tostring(err), debug.traceback())
+                end
+                engine[i] = nil
+            end, run.dt)
+            profileend(v.name)
+
+        end
+
+        profileend(rstname)
+    end)
+
+    local hbtname = "AH.Heartbeat"
+    bindEvent(heartbeat, function(delta)
+        profilebegin(hbtname)
+
+        for i,v in pairs(heartengine) do
+
+            profilebegin(v.name)
+            xpcall(v.func, function(err)
+                if (DEBUG_MODE == true) then
+                    Warn("AH8_ERROR (HEARTBEAT) : Failed to run %s! %s | %s", v.name, tostring(err), debug.traceback())
+                end
+                heartengine[i] = nil
+            end, delta)
+            profileend(v.name)
+
+        end
+
+        profileend(hbtname)
+    end)
+
+    local stpname = "AH.Stepped"
+    bindEvent(stepped, function(delta)
+        
+        profilebegin(stpname)
+
+        for i,v in pairs(whilerender) do
+
+            profilebegin(v.name)
+            xpcall(v.func, function(err)
+                if (DEBUG_MODE == true) then
+                    Warn("AH8_ERROR (STEPPED) : Failed to run %s! %s | %s", v.name, tostring(err), debug.traceback())
+                end
+                heartengine[i] = nil
+            end, delta)
+            profileend(v.name)
+
+        end
+
+        profileend(stpname)
+    end)
+end
+
+do
+    --/ Main or something I am not sure what I am writing anymore
+    settings:Save()
+
+    ah8.enabled = true
+    function ah8:close()
+        spawn(function() pcall(visuals.End, visuals) end)
+        spawn(function() pcall(aimbot.End, aimbot) end)
+        spawn(function() pcall(hud.End, hud) end)
+        spawn(function()
+            for i,v in pairs(connections) do
+                pcall(function() v:Disconnect() end)
+            end
+        end)
+        ah8 = nil
+        shared.ah8 = nil -- k
+
+        settings:Save()
+    end
+
+    ah8.visible = hud.Visible
+    function ah8:show()
+        hud:show()
+        ah8.visible = hud.Visible
+    end
+
+    function ah8:hide()
+        hud:hide()
+        ah8.visible = hud.Visible
+    end
+
+    setmetatable(ah8, { -- ok safazi be happy now
+        __newindex = function(self, index, value)
+            if (index == "Keybind") then
+                settings:Set("hud.keybind", value)
+                hud.Keybind = value
+                return
+            end
+        end;
+    })
+
+    shared.ah8 = ah8
+
+    local players = game:GetService("Players")
+    local loc = players.LocalPlayer
+    bindEvent(players.PlayerRemoving, function(p)
+        if p == loc then
+            settings:Save()
+        end
+    end)
+
+end
+
+
+-- I didn't think this ui lib through
+local Aiming = hud:AddTab({
+	Text = "Aiming",
+})
+
+
+local AimbotToggle = Aiming:AddToggleCategory({
+	Text = "Aimbot",
+	State = aimbot.enabled,
+}, function(state) 
+    aimbot.enabled = state
 end)
-shared.UESP_InputBeganCon = UserInputService.InputBegan:Connect(function(input)
-	if input.UserInputType.Name == 'MouseButton1' and Options.MenuOpen.Value then
-		MouseHeld = true;
-		local Bar = Menu:GetInstance'TopBar';
-		local Values = {
-			Bar.Position.X;
-			Bar.Position.Y;
-			Bar.Position.X + Bar.Size.X;
-			Bar.Position.Y + Bar.Size.Y;
-		}
-		if MouseHoveringOver(Values) then
-			DraggingUI = true;
-			DragOffset = Menu:GetInstance'Main'.Position - GetMouseLocation();
-		else
-			for i, v in pairs(Sliders) do
-				local Values = {
-					v.Line.Position.X;
-					v.Line.Position.Y;
-					v.Line.Position.X + v.Line.Size.X;
-					v.Line.Position.Y + v.Line.Size.Y;
-					-- v.Line.From.X	- (v.Slider.Radius);
-					-- v.Line.From.Y	- (v.Slider.Radius);
-					-- v.Line.To.X		+ (v.Slider.Radius);
-					-- v.Line.To.Y		+ (v.Slider.Radius);
-				};
-				if MouseHoveringOver(Values) then
-					DraggingWhat = v;
-					Dragging = true;
-					break
-				end
-			end
 
-			if not Dragging then
-				local Values = {
-					TracerPosition.X - 10;
-					TracerPosition.Y - 10;
-					TracerPosition.X + 10;
-					TracerPosition.Y + 10;
-				};
-				if MouseHoveringOver(Values) then
-					DragTracerPosition = true;
-				end
-			end
-		end
-	end
-end)
-shared.UESP_InputEndedCon = UserInputService.InputEnded:Connect(function(input)
-	if input.UserInputType.Name == 'MouseButton1' and Options.MenuOpen.Value then
-		MouseHeld = false;
-		DragTracerPosition = false;
-		local IgnoreOtherInput = false;
 
-		if SubMenu.Open and not MouseHoveringOver(SubMenu.Bounds) then
-			if CurrentColorPicker and IsMouseOverDrawing(CurrentColorPicker.Drawings['Square-Background']()) then IgnoreOtherInput = true; end
-			if not IgnoreOtherInput then SubMenu:Hide() end
-		end
-
-		if not IgnoreOtherInput then
-			for i, v in pairs(UIButtons) do
-				if SubMenu.Open and MouseHoveringOver(SubMenu.Bounds) and not v.FromSubMenu then continue end
-
-				local Values = {
-					v.Instance.Position.X;
-					v.Instance.Position.Y;
-					v.Instance.Position.X + v.Instance.Size.X;
-					v.Instance.Position.Y + v.Instance.Size.Y;
-				};
-				if MouseHoveringOver(Values) then
-					v.Option();
-					IgnoreOtherInput = true;
-					break -- prevent clicking 2 options
-				end
-			end
-			for i, v in pairs(Sliders) do
-				if IgnoreOtherInput then break end
-
-				local Values = {
-					v.Line.Position.X;
-					v.Line.Position.Y;
-					v.Line.Position.X + v.Line.Size.X;
-					v.Line.Position.Y + v.Line.Size.Y;
-				};
-				if not MouseHoveringOver(Values) then
-					v:ShowValue(false);
-				end
-			end
-		end
-	elseif input.UserInputType.Name == 'MouseButton2' and Options.MenuOpen.Value and not DragTracerPosition then
-		local Values = {
-			TracerPosition.X - 10;
-			TracerPosition.Y - 10;
-			TracerPosition.X + 10;
-			TracerPosition.Y + 10;
-		}
-		if MouseHoveringOver(Values) then
-			DragTracerPosition = false;
-			TracerPosition = V2New(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y - 135);
-		end
-	elseif input.UserInputType.Name == 'Keyboard' then
-		if Binding then
-			BindedKey = input.KeyCode;
-			Binding = false;
-		elseif input.KeyCode == Options.MenuKey.Value or (input.KeyCode == Enum.KeyCode.Home and UserInputService:IsKeyDown(Enum.KeyCode.LeftControl)) then
-			Options.MenuOpen();
-		elseif input.KeyCode == Options.ToggleKey.Value then
-			Options.Enabled();
-		elseif input.KeyCode.Name == 'F1' and UserInputService:IsMouseButtonPressed(1) and shared.am_ic3 then -- hehe hiden spectate feature cuz why not
-			local HD, LPlayer, LCharacter = 0.95;
-
-			for i, Player in pairs(Players:GetPlayers()) do
-				local Character = GetCharacter(Player);
-
-				if Player ~= LocalPlayer and Player ~= Spectating and Character and Character:FindFirstChild'HumanoidRootPart' then
-					local Head = Character:FindFirstChild'Head';
-					local Humanoid = Character:FindFirstChildOfClass'Humanoid';
-					
-					if Head then
-						local Distance  = (Camera.CFrame.Position - Head.Position).Magnitude;
-						
-						if Distance > 2500 then continue; end
-
-						local Direction = -(Camera.CFrame.Position - Mouse.Hit.Position).unit;
-						local Relative  = Character.Head.Position - Camera.CFrame.Position;
-						local Unit      = Relative.unit;
-
-						local DP = Direction:Dot(Unit);
-
-						if DP > HD then
-							HD = DP;
-							LPlayer = Player;
-							LCharacter = Character;
-						end
-					end
-				end
-			end
-			
-			if LPlayer and LPlayer ~= Spectating and LCharacter then
-				Camera.CameraSubject = LCharacter.Head;
-				Spectating = LPlayer;
-			else
-				if LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass'Humanoid' then
-					Camera.CameraSubject = LocalPlayer.Character:FindFirstChildOfClass'Humanoid';
-					Spectating = nil;
-				end
-			end
-		end
-	end
+AimbotToggle:AddKeybind({
+	Text = "keybind",
+	Current = aimbot.keybind,
+}, function(new)
+    aimbot.keybind = new.Name 
 end)
 
-function ToggleMenu()
-	if Options.MenuOpen.Value then
-		-- GUIService:SetMenuIsOpen(true);
-		GetTableData(shared.MenuDrawingData.Instances)(function(i, v)
-			if OldData[v] then
-				pcall(Set, v, 'Visible', true);
-			end
-		end)
-	else
-		-- GUIService:SetMenuIsOpen(false);
-		GetTableData(shared.MenuDrawingData.Instances)(function(i, v)
-			OldData[v] = v.Visible;
-			if v.Visible then
-				pcall(Set, v, 'Visible', false);
-			end
-		end)
-	end
-end
+ 
+AimbotToggle:AddToggle({
+	Text = "Press To Enable",
+	State = aimbot.presstoenable,
+}, function(state) 
+    aimbot.presstoenable = state
+end)
 
-function CheckRay(Instance, Distance, Position, Unit)
-	local Pass = true;
-	local Model = Instance;
+AimbotToggle:AddToggle({
+	Text = "Lock To Target",
+	State = aimbot.locktotarget,
+}, function(state) 
+    aimbot.locktotarget = state
+end)
 
-	if Distance > 999 then return false; end
 
-	if Instance.ClassName == 'Player' then
-		Model = GetCharacter(Instance);
-	end
+AimbotToggle:AddToggle({
+	Text = "Check If Alive",
+	State = aimbot.checkifalive,
+}, function(state) 
+    aimbot.checkifalive = state
+end)
 
-	if not Model then
-		Model = Instance.Parent;
+-- settings stuff
+local AimbotSettings = Aiming:AddCategory({
+	Text = "Settings",
+})
 
-		if Model.Parent == workspace then
-			Model = Instance;
-		end
-	end
+AimbotSettings:AddLabel({
+    Text = "decrease sens if aimbot is wobbly"
+})
 
-	if not Model then return false end
+AimbotSettings:AddSlider({
+    Text = "Sensitivity",
+    Current = aimbot.sensitivity
+}, {0.01, 10, 0.01}, function(new) 
+    aimbot.sensitivity = new
+end)
 
-	local _Ray = Ray.new(Position, Unit * Distance);
-	
-	local List = {LocalPlayer.Character, Camera, Mouse.TargetFilter};
+AimbotSettings:AddToggle({
+    Text = "Ignore Team",
+    State = aimbot.ignoreteam
+}, function(new)
+    aimbot.ignoreteam = new
+end)
 
-	for i,v in pairs(IgnoreList) do table.insert(List, v); end;
 
-	local Hit = workspace:FindPartOnRayWithIgnoreList(_Ray, List);
+AimbotSettings:AddToggle({
+    Text = "Ignore Walls",
+    State = aimbot.ignorewalls
+}, function(new)
+    aimbot.ignorewalls = new
+end)
 
-	if Hit and not Hit:IsDescendantOf(Model) then
-		Pass = false;
-		if Hit.Transparency >= .3 or not Hit.CanCollide and Hit.ClassName ~= Terrain then -- Detect invisible walls
-			IgnoreList[#IgnoreList + 1] = Hit;
-		end
-	end
+AimbotSettings:AddSlider({
+    Text = "Max Obscuring Parts",
+    Current = aimbot.maxobscuringparts,
+}, {0, 50, 1}, function(new)
+    aimbot.maxobscuringparts = new
+end)
 
-	return Pass;
-end
 
-function CheckTeam(Player)
-	if Player.Neutral and LocalPlayer.Neutral then return true; end
-	return Player.TeamColor == LocalPlayer.TeamColor;
-end
 
-local CustomTeam = CustomTeams[game.PlaceId];
+local FieldOfView = Aiming:AddToggleCategory({
+    Text = "fov",
+    State = aimbot.fovenabled,
+}, function(state) 
+    aimbot.fovenabled = state
+end)
 
-if CustomTeam ~= nil then
-	if CustomTeam.Initialize then ypcall(CustomTeam.Initialize) end
+FieldOfView:AddSlider({
+    Text = "Radius",
+    Current = aimbot.fovsize,
+}, {1, 1000, 1}, function(new)
+    aimbot.fovsize = new
+end)
 
-	CheckTeam = CustomTeam.CheckTeam;
-end
+FieldOfView:AddSlider({
+    Text = "Sides",
+    Current = aimbot.fovsides,
+}, {6, 40, 1}, function(new)
+    aimbot.fovsides = new
+end)
 
-function CheckPlayer(Player, Character)
-	if not Options.Enabled.Value then return false end
 
-	local Pass = true;
-	local Distance = 0;
+FieldOfView:AddSlider({
+    Text = "Thickness",
+    Current = aimbot.fovthickness,
+}, {0.1, 50, 0.1}, function(new)
+    aimbot.fovthickness = new
+end)
 
-	if Player ~= LocalPlayer and Character then
-		if not Options.ShowTeam.Value and CheckTeam(Player) then
-			Pass = false;
-		end
 
-		local Head = Character:FindFirstChild'Head';
 
-		if Pass and Character and Head then
-			Distance = (Camera.CFrame.Position - Head.Position).Magnitude;
-			if Options.VisCheck.Value then
-				Pass = CheckRay(Player, Distance, Camera.CFrame.Position, (Head.Position - Camera.CFrame.Position).unit);
-			end
-			if Distance > Options.MaxDistance.Value then
-				Pass = false;
-			end
-		end
-	else
-		Pass = false;
-	end
+local Visuals = hud:AddTab({
+    Text = "Visuals"
+})
 
-	return Pass, Distance;
-end
+Visuals:AddToggle({
+    Text = "Enabled",
+    State = visuals.enabled,
+}, function(new)
+    visuals.enabled = new
+end)
 
-function CheckDistance(Instance)
-	if not Options.Enabled.Value then return false end
+local Boxes = Visuals:AddToggleCategory({
+    Text = "Boxes",
+    State = boxes.enabled,
+}, function(new)
+    boxes.enabled = new
+end)
 
-	local Pass = true;
-	local Distance = 0;
+Boxes:AddToggle({
+    Text = "Show Team",
+    State = boxes.showteam,
+}, function(new)
+    boxes.showteam = new
+end)
 
-	if Instance ~= nil then
-		Distance = (Camera.CFrame.Position - Instance.Position).Magnitude;
-		if Options.VisCheck.Value then
-			Pass = CheckRay(Instance, Distance, Camera.CFrame.Position, (Instance.Position - Camera.CFrame.Position).unit);
-		end
-		if Distance > Options.MaxDistance.Value then
-			Pass = false;
-		end
-	else
-		Pass = false;
-	end
+Boxes:AddToggle({
+    Text = "Visible check",
+    State = boxes.showvisible,
+}, function(new)
+    boxes.showvisible = new
+end)
 
-	return Pass, Distance;
-end
+Boxes:AddSlider({
+    Text = "Draw Distance",
+    Current = boxes.drawdistance,
+}, {100,100000,100}, function(new)
+    boxes.drawdistance = new
+end)
 
-function UpdatePlayerData()
-	if (tick() - LastRefresh) > (Options.RefreshRate.Value / 1000) then
-		LastRefresh = tick();
-		if CustomESP and Options.Enabled.Value then
-			local a, b = pcall(CustomESP);
-		end
-		for i, v in pairs(RenderList.Instances) do
-			if v.Instance ~= nil and v.Instance.Parent ~= nil and v.Instance:IsA'BasePart' then
-				local Data = shared.InstanceData[v.Instance:GetDebugId()] or { Instances = {}; DontDelete = true };
+Boxes:AddToggle({
+    Text = "3d",
+    State = boxes.thirddimension,
+}, function(new)
+    boxes.thirddimension = new
+end)
 
-				Data.Instance = v.Instance;
+Boxes:AddSlider({
+    Text = "3d distance",
+    Current = boxes.dist3d,
+}, {5,10000,5}, function(new)
+    boxes.dist3d = new
+end)
 
-				Data.Instances['Tracer'] = Data.Instances['Tracer'] or NewDrawing'Line'{
-					Transparency	= 1;
-					Thickness		= 2;
-				}
-				Data.Instances['NameTag'] = Data.Instances['NameTag'] or NewDrawing'Text'{
-					Size			= Options.TextSize.Value;
-					Center			= true;
-					Outline			= Options.TextOutline.Value;
-					Visible			= true;
-				};
-				Data.Instances['DistanceTag'] = Data.Instances['DistanceTag'] or NewDrawing'Text'{
-					Size			= Options.TextSize.Value - 1;
-					Center			= true;
-					Outline			= Options.TextOutline.Value;
-					Visible			= true;
-				};
 
-				local NameTag		= Data.Instances['NameTag'];
-				local DistanceTag	= Data.Instances['DistanceTag'];
-				local Tracer		= Data.Instances['Tracer'];
+local Esp = Visuals:AddToggleCategory({
+    Text = "Esp",
+    State = esp.enabled,
+}, function(new)
+    esp.enabled = new
+end)
 
-				local Pass, Distance = CheckDistance(v.Instance);
+Esp:AddToggle({
+    Text = "Show Team",
+    State = esp.showteam
+}, function(new)
+    esp.showteam = new
+end)
 
-				if Pass then
-					local ScreenPosition, Vis = WorldToViewport(v.Instance.Position);
-					local Color = v.Color;
-					local OPos = Camera.CFrame:pointToObjectSpace(v.Instance.Position);
-					
-					if ScreenPosition.Z < 0 then
-						local AT = math.atan2(OPos.Y, OPos.X) + math.pi;
-						OPos = CFrame.Angles(0, 0, AT):vectorToWorldSpace((CFrame.Angles(0, math.rad(89.9), 0):vectorToWorldSpace(V3New(0, 0, -1))));
-					end
-					
-					local Position = WorldToViewport(Camera.CFrame:pointToWorldSpace(OPos));
+Esp:AddToggle({
+    Text = "Visible check",
+    State = esp.showvisible,
+}, function(new)
+    esp.showvisible = new
+end)
 
-					if Options.ShowTracers.Value then
-						Tracer.Transparency = math.clamp(Distance / 200, 0.45, 0.8);
-						Tracer.Visible	= true;
-						Tracer.From		= TracerPosition;
-						Tracer.To		= V2New(Position.X, Position.Y);
-						Tracer.Color	= Color;
-					else
-						Tracer.Visible = false;
-					end
+Esp:AddSlider({
+    Text = "Offset",
+    Current = esp.yoffset,
+}, {-50, 50, 0.01}, function(new)
+    esp.yoffset = new
+end)
 
-					if ScreenPosition.Z > 0 then
-						local ScreenPositionUpper = ScreenPosition;
-						
-						if Options.ShowName.Value then
-							LocalPlayer.NameDisplayDistance = 0;
-							NameTag.Visible		= true;
-							NameTag.Text		= v.Text;
-							NameTag.Size		= Options.TextSize.Value;
-							NameTag.Outline		= Options.TextOutline.Value;
-							NameTag.Position	= V2New(ScreenPositionUpper.X, ScreenPositionUpper.Y);
-							NameTag.Color		= Color;
-							if Drawing.Fonts and shared.am_ic3 then -- CURRENTLY SYNAPSE ONLY :MEGAHOLY:
-								NameTag.Font	= Drawing.Fonts.Monospace;
-							end
-						else
-							LocalPlayer.NameDisplayDistance = 100;
-							NameTag.Visible = false;
-						end
-						if Options.ShowDistance.Value or Options.ShowHealth.Value then
-							DistanceTag.Visible		= true;
-							DistanceTag.Size		= Options.TextSize.Value - 1;
-							DistanceTag.Outline		= Options.TextOutline.Value;
-							DistanceTag.Color		= Color3.new(1, 1, 1);
-							if Drawing.Fonts and shared.am_ic3 then -- CURRENTLY SYNAPSE ONLY :MEGAHOLY:
-								NameTag.Font	= Drawing.Fonts.Monospace;
-							end
+Esp:AddSlider({
+    Text = "Transparency",
+    Current = esp.transparency
+}, {0, 1, 0.01}, function(new)
+    esp.transparency = new
+end)
 
-							local Str = '';
+Esp:AddSlider({
+    Text = "Size",
+    Current = esp.size,
+}, {1, 100, 1}, function(new)
+    esp.size = new
+end)
 
-							if Options.ShowDistance.Value then
-								Str = Str .. Format('[%d] ', Distance);
-							end
+Esp:AddToggle({
+    Text = "Center Text",
+    State = esp.centertext
+}, function(new)
+    esp.centertext = new
+end)
 
-							DistanceTag.Text = Str;
-							DistanceTag.Position = V2New(ScreenPositionUpper.X, ScreenPositionUpper.Y) + V2New(0, NameTag.TextBounds.Y);
-						else
-							DistanceTag.Visible = false;
-						end
-					else
-						NameTag.Visible			= false;
-						DistanceTag.Visible		= false;
-					end
-				else
-					NameTag.Visible			= false;
-					DistanceTag.Visible		= false;
-					Tracer.Visible			= false;
-				end
+Esp:AddToggle({
+    Text = "Outline",
+    State = esp.outline,
+}, function(new)
+    esp.outline = new
+end)
 
-				Data.Instances['NameTag'] 		= NameTag;
-				Data.Instances['DistanceTag']	= DistanceTag;
-				Data.Instances['Tracer']		= Tracer;
+Esp:AddSlider({
+    Text = "Draw Distance",
+    Current = esp.drawdistance
+}, {100,100000,100}, function(new)
+    esp.drawdistance = new
+end)
 
-				shared.InstanceData[v.Instance:GetDebugId()] = Data;
-			end
-		end
-		for i, v in pairs(Players:GetPlayers()) do
-			local Data = shared.InstanceData[v.Name] or { Instances = {}; };
 
-			Data.Instances['Box'] = Data.Instances['Box'] or LineBox:Create{Thickness = 3};
-			Data.Instances['Tracer'] = Data.Instances['Tracer'] or NewDrawing'Line'{
-				Transparency	= 1;
-				Thickness		= 2;
-			}
-			Data.Instances['HeadDot'] = Data.Instances['HeadDot'] or NewDrawing'Circle'{
-				Filled			= true;
-				NumSides		= 30;
-			}
-			Data.Instances['NameTag'] = Data.Instances['NameTag'] or NewDrawing'Text'{
-				Size			= Options.TextSize.Value;
-				Center			= true;
-				Outline			= Options.TextOutline.Value;
-				Visible			= true;
-			};
-			Data.Instances['DistanceHealthTag'] = Data.Instances['DistanceHealthTag'] or NewDrawing'Text'{
-				Size			= Options.TextSize.Value - 1;
-				Center			= true;
-				Outline			= Options.TextOutline.Value;
-				Visible			= true;
-			};
+--
+local Tracers = Visuals:AddToggleCategory({
+    Text = "Tracers",
+    State = tracers.enabled,
+}, function(new)
+    tracers.enabled = new
+end)
 
-			local NameTag		= Data.Instances['NameTag'];
-			local DistanceTag	= Data.Instances['DistanceHealthTag'];
-			local Tracer		= Data.Instances['Tracer'];
-			local HeadDot		= Data.Instances['HeadDot'];
-			local Box			= Data.Instances['Box'];
+Tracers:AddToggle({
+    Text = "Show Team",
+    State = tracers.showteam
+}, function(new)
+    tracers.showteam = new
+end)
 
-			local Character = GetCharacter(v);
-			local Pass, Distance = CheckPlayer(v, Character);
+Tracers:AddToggle({
+    Text = "Visible check",
+    State = tracers.showvisible,
+}, function(new)
+    tracers.showvisible = new
+end)
 
-			if Pass and Character then
-				local Humanoid = Character:FindFirstChildOfClass'Humanoid';
-				local Head = Character:FindFirstChild'Head';
-				local HumanoidRootPart = Character:FindFirstChild'HumanoidRootPart';
-				local Dead = Humanoid and Humanoid:GetState().Name == 'Dead';
+Tracers:AddToggle({
+    Text = "From Mouse",
+    State = tracers.frommouse,
+}, function(new)
+    tracers.frommouse = new
+end)
 
-				if Character ~= nil and Head and HumanoidRootPart and not Dead then
-					local ScreenPosition, Vis = WorldToViewport(Head.Position);
-					local Color = Rainbow and Color3.fromHSV(tick() * 128 % 255/255, 1, 1) or (CheckTeam(v) and TeamColor or EnemyColor); Color = Options.ShowTeamColor.Value and v.TeamColor.Color or Color;
-					local OPos = Camera.CFrame:pointToObjectSpace(Head.Position);
-					
-					if ScreenPosition.Z < 0 then
-						local AT = math.atan2(OPos.Y, OPos.X) + math.pi;
-						OPos = CFrame.Angles(0, 0, AT):vectorToWorldSpace((CFrame.Angles(0, math.rad(89.9), 0):vectorToWorldSpace(V3New(0, 0, -1))));
-					end
-					
-					local Position = WorldToViewport(Camera.CFrame:pointToWorldSpace(OPos));
+Tracers:AddSlider({
+    Text = "Draw Distance",
+    Current = tracers.drawdistance,
+}, {100,100000,100}, function(new)
+    tracers.drawdistance = new
+end)
 
-					if Options.ShowTracers.Value then
-						if TracerPosition.X >= Camera.ViewportSize.X or TracerPosition.Y >= Camera.ViewportSize.Y or TracerPosition.X < 0 or TracerPosition.Y < 0 then
-							TracerPosition = V2New(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y - 135);
-						end
 
-						Tracer.Visible	= true;
-						Tracer.Transparency = math.clamp(1 - (Distance / 200), 0.25, 0.75);
-						Tracer.From		= TracerPosition;
-						Tracer.To		= V2New(Position.X, Position.Y);
-						Tracer.Color	= Color;
-					else
-						Tracer.Visible = false;
-					end
-					
-					if ScreenPosition.Z > 0 then
-						local ScreenPositionUpper	= WorldToViewport((HumanoidRootPart:GetRenderCFrame() * CFrame.new(0, Head.Size.Y + HumanoidRootPart.Size.Y + (Options.YOffset.Value / 25), 0)).Position);
-						local Scale					= Head.Size.Y / 2;
+local Crosshair = Visuals:AddToggleCategory({
+    Text = "Crosshair",
+    State = crosshair.enabled,
+}, function(new)
+    crosshair.enabled = new
+end)
 
-						if Options.ShowName.Value then
-							NameTag.Visible		= true;
-							NameTag.Text		= v.Name .. (CustomPlayerTag and CustomPlayerTag(v) or '');
-							NameTag.Size		= Options.TextSize.Value;
-							NameTag.Outline		= Options.TextOutline.Value;
-							NameTag.Position	= V2New(ScreenPositionUpper.X, ScreenPositionUpper.Y) - V2New(0, NameTag.TextBounds.Y);
-							NameTag.Color		= Color;
-							NameTag.Transparency= 0.85;
-							if Drawing.Fonts and shared.am_ic3 then -- CURRENTLY SYNAPSE ONLY :MEGAHOLY:
-								NameTag.Font	= Drawing.Fonts.Monospace;
-							end
-						else
-							NameTag.Visible = false;
-						end
-						if Options.ShowDistance.Value or Options.ShowHealth.Value then
-							DistanceTag.Visible		= true;
-							DistanceTag.Size		= Options.TextSize.Value - 1;
-							DistanceTag.Outline		= Options.TextOutline.Value;
-							DistanceTag.Color		= Color3.new(1, 1, 1);
-							DistanceTag.Transparency= 0.85;
-							if Drawing.Fonts and shared.am_ic3 then -- CURRENTLY SYNAPSE ONLY :MEGAHOLY:
-								NameTag.Font	= Drawing.Fonts.Monospace;
-							end
+Crosshair:AddSlider({
+    Text = "Transparency",
+    Current = crosshair.transparency
+}, {0,1,0.01}, function(new)
+    crosshair.transparency = new
+end)
 
-							local Str = '';
+Crosshair:AddSlider({
+    Text = "Size",
+    Current = crosshair.size,
+}, {1,2000,1}, function(new)
+    crosshair.size = new
+end)
 
-							if Options.ShowDistance.Value then
-								Str = Str .. Format('[%d] ', Distance);
-							end
-							if Options.ShowHealth.Value and Humanoid then
-								Str = Str .. Format('[%d/%d] [%s%%]', Humanoid.Health, Humanoid.MaxHealth, math.floor(Humanoid.Health / Humanoid.MaxHealth * 100));
-							end
+Crosshair:AddSlider({
+    Text = "Thickness",
+    Current = crosshair.thickness
+}, {1,50,1}, function(new)
+    crosshair.thickness = new
+end)
 
-							DistanceTag.Text = Str;
-							DistanceTag.Position = (NameTag.Visible and NameTag.Position + V2New(0, NameTag.TextBounds.Y) or V2New(ScreenPositionUpper.X, ScreenPositionUpper.Y));
-						else
-							DistanceTag.Visible = false;
-						end
-						if Options.ShowDot.Value and Vis then
-							local Top			= WorldToViewport((Head.CFrame * CFrame.new(0, Scale, 0)).Position);
-							local Bottom		= WorldToViewport((Head.CFrame * CFrame.new(0, -Scale, 0)).Position);
-							local Radius		= (Top - Bottom).y;
 
-							HeadDot.Visible		= true;
-							HeadDot.Color		= Color;
-							HeadDot.Position	= V2New(ScreenPosition.X, ScreenPosition.Y);
-							HeadDot.Radius		= Radius;
-						else
-							HeadDot.Visible = false;
-						end
-						if Options.ShowBoxes.Value and Vis and HumanoidRootPart then
-							Box:Update(HumanoidRootPart.CFrame, V3New(2, 3, 0) * (Scale * 2), Color);
-						else
-							Box:SetVisible(false);
-						end
-					else
-						NameTag.Visible			= false;
-						DistanceTag.Visible		= false;
-						HeadDot.Visible			= false;
-						
-						Box:SetVisible(false);
-					end
-				else
-					NameTag.Visible			= false;
-					DistanceTag.Visible		= false;
-					HeadDot.Visible			= false;
-					Tracer.Visible			= false;
-					
-					Box:SetVisible(false);
-				end
-			else
-				NameTag.Visible			= false;
-				DistanceTag.Visible		= false;
-				HeadDot.Visible			= false;
-				Tracer.Visible			= false;
+local Hud = hud:AddTab({
+    Text = "Hud",
+})
 
-				Box:SetVisible(false);
-			end
+hud.Keybind = settings:Get("hud.keybind", "RightAlt").Value
+Hud:AddKeybind({
+    Text = "Toggle",
+    Current = hud.Keybind,
+}, function(new)
+    settings:Set("hud.keybind", new.Name)
+    hud.Keybind = new.Name
+end)
 
-			shared.InstanceData[v.Name] = Data;
-		end
-	end
-end
+Hud:AddButton({
+    Text = "Exit"
+}, function()
+    ah8:close()
+end)
 
-local LastInvalidCheck = 0;
-
-function Update()
-	if tick() - LastInvalidCheck > 0.3 then
-		LastInvalidCheck = tick();
-
-		if Camera.Parent ~= workspace then
-			Camera = workspace.CurrentCamera;
-			WTVP = Camera.WorldToViewportPoint;
-		end
-
-		for i, v in pairs(shared.InstanceData) do
-			if not Players:FindFirstChild(tostring(i)) then
-				if not shared.InstanceData[i].DontDelete then
-					GetTableData(v.Instances)(function(i, obj)
-						obj.Visible = false;
-						obj:Remove();
-						v.Instances[i] = nil;
-					end)
-					shared.InstanceData[i] = nil;
-				else
-					if shared.InstanceData[i].Instance == nil or shared.InstanceData[i].Instance.Parent == nil then
-						GetTableData(v.Instances)(function(i, obj)
-							obj.Visible = false;
-							obj:Remove();
-							v.Instances[i] = nil;
-						end)
-						shared.InstanceData[i] = nil;
-					end
-				end
-			end
-		end
-	end
-
-	local CX = Menu:GetInstance'CrosshairX';
-	local CY = Menu:GetInstance'CrosshairY';
-	
-	if Options.Crosshair.Value then
-		CX.Visible = true;
-		CY.Visible = true;
-
-		CX.To = V2New((Camera.ViewportSize.X / 2) - 8, (Camera.ViewportSize.Y / 2));
-		CX.From = V2New((Camera.ViewportSize.X / 2) + 8, (Camera.ViewportSize.Y / 2));
-		CY.To = V2New((Camera.ViewportSize.X / 2), (Camera.ViewportSize.Y / 2) - 8);
-		CY.From = V2New((Camera.ViewportSize.X / 2), (Camera.ViewportSize.Y / 2) + 8);
-	else
-		CX.Visible = false;
-		CY.Visible = false;
-	end
-
-	if Options.MenuOpen.Value and MenuLoaded then
-		local MLocation = GetMouseLocation();
-		shared.MenuDrawingData.Instances.Main.Color = Color3.fromHSV(tick() * 24 % 255/255, 1, 1);
-		local MainInstance = Menu:GetInstance'Main';
-		
-		local Values = {
-			MainInstance.Position.X;
-			MainInstance.Position.Y;
-			MainInstance.Position.X + MainInstance.Size.X;
-			MainInstance.Position.Y + MainInstance.Size.Y;
-		};
-		
-		if MainInstance and (MouseHoveringOver(Values) or (SubMenu.Open and MouseHoveringOver(SubMenu.Bounds))) then
-			Debounce.CursorVis = true;
-			
-			Menu:UpdateMenuInstance'Cursor1'{
-				Visible	= true;
-				From	= V2New(MLocation.x, MLocation.y);
-				To		= V2New(MLocation.x + 5, MLocation.y + 6);
-			}
-			Menu:UpdateMenuInstance'Cursor2'{
-				Visible	= true;
-				From	= V2New(MLocation.x, MLocation.y);
-				To		= V2New(MLocation.x, MLocation.y + 8);
-			}
-			Menu:UpdateMenuInstance'Cursor3'{
-				Visible	= true;
-				From	= V2New(MLocation.x, MLocation.y + 6);
-				To		= V2New(MLocation.x + 5, MLocation.y + 5);
-			}
-		else
-			if Debounce.CursorVis then
-				Debounce.CursorVis = false;
-				
-				Menu:UpdateMenuInstance'Cursor1'{Visible = false};
-				Menu:UpdateMenuInstance'Cursor2'{Visible = false};
-				Menu:UpdateMenuInstance'Cursor3'{Visible = false};
-			end
-		end
-		if MouseHeld then
-			local MousePos = GetMouseLocation();
-
-			if Dragging then
-				DraggingWhat.Slider.Position = V2New(math.clamp(MLocation.X - DraggingWhat.Slider.Size.X / 2, DraggingWhat.Line.Position.X, DraggingWhat.Line.Position.X + DraggingWhat.Line.Size.X - DraggingWhat.Slider.Size.X), DraggingWhat.Slider.Position.Y);
-				local Percent	= (DraggingWhat.Slider.Position.X - DraggingWhat.Line.Position.X) / ((DraggingWhat.Line.Position.X + DraggingWhat.Line.Size.X - DraggingWhat.Line.Position.X) - DraggingWhat.Slider.Size.X);
-				local Value		= CalculateValue(DraggingWhat.Min, DraggingWhat.Max, Percent);
-				DraggingWhat.Option(Value);
-			elseif DraggingUI then
-				Debounce.UIDrag = true;
-				local Main = Menu:GetInstance'Main';
-				Main.Position = MousePos + DragOffset;
-			elseif DragTracerPosition then
-				TracerPosition = MousePos;
-			end
-		else
-			Dragging = false;
-			DragTracerPosition = false;
-			if DraggingUI and Debounce.UIDrag then
-				Debounce.UIDrag = false;
-				DraggingUI = false;
-				CreateMenu(Menu:GetInstance'Main'.Position);
-			end
-		end
-		if not Debounce.Menu then
-			Debounce.Menu = true;
-			ToggleMenu();
-		end
-	elseif Debounce.Menu and not Options.MenuOpen.Value then
-		Debounce.Menu = false;
-		ToggleMenu();
-	end
-end
-
-RunService:UnbindFromRenderStep(GetDataName);
-RunService:UnbindFromRenderStep(UpdateName);
-
-RunService:BindToRenderStep(GetDataName, 300, UpdatePlayerData);
-RunService:BindToRenderStep(UpdateName, 199, Update);
+warn("AH8_MAIN : Reached end of script")
 loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 local v1 = game:GetService("Lighting"):GetChildren()
 for i,v in pairs(v1) do 
