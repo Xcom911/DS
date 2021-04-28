@@ -7551,7 +7551,7 @@ icon.BorderSizePixel = 0
 icon.Position = UDim2.new(0, 0, 0, 0)
 icon.Size = UDim2.new(0, 795, 0, 483)
 icon.Image = "rbxassetid://507142787"
-icon.ImageTransparency = 0.7
+icon.ImageTransparency = 0.85
 icon.ScaleType = "Crop"
 icon.SliceScale = 10
 
