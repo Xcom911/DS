@@ -1,3 +1,8 @@
+game.StarterGui:SetCore("SendNotification", {
+Title = "Add me, EvenPast#1133";
+Text = "Xcom☁ is no longer. I have a new GUI DM me and I'll decide wether you're worthy or not.";
+Duration = 999;
+})
 while wait(2) do
 game.StarterGui:SetCore("SendNotification", {
 Title = "Add me, EvenPast#1133";
