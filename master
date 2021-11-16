@@ -7,7 +7,7 @@ if whitelist[p.Name] then
 	game.StarterGui:SetCore("SendNotification", {
 Title = "[Y] To Toggle The GUI";
 Text = "Thank You for using my GUI I updated most of the broken functions, [Y] also closes the GUI";
-Duration = 15;
+Duration = 7;
 })
 local vu = game:GetService("VirtualUser")
 game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -18,7 +18,7 @@ end)
 game.StarterGui:SetCore("SendNotification", {
 Title = "Add me EvenPast#1133";
 Text = "I'll only leave this GUI here temporarily. Add me and just get to know me and I'll give you full access, everyone gets a chance."; 
-Duration = 10; })
+Duration = 25; })
 print("Anti-AFK Ran")
 end
 
