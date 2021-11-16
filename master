@@ -6,7 +6,7 @@ local whitelist = {
 if whitelist[p.Name] then
 	game.StarterGui:SetCore("SendNotification", {
 Title = "[Y] To Toggle The GUI";
-Text = "Thank You for using my GUI I Updated Most of the Broken Functions <3, [Y] also closes the GUI";
+Text = "Thank You for using my GUI I updated most of the broken functions, [Y] also closes the GUI";
 Duration = 15;
 })
 local vu = game:GetService("VirtualUser")
