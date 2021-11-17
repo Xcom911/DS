@@ -6,8 +6,8 @@ local whitelist = {
 if whitelist[p.Name] then
 	game.StarterGui:SetCore("SendNotification", {
 Title = "[Y] To Toggle The GUI";
-Text = "Thank You for using my GUI I updated most of the broken functions, [Y] also closes the GUI";
-Duration = 7;
+Text = "Thank You for using my GUI I Updated Most of the Broken Functions <3, [Y] also closes the GUI";
+Duration = 15;
 })
 local vu = game:GetService("VirtualUser")
 game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -16,9 +16,9 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
 game.StarterGui:SetCore("SendNotification", {
-Title = "Add me EvenPast#1133";
-Text = "I'll only leave this GUI here temporarily. Add me and just get to know me and I'll give you full access, everyone gets a chance."; 
-Duration = 25; })
+Title = "Hehe";
+Text = "Anti-Afk Ran -EvenPast#1133"; 
+Duration = 10; })
 print("Anti-AFK Ran")
 end
 
@@ -821,10 +821,6 @@ button1.MouseButton1Down:connect(function()
 game.Players.LocalPlayer.Character.Stats.canSwim.Value = true
 	wait(1)
 	game.Players.LocalPlayer.Character.CharacterScripts.UnderWater:Remove()
-game.StarterGui:SetCore("SendNotification", {
-Title = "Bundle Success";
-Text = "You're now a fishy hehe."; 
-Duration = 12; })
 end)
 
 button2.Name = "LocalPlayer"
@@ -834,7 +830,7 @@ button2.Size = UDim2.new(0, 125, 0, 20)
 button2.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
 button2.BorderColor3 = Color3.fromRGB(248, 248, 248)
 button2.Font = Enum.Font.Nunito
-button2.Text = "Jesus_Wateralk_Mode"
+button2.Text = "Jesus_Walk_Mode"
 button2.TextColor3 = Color3.fromRGB(248, 248, 248)
 button2.TextSize = 15
 button2.TextWrapped = true
@@ -891,10 +887,10 @@ button3.BackgroundTransparency = 1
 button3.TextStrokeTransparency = 0.7
 button3.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 button3.MouseButton1Down:connect(function()
+pcall(function()local v = game.Players.LocalPlayer
+v.Character.Head.Size = Vector3.new(0, 0, 0)
 game.Players.LocalPlayer.Character.Stats.bleedingStack:Remove()
-wait(0.5)
 game.Players.LocalPlayer.Character.CharacterScripts.HandleBleeding:Remove()
-wait(0.5)
 _G.infinjump = true
 local Player = game:GetService("Players").LocalPlayer
 local Mouse = Player:GetMouse()
@@ -913,6 +909,7 @@ if game.Players.LocalPlayer.Character.Stats.Armor then
 game.Players.LocalPlayer.Character.Stats.Armor:Remove()
 end
 end
+end)
 wait(1.5)
 game.StarterGui:SetCore("SendNotification", {
 Title = "Bundle Success";
