@@ -2,7 +2,9 @@ game.StarterGui:SetCore("SendNotification", {
 Title = "Script Moved (Private)";
 Text = "";
 Duration = 30;
+})
 game.StarterGui:SetCore("SendNotification", {
 Title = "Add EvenPast#1133";
-Text = "I'll invite you to my server which has the script. This way you can reach out to other people about the script.";
+Text = "I'll invite you to my server which has the script. This way you can reach out to the community.";
 Duration = 30;
+})
