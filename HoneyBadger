@@ -5,8 +5,8 @@ local whitelist = {
 
 if whitelist[p.Name] then
 	game.StarterGui:SetCore("SendNotification", {
-Title = "[Y] To Toggle The GUI";
-Text = "Thank You for using my GUI I Updated Most of the Broken Functions <3, [Y] also closes the GUI";
+Title = "Press [Y] To Toggle";
+Text = "By EvenPast7903";
 Duration = 15;
 })
 local vu = game:GetService("VirtualUser")
@@ -16,8 +16,8 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
 game.StarterGui:SetCore("SendNotification", {
-Title = "Hehe";
-Text = "Anti-Afk Ran -EvenPast#1133"; 
+Title = "Notice";
+Text = "Anti-Afk Ran"; 
 Duration = 10; })
 print("Anti-AFK Ran")
 end
@@ -625,7 +625,7 @@ LocalPlayer.Size = UDim2.new(0, 125, 0, 20)
 LocalPlayer.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
 LocalPlayer.BorderColor3 = Color3.fromRGB(248, 248, 248)
 LocalPlayer.Font = Enum.Font.Nunito
-LocalPlayer.Text = "Maneuverability"
+LocalPlayer.Text = "Main Mobility"
 LocalPlayer.TextColor3 = Color3.fromRGB(248, 248, 248)
 LocalPlayer.TextSize = 15
 LocalPlayer.TextWrapped = true
@@ -661,7 +661,7 @@ Players.Name = "Players"
 Players.Parent = Category
 Players.Position = UDim2.new(0.125, 0, 0.0697425541, 0)
 Players.Size = UDim2.new(0, 125, 0, 20)
-Players.Text = "Thoroughgoing"
+Players.Text = "Extensions"
 Players.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Players.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
 Players.BorderColor3 = Color3.fromRGB(248, 248, 248)
@@ -685,7 +685,7 @@ World.Name = "World"
 World.Parent = Category
 World.Position = UDim2.new(0.125, 0, 0.096326408, 0)
 World.Size = UDim2.new(0, 125, 0, 20)
-World.Text = "War_Deployment"
+World.Text = "Quick Deploy"
 World.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 World.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
 World.BorderColor3 = Color3.fromRGB(248, 248, 248)
@@ -712,7 +712,7 @@ Maps.Name = "Maps"
 Maps.Parent = Category
 Maps.Position = UDim2.new(0.125, 0, 0.123910239, 0)
 Maps.Size = UDim2.new(0, 125, 0, 20)
-Maps.Text = "World_Recourse"
+Maps.Text = "Shaders"
 Maps.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Maps.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
 Maps.BorderColor3 = Color3.fromRGB(248, 248, 248)
@@ -810,7 +810,7 @@ button1.Size = UDim2.new(0, 125, 0, 20)
 button1.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
 button1.BorderColor3 = Color3.fromRGB(248, 248, 248)
 button1.Font = Enum.Font.Nunito
-button1.Text = "Aquatic_+_InfOxygen"
+button1.Text = "Aquatic & Inf Oxygen"
 button1.TextColor3 = Color3.fromRGB(248, 248, 248)
 button1.TextSize = 15
 button1.TextWrapped = true
@@ -830,7 +830,7 @@ button2.Size = UDim2.new(0, 125, 0, 20)
 button2.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
 button2.BorderColor3 = Color3.fromRGB(248, 248, 248)
 button2.Font = Enum.Font.Nunito
-button2.Text = "Jesus_Waterwalk_Mode"
+button2.Text = "Jesus Waterwalk"
 button2.TextColor3 = Color3.fromRGB(248, 248, 248)
 button2.TextSize = 15
 button2.TextWrapped = true
@@ -879,7 +879,7 @@ button3.Size = UDim2.new(0, 125, 0, 20)
 button3.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
 button3.BorderColor3 = Color3.fromRGB(248, 248, 248)
 button3.Font = Enum.Font.Nunito
-button3.Text = "Invincible_+_Infjump"
+button3.Text = "Invincible & Inf Jump"
 button3.TextColor3 = Color3.fromRGB(248, 248, 248)
 button3.TextSize = 15
 button3.TextWrapped = true
@@ -924,7 +924,7 @@ button4.Size = UDim2.new(0, 125, 0, 20)
 button4.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
 button4.BorderColor3 = Color3.fromRGB(248, 248, 248)
 button4.Font = Enum.Font.Nunito
-button4.Text = "Speed_+_JumpPower"
+button4.Text = "Speed & JumpPower"
 button4.TextColor3 = Color3.fromRGB(248, 248, 248)
 button4.TextSize = 15
 button4.TextWrapped = true
@@ -932,12 +932,13 @@ button4.BackgroundTransparency = 1
 button4.TextStrokeTransparency = 0.7
 button4.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 button4.MouseButton1Down:connect(function()
+    game.Players.LocalPlayer.Character.CharacterScripts.ControlJumpPower:remove()
+    game.Players.LocalPlayer.Character.CharacterScripts.ControlWalkSpeed:remove()
+    game.Players.LocalPlayer.Character.Dinosaur.JumpPower = ("75")
     while wait() do
 	game.Players.LocalPlayer.Character.Dinosaur.WalkSpeed = ("111")
 	end
-	game.Players.LocalPlayer.Character.Dinosaur.JumpPower = ("75")
-game.Players.LocalPlayer.Character.CharacterScripts.ControlJumpPower:remove()
-game.Players.LocalPlayer.Character.CharacterScripts.ControlWalkSpeed:remove()
+
 end)
 
 spawndinotext.Name = "WSValue"
@@ -947,7 +948,7 @@ spawndinotext.BorderColor3 = Color3.new(0, 0, 0)
 spawndinotext.Position = UDim2.new(0.05, 0, 0.385, 0)
 spawndinotext.Size = UDim2.new(0, 150, 0, 9)
 spawndinotext.Font = Enum.Font.SourceSans
-spawndinotext.Text = "Hothead Megavore"
+spawndinotext.Text = "[--Dinosaur Name--]"
 spawndinotext.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 spawndinotext.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
 spawndinotext.BorderColor3 = Color3.fromRGB(248, 248, 248)
@@ -966,7 +967,7 @@ button5.Size = UDim2.new(0, 125, 0, 20)
 button5.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
 button5.BorderColor3 = Color3.fromRGB(248, 248, 248)
 button5.Font = Enum.Font.Nunito
-button5.Text = "Spawn_Dinosaur"
+button5.Text = "Spawn Dinosaur"
 button5.TextColor3 = Color3.fromRGB(248, 248, 248)
 button5.TextSize = 15
 button5.TextWrapped = true
@@ -3650,6 +3651,7 @@ local SwimDisable = Instance.new("TextButton")
 local DNAFarmFrame = Instance.new("Frame")
 local TextDNAfarm = Instance.new("TextLabel")
 local StartDNALoop = Instance.new("TextButton")
+local StopDNALoop = Instance.new("TextButton")
 local DNAtimevalue = Instance.new("TextBox")
 local SettingsFrame = Instance.new("Frame")
 local settingstext = Instance.new("TextLabel")
@@ -4871,24 +4873,12 @@ InviteAll.BorderColor3 = Color3.new(0, 0, 0)
 InviteAll.Position = UDim2.new(0.756944716, 0, 0.197454721, 0)
 InviteAll.Size = UDim2.new(0, 114, 0, 30)
 InviteAll.Font = Enum.Font.Cartoon
-InviteAll.Text = "Invite All"
+InviteAll.Text = "N/A"
 InviteAll.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 InviteAll.TextSize = 18
 InviteAll.TextWrapped = true
 InviteAll.MouseButton1Click:connect(function()
-	for i,v in pairs(game.Workspace.Packs:GetChildren()) do
-for x,z in pairs(game.Players:GetChildren()) do
-if v.PackLeader.Value == game.Players.LocalPlayer.Name then
-v = v.PackLeader.Parent
-	if z ~= game.Players.LocalPlayer.Name then
-local A_1 = z
-local A_2 = game:GetService("Workspace").Packs[v.Name]
-local Event = game:GetService("Workspace").GameFunctions.PackFunctions.InviteToPack
-Event:InvokeServer(A_1, A_2)
-	end
-end
-end
-end
+
 end)
 
 KillAll.Name = "KillAll"
@@ -7600,7 +7590,7 @@ localptext.BackgroundColor3 = Color3.new(1, 1, 1)
 localptext.BackgroundTransparency = 1
 localptext.Position = UDim2.new(0.161247745, 0, 0.135278508, 0)
 localptext.Size = UDim2.new(0, 352, 0, 30)
-localptext.Text = "Made by EvenPast#1133"
+localptext.Text = "Made by EvenPast#7903"
 localptext.TextColor3 = Color3.fromRGB(242, 243, 243)
 localptext.Font = Enum.Font.Nunito
 localptext.TextSize = 30
@@ -9851,7 +9841,7 @@ Fly.BorderColor3 = Color3.new(0, 0, 0)
 Fly.Position = UDim2.new(0.0336174555, 0, 0.284987867, 0)
 Fly.Size = UDim2.new(0, 114, 0, 30)
 Fly.Font = Enum.Font.Cartoon
-Fly.Text = "Fire Loop TP Beams/Chests"
+Fly.Text = "Loop TP Beams/Chests"
 Fly.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Fly.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
 Fly.BorderColor3 = Color3.fromRGB(248, 248, 248)
@@ -10045,7 +10035,7 @@ Omnivore.BorderColor3 = Color3.new(0, 0, 0)
 Omnivore.Position = UDim2.new(0.0336174369, 0, 0.79957664, 0)
 Omnivore.Size = UDim2.new(0, 114, 0, 30)
 Omnivore.Font = Enum.Font.Cartoon
-Omnivore.Text = "Hunger Keybinds"
+Omnivore.Text = "Semi-God"
 Omnivore.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Omnivore.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Omnivore.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -10058,44 +10048,12 @@ Omnivore.BackgroundTransparency = 0.95
 Omnivore.TextStrokeTransparency = 0.3
 Omnivore.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 Omnivore.MouseButton1Click:connect(function()
-game.StarterGui:SetCore("SendNotification", {
-Title = "KEYBINDS";
-Text = "[K] +Hunger           [L] -HUNGER                [J] +Thirst"; 
-Duration = 30; })
-print("Keybinds: [K] +Hunger : [L] -HUNGER : [J] +Thirst")
-local player = game.Players.LocalPlayer
-local mouse = player:GetMouse()
-bind4 = "j"
-bind2 = "k"
-bind3 = "l"
-mouse.KeyDown:connect(function(key)
-if key == bind4 then
-if game:GetService("Workspace").GameMap:FindFirstChild("Water") then
-local A_1 = game:GetService("Workspace").GameMap:FindFirstChild("Water")
-if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame.p then
-local A_2 = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.p
-local Event = game:GetService("Workspace").GameEvents.addThirst
-Event:FireServer(A_1, A_2)
+game.Players.LocalPlayer.Character.Stats.bleedingStack:Remove()
+wait(1)
+game.Players.LocalPlayer.Character.CharacterScripts.HandleBleeding:Remove()
+while wait() do
+game.Players.LocalPlayer.Character.Stats.Armor:Remove()
 end
-end
-end
-end
-end)
-mouse.KeyDown:connect(function(key2)
-if key2 == bind2 then
-_G.Disabled = true
-if _G.Disabled then
-game.Workspace.GameEvents.EatPlant:FireServer(Workspace.GameMap.Ferns.Fern,3)
-end
-end
-end)
-mouse.KeyDown:connect(function(key3)
-if key3 == bind3 then
-_G.Disabled = true
-game.Workspace.GameEvents.EatPlant:FireServer(Workspace.GameMap.Ferns.Fern,-5)
-end
-end)
 end)
 
 HugeZoom.Name = "HugeZoom"
@@ -10193,7 +10151,7 @@ AddThirst.BorderColor3 = Color3.new(0, 0, 0)
 AddThirst.Position = UDim2.new(0.268698841, 0, 0.560849965, 0)
 AddThirst.Size = UDim2.new(0, 114, 0, 30)
 AddThirst.Font = Enum.Font.Cartoon
-AddThirst.Text = "Loop Add Thirst"
+AddThirst.Text = "Loop Thirst"
 AddThirst.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AddThirst.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 AddThirst.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -10230,7 +10188,7 @@ ClickTP.BorderColor3 = Color3.new(0, 0, 0)
 ClickTP.Position = UDim2.new(0.268698841, 0, 0.284987867, 0)
 ClickTP.Size = UDim2.new(0, 114, 0, 30)
 ClickTP.Font = Enum.Font.Cartoon
-ClickTP.Text = "Pause Loop TP Beam/Chest"
+ClickTP.Text = "Pause Loop TP Beam/Chests"
 ClickTP.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 ClickTP.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 ClickTP.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -10275,7 +10233,7 @@ localptext2.Position = UDim2.new(0.031247745, 0, 0.394403191, 0)
 localptext2.Size = UDim2.new(0, 502, 0, 50)
 localptext2.TextColor3 = Color3.fromRGB(242, 243, 243)
 localptext2.Font = Enum.Font.Nunito
-localptext2.Text = "Statistiques"
+localptext2.Text = "Local Player"
 localptext2.TextSize = 30
 localptext2.TextWrapped = true
 
@@ -10286,7 +10244,7 @@ SubtractHunger.BorderColor3 = Color3.new(0, 0, 0)
 SubtractHunger.Position = UDim2.new(0.756944716, 0, 0.680213332, 0)
 SubtractHunger.Size = UDim2.new(0, 114, 0, 30)
 SubtractHunger.Font = Enum.Font.Cartoon
-SubtractHunger.Text = "My Favorite Shader"
+SubtractHunger.Text = "GUI Bundle"
 SubtractHunger.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 SubtractHunger.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 SubtractHunger.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -10299,6 +10257,398 @@ SubtractHunger.BackgroundTransparency = 0.95
 SubtractHunger.TextStrokeTransparency = 0.3
 SubtractHunger.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 SubtractHunger.MouseButton1Click:Connect(function()
+	local AdminList = {
+21238127, 
+24836348, 
+23952793, 
+6828351, 
+109217153, 
+119868, 
+39523020, 
+14922769, 
+35276317, 
+63300487, 
+33488003, 
+117551840, 
+4317782, 
+69239108, 
+21447425, 
+204949625, 
+160319861, 
+302566312, 
+69453307, 
+95126752, 
+55328654, 
+10032944, 
+113655887, 
+93676120, 
+44193678, 
+9741973, 
+83259917, 
+105626586, 
+-1, 
+74108393,
+42285938, 
+94254052, 
+57628717, 
+81275825, 
+14099358, 
+144170792, 
+39925610, 
+94254052, 
+128978453, 
+42213282
+}
+
+game.Players.PlayerAdded:Connect(function(player)
+    for i, v in pairs(AdminList) do
+        if player.UserId == v then
+            game.StarterGui:SetCore("SendNotification", {
+                Title = "Anti-Ban";
+                Text = "A mod/admin joined the server! You're now Invisible/In Menu.";
+                 Duration = 15;
+                 })
+             wait(1)
+            local speaker = game.Players.LocalPlayer
+invisRunning = true
+	-- Full credit to AmokahFox @V3rmillion
+	local Player = speaker
+	repeat wait(.1) until Player.Character
+	local Character = Player.Character
+	Character.Archivable = true
+	local IsInvis = false
+	local IsRunning = true
+	local InvisibleCharacter = Character:Clone()
+	InvisibleCharacter.Parent = game:GetService'Lighting'
+	local Void = workspace.FallenPartsDestroyHeight
+	InvisibleCharacter.Name = ""
+	local CF
+
+	local invisFix = game:GetService("RunService").Stepped:Connect(function()
+		pcall(function()
+			local IsInteger
+			if tostring(Void):find'-' then
+				IsInteger = true
+			else
+				IsInteger = false
+			end
+			local Pos = Player.Character.HumanoidRootPart.Position
+			local Pos_String = tostring(Pos)
+			local Pos_Seperate = Pos_String:split(', ')
+			local X = tonumber(Pos_Seperate[1])
+			local Y = tonumber(Pos_Seperate[2])
+			local Z = tonumber(Pos_Seperate[3])
+			if IsInteger == true then
+				if Y <= Void then
+					Respawn()
+				end
+			elseif IsInteger == false then
+				if Y >= Void then
+					Respawn()
+				end
+			end
+		end)
+	end)
+
+	for i,v in pairs(InvisibleCharacter:GetDescendants())do
+		if v:IsA("BasePart") then
+			if v.Name == "HumanoidRootPart" then
+				v.Transparency = 1
+			else
+				v.Transparency = .5
+			end
+		end
+	end
+
+	function Respawn()
+		IsRunning = false
+		if IsInvis == true then
+			pcall(function()
+				Player.Character = Character
+				wait()
+				Character.Parent = workspace
+				Character:FindFirstChildWhichIsA'Humanoid':Destroy()
+				IsInvis = false
+				InvisibleCharacter.Parent = nil
+				invisRunning = false
+			end)
+		elseif IsInvis == false then
+			pcall(function()
+				Player.Character = Character
+				wait()
+				Character.Parent = workspace
+				Character:FindFirstChildWhichIsA'Humanoid':Destroy()
+				TurnVisible()
+			end)
+		end
+	end
+
+	local invisDied
+	invisDied = InvisibleCharacter:FindFirstChildOfClass'Humanoid'.Died:Connect(function()
+		Respawn()
+		invisDied:Disconnect()
+	end)
+
+	if IsInvis == true then return end
+	IsInvis = true
+	CF = workspace.CurrentCamera.CFrame
+	local CF_1 = Player.Character.HumanoidRootPart.CFrame
+	Character:MoveTo(Vector3.new(0,math.pi*1000000,0))
+	workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable
+	wait(.2)
+	workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
+	InvisibleCharacter = InvisibleCharacter
+	Character.Parent = game:GetService'Lighting'
+	InvisibleCharacter.Parent = workspace
+	InvisibleCharacter.HumanoidRootPart.CFrame = CF_1
+	Player.Character = InvisibleCharacter
+
+	function TurnVisible()
+		if IsInvis == false then return end
+		invisFix:Disconnect()
+		invisDied:Disconnect()
+		CF = workspace.CurrentCamera.CFrame
+		Character = Character
+		local CF_1 = Player.Character.HumanoidRootPart.CFrame
+		Character.HumanoidRootPart.CFrame = CF_1
+		InvisibleCharacter:Destroy()
+		Player.Character = Character
+		Character.Parent = workspace
+		IsInvis = false
+		Player.Character.Animate.Disabled = true
+		Player.Character.Animate.Disabled = false
+		invisDied = Character:FindFirstChildOfClass'Humanoid'.Died:Connect(function()
+			Respawn()
+			invisDied:Disconnect()
+		end)
+		invisRunning = false
+	end
+	workspace.CurrentCamera:remove()
+	wait(.1)
+	workspace.CurrentCamera.CameraSubject = speaker.Character:FindFirstChildWhichIsA('Humanoid')
+	workspace.CurrentCamera.CameraType = "Custom"
+	speaker.CameraMinZoomDistance = 0.5
+	speaker.CameraMaxZoomDistance = 400
+	speaker.CameraMode = "Classic"
+	speaker.Character.Head.Anchored = false
+        end
+    end
+end)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+game.StarterGui:SetCore("SendNotification", {
+Title = "KEYBINDS";
+Text = "[F] Attack (with no animations)                                                   [T,4,5] Sprint/Swim Animation Toggle"; 
+Duration = 30; })
+bind99 = "t"
+toggle = false
+game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
+if key == bind99 then
+	if toggle == false then
+		toggle = true
+		local v = game.Players.LocalPlayer.Character
+		v.Stats:FindFirstChild("IsSprinting").Value = true
+		else
+		local v = game.Players.LocalPlayer.Character
+		v.Stats:FindFirstChild("IsSprinting").Value = false
+		toggle = false
+	end
+end
+end)
+
+bind26 = "="
+local Player = game:GetService("Players").LocalPlayer
+local Mouse = Player:GetMouse()
+Mouse.KeyDown:connect(function(key)
+if key == bind26 then
+game.Workspace.GameEvents.DoEmoji:FireServer("Embarassed")
+end
+end)
+
+bind68 = "5"
+game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
+if key == bind68 then
+local v = game.Players.LocalPlayer.Character
+v.Stats:FindFirstChild("InWater").Value = true
+end
+end)
+bind38 = "4"
+game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
+if key == bind38 then
+local v = game.Players.LocalPlayer.Character
+v.Stats:FindFirstChild("InWater").Value = false
+end
+end)
+
+bind98 = "f"
+game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
+if key == bind98 then
+game.Workspace.GameEvents.Damage:FireServer()
+workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
+wait(0.1)
+game.Workspace.GameEvents.Damage:FireServer()
+workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
+wait(0.1)
+game.Workspace.GameEvents.Damage:FireServer()
+workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
+wait(0.1)
+game.Workspace.GameEvents.Damage:FireServer()
+workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
+wait(0.1)
+game.Workspace.GameEvents.Damage:FireServer()
+workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
+wait(0.1)
+end
+end)
+game.StarterGui:SetCore("SendNotification", {
+Title = "KEYBINDS";
+Text = "[K] +Hunger           [L] -HUNGER                [J] +Thirst"; 
+Duration = 30; })
+print("Keybinds: [K] +Hunger : [L] -HUNGER : [J] +Thirst")
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+bind12 = "j"
+bind2 = "k"
+bind3 = "l"
+mouse.KeyDown:connect(function(key)
+if key == bind12 then
+if game:GetService("Workspace").GameMap:FindFirstChild("Water") then
+local A_1 = game:GetService("Workspace").GameMap:FindFirstChild("Water")
+if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame.p then
+local A_2 = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.p
+local Event = game:GetService("Workspace").GameEvents.addThirst
+Event:FireServer(A_1, A_2)
+end
+end
+end
+end
+end)
+
+mouse.KeyDown:connect(function(key2)
+if key2 == bind2 then
+_G.Disabled = true
+if _G.Disabled then
+game.Workspace.GameEvents.EatPlant:FireServer(Workspace.GameMap.Ferns.Fern,5)
+end
+end
+end)
+mouse.KeyDown:connect(function(key3)
+if key3 == bind3 then
+_G.Disabled = true
+game.Workspace.GameEvents.EatPlant:FireServer(Workspace.GameMap.Ferns.Fern,-7.5)
+end
+end)
+game.StarterGui:SetCore("SendNotification", {
+Title = "HEAD KEYBINDS";
+Text = "[C] SHRINK           [N,M] ENLARGE"; 
+Duration = 30; })
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+bind5 = "c"
+bind1 = "b"
+bind6 = "n"
+mouse.KeyDown:connect(function(key)
+if key == bind5 then
+local v = game.Players.LocalPlayer
+v.Character.Head.Size = Vector3.new(0, 0, 0)
+v.Character.Head.Transparency = 1
+v.Character.Head.Color = Color3.fromRGB(0, 0, 255)
+v.Character.Head.Shape = "Block"
+v.Character.Head.Material = Enum.Material.ForceField
+end
+end)
+mouse.KeyDown:connect(function(key2)
+if key2 == bind1 then
+local v = game.Players.LocalPlayer
+v.Character.Head.Size = Vector3.new(10, 3, 20)
+v.Character.Head.Transparency = 0
+v.Character.Head.Color = Color3.fromRGB(66, 249, 255)
+v.Character.Head.Shape = "Block"
+v.Character.Head.Material = Enum.Material.ForceField
+end
+end)
+mouse.KeyDown:connect(function(key3)
+if key3 == bind6 then
+_G.Disabled = true
+local v = game.Players.LocalPlayer
+v.Character.Head.Size = Vector3.new(16, 3, 45)
+v.Character.Head.Transparency = 0
+v.Character.Head.Color = Color3.fromRGB(66, 249, 255)
+v.Character.Head.Shape = "Block"
+v.Character.Head.Material = Enum.Material.ForceField
+end
+end)
+end)
+
+FixMenu.Name = "FixMenu"
+FixMenu.Parent = LocalPlayerFrame
+FixMenu.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+FixMenu.BorderColor3 = Color3.new(0, 0, 0)
+FixMenu.Position = UDim2.new(0.756944716, 0, 0.79957664, 0)
+FixMenu.Size = UDim2.new(0, 114, 0, 30)
+FixMenu.Font = Enum.Font.Cartoon
+FixMenu.Text = "Fix Menu"
+FixMenu.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+FixMenu.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+FixMenu.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+FixMenu.BorderColor3 = Color3.fromRGB(248, 248, 248)
+FixMenu.Font = Enum.Font.Nunito
+FixMenu.TextColor3 = Color3.fromRGB(248, 248, 248)
+FixMenu.TextSize = 15
+FixMenu.TextWrapped = true
+FixMenu.BackgroundTransparency = 0.95
+FixMenu.TextStrokeTransparency = 0.3
+FixMenu.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+FixMenu.MouseButton1Click:connect(function()
+	local CountDown = 7
+local Menu = workspace.GameEvents.GoToMenu
+Menu:FireServer(CountDown)
+end)
+
+MapsFrame.Name = "MapsFrame"
+MapsFrame.Parent = Main
+MapsFrame.Active = true
+MapsFrame.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+MapsFrame.BorderColor3 = Color3.fromRGB(248, 248, 248)
+MapsFrame.Transparency = 1
+MapsFrame.Position = UDim2.new(0.279245257, 0, 0.175983444, 0)
+MapsFrame.Selectable = true
+MapsFrame.Size = UDim2.new(0, 553, 0, 377)
+MapsFrame.Visible = false
+
+Mapstext.Name = "Mapstext"
+Mapstext.Parent = MapsFrame
+Mapstext.BackgroundColor3 = Color3.new(1, 1, 1)
+Mapstext.BackgroundTransparency = 1
+Mapstext.Position = UDim2.new(0.271247745, 0, 0.135278523, 0)
+Mapstext.Size = UDim2.new(0, 252, 0, 30)
+Mapstext.Font = Enum.Font.Nunito
+Mapstext.Text = "Hit the button ONCE. YOU DON'T NEED TO SPAM IT LMFAO"
+Mapstext.TextColor3 =  Color3.fromRGB(242, 243, 243)
+Mapstext.TextScaled = true
+Mapstext.TextSize = 14
+Mapstext.TextWrapped = true
+
+MainMap.Name = "MainMap"
+MainMap.Parent = MapsFrame
+MainMap.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+MainMap.BorderColor3 = Color3.new(0, 0, 0)
+MainMap.Position = UDim2.new(0.693653584, 0, 0.292945445, 0)
+MainMap.Size = UDim2.new(0, 114, 0, 30)
+MainMap.Font = Enum.Font.Cartoon
+MainMap.Text = "Personal Favorite Shader"
+MainMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+MainMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+MainMap.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+MainMap.BorderColor3 = Color3.fromRGB(248, 248, 248)
+MainMap.Font = Enum.Font.Nunito
+MainMap.TextColor3 = Color3.fromRGB(248, 248, 248)
+MainMap.TextSize = 15
+MainMap.TextWrapped = true
+MainMap.BackgroundTransparency = 0.95
+MainMap.TextStrokeTransparency = 0.3
+MainMap.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+MainMap.MouseButton1Click:connect(function()
  function sandbox(var,func)
 	local env = getfenv(func)
 	local newenv = setmetatable({},{
@@ -10681,88 +11031,6 @@ for i,v in pairs(cors) do
 end
 end)
 
-FixMenu.Name = "FixMenu"
-FixMenu.Parent = LocalPlayerFrame
-FixMenu.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
-FixMenu.BorderColor3 = Color3.new(0, 0, 0)
-FixMenu.Position = UDim2.new(0.756944716, 0, 0.79957664, 0)
-FixMenu.Size = UDim2.new(0, 114, 0, 30)
-FixMenu.Font = Enum.Font.Cartoon
-FixMenu.Text = "Fix Menu"
-FixMenu.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-FixMenu.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-FixMenu.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
-FixMenu.BorderColor3 = Color3.fromRGB(248, 248, 248)
-FixMenu.Font = Enum.Font.Nunito
-FixMenu.TextColor3 = Color3.fromRGB(248, 248, 248)
-FixMenu.TextSize = 15
-FixMenu.TextWrapped = true
-FixMenu.BackgroundTransparency = 0.95
-FixMenu.TextStrokeTransparency = 0.3
-FixMenu.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
-FixMenu.MouseButton1Click:connect(function()
-	local CountDown = 7
-local Menu = workspace.GameEvents.GoToMenu
-Menu:FireServer(CountDown)
-end)
-
-MapsFrame.Name = "MapsFrame"
-MapsFrame.Parent = Main
-MapsFrame.Active = true
-MapsFrame.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
-MapsFrame.BorderColor3 = Color3.fromRGB(248, 248, 248)
-MapsFrame.Transparency = 1
-MapsFrame.Position = UDim2.new(0.279245257, 0, 0.175983444, 0)
-MapsFrame.Selectable = true
-MapsFrame.Size = UDim2.new(0, 553, 0, 377)
-MapsFrame.Visible = false
-
-Mapstext.Name = "Mapstext"
-Mapstext.Parent = MapsFrame
-Mapstext.BackgroundColor3 = Color3.new(1, 1, 1)
-Mapstext.BackgroundTransparency = 1
-Mapstext.Position = UDim2.new(0.271247745, 0, 0.135278523, 0)
-Mapstext.Size = UDim2.new(0, 252, 0, 30)
-Mapstext.Font = Enum.Font.Nunito
-Mapstext.Text = "Hit the button ONCE. YOU DON'T NEED TO SPAM IT LMFAO"
-Mapstext.TextColor3 =  Color3.fromRGB(242, 243, 243)
-Mapstext.TextScaled = true
-Mapstext.TextSize = 14
-Mapstext.TextWrapped = true
-
-MainMap.Name = "MainMap"
-MainMap.Parent = MapsFrame
-MainMap.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
-MainMap.BorderColor3 = Color3.new(0, 0, 0)
-MainMap.Position = UDim2.new(0.693653584, 0, 0.292945445, 0)
-MainMap.Size = UDim2.new(0, 114, 0, 30)
-MainMap.Font = Enum.Font.Cartoon
-MainMap.Text = "Server Hop"
-MainMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-MainMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-MainMap.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
-MainMap.BorderColor3 = Color3.fromRGB(248, 248, 248)
-MainMap.Font = Enum.Font.Nunito
-MainMap.TextColor3 = Color3.fromRGB(248, 248, 248)
-MainMap.TextSize = 15
-MainMap.TextWrapped = true
-MainMap.BackgroundTransparency = 0.95
-MainMap.TextStrokeTransparency = 0.3
-MainMap.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
-MainMap.MouseButton1Click:connect(function()
-local x = {}
-	for _, v in ipairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100")).data) do
-		if type(v) == "table" and v.maxPlayers > v.playing and v.id ~= game.JobId then
-			x[#x + 1] = v.id
-		end
-	end
-	if #x > 0 then
-		game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, x[math.random(1, #x)])
-	else
-		return notify("Serverhop","Couldn't find a server.")
-end
-end)
-
 TradingMap.Name = "TradingMap"
 TradingMap.Parent = MapsFrame
 TradingMap.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
@@ -10770,7 +11038,7 @@ TradingMap.BorderColor3 = Color3.new(0, 0, 0)
 TradingMap.Position = UDim2.new(0.395281106, 0, 0.292945445, 0)
 TradingMap.Size = UDim2.new(0, 114, 0, 30)
 TradingMap.Font = Enum.Font.Cartoon
-TradingMap.Text = "Nifty Lighting (Use First)"
+TradingMap.Text = "Vibrant Lighting"
 TradingMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 TradingMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 TradingMap.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -11020,7 +11288,7 @@ GallusIsland.BorderColor3 = Color3.new(0, 0, 0)
 GallusIsland.Position = UDim2.new(0.395281106, 0, 0.452096581, 0)
 GallusIsland.Size = UDim2.new(0, 114, 0, 30)
 GallusIsland.Font = Enum.Font.Cartoon
-GallusIsland.Text = "Nifty Shaders (Use Second)"
+GallusIsland.Text = ""
 GallusIsland.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 GallusIsland.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 GallusIsland.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -11439,7 +11707,7 @@ eldertext2.BackgroundTransparency = 1
 eldertext2.Position = UDim2.new(0.124773964, 0, 0.0848806351, 0)
 eldertext2.Size = UDim2.new(0, 415, 0, 30)
 eldertext2.Font = Enum.Font.Cartoon
-eldertext2.Text = "Revamped Stats Replacement"
+eldertext2.Text = "Stats Replacement (Buggy)"
 eldertext2.BackgroundColor3 = Color3.new(1, 1, 1)
 eldertext2.BackgroundTransparency = 1
 eldertext2.Font = Enum.Font.Nunito
@@ -11509,7 +11777,7 @@ Targetdino.BorderColor3 = Color3.new(0, 0, 0)
 Targetdino.Position = UDim2.new(0.552604854, 0, 0.215785891, 0)
 Targetdino.Size = UDim2.new(0, 145, 0, 25)
 Targetdino.Font = Enum.Font.SourceSans
-Targetdino.Text = "[--Target Dino--]]"
+Targetdino.Text = "[--Target Dino--]"
 Targetdino.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Targetdino.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
 Targetdino.BorderColor3 = Color3.fromRGB(248, 248, 248)
@@ -11528,7 +11796,7 @@ eldertext1.BackgroundTransparency = 1
 eldertext1.Position = UDim2.new(0.195392415, 0, 0.567639232, 0)
 eldertext1.Size = UDim2.new(0, 336, 0, 30)
 eldertext1.Font = Enum.Font.Cartoon
-eldertext1.Text = "Revamped Elder Dinosaur"
+eldertext1.Text = "Elder Dinosaur"
 eldertext1.TextColor3 = Color3.new(1, 1, 1)
 eldertext1.BackgroundColor3 = Color3.new(1, 1, 1)
 eldertext1.BackgroundTransparency = 1
@@ -11536,7 +11804,7 @@ eldertext1.Font = Enum.Font.Nunito
 eldertext1.TextColor3 = Color3.fromRGB(242, 243, 243)
 eldertext1.TextScaled = true
 eldertext1.TextSize = 14
-eldertext1.TextWrapped = true
+
 
 Targetdinoplus.Name = "Targetdinoplus"
 Targetdinoplus.Parent = ElderDinoFrame
@@ -11545,7 +11813,7 @@ Targetdinoplus.BorderColor3 = Color3.new(0, 0, 0)
 Targetdinoplus.Position = UDim2.new(0.552604795, 0, 0.698544502, 0)
 Targetdinoplus.Size = UDim2.new(0, 145, 0, 25)
 Targetdinoplus.Font = Enum.Font.SourceSans
-Targetdinoplus.Text = "[--Target Dino--]"
+Targetdinoplus.Text = "Scyllaβ"
 Targetdinoplus.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 Targetdinoplus.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
 Targetdinoplus.BorderColor3 = Color3.fromRGB(248, 248, 248)
@@ -11779,9 +12047,7 @@ God.BackgroundTransparency = 0.95
 God.TextStrokeTransparency = 0.3
 God.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 God.MouseButton1Click:connect(function()
-while wait() do
-game.Players.LocalPlayer.Character.Stats.Armor:Remove()
-end
+
 end)
 
 InvisibleFossil.Name = "InvisibleFossil"
@@ -11827,9 +12093,7 @@ NoBleed.BackgroundTransparency = 0.95
 NoBleed.TextStrokeTransparency = 0.3
 NoBleed.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 NoBleed.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.Stats.bleedingStack:Remove()
-wait(1)
-game.Players.LocalPlayer.Character.CharacterScripts.HandleBleeding:Remove()
+
 end)
 
 SafeLog.Name = "SafeLog"
@@ -11904,7 +12168,7 @@ textspecial2.BackgroundTransparency = 1
 textspecial2.Position = UDim2.new(0.271247745, 0, 0.612732112, 0)
 textspecial2.Size = UDim2.new(0, 252, 0, 30)
 textspecial2.Font = Enum.Font.Nunito
-textspecial2.Text = "Menace"
+textspecial2.Text = "Extra Utilities"
 textspecial2.TextColor3 =  Color3.fromRGB(242, 243, 243)
 textspecial2.TextScaled = true
 textspecial2.TextSize = 14
@@ -12159,20 +12423,6 @@ BuySkinValue.BackgroundTransparency = 1
 BuySkinValue.TextStrokeTransparency = 0.3
 BuySkinValue.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 
-
-Dex.Name = "creditstext7"
-Dex.Parent = GUIHead
-Dex.BackgroundColor3 = Color3.new(1, 1, 1)
-Dex.BackgroundTransparency = 1
-Dex.BorderColor3 = Color3.new(0.290196, 0.290196, 0.290196)
-Dex.BorderSizePixel = 0
-Dex.Position = UDim2.new(0, 0, 0, 0)
-Dex.Size = UDim2.new(0, 795, 0, 483)
-Dex.Image = "rbxassetid://8013269465"
-Dex.ImageTransparency = 0.7
-Dex.ScaleType = "Crop"
-Dex.SliceScale = 10
-
 textspecial5.Name = "textspecial5"
 textspecial5.Parent = ExclusiveFrame
 textspecial5.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -12211,327 +12461,7 @@ SuperPlio.TextWrapped = true
 SuperPlio.BackgroundTransparency = 1
 SuperPlio.TextStrokeTransparency = 0.7
 SuperPlio.MouseButton1Click:connect(function()
-	local AdminList = {
-21238127, 
-24836348, 
-23952793, 
-6828351, 
-109217153, 
-119868, 
-39523020, 
-14922769, 
-35276317, 
-63300487, 
-33488003, 
-117551840, 
-4317782, 
-69239108, 
-21447425, 
-204949625, 
-160319861, 
-302566312, 
-69453307, 
-95126752, 
-55328654, 
-10032944, 
-113655887, 
-93676120, 
-44193678, 
-9741973, 
-83259917, 
-105626586, 
--1, 
-74108393,
-42285938, 
-94254052, 
-57628717, 
-81275825, 
-14099358, 
-144170792, 
-39925610, 
-94254052, 
-128978453, 
-42213282
-}
 
-game.Players.PlayerAdded:Connect(function(player)
-    for i, v in pairs(AdminList) do
-        if player.UserId == v then
-            game.StarterGui:SetCore("SendNotification", {
-                Title = "Anti-Ban";
-                Text = "A mod/admin joined the server! You're now Invisible/In Menu.";
-                 Duration = 15;
-                 })
-             wait(1)
-            local speaker = game.Players.LocalPlayer
-invisRunning = true
-	-- Full credit to AmokahFox @V3rmillion
-	local Player = speaker
-	repeat wait(.1) until Player.Character
-	local Character = Player.Character
-	Character.Archivable = true
-	local IsInvis = false
-	local IsRunning = true
-	local InvisibleCharacter = Character:Clone()
-	InvisibleCharacter.Parent = game:GetService'Lighting'
-	local Void = workspace.FallenPartsDestroyHeight
-	InvisibleCharacter.Name = ""
-	local CF
-
-	local invisFix = game:GetService("RunService").Stepped:Connect(function()
-		pcall(function()
-			local IsInteger
-			if tostring(Void):find'-' then
-				IsInteger = true
-			else
-				IsInteger = false
-			end
-			local Pos = Player.Character.HumanoidRootPart.Position
-			local Pos_String = tostring(Pos)
-			local Pos_Seperate = Pos_String:split(', ')
-			local X = tonumber(Pos_Seperate[1])
-			local Y = tonumber(Pos_Seperate[2])
-			local Z = tonumber(Pos_Seperate[3])
-			if IsInteger == true then
-				if Y <= Void then
-					Respawn()
-				end
-			elseif IsInteger == false then
-				if Y >= Void then
-					Respawn()
-				end
-			end
-		end)
-	end)
-
-	for i,v in pairs(InvisibleCharacter:GetDescendants())do
-		if v:IsA("BasePart") then
-			if v.Name == "HumanoidRootPart" then
-				v.Transparency = 1
-			else
-				v.Transparency = .5
-			end
-		end
-	end
-
-	function Respawn()
-		IsRunning = false
-		if IsInvis == true then
-			pcall(function()
-				Player.Character = Character
-				wait()
-				Character.Parent = workspace
-				Character:FindFirstChildWhichIsA'Humanoid':Destroy()
-				IsInvis = false
-				InvisibleCharacter.Parent = nil
-				invisRunning = false
-			end)
-		elseif IsInvis == false then
-			pcall(function()
-				Player.Character = Character
-				wait()
-				Character.Parent = workspace
-				Character:FindFirstChildWhichIsA'Humanoid':Destroy()
-				TurnVisible()
-			end)
-		end
-	end
-
-	local invisDied
-	invisDied = InvisibleCharacter:FindFirstChildOfClass'Humanoid'.Died:Connect(function()
-		Respawn()
-		invisDied:Disconnect()
-	end)
-
-	if IsInvis == true then return end
-	IsInvis = true
-	CF = workspace.CurrentCamera.CFrame
-	local CF_1 = Player.Character.HumanoidRootPart.CFrame
-	Character:MoveTo(Vector3.new(0,math.pi*1000000,0))
-	workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable
-	wait(.2)
-	workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
-	InvisibleCharacter = InvisibleCharacter
-	Character.Parent = game:GetService'Lighting'
-	InvisibleCharacter.Parent = workspace
-	InvisibleCharacter.HumanoidRootPart.CFrame = CF_1
-	Player.Character = InvisibleCharacter
-
-	function TurnVisible()
-		if IsInvis == false then return end
-		invisFix:Disconnect()
-		invisDied:Disconnect()
-		CF = workspace.CurrentCamera.CFrame
-		Character = Character
-		local CF_1 = Player.Character.HumanoidRootPart.CFrame
-		Character.HumanoidRootPart.CFrame = CF_1
-		InvisibleCharacter:Destroy()
-		Player.Character = Character
-		Character.Parent = workspace
-		IsInvis = false
-		Player.Character.Animate.Disabled = true
-		Player.Character.Animate.Disabled = false
-		invisDied = Character:FindFirstChildOfClass'Humanoid'.Died:Connect(function()
-			Respawn()
-			invisDied:Disconnect()
-		end)
-		invisRunning = false
-	end
-	workspace.CurrentCamera:remove()
-	wait(.1)
-	workspace.CurrentCamera.CameraSubject = speaker.Character:FindFirstChildWhichIsA('Humanoid')
-	workspace.CurrentCamera.CameraType = "Custom"
-	speaker.CameraMinZoomDistance = 0.5
-	speaker.CameraMaxZoomDistance = 400
-	speaker.CameraMode = "Classic"
-	speaker.Character.Head.Anchored = false
-        end
-    end
-end)
-loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-game.StarterGui:SetCore("SendNotification", {
-Title = "KEYBINDS";
-Text = "[F] Attack (with no animations)                                                   [T,4,5] Sprint/Swim Animation Toggle"; 
-Duration = 30; })
-bind99 = "t"
-toggle = false
-game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
-if key == bind99 then
-	if toggle == false then
-		toggle = true
-		local v = game.Players.LocalPlayer.Character
-		v.Stats:FindFirstChild("IsSprinting").Value = true
-		else
-		local v = game.Players.LocalPlayer.Character
-		v.Stats:FindFirstChild("IsSprinting").Value = false
-		toggle = false
-	end
-end
-end)
-
-bind26 = "="
-local Player = game:GetService("Players").LocalPlayer
-local Mouse = Player:GetMouse()
-Mouse.KeyDown:connect(function(key)
-if key == bind26 then
-game.Workspace.GameEvents.DoEmoji:FireServer("Embarassed")
-end
-end)
-
-bind68 = "5"
-game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
-if key == bind68 then
-local v = game.Players.LocalPlayer.Character
-v.Stats:FindFirstChild("InWater").Value = true
-end
-end)
-bind38 = "4"
-game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
-if key == bind38 then
-local v = game.Players.LocalPlayer.Character
-v.Stats:FindFirstChild("InWater").Value = false
-end
-end)
-
-bind98 = "f"
-game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
-if key == bind98 then
-game.Workspace.GameEvents.Damage:FireServer()
-workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
-wait(0.1)
-game.Workspace.GameEvents.Damage:FireServer()
-workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
-wait(0.1)
-game.Workspace.GameEvents.Damage:FireServer()
-workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
-wait(0.1)
-game.Workspace.GameEvents.Damage:FireServer()
-workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
-wait(0.1)
-game.Workspace.GameEvents.Damage:FireServer()
-workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
-wait(0.1)
-end
-end)
-game.StarterGui:SetCore("SendNotification", {
-Title = "KEYBINDS";
-Text = "[K] +Hunger           [L] -HUNGER                [J] +Thirst"; 
-Duration = 30; })
-print("Keybinds: [K] +Hunger : [L] -HUNGER : [J] +Thirst")
-local player = game.Players.LocalPlayer
-local mouse = player:GetMouse()
-bind12 = "j"
-bind2 = "k"
-bind3 = "l"
-mouse.KeyDown:connect(function(key)
-if key == bind12 then
-if game:GetService("Workspace").GameMap:FindFirstChild("Water") then
-local A_1 = game:GetService("Workspace").GameMap:FindFirstChild("Water")
-if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame.p then
-local A_2 = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.p
-local Event = game:GetService("Workspace").GameEvents.addThirst
-Event:FireServer(A_1, A_2)
-end
-end
-end
-end
-end)
-
-mouse.KeyDown:connect(function(key2)
-if key2 == bind2 then
-_G.Disabled = true
-if _G.Disabled then
-game.Workspace.GameEvents.EatPlant:FireServer(Workspace.GameMap.Ferns.Fern,5)
-end
-end
-end)
-mouse.KeyDown:connect(function(key3)
-if key3 == bind3 then
-_G.Disabled = true
-game.Workspace.GameEvents.EatPlant:FireServer(Workspace.GameMap.Ferns.Fern,-7.5)
-end
-end)
-game.StarterGui:SetCore("SendNotification", {
-Title = "HEAD KEYBINDS";
-Text = "[C] SHRINK           [N,M] ENLARGE"; 
-Duration = 30; })
-local player = game.Players.LocalPlayer
-local mouse = player:GetMouse()
-bind5 = "c"
-bind1 = "b"
-bind6 = "n"
-mouse.KeyDown:connect(function(key)
-if key == bind5 then
-local v = game.Players.LocalPlayer
-v.Character.Head.Size = Vector3.new(0, 0, 0)
-v.Character.Head.Transparency = 1
-v.Character.Head.Color = Color3.fromRGB(0, 0, 255)
-v.Character.Head.Shape = "Block"
-v.Character.Head.Material = Enum.Material.ForceField
-end
-end)
-mouse.KeyDown:connect(function(key2)
-if key2 == bind1 then
-local v = game.Players.LocalPlayer
-v.Character.Head.Size = Vector3.new(10, 3, 20)
-v.Character.Head.Transparency = 0
-v.Character.Head.Color = Color3.fromRGB(66, 249, 255)
-v.Character.Head.Shape = "Block"
-v.Character.Head.Material = Enum.Material.ForceField
-end
-end)
-mouse.KeyDown:connect(function(key3)
-if key3 == bind6 then
-_G.Disabled = true
-local v = game.Players.LocalPlayer
-v.Character.Head.Size = Vector3.new(16, 3, 45)
-v.Character.Head.Transparency = 0
-v.Character.Head.Color = Color3.fromRGB(66, 249, 255)
-v.Character.Head.Shape = "Block"
-v.Character.Head.Material = Enum.Material.ForceField
-end
-end)
 end)
 
 Grab.Name = "Grab"
@@ -13632,10 +13562,38 @@ TextDNAfarm.BackgroundTransparency = 1
 TextDNAfarm.Position = UDim2.new(0.271247745, 0, 0.275278523, 0)
 TextDNAfarm.Size = UDim2.new(0, 252, 0, 60)
 TextDNAfarm.Font = Enum.Font.Nunito
-TextDNAfarm.Text = "Make your Brachiosaurus 97% Young Adult and your Diplodocus baby 1% and hit fire da farm (Breaks in private servers)."
+TextDNAfarm.Text = "Make your Brachiosaurus 97% Young Adult and your Diplodocus baby 1% and hit fire da farm (Not as Consistent in Private Servers)."
 TextDNAfarm.TextColor3 = Color3.fromRGB(242, 243, 243)
 TextDNAfarm.TextScaled = true
 TextDNAfarm.TextWrapped = true
+
+StopDNALoop = Instance.new("TextButton")
+StopDNALoop.Name = "StartDNALoop"
+StopDNALoop.Parent = DNAFarmFrame
+StopDNALoop.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+StopDNALoop.BorderColor3 = Color3.new(0, 0, 0)
+StopDNALoop.Position = UDim2.new(0.395281106, 0, 0.553181486, 0)
+StopDNALoop.Size = UDim2.new(0, 114, 0, 30)
+StopDNALoop.Font = Enum.Font.Cartoon
+StopDNALoop.Text = "Pause DNA Farm"
+StopDNALoop.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+StopDNALoop.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+StopDNALoop.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+StopDNALoop.BorderColor3 = Color3.fromRGB(248, 248, 248)
+StopDNALoop.Font = Enum.Font.Nunito
+StopDNALoop.TextColor3 = Color3.fromRGB(248, 248, 248)
+StopDNALoop.TextSize = 15
+StopDNALoop.TextWrapped = true
+StopDNALoop.BackgroundTransparency = 0.95
+StopDNALoop.TextStrokeTransparency = 0.3
+StopDNALoop.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+StopDNALoop.MouseButton1Click:connect(function()
+    _G.DNAFarmActive = false
+    game.StarterGui:SetCore("SendNotification", {
+    Title = "DNA FARM";
+    Text = "Paused"; 
+    Duration = 5; })
+    end)
 
 StartDNALoop.Name = "StartDNALoop"
 StartDNALoop.Parent = DNAFarmFrame
@@ -13644,7 +13602,7 @@ StartDNALoop.BorderColor3 = Color3.new(0, 0, 0)
 StartDNALoop.Position = UDim2.new(0.395281106, 0, 0.436181486, 0)
 StartDNALoop.Size = UDim2.new(0, 114, 0, 30)
 StartDNALoop.Font = Enum.Font.Cartoon
-StartDNALoop.Text = "Fire Da DNA Farm"
+StartDNALoop.Text = "DNA Farm"
 StartDNALoop.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 StartDNALoop.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 StartDNALoop.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
@@ -13675,12 +13633,6 @@ local yes = true
 
 _G.DNAFarmActive = yes
 
-if not _G.DNAFarmActive then
-    game.StarterGui:SetCore("SendNotification", {
-    Title = "DNA FARM GANG";
-    Text = "Message : DNA Farm Paused"; 
-    Duration = 5; })
-end
 if _G.DNAFarmActive then
     local VU = game:GetService("VirtualUser")
     game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -13689,8 +13641,8 @@ if _G.DNAFarmActive then
     VU:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
     end)
     game.StarterGui:SetCore("SendNotification", {
-    Title = "DNA FARM GANG";
-    Text = "Anti-Afk Launched : DNA Farm Fired"; 
+    Title = "DNA FARM";
+    Text = "Launched : Anti-AFK Relaunched"; 
     Duration = 5; })
     print("Anti-AFK Ran")
 end
