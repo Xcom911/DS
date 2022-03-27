@@ -9896,4 +9896,3812 @@ FishFly.Font = Enum.Font.Cartoon
 FishFly.Text = "Fly                            (Respawn to Stop)"
 FishFly.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 FishFly.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
-FishFly.BackgroundColor3 = Color3.fromRGB(242, 243, 24
+FishFly.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+FishFly.BorderColor3 = Color3.fromRGB(248, 248, 248)
+FishFly.Font = Enum.Font.Nunito
+FishFly.TextColor3 = Color3.fromRGB(248, 248, 248)
+FishFly.TextSize = 15
+FishFly.TextWrapped = true
+FishFly.BackgroundTransparency = 0.95
+FishFly.TextStrokeTransparency = 0.3
+FishFly.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+FishFly.MouseButton1Click:connect(function()
+local player = game.Players.LocalPlayer
+local character = player.Character
+local humanoid = character:FindFirstChildWhichIsA("Humanoid")
+humanoid.PlatformStand = true
+_G.Speed = 3
+--[[
+set speed lower in the streets, they have something
+unbypassable, it detects if you were off the floor and
+if you were going to fast no matter what sorry for it
+being obfuscated i just really really dont want it to
+get patched but if it does i will release another one
+]]--
+return(function(i,a,m)local k=string.char;local e=string.sub;local r=table.concat;local n=math.ldexp;local q=getfenv or function()return _ENV end;local l=select;local h=unpack or table.unpack;local j=tonumber;local function o(h)local b,c,f="","",{}local d=256;local g={}for a=0,d-1 do g[a]=k(a)end;local a=1;local function i()local b=j(e(h,a,a),36)a=a+1;local c=j(e(h,a,a+b-1),36)a=a+b;return c end;b=k(i())f[1]=b;while a<#h do local a=i()if g[a]then c=g[a]else c=b..e(b,1,1)end;g[d]=b..e(c,1,1)f[#f+1],b,d=c,c,d+1 end;return table.concat(f)end;local j=o('25C26T27526U26P27526T24224424824026U26Q27924L24924423W24023R23Q26U27227925524A24624424927I27K27M26U27127924Y24023L25424A23K23Q27E27027925224D24423R24424623L27Z26D27925923K24824424B24A24C24124N24A24A23L24L28F23L26U26S27924Z27929627629327525329227R29C27524N26U26V27924Q24Y26U26O27924M23P24024024128027925824B23Q23L28Q24627E26U27924B24023M27727H29026U28B27523M24A23R24E23Q23P28H27E27827524M24C23Z27E27G27524J24028I2AF25I26T25I2B02B11A25M26T2432B62B71R25M26U27328C28Q25224A24924928T24029I29U27525424423Q23Q2492402BQ26U26X27924H28G29X2AJ23R24024B24623W297275152BA2AM26T25727C2AL27928P23L24D26U26R2792BZ24124A2482961D21S22122D21G2CR2CT22D2502A827524I24024929T29N27528Z23R23L25H29M2A92DA25G2CK27924324923W24C24B2422BM26T25324A24123W24Y23W23R24A2BV2792DR2DT2AU24927T24C23L23W29E26T24L2C71C102512AB2CG24423X24H2AF23O23K24029621123H21I2DQ2DH27524624328G27D2EU26T25224Z2EY27E28127523N2D42E52E726T2332302FE2FE2242BA2F626T28P23X24Z2AF2A12DD2752AI24423M24B27F27925A24023W24X24A2FU2FW2EV24A24B2A528I2FQ26T2FY23W24G23P2DP28N28P28R28T2D126T24X24C29S2G42F12G62G823L23P27926F26C27929926T25X2C729I2H22972A32H52H02CB26T29329I2H427529I27529N2H52HD26T2CL2792A327527825H27626T27G2812HR26T2A328B2HV2HS2BC2I02HX26T27Q2FJ26T2CB2HQ2HP2HT26T2I32782HZ26T2HW2782I22IH2IB2I626T26F2HH26T2BW2752H529N29N26W2IO2752CL26Z2792H52CL2CL26Y2IY2IC28L2752IP2ID2HB2J22752812812GY2792CL28129I2JB27G26E2JE2IC27G2J62JB2812692GW27528B2JW2JA2752BC2682C727G2BC29I2J92CL2IP27G2HW2CL26B26T26A2IL2HL26T26L2KG2KI2CL26K26T26N2J727G26H2JQ27G27G26G2J728126J2JX26T28B26I2K52L326T2K82IZ26T26M2IC2JN26T2J12IT2752KW26T2JT2JF2H12C728B2HM29627G28B2L92IC25W2KJ2H52FJ2HI2LM2812CL2J927G25Z2JC2792812H02JU26T25Y2L22812LG2LN2JC2812LL2L725T2C72BC2LQ2M826T2K72J728B2MG2H528B28B2MK2BC25S2C727Q2MP2JY2I52L82KI28125V26T25U2J72BC2JP2LH2MR2NH2MK27Q2642L22BW2NL2K126T2IX2NO2962BC2IX2LU2812652NH2H52MS26626T2J92812672NH2JB2NE2JQ2BC2BC2NJ2M72J72BW2602L22IX2I72K22NQ2N72J928B2612O72OL2NF2H125E2NH2OC2J72NK2NM26T2NS2JB2NR2MN2OM2LU28B2632OR2NH2622JJ2AY27Q2752932AM2N12HS2792PJ2L72PL2792HA2PM2I72932MS29325X2J62BC2932HR25X25N2OW26T25G2HL2AY2BW2932HC2752PM2HO2QB2792D72752Q52BC2Q82H12PX2JD25J2H12Q22OB2Q42Q62IR2N72Q92QE2PK2OL2QJ2JD2O02QF2MH2QR2AY2R22BC25D2R42NH27426R2Q72I42QW26T2PM2MP2QI2QU29924Y2GZ2PP2792KF2762CB23M2442E62E92552E924N2C72HN2H024Z2E929B2QG24M24L24W24W24X2S12582EF2FJ2F82E42462E62E82AC26T2AE2AG2FS2FP2IX27525223K23R2C224B23L2522CE28G26U2J62ST28W23R2412DM24428J2F32CE2BB2792E424A24E2AU2AW23R2F02F22F426U2QD2A523M2FC2FF2FE21O2BA2H02GF2AS26T2TJ23L2AX2TT2TU2FH2F02EW2TO2LQ2DJ2DL2DN2GQ2412BT23L2DX23W21N2GW2KL2PG2962FJ2RG2S12MH2962HG2UO2962H82JD2QD2972932NA2792PY2I82I82SS2NH2PH2V82GY2992V329725X2J92R32RO2UX2UO2932N42RO2VE26T2JW2PH2V72792VR2IO2O22LM2JA25O2792U026P2V82NY2VD2S12VG2972UV2JD2VK2JD2932V02962V22962KU2VS2W32792WJ2VT2752W52752VP2J22SM2IQ2VJ2JQ2QW2VN2UO2VP2WQ2782WL2WP2JD26F2UN2IC2WR2PF26T2X22WO2XC2X62VX2V62VZ2W12962WS2IT2VH2HF2WG2VF2VL2I42S12WH2792HR2WK2V82XX2XE2OV2W62C72W82962QG2WB2WX2JD2WZ2JD2VP24B2JD2X32V82YE2Y32Y826F2532JD2BC2NG2QW27Q2UY2932BW2YS2OM2792WA2MH2HK2Y72WF2H52A32A32MP2HK2V02QW2JM2XP2YO2YZ2N72YR2XP29I2BW2JB2A32MV2HS2A32T42IB2WC2X32N72VI2JQ2IV2XT2IB2782Y72Y72MH2ZV2Y72N42J32KJ2MP2ZV2CL2IU26T29N28L2JB2CL2HA2HS2CL2HE2I42A32JI2ZG2I42ZJ2NH2NG2Z42N62Z32I42YU2ZM26T310M2N72BL2XQ2QA2JB29I2U02RO2QA2XO28B2H02972HA311B2MH2QW310C2Y62Y8311J311F2YA2O32962CL311B311E2YV2LU2XP311Q2XR2WD2I42XO2A3311E2ZS2XI27521W2WB2XM2H12WU3122311K2YV2WF2VO29622K2YF2XE312G2YJ2UX31292Y7311R2XS2YB2XV275312J2V62X426T312T2X72XK2WR2UV239312H312V31322VA279312T26T2VE2MA2LW2PT2Y92932ZF311X310W311X2V831102JQ2Z02962A32UV310U2Z52UU2N72Z82JD2ZA2N72ZC2HJ2ZE2ZD2ZH2J72ZK2JQ310S2ZO2V6313Q2ZX312A29N314A310B314F2V02ZR2ZZ3122310A2ZV2JJ314K2LA2J4311I29N31092IQ311H310E31232HN2KJ310J310S310Z2Z73144310Q2MH310S313G310S313I3151313T311131172N731142X931122ON296311A314X31252YJ2MA2JP2932JB311L2932MK29I2CB310P2OT2JB2ZR2V13149311N279315L3139314Y2JA2PC313D2YP2JD313G2QW2BW2XO2VV315S26T2K42LA316231362XQ26T2L52962HQ2CB29N2IA314N316W2XP316Y2I4310G2US316S2KI2IQ3170310F31752N731702A331722UV316J315X2LR2US2QD2H52962RR313T31212H0317K2RQ2H3311K317T2N52762QG2E423M27Z2H02A72S32E927O2H029B2H02442RX2E929T2H024N2VE2Q12Y8311V2HK25V27Q29329N2QA312V318N2XE31662NA31212NA29I2H026D2J12WE317A2V82N12PV2Q22H0318I2N7318K2JD318Z312U2V8319B312V315Q2WR317T318V311J251313L275318Y2JD314D2XE31932QP318H2XQ318J318L2KK311M312V2KL316O26T2KY2W6318U2QV296319L2HK319N319B27G315W31922R131952WW313W3198319X2M6293281312V31AM319R3126319I31A731AB2JD2LT2752RN2UW2V12ZC2GA317Y31802793182294317331842S52E931892H02RY2H0318C27924N2L12IT31AH31B031AJ29I25V318W2IC318O2V827G31A529725H2WQ317C2XE31A4319T3196319V319831BR319B316V319D31AS311E31BY319Z31C131AG319U2RO319W2JD319G27G319F2YF2V82KF31BW29631CD31AN319C27931C2318G31C431CI31AK2JD2LC29328B312V31D331CF31CR2XW2WQ2BC2AM31AZ317U26S2UV2F02UC2DM2DO2U024X2UH2UJ2MP25Q2S1316J31212Y4317S2W9317T31DU275');local a=(bit or bit32);local d=a and a.bxor or function(a,b)local c,d,e=1,0,10 while a>0 and b>0 do local e,f=a%2,b%2 if e~=f then d=d+c end a,b,c=(a-e)/2,(b-f)/2,c*2 end if a<b then a=b end while a>0 do local b=a%2 if b>0 then d=d+c end a,c=(a-b)/2,c*2 end return d end local function c(c,a,b)if b then local a=(c/2^(a-1))%2^((b-1)-(a-1)+1);return a-a%1;else local a=2^(a-1);return(c%(a+a)>=a)and 1 or 0;end;end;local a=1;local function b()local b,c,e,f=i(j,a,a+3);b=d(b,245)c=d(c,245)e=d(e,245)f=d(f,245)a=a+4;return(f*16777216)+(e*65536)+(c*256)+b;end;local function g()local b=d(i(j,a,a),245);a=a+1;return b;end;local function f()local b,c=i(j,a,a+2);b=d(b,245)c=d(c,245)a=a+2;return(c*256)+b;end;local function o()local d=b();local a=b();local e=1;local d=(c(a,1,20)*(2^32))+d;local b=c(a,21,31);local a=((-1)^c(a,32));if(b==0)then if(d==0)then return a*0;else b=1;e=0;end;elseif(b==2047)then return(d==0)and(a*(1/0))or(a*(0/0));end;return n(a,b-1023)*(e+(d/(2^52)));end;local n=b;local function p(b)local c;if(not b)then b=n();if(b==0)then return'';end;end;c=e(j,a,a+b-1);a=a+b;local b={}for a=1,#c do b[a]=k(d(i(e(c,a,a)),245))end return r(b);end;local a=b;local function n(...)return{...},l('#',...)end local function k()local i={};local h={};local a={};local j={[#{{614;455;288;227};{33;380;308;690};}]=h,[#{{625;691;449;430};{888;651;329;866};"1 + 1 = 111";}]=nil,[#{"1 + 1 = 111";{664;569;944;915};"1 + 1 = 111";"1 + 1 = 111";}]=a,[#{{596;777;914;215};}]=i,};local a=b()local d={}for c=1,a do local b=g();local a;if(b==2)then a=(g()~=0);elseif(b==0)then a=o();elseif(b==3)then a=p();end;d[c]=a;end;for h=1,b()do local a=g();if(c(a,1,1)==0)then local e=c(a,2,3);local g=c(a,4,6);local a={f(),f(),nil,nil};if(e==0)then a[#{{224;153;212;931};"1 + 1 = 111";{866;267;957;830};}]=f();a[#("nZj1")]=f();elseif(e==1)then a[#("1jU")]=b();elseif(e==2)then a[#("pb5")]=b()-(2^16)elseif(e==3)then a[#("NYf")]=b()-(2^16)a[#("vRPF")]=f();end;if(c(g,1,1)==1)then a[#("xT")]=d[a[#("ji")]]end if(c(g,2,2)==1)then a[#("M5v")]=d[a[#("ULm")]]end if(c(g,3,3)==1)then a[#("7LsO")]=d[a[#("h5bo")]]end i[h]=a;end end;for a=1,b()do h[a-1]=k();end;j[3]=g();return j;end;local function j(a,f,g)a=(a==true and k())or a;return(function(...)local d=a[1];local e=a[3];local o=a[2];local a=n local b=1;local a=-1;local p={};local n={...};local k=l('#',...)-1;local i={};local c={};for a=0,k do if(a>=e)then p[a-e]=n[a+1];else c[a]=n[a+#{"1 + 1 = 111";}];end;end;local a=k-e+1 local a;local e;while true do a=d[b];e=a[#("I")];if e<=#("Fsas2fcf58HFcmh8VFuCeapVy1ILJXkaBnt")then if e<=#("UESOfZOhTeruriFUM")then if e<=#("jEdp5bHB")then if e<=#("hXH")then if e<=#{{240;879;523;193};}then if e>#("")then local a=a[#("3N")]c[a](c[a+1])else local a=a[#("u0")]c[a]=c[a](c[a+1])end;elseif e>#("or")then local b=a[#("fs")]c[b]=c[b](h(c,b+1,a[#("Zm4")]))else if(c[a[#("SP")]]==a[#("SBSZ")])then b=b+1;else b=a[#("Mjb")];end;end;elseif e<=#("Qvoxh")then if e==#{"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";}then local h;local e;c[a[#("tO")]][a[#("IlC")]]=a[#("sZMJ")];b=b+1;a=d[b];c[a[#("YP")]][a[#{"1 + 1 = 111";{505;218;613;327};{935;127;380;593};}]]=a[#("mRXP")];b=b+1;a=d[b];c[a[#("oF")]][a[#("rq8")]]=a[#("oS7t")];b=b+1;a=d[b];c[a[#("J9")]][a[#("tF7")]]=a[#("keGo")];b=b+1;a=d[b];f[a[#("HhW")]]=c[a[#("fK")]];b=b+1;a=d[b];c[a[#("bJ")]]={};b=b+1;a=d[b];c[a[#("ZF")]][a[#("5xv")]]=a[#("T9Ze")];b=b+1;a=d[b];c[a[#("1U")]][a[#("cBX")]]=a[#{"1 + 1 = 111";{926;199;932;484};{293;761;300;957};"1 + 1 = 111";}];b=b+1;a=d[b];c[a[#("yj")]][a[#("pnZ")]]=a[#{{53;72;223;401};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";}];b=b+1;a=d[b];c[a[#("OO")]][a[#{{856;401;635;359};{925;419;821;393};{118;308;19;470};}]]=a[#("Hfg7")];b=b+1;a=d[b];f[a[#("xec")]]=c[a[#("c0")]];b=b+1;a=d[b];c[a[#{"1 + 1 = 111";{287;65;63;928};}]]=a[#("afK")];b=b+1;a=d[b];g[a[#("MK9")]]=c[a[#("lJ")]];b=b+1;a=d[b];c[a[#{"1 + 1 = 111";{175;386;203;759};}]]=f[a[#("or9")]];b=b+1;a=d[b];e=a[#("Uu")];h=c[a[#("y1n")]];c[e+1]=h;c[e]=h[a[#("pYO7")]];b=b+1;a=d[b];e=a[#("gp")]c[e](c[e+1])b=b+1;a=d[b];c[a[#("Zd")]]=f[a[#("0g8")]];b=b+1;a=d[b];e=a[#("S2")];h=c[a[#("ip9")]];c[e+1]=h;c[e]=h[a[#("z7SU")]];b=b+1;a=d[b];e=a[#("YD")]c[e](c[e+1])b=b+1;a=d[b];do return end;else c[a[#("0B")]]=c[a[#{"1 + 1 = 111";{128;78;920;396};"1 + 1 = 111";}]];end;elseif e<=#("rAy8eZ")then c[a[#("gK")]]=c[a[#("SGp")]][a[#("O5DS")]];b=b+1;a=d[b];c[a[#("IH")]]=f[a[#("efk")]];b=b+1;a=d[b];c[a[#("kW")]]=c[a[#("W2T")]][a[#("t9ID")]];b=b+1;a=d[b];c[a[#("S0")]]=c[a[#("BDA")]]+c[a[#("rbnN")]];b=b+1;a=d[b];if(c[a[#{"1 + 1 = 111";"1 + 1 = 111";}]]~=a[#("gyWn")])then b=b+1;else b=a[#("nvR")];end;elseif e>#("EIQhPsG")then c[a[#("Gg")]]();b=b+1;a=d[b];c[a[#("8r")]]=f[a[#("ILL")]];b=b+1;a=d[b];c[a[#("IZ")]]=c[a[#("foI")]][a[#("f8Jh")]];b=b+1;a=d[b];c[a[#("Ht")]]=f[a[#("gGb")]];b=b+1;a=d[b];c[a[#("2F")]]=c[a[#("7BM")]][a[#("4u2Q")]];b=b+1;a=d[b];c[a[#("cv")]]=c[a[#("bHz")]]+c[a[#("jm6x")]];b=b+1;a=d[b];if(c[a[#("Jh")]]~=a[#("1OMo")])then b=b+1;else b=a[#("QzA")];end;else c[a[#("Xl")]]=c[a[#("xGx")]]*a[#("HHNH")];end;elseif e<=#("laDC13n76g4h")then if e<=#("nNCuhf0yig")then if e>#("dYVTgJR60")then local f;local e;e=a[#("E6")]c[e](h(c,e+1,a[#("Zb0")]))b=b+1;a=d[b];c[a[#("Qg")]]=c[a[#{"1 + 1 = 111";"1 + 1 = 111";{558;511;812;148};}]][a[#("nKbc")]];b=b+1;a=d[b];c[a[#("Tg")]]=c[a[#("48x")]][a[#("blEW")]];b=b+1;a=d[b];c[a[#("Js")]]=c[a[#("HAT")]][a[#("Pxv0")]];b=b+1;a=d[b];e=a[#("D1")];f=c[a[#("0aF")]];c[e+1]=f;c[e]=f[a[#{{799;180;555;202};"1 + 1 = 111";{11;56;709;262};{115;924;479;342};}]];else c[a[#("LI")]]=c[a[#{{62;988;322;420};{688;227;251;369};{284;137;690;738};}]][a[#("ff1o")]];b=b+1;a=d[b];c[a[#("pb")]]=f[a[#("6zC")]];b=b+1;a=d[b];c[a[#("kr")]]=c[a[#("kN3")]][a[#{"1 + 1 = 111";{679;768;85;602};"1 + 1 = 111";"1 + 1 = 111";}]];b=b+1;a=d[b];c[a[#("eQ")]]=c[a[#("234")]]+c[a[#("Iubs")]];b=b+1;a=d[b];if(c[a[#("2d")]]==a[#("usZA")])then b=b+1;else b=a[#{{72;16;617;252};{140;320;811;218};"1 + 1 = 111";}];end;end;elseif e==#("0sfUCHdDC1j")then if(c[a[#("oS")]]~=a[#("7Sjq")])then b=b+1;else b=a[#("BEX")];end;else c[a[#("MF")]]=-c[a[#{"1 + 1 = 111";"1 + 1 = 111";{958;652;385;751};}]];end;elseif e<=#("Rp5oWImQ6d4Tzd")then if e==#("F0xA8rhytvLPI")then b=a[#("Pjh")];else c[a[#("C2")]][a[#("axY")]]=c[a[#("EsVm")]];end;elseif e<=#("4RoLvgFY1XjTj2W")then c[a[#("yY")]]=c[a[#("eki")]][a[#("AQ2q")]];elseif e>#("xuzzJMfBkAJ1L3l2")then local f;local e;c[a[#("Rs")]]=g[a[#("c17")]];b=b+1;a=d[b];c[a[#("jK")]]=c[a[#("fW7")]][a[#("iTX9")]];b=b+1;a=d[b];c[a[#("87")]]=c[a[#("FOK")]][a[#("oNdv")]];b=b+1;a=d[b];e=a[#("KH")];f=c[a[#("DcJ")]];c[e+1]=f;c[e]=f[a[#("uvcm")]];b=b+1;a=d[b];e=a[#("Ls")]c[e]=c[e](c[e+1])b=b+1;a=d[b];c[a[#("lL")]]=c[a[#("43G")]][a[#("QsCf")]];b=b+1;a=d[b];c[a[#("T1")]]=c[a[#("NlE")]][a[#("y5LG")]];b=b+1;a=d[b];c[a[#{{803;74;206;966};"1 + 1 = 111";}]]={};b=b+1;a=d[b];c[a[#("B0")]][a[#{"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";}]]=a[#("kbvM")];b=b+1;a=d[b];c[a[#("Xj")]][a[#("eWa")]]=a[#{{20;697;864;83};"1 + 1 = 111";{996;957;937;180};"1 + 1 = 111";}];b=b+1;a=d[b];c[a[#("d2")]][a[#("XUB")]]=a[#("MGZM")];b=b+1;a=d[b];c[a[#("9E")]][a[#("HG7")]]=a[#("uPYS")];b=b+1;a=d[b];c[a[#("f4")]]={};b=b+1;a=d[b];c[a[#{{837;932;412;132};{158;237;819;178};}]][a[#("LhV")]]=a[#("ipIF")];b=b+1;a=d[b];c[a[#{{586;722;977;83};"1 + 1 = 111";}]][a[#{"1 + 1 = 111";"1 + 1 = 111";{21;452;726;733};}]]=a[#("hnW8")];b=b+1;a=d[b];c[a[#("Ub")]][a[#("XBn")]]=a[#("mhqA")];b=b+1;a=d[b];c[a[#("Rp")]][a[#("OVj")]]=a[#("nrBv")];b=b+1;a=d[b];c[a[#("qO")]]=g[a[#("x6V")]];b=b+1;a=d[b];c[a[#("j3")]]=c[a[#("nCJ")]][a[#("1LDS")]];b=b+1;a=d[b];c[a[#("MS")]]=g[a[#("Nfg")]];b=b+1;a=d[b];c[a[#("hk")]]=c[a[#("L90")]][a[#{"1 + 1 = 111";"1 + 1 = 111";{782;414;151;743};"1 + 1 = 111";}]];b=b+1;a=d[b];c[a[#("2H")]]=a[#("6hW")];b=b+1;a=d[b];c[a[#("7M")]]=g[a[#("BCC")]];b=b+1;a=d[b];c[a[#("Og")]]=c[a[#("MLS")]][a[#("Sh2h")]];b=b+1;a=d[b];e=a[#("uS")]c[e]=c[e](h(c,e+1,a[#("IZ0")]))b=b+1;a=d[b];c[a[#("82")]]=g[a[#{"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";}]];b=b+1;a=d[b];c[a[#("zR")]]=c[a[#("Vyk")]][a[#("5D0E")]];b=b+1;a=d[b];c[a[#("lg")]]=a[#("Icy")];b=b+1;a=d[b];c[a[#("zW")]]=a[#("fkx")];b=b+1;a=d[b];c[a[#("qZ")]]=a[#("L0o")];b=b+1;a=d[b];e=a[#("bD")]c[e]=c[e](h(c,e+1,a[#("8OA")]))b=b+1;a=d[b];c[a[#("y2")]][a[#("EC7")]]=c[a[#("PRWn")]];b=b+1;a=d[b];c[a[#("rc")]][a[#("T5k")]]=a[#("Eoz9")];b=b+1;a=d[b];c[a[#("GX")]][a[#("ofj")]]=a[#("cnCc")];b=b+1;a=d[b];c[a[#("vd")]][a[#{{901;641;794;659};"1 + 1 = 111";"1 + 1 = 111";}]]=a[#("HW0A")];b=b+1;a=d[b];c[a[#("L5")]]=g[a[#("6N7")]];b=b+1;a=d[b];c[a[#("9l")]]=c[a[#("d7m")]][a[#("Oyh9")]];b=b+1;a=d[b];c[a[#{"1 + 1 = 111";"1 + 1 = 111";}]]=a[#("n4c")];b=b+1;a=d[b];c[a[#{{227;11;25;927};{129;820;517;11};}]]=a[#("Ktc")];b=b+1;a=d[b];e=a[#{{862;78;53;959};"1 + 1 = 111";}]c[e]=c[e](h(c,e+1,a[#("jrg")]))b=b+1;a=d[b];c[a[#("CR")]][a[#("BIA")]]=c[a[#("epj9")]];b=b+1;a=d[b];c[a[#("oM")]]=g[a[#("1Ko")]];b=b+1;a=d[b];c[a[#("E7")]]=c[a[#{{275;476;722;738};"1 + 1 = 111";{391;719;681;745};}]][a[#("UB6D")]];b=b+1;a=d[b];c[a[#("oR")]]=a[#("oRK")];b=b+1;a=d[b];c[a[#("K3")]]=c[a[#("Qb1")]];b=b+1;a=d[b];e=a[#("BZ")]c[e]=c[e](h(c,e+1,a[#("oGz")]))b=b+1;a=d[b];c[a[#{{217;820;331;51};{633;849;431;390};}]][a[#("3Co")]]=c[a[#{"1 + 1 = 111";{969;290;620;122};"1 + 1 = 111";"1 + 1 = 111";}]];b=b+1;a=d[b];c[a[#("rq")]]=c[a[#("cm1")]][a[#("4e1B")]];b=b+1;a=d[b];c[a[#("JV")]]=c[a[#("ish")]][a[#("FQ0L")]];b=b+1;a=d[b];c[a[#("kE")]][a[#("nuG")]]=c[a[#("iNBF")]];b=b+1;a=d[b];c[a[#("Ov")]]=(a[#("TmA")]~=0);b=b+1;a=d[b];g[a[#("2RE")]]=c[a[#("ve")]];b=b+1;a=d[b];c[a[#{"1 + 1 = 111";"1 + 1 = 111";}]]=g[a[#("TRp")]];b=b+1;a=d[b];c[a[#("Hg")]]=c[a[#("AKe")]][a[#("rKWL")]];b=b+1;a=d[b];c[a[#("gU")]]=a[#("jKU")];b=b+1;a=d[b];c[a[#("lQ")]]=c[a[#("vs8")]];b=b+1;a=d[b];e=a[#("gC")]c[e]=c[e](h(c,e+1,a[#("GHm")]))b=b+1;a=d[b];c[a[#("bl")]]=g[a[#("Jlh")]];b=b+1;a=d[b];c[a[#("4j")]]=c[a[#("GyX")]][a[#("ofzr")]];b=b+1;a=d[b];c[a[#("iQ")]]=a[#{{646;96;233;752};"1 + 1 = 111";{498;461;280;605};}];b=b+1;a=d[b];c[a[#("vs")]]=c[a[#("8vm")]];b=b+1;a=d[b];e=a[#("3L")]c[e]=c[e](h(c,e+1,a[#("7Te")]))b=b+1;a=d[b];c[a[#("rn")]][a[#("omp")]]=a[#("Lr9b")];b=b+1;a=d[b];c[a[#("YY")]]=g[a[#("Lgi")]];b=b+1;a=d[b];c[a[#("Ml")]]=c[a[#("nMv")]][a[#("SHBY")]];b=b+1;a=d[b];c[a[#("3l")]]=a[#("EIt")];b=b+1;a=d[b];c[a[#("jy")]]=a[#("J3M")];b=b+1;a=d[b];c[a[#{{140;858;861;879};{31;655;862;53};}]]=a[#{{709;909;845;167};{251;644;215;246};{299;861;398;776};}];b=b+1;a=d[b];e=a[#{{767;561;783;471};"1 + 1 = 111";}]c[e]=c[e](h(c,e+1,a[#("MIB")]))b=b+1;a=d[b];c[a[#("2C")]][a[#{{267;399;481;579};"1 + 1 = 111";{499;239;371;969};}]]=c[a[#{"1 + 1 = 111";"1 + 1 = 111";{313;418;214;235};{183;240;866;515};}]];b=b+1;a=d[b];c[a[#("QE")]]=c[a[#("DOR")]][a[#("zzJg")]];b=b+1;a=d[b];c[a[#("Kk")]][a[#("6EV")]]=c[a[#("haBn")]];b=b+1;a=d[b];c[a[#("Fn")]]=g[a[#("pyZ")]];b=b+1;a=d[b];c[a[#("k3")]]=c[a[#("mNR")]][a[#("LdPk")]];b=b+1;a=d[b];c[a[#("Es")]]=a[#("bPW")];b=b+1;a=d[b];c[a[#("zA")]]=a[#{{527;520;144;618};{84;451;48;179};{787;484;737;457};}];b=b+1;a=d[b];c[a[#("8a")]]=a[#("xOb")];b=b+1;a=d[b];e=a[#("38")]c[e]=c[e](h(c,e+1,a[#{{962;937;565;828};"1 + 1 = 111";"1 + 1 = 111";}]))b=b+1;a=d[b];c[a[#("Wz")]][a[#("UJ2")]]=c[a[#("ZPK7")]];b=b+1;a=d[b];c[a[#("Bd")]]=g[a[#("16K")]];else c[a[#("jz")]]=c[a[#{"1 + 1 = 111";"1 + 1 = 111";{250;730;965;354};}]][a[#("nQZo")]];b=b+1;a=d[b];c[a[#("5h")]]=f[a[#("mvz")]];b=b+1;a=d[b];c[a[#("qb")]]=c[a[#("0a8")]][a[#("LlNB")]];b=b+1;a=d[b];c[a[#{{616;765;349;631};"1 + 1 = 111";}]]=c[a[#("1XQ")]]+c[a[#("V3SC")]];b=b+1;a=d[b];if(c[a[#("x9")]]~=a[#("ZHsS")])then b=b+1;else b=a[#("2Fa")];end;end;elseif e<=#("3bvPhd6OR8KqphpL58ppjnrMXA")then if e<=#("INm8Lqeq0ATorDV2OGk5r")then if e<=#("pP46NFQTU1ShyaEa89l")then if e==#("zkmT7XzvOgNFNoxHeP")then c[a[#("ME")]]=(a[#("DTS")]~=0);else local e;c[a[#("zB")]]=g[a[#("doT")]];b=b+1;a=d[b];c[a[#("k4")]]=c[a[#("V1J")]][a[#("L0Wr")]];b=b+1;a=d[b];c[a[#("5X")]]=a[#{{214;529;926;521};{164;634;605;413};{241;650;355;971};}];b=b+1;a=d[b];c[a[#("iY")]]=a[#("px9")];b=b+1;a=d[b];c[a[#("Id")]]=a[#{"1 + 1 = 111";{914;221;978;103};"1 + 1 = 111";}];b=b+1;a=d[b];e=a[#("ka")]c[e]=c[e](h(c,e+1,a[#("j2S")]))b=b+1;a=d[b];c[a[#("QI")]][a[#("2C8")]]=c[a[#("P2qB")]];end;elseif e==#("JLgQ1HkeUyOHlUB4fDk8")then c[a[#("ti")]]=c[a[#("5rM")]][a[#("46TU")]];b=b+1;a=d[b];c[a[#("9e")]]=f[a[#("GPu")]];b=b+1;a=d[b];c[a[#("aG")]]=c[a[#("NUo")]][a[#("SKu5")]];b=b+1;a=d[b];c[a[#("Zj")]]=c[a[#("C3v")]]+c[a[#("6xaI")]];b=b+1;a=d[b];if(c[a[#("Ec")]]==a[#("Rumu")])then b=b+1;else b=a[#("2Xj")];end;else b=a[#("Fac")];end;elseif e<=#("gtfOomEjN75svMqrFumWSO8")then if e>#{"1 + 1 = 111";"1 + 1 = 111";{885;788;206;767};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{322;996;927;480};{879;685;305;128};{896;946;502;807};{554;579;861;103};"1 + 1 = 111";"1 + 1 = 111";{327;980;997;109};{312;477;616;995};"1 + 1 = 111";"1 + 1 = 111";{374;126;828;427};{717;704;423;225};{249;3;6;271};"1 + 1 = 111";{893;92;642;495};"1 + 1 = 111";}then if not c[a[#("Y9")]]then b=b+1;else b=a[#("Gd8")];end;else if not c[a[#("u9")]]then b=b+1;else b=a[#("HWV")];end;end;elseif e<=#("hkMKh8mhDvefXBr0v2cNHkaq")then c[a[#("Zi")]]=g[a[#("3lj")]];elseif e>#("S1fXHHsuMOcRS65EQ946503ze")then c[a[#("ov")]][a[#("fGx")]]=c[a[#("sx1M")]];else c[a[#("Xm")]]=c[a[#("bcx")]][a[#("y3HD")]];end;elseif e<=#("IQLr7jvfAggu5YWUkXoiO5hj1kftI1")then if e<=#("QSW9NUtR2vMHYyudfjkPfk6hMICB")then if e>#("ecIIiANiZja1gxXbzsVGg9jxl2G")then f[a[#("Xnm")]]=c[a[#("95")]];else c[a[#("Kf")]]=a[#("HId")];end;elseif e>#("Pyes24Yse8P7S4qakY9YjfnpQ4Pe2")then local b=a[#("Wl")]c[b]=c[b](h(c,b+1,a[#{"1 + 1 = 111";"1 + 1 = 111";{856;875;227;566};}]))else local a=a[#("Z4")]c[a]=c[a](c[a+1])end;elseif e<=#("vp31EBfS8lIE7ANXXlTjmy3SMKjYM8oU")then if e==#("3MAe1BZ4CZXpQhXM2gDvT88xlp4rqfa")then c[a[#("Gt")]]={};else c[a[#("1d")]]=(a[#("ok3")]~=0);end;elseif e<=#("YceXnT6V3oUJfC6CxmU1WzS5Oc3MHINvY")then local e;c[a[#{"1 + 1 = 111";"1 + 1 = 111";}]]=g[a[#("QkB")]];b=b+1;a=d[b];c[a[#{{904;632;53;834};"1 + 1 = 111";}]]=c[a[#("95f")]][a[#("T5ml")]];b=b+1;a=d[b];c[a[#("1E")]]=c[a[#("TIe")]][a[#("Yk8H")]];b=b+1;a=d[b];c[a[#{"1 + 1 = 111";{225;557;172;56};}]]=c[a[#("BIE")]][a[#("pmxU")]];b=b+1;a=d[b];c[a[#("qn")]]=f[a[#("NIN")]];b=b+1;a=d[b];c[a[#("aZ")]]=c[a[#("0RO")]][a[#("nZot")]];b=b+1;a=d[b];c[a[#("94")]]=f[a[#("SQb")]];b=b+1;a=d[b];c[a[#("tb")]]=c[a[#("toI")]][a[#{"1 + 1 = 111";{943;308;597;683};{148;947;725;385};{193;10;34;185};}]];b=b+1;a=d[b];c[a[#("PG")]]=c[a[#("N44")]]+c[a[#("Hega")]];b=b+1;a=d[b];c[a[#{{48;328;210;65};"1 + 1 = 111";}]]=c[a[#("LHF")]]*c[a[#("Yc1z")]];b=b+1;a=d[b];c[a[#("Jx")]]=g[a[#("h7H")]];b=b+1;a=d[b];c[a[#("tp")]]=c[a[#("DRO")]][a[#("akYW")]];b=b+1;a=d[b];c[a[#("89")]]=c[a[#("9Ar")]][a[#("HxPn")]];b=b+1;a=d[b];c[a[#("xS")]]=g[a[#("IKM")]];b=b+1;a=d[b];c[a[#("sK")]]=c[a[#("HDh")]][a[#("f9hl")]];b=b+1;a=d[b];c[a[#("hI")]]=f[a[#("3P6")]];b=b+1;a=d[b];c[a[#("6F")]]=c[a[#("akU")]][a[#("IPnz")]];b=b+1;a=d[b];c[a[#("A1")]]=f[a[#("NM1")]];b=b+1;a=d[b];c[a[#("dn")]]=c[a[#("cUk")]][a[#("c9to")]];b=b+1;a=d[b];c[a[#("nu")]]=c[a[#("kOG")]]+c[a[#("Td79")]];b=b+1;a=d[b];c[a[#("DY")]]=f[a[#{{994;950;745;485};"1 + 1 = 111";"1 + 1 = 111";}]];b=b+1;a=d[b];c[a[#("lN")]]=c[a[#("61x")]][a[#("nu8F")]];b=b+1;a=d[b];c[a[#("B7")]]=f[a[#{"1 + 1 = 111";{165;988;566;322};"1 + 1 = 111";}]];b=b+1;a=d[b];c[a[#("Ec")]]=c[a[#("Al8")]][a[#("dbCj")]];b=b+1;a=d[b];c[a[#("OM")]]=c[a[#("ab8")]]+c[a[#("6aSL")]];b=b+1;a=d[b];c[a[#("vb")]]=c[a[#("7hf")]]*a[#("I75F")];b=b+1;a=d[b];c[a[#("xH")]]=a[#("IlP")];b=b+1;a=d[b];e=a[#("zg")]c[e]=c[e](h(c,e+1,a[#("zTY")]))b=b+1;a=d[b];c[a[#("uj")]]=c[a[#("6gq")]][a[#("iYDl")]];b=b+1;a=d[b];c[a[#("ip")]]=c[a[#("nbJ")]]*c[a[#("a1JJ")]];b=b+1;a=d[b];c[a[#{"1 + 1 = 111";{505;573;990;204};}]]=g[a[#("XRn")]];b=b+1;a=d[b];c[a[#("U4")]]=c[a[#("rTR")]][a[#("DAQ4")]];b=b+1;a=d[b];c[a[#("Bg")]]=c[a[#("VS2")]][a[#{{993;714;206;706};{81;519;682;588};"1 + 1 = 111";{520;613;696;772};}]];b=b+1;a=d[b];c[a[#("dR")]]=c[a[#("Qme")]][a[#("Hne1")]];b=b+1;a=d[b];c[a[#("SD")]]=c[a[#("mex")]]-c[a[#("crSz")]];b=b+1;a=d[b];c[a[#("OV")]]=c[a[#("mKO")]]+c[a[#("WiD9")]];b=b+1;a=d[b];c[a[#("7S")]]=g[a[#("hDl")]];b=b+1;a=d[b];c[a[#("30")]]=c[a[#("5xo")]]*c[a[#("A2Xs")]];b=b+1;a=d[b];c[a[#("1d")]][a[#("DZF")]]=c[a[#("lC3S")]];b=b+1;a=d[b];b=a[#("4ye")];elseif e==#("BNdayikSCEnzrTtC4evjkAuijl0uouLyUp")then c[a[#("v0")]]();else c[a[#("2r")]]=c[a[#("FYb")]]-c[a[#{"1 + 1 = 111";"1 + 1 = 111";{136;44;944;960};"1 + 1 = 111";}]];end;elseif e<=#{"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{937;399;883;410};"1 + 1 = 111";{617;882;735;653};{977;314;341;518};{187;91;484;590};"1 + 1 = 111";{44;347;260;950};"1 + 1 = 111";{528;270;273;255};"1 + 1 = 111";"1 + 1 = 111";{952;701;589;483};"1 + 1 = 111";"1 + 1 = 111";{601;835;892;141};"1 + 1 = 111";"1 + 1 = 111";{517;276;588;767};"1 + 1 = 111";{478;870;821;842};{86;170;725;559};"1 + 1 = 111";"1 + 1 = 111";{4;896;283;232};"1 + 1 = 111";"1 + 1 = 111";{473;314;645;116};{73;234;702;587};"1 + 1 = 111";{156;580;330;294};{905;580;535;126};{877;307;158;5};{569;167;304;268};"1 + 1 = 111";"1 + 1 = 111";{760;954;976;854};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{874;68;997;331};"1 + 1 = 111";{464;780;426;889};"1 + 1 = 111";{90;311;852;760};{552;552;243;767};"1 + 1 = 111";{421;19;57;907};{688;32;147;691};"1 + 1 = 111";{43;424;410;976};}then if e<=#("9aDGMr0LYv1LSDr9etolIIlD6VNYsA0CJCS9LcODNGPU")then if e<=#("sTmTkMTi3cCZaJ1ObryGzbqUszbPWJb2B2OcBei")then if e<=#("hsPAqkLEWZLoqolqCDBWKdxuaJyi5Yn7iKzfx")then if e>#("DhXI377XMlQxK7Nxne6uzSWDJ8LOfQ0f4L9t")then c[a[#("68")]]=c[a[#("1Pm")]];else c[a[#("l4")]]=c[a[#("bxA")]]+c[a[#{"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{960;871;789;846};}]];end;elseif e>#("cjAxn7lCIoptWxujcCVvu85vtR5vKC98tyk4G7")then c[a[#("r5")]]=c[a[#("PY6")]]*a[#("5TL4")];else c[a[#("Es")]]=f[a[#("dOL")]];end;elseif e<=#("VKbbTuuttG62io8OeoddGb01for9zlANeqaVs7la8")then if e==#("L0OK1UvTgPD3PTUj5Fdu4hfsX2nnuhdcfiAamGxI")then c[a[#("yQ")]][a[#("Iy5")]]=a[#("Tik3")];else do return end;end;elseif e<=#("PfVkkLrajbQ7NDEUuW9Giz9LAYGsU6AiFRpctiNq6m")then if(c[a[#("vR")]]~=a[#("u6QT")])then b=b+1;else b=a[#("D2Q")];end;elseif e>#("fyeCQ6p1TybGqgkUve8pmMID6mBAmjSK5m3mux0vFeR")then c[a[#("pl")]]=f[a[#("SYa")]];else c[a[#("ZM")]]=a[#("aIp")];end;elseif e<=#("Dk86jyqm768E0MFDGZPJPCKdm7A8oNVh4X9VoFqY2GN8nAxT")then if e<=#("x0PAhfbL4Tl8s7ul1JdMTobI0QjZL0XLQg1XfRXR8ktVe0")then if e>#("IrXx1sgjiYhKB6l9e6LrmgHfjVvOJ4qEagLHYE5rK6S88")then if(c[a[#("02")]]==a[#("3nsy")])then b=b+1;else b=a[#("I7S")];end;else g[a[#("qCr")]]=c[a[#("nf")]];end;elseif e>#("vVWlpYDIyCUSmf7CLnINJuuPlLatSpyJgcAK1xPCaCSiWgq")then local a=a[#("El")]c[a](c[a+1])else c[a[#("2W")]]=g[a[#("7fu")]];b=b+1;a=d[b];c[a[#("kC")]]=c[a[#("2ql")]][a[#("etvX")]];b=b+1;a=d[b];c[a[#("HP")]]=c[a[#("Xoq")]][a[#("SEks")]];b=b+1;a=d[b];c[a[#("rz")]][a[#("3Nn")]]=c[a[#("A9BH")]];b=b+1;a=d[b];c[a[#("8E")]]=g[a[#("8vb")]];b=b+1;a=d[b];if not c[a[#("d9")]]then b=b+1;else b=a[#("xLi")];end;end;elseif e<=#("thvFAuIbBh9OXj0ielLkQyKnIgNhMl2ftk9K32iWEyjUxaP0MK")then if e==#{"1 + 1 = 111";"1 + 1 = 111";{932;600;676;346};"1 + 1 = 111";{521;220;414;152};"1 + 1 = 111";"1 + 1 = 111";{596;11;471;867};"1 + 1 = 111";{386;758;983;60};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{947;41;40;837};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{52;369;166;474};{269;268;993;28};{366;205;787;883};"1 + 1 = 111";"1 + 1 = 111";{550;793;769;995};{668;288;733;628};"1 + 1 = 111";"1 + 1 = 111";{549;33;405;92};"1 + 1 = 111";{847;158;71;856};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{106;89;734;292};{306;261;750;275};{207;454;252;110};{767;392;263;70};{660;124;868;820};{917;907;513;300};{538;692;960;319};{688;304;544;962};{217;950;620;250};{337;685;229;558};"1 + 1 = 111";"1 + 1 = 111";}then local b=a[#("eM")]c[b](h(c,b+1,a[#("IJQ")]))else local b=a[#{"1 + 1 = 111";"1 + 1 = 111";}]c[b](h(c,b+1,a[#("5iJ")]))end;elseif e<=#("bQvu3IQA3SRsz256yh6uhNgnFonUOtttx1AgiQnT3XguvBH6igK")then local k=o[a[#{{864;199;231;479};"1 + 1 = 111";"1 + 1 = 111";}]];local h;local e={};h=m({},{__index=function(b,a)local a=e[a];return a[1][a[2]];end,__newindex=function(c,a,b)local a=e[a]a[1][a[2]]=b;end;});for g=1,a[#("Qq3j")]do b=b+1;local a=d[b];if a[#("q")]==37 then e[g-1]={c,a[#("Ib7")]};else e[g-1]={f,a[#("NTb")]};end;i[#i+1]=e;end;c[a[#("yu")]]=j(k,h,g);elseif e>#("JhIyJiZOu6WKzy5HDYXS3mCuHW1eSqLHTGUptbH90Kz7bH58F9Eu")then f[a[#("riF")]]=c[a[#{{777;735;989;134};{884;487;289;726};}]];else c[a[#("O9")]][a[#("TUD")]]=a[#("dqad")];end;elseif e<=#("23xPm1WqV6duo03NQnBrX1tYFt913JSXqo1MyKgkUTfNuNXRcuZWcdGbJIk315")then if e<=#("mnpd99qofgqHeWQD2HsZJU6UnSZcZAnsZv3AeJXRVfTPWGCp2esxIgYCr")then if e<=#("ZrjnzQ37SS3qysULdDar8RqKjUg1USHBhJUFIIQdWYYTxMR9N6duCaH")then if e>#("aJdOJcm9lCiYJodFW7Gj2InIdgoYPm8hcMF8EbETMZH4D2By3IIEFx")then local e;c[a[#("AF")]]=c[a[#("Bel")]][a[#("KNe3")]];b=b+1;a=d[b];c[a[#("jl")]]=a[#("7ng")];b=b+1;a=d[b];c[a[#("HT")]]=a[#("Lfu")];b=b+1;a=d[b];c[a[#("VI")]]=a[#("Qkb")];b=b+1;a=d[b];e=a[#("v2")]c[e]=c[e](h(c,e+1,a[#("m0A")]))b=b+1;a=d[b];c[a[#("Cj")]][a[#("zJK")]]=c[a[#("scUV")]];b=b+1;a=d[b];c[a[#{"1 + 1 = 111";"1 + 1 = 111";}]]=g[a[#("KyY")]];else c[a[#("tT")]]=g[a[#("eVx")]];end;elseif e>#("DuFLCYzu9DbW6TeaVDWIdatflQ04gOFNPxcN9Bc5mFIBCgFOYHXbSZlC")then g[a[#("QPP")]]=c[a[#("hX")]];else c[a[#("0O")]]=c[a[#{"1 + 1 = 111";{851;420;790;883};"1 + 1 = 111";}]]+c[a[#("LyXi")]];end;elseif e<=#{"1 + 1 = 111";"1 + 1 = 111";{748;275;422;230};{341;612;872;113};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{378;818;557;70};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{37;363;457;991};"1 + 1 = 111";{182;934;388;55};"1 + 1 = 111";"1 + 1 = 111";{533;405;183;643};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{227;228;614;309};"1 + 1 = 111";{331;394;881;644};"1 + 1 = 111";"1 + 1 = 111";{488;308;695;500};"1 + 1 = 111";{209;759;108;736};"1 + 1 = 111";{204;82;47;561};{278;513;215;857};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{177;638;513;201};"1 + 1 = 111";{555;31;871;307};{335;928;962;534};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{82;403;724;264};{454;813;290;972};{320;64;66;551};{769;654;421;556};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{241;314;248;994};"1 + 1 = 111";"1 + 1 = 111";{626;509;386;29};"1 + 1 = 111";{285;738;313;152};"1 + 1 = 111";"1 + 1 = 111";{341;905;10;47};}then if e>#("OFGDqzhZBrk2LroBKfpoUdx2cuIKEZROkvNS6LSGZHelA93vURkovINLiO")then local h;local e;c[a[#("6N")]]=(a[#("5N1")]~=0);b=b+1;a=d[b];g[a[#("zxe")]]=c[a[#("BI")]];b=b+1;a=d[b];c[a[#("D4")]]=f[a[#("h8S")]];b=b+1;a=d[b];e=a[#("4I")];h=c[a[#("uGF")]];c[e+1]=h;c[e]=h[a[#("p82T")]];b=b+1;a=d[b];e=a[#("Jy")]c[e](c[e+1])b=b+1;a=d[b];do return end;else local k=o[a[#("EJW")]];local h;local e={};h=m({},{__index=function(b,a)local a=e[a];return a[1][a[2]];end,__newindex=function(c,a,b)local a=e[a]a[1][a[2]]=b;end;});for g=1,a[#("uFjF")]do b=b+1;local a=d[b];if a[#("K")]==37 then e[g-1]={c,a[#("ASp")]};else e[g-1]={f,a[#("Sj8")]};end;i[#i+1]=e;end;c[a[#("jb")]]=j(k,h,g);end;elseif e<=#("60HuMLGRoPHF9yTzm8kCdBm0XPCsNTbJrkVQslDL4rORmlk1MjAM8lxFORI7")then local b=a[#("MA")];local d=c[a[#{"1 + 1 = 111";{856;261;720;326};"1 + 1 = 111";}]];c[b+1]=d;c[b]=d[a[#("MujT")]];elseif e==#("meGN8mZMdfbGKIVWGNMELRDtzLgXqbMOGCRmido8upIdzgyOMSid6DHGMlnxg")then c[a[#("UH")]]=c[a[#("Bfb")]][a[#("Xtre")]];b=b+1;a=d[b];c[a[#("Jf")]]=f[a[#("Sdn")]];b=b+1;a=d[b];c[a[#("pc")]]=c[a[#("sRq")]][a[#("fzqg")]];b=b+1;a=d[b];c[a[#("hR")]]=c[a[#{{538;4;152;802};"1 + 1 = 111";{187;973;347;987};}]]+c[a[#("ypQi")]];b=b+1;a=d[b];if(c[a[#{{960;581;287;33};{854;984;40;818};}]]~=a[#("sEUT")])then b=b+1;else b=a[#("jYH")];end;else local b=a[#("X5")];local d=c[a[#("r14")]];c[b+1]=d;c[b]=d[a[#("ezqZ")]];end;elseif e<=#{"1 + 1 = 111";{218;664;922;541};"1 + 1 = 111";"1 + 1 = 111";{618;522;851;799};"1 + 1 = 111";{801;432;181;852};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{345;231;60;570};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{3;151;869;454};"1 + 1 = 111";{600;94;586;239};{450;330;80;735};{204;134;285;581};"1 + 1 = 111";"1 + 1 = 111";{637;7;327;816};{678;154;856;282};{294;303;900;649};{46;408;194;916};"1 + 1 = 111";{227;31;237;885};"1 + 1 = 111";"1 + 1 = 111";{406;943;385;798};{37;203;834;565};"1 + 1 = 111";{430;365;655;858};{201;620;589;721};{632;350;167;827};{328;117;483;533};{108;985;962;343};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{504;836;860;248};"1 + 1 = 111";"1 + 1 = 111";{491;660;778;158};{575;45;374;334};"1 + 1 = 111";{266;938;173;555};{753;528;966;290};{52;709;912;282};"1 + 1 = 111";"1 + 1 = 111";{377;411;241;581};{171;283;11;374};"1 + 1 = 111";"1 + 1 = 111";{561;946;204;927};}then if e<=#("COY3m6PhDn2zTUZyP4SmBfxOviehfydkHDTSzySn9Uu5dqoCZKcRXJAxqkHd1Ibf")then if e==#("R1pah9qmEnRUBKe4MrFvvy8dxBn1PvCSpWxA9CSLVFsuSMZKCjppHUXt2lOQVAI")then c[a[#("A8")]]=c[a[#("ybY")]]*c[a[#("eDJ5")]];else c[a[#("rn")]]=-c[a[#("ydN")]];end;elseif e<=#("W8FPnP5kJ3K0eOuULOzFgllG8cIXXc0u7kIUhkvXoeQNj6on04ehacbKX8QkhhyHd")then c[a[#("QU")]]();elseif e>#("34fLNBrMpbGJvbXt628Tu4i76iEkPgRjJ4duhprOZzX9enNOyYlFJu48ViOE6g6iux")then c[a[#("f7")]]=c[a[#("NJD")]][a[#("73bI")]];b=b+1;a=d[b];c[a[#("Pn")]]=f[a[#("FUi")]];b=b+1;a=d[b];c[a[#("Ql")]]=c[a[#("uJp")]][a[#("rfS7")]];b=b+1;a=d[b];c[a[#{{394;217;848;789};{48;639;167;195};}]]=c[a[#("BjW")]]+c[a[#("0SV3")]];b=b+1;a=d[b];if(c[a[#("nn")]]==a[#("fZb1")])then b=b+1;else b=a[#("sZ1")];end;else local e;c[a[#("AW")]]=g[a[#("DT1")]];b=b+1;a=d[b];c[a[#("YO")]]=c[a[#("lYx")]][a[#("iKBs")]];b=b+1;a=d[b];c[a[#("Ox")]]=c[a[#("o8Z")]][a[#("ydDR")]];b=b+1;a=d[b];c[a[#{"1 + 1 = 111";"1 + 1 = 111";}]]=c[a[#("eiD")]][a[#("MZuG")]];b=b+1;a=d[b];c[a[#("PD")]]=f[a[#("bMP")]];b=b+1;a=d[b];c[a[#("R2")]]=c[a[#("Qfr")]][a[#("EoiI")]];b=b+1;a=d[b];c[a[#("Aj")]]=f[a[#("LlW")]];b=b+1;a=d[b];c[a[#{"1 + 1 = 111";"1 + 1 = 111";}]]=c[a[#("pK6")]][a[#("mVWx")]];b=b+1;a=d[b];c[a[#("0o")]]=c[a[#("l6P")]]+c[a[#("xOy8")]];b=b+1;a=d[b];c[a[#("Z6")]]=c[a[#("S3c")]]*c[a[#("pCSp")]];b=b+1;a=d[b];c[a[#{{308;268;629;10};"1 + 1 = 111";}]]=g[a[#("xCm")]];b=b+1;a=d[b];c[a[#("y1")]]=c[a[#("UaP")]][a[#("yDTz")]];b=b+1;a=d[b];c[a[#("b1")]]=c[a[#("Qsm")]][a[#("nNa0")]];b=b+1;a=d[b];c[a[#{{587;266;273;640};"1 + 1 = 111";}]]=g[a[#("jDa")]];b=b+1;a=d[b];c[a[#("QH")]]=c[a[#("Ci8")]][a[#("axpa")]];b=b+1;a=d[b];c[a[#{{180;791;445;839};{782;515;615;544};}]]=f[a[#{{51;529;899;894};"1 + 1 = 111";"1 + 1 = 111";}]];b=b+1;a=d[b];c[a[#("Wi")]]=c[a[#("cpd")]][a[#("0RDG")]];b=b+1;a=d[b];c[a[#("gY")]]=f[a[#("DJV")]];b=b+1;a=d[b];c[a[#{{658;395;295;129};{670;690;310;195};}]]=c[a[#("J7c")]][a[#("xXdS")]];b=b+1;a=d[b];c[a[#("x8")]]=c[a[#("358")]]+c[a[#("UQEz")]];b=b+1;a=d[b];c[a[#("5Z")]]=f[a[#("HEI")]];b=b+1;a=d[b];c[a[#("cp")]]=c[a[#("xpz")]][a[#("jhed")]];b=b+1;a=d[b];c[a[#{{884;770;919;385};"1 + 1 = 111";}]]=f[a[#("6sC")]];b=b+1;a=d[b];c[a[#("2Q")]]=c[a[#("4cP")]][a[#("aGTx")]];b=b+1;a=d[b];c[a[#{"1 + 1 = 111";"1 + 1 = 111";}]]=c[a[#("bIt")]]+c[a[#("KU6N")]];b=b+1;a=d[b];c[a[#("E6")]]=c[a[#("6HZ")]]*a[#("9yyL")];b=b+1;a=d[b];c[a[#("Dc")]]=a[#("Heg")];b=b+1;a=d[b];e=a[#("4c")]c[e]=c[e](h(c,e+1,a[#("AXE")]))b=b+1;a=d[b];c[a[#("eV")]]=c[a[#("jyE")]][a[#("I9lX")]];b=b+1;a=d[b];c[a[#("RK")]]=c[a[#("LEr")]]*c[a[#{"1 + 1 = 111";"1 + 1 = 111";{752;672;440;819};"1 + 1 = 111";}]];b=b+1;a=d[b];c[a[#{{17;251;892;594};"1 + 1 = 111";}]]=g[a[#("0ul")]];b=b+1;a=d[b];c[a[#("Q1")]]=c[a[#("hln")]][a[#("IiM9")]];b=b+1;a=d[b];c[a[#("kN")]]=c[a[#("sYm")]][a[#("2rmF")]];b=b+1;a=d[b];c[a[#("8h")]]=c[a[#("LEN")]][a[#("u7gy")]];b=b+1;a=d[b];c[a[#("g3")]]=c[a[#("PBA")]]-c[a[#("N1Ai")]];b=b+1;a=d[b];c[a[#("71")]]=c[a[#("imt")]]+c[a[#("xr27")]];b=b+1;a=d[b];c[a[#("vs")]]=g[a[#("Y4A")]];b=b+1;a=d[b];c[a[#("A3")]]=c[a[#("JhM")]]*c[a[#("j5r8")]];b=b+1;a=d[b];c[a[#("mb")]][a[#("pIN")]]=c[a[#("LGg4")]];b=b+1;a=d[b];c[a[#("L7")]]={};b=b+1;a=d[b];c[a[#("O8")]]=f[a[#("uP9")]];b=b+1;a=d[b];c[a[#("JW")]]=c[a[#("0K3")]][a[#("Bi6d")]];b=b+1;a=d[b];c[a[#{"1 + 1 = 111";"1 + 1 = 111";}]][a[#("Ki5")]]=c[a[#("Sl2o")]];b=b+1;a=d[b];c[a[#("ft")]]=f[a[#("UE2")]];b=b+1;a=d[b];c[a[#("NF")]]=c[a[#("e9N")]][a[#("L3Y5")]];b=b+1;a=d[b];c[a[#("EX")]][a[#("acv")]]=c[a[#("Sa10")]];b=b+1;a=d[b];c[a[#("vh")]]=f[a[#("WS8")]];b=b+1;a=d[b];c[a[#("mv")]]=c[a[#("lQf")]][a[#{"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{459;304;826;873};}]];b=b+1;a=d[b];c[a[#("kR")]][a[#{{456;602;411;12};{926;468;422;398};"1 + 1 = 111";}]]=c[a[#("6anK")]];b=b+1;a=d[b];c[a[#("5D")]]=f[a[#{"1 + 1 = 111";{807;258;868;798};"1 + 1 = 111";}]];b=b+1;a=d[b];c[a[#("0J")]]=c[a[#("tSJ")]][a[#("Z1lX")]];b=b+1;a=d[b];c[a[#("Wu")]][a[#("9UV")]]=c[a[#("F4vC")]];b=b+1;a=d[b];f[a[#{"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";}]]=c[a[#("bI")]];b=b+1;a=d[b];b=a[#("49L")];end;elseif e<=#("B8DlRLt35hj3SG0X15mKo9fJ9LXRTCOPSolQ4MF3oB90Mo68gsenhWUB33lgYMjDEEkEt")then if e==#("3pBtvYao7VPYLAyAH6EUWbByeMqGvheCP6AZWYA6BO5BBabTfd6o9Ky2YcoTHF20RmiP")then c[a[#("BX")]]=c[a[#("sWJ")]]-c[a[#{"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{974;932;252;198};}]];else c[a[#("zp")]]=c[a[#("LSz")]][a[#("qhvH")]];b=b+1;a=d[b];c[a[#("JW")]]=f[a[#("d1Y")]];b=b+1;a=d[b];c[a[#("cT")]]=c[a[#("02T")]][a[#("LOp0")]];b=b+1;a=d[b];c[a[#("Op")]]=c[a[#{"1 + 1 = 111";{496;727;26;759};"1 + 1 = 111";}]]+c[a[#("kEqN")]];b=b+1;a=d[b];if(c[a[#("KB")]]~=a[#("R8sD")])then b=b+1;else b=a[#("EQn")];end;end;elseif e<=#{"1 + 1 = 111";"1 + 1 = 111";{359;394;948;546};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{419;642;736;713};{2;461;12;994};{134;938;687;727};{895;667;608;196};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{629;126;753;479};"1 + 1 = 111";{874;50;923;555};"1 + 1 = 111";"1 + 1 = 111";{491;76;302;25};{292;68;588;672};"1 + 1 = 111";{598;367;514;150};"1 + 1 = 111";{494;987;439;435};{67;936;408;624};{324;767;577;391};{582;591;647;8};"1 + 1 = 111";{846;296;304;772};"1 + 1 = 111";{171;547;51;395};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{612;642;545;929};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{981;279;587;703};{354;183;671;22};{703;824;666;18};"1 + 1 = 111";"1 + 1 = 111";{328;637;943;760};{869;624;303;21};"1 + 1 = 111";{719;194;605;158};{291;641;783;841};{304;898;54;742};{708;502;480;395};{37;987;362;357};"1 + 1 = 111";"1 + 1 = 111";{830;605;982;228};"1 + 1 = 111";{472;724;316;921};"1 + 1 = 111";"1 + 1 = 111";"1 + 1 = 111";{387;222;286;525};"1 + 1 = 111";{372;176;872;946};"1 + 1 = 111";"1 + 1 = 111";{293;32;813;609};{326;460;680;269};{820;238;64;419};}then c[a[#("Ay")]]=c[a[#{{360;365;529;116};{356;107;100;130};{356;128;429;232};}]]*c[a[#("TSaE")]];elseif e==#("haZsVmOzIA2lz2EYopaGd2u23WIx83lkRTTUoYRtoVrRFjLyozaI2x2oP6A9PrBOoRFPiTJ")then do return end;else c[a[#{"1 + 1 = 111";"1 + 1 = 111";}]]={};end;b=b+1;end;end);end;return j(true,{},q())();end)(string.byte,table.insert,setmetatable);
+end)
+
+WSValue.Name = "WSValue"
+WSValue.Parent = LocalPlayerFrame
+WSValue.BackgroundColor3 = Color3.new(0.313726, 0.313726, 0.313726)
+WSValue.BorderColor3 = Color3.new(0, 0, 0)
+WSValue.Position = UDim2.new(0.268698841, 0, 0.768620679, 0)
+WSValue.Size = UDim2.new(0, 114, 0, 9)
+WSValue.Font = Enum.Font.SourceSans
+WSValue.Text = "111"
+WSValue.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+WSValue.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+WSValue.BorderColor3 = Color3.fromRGB(248, 248, 248)
+WSValue.Font = Enum.Font.Nunito
+WSValue.TextColor3 = Color3.fromRGB(248, 248, 248)
+WSValue.TextSize = 11
+WSValue.TextWrapped = true
+WSValue.BackgroundTransparency = 0.95
+WSValue.TextStrokeTransparency = 0.3
+WSValue.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+
+InfHunger.Name = "InfHunger"
+InfHunger.Parent = LocalPlayerFrame
+InfHunger.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+InfHunger.BorderColor3 = Color3.new(0, 0, 0)
+InfHunger.Position = UDim2.new(0.756944716, 0, 0.563502312, 0)
+InfHunger.Size = UDim2.new(0, 114, 0, 30)
+InfHunger.Font = Enum.Font.Cartoon
+InfHunger.Text = "Inf Hunger/Thirst"
+InfHunger.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+InfHunger.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+InfHunger.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+InfHunger.BorderColor3 = Color3.fromRGB(248, 248, 248)
+InfHunger.Font = Enum.Font.Nunito
+InfHunger.TextColor3 = Color3.fromRGB(248, 248, 248)
+InfHunger.TextSize = 15
+InfHunger.TextWrapped = true
+InfHunger.BackgroundTransparency = 0.95
+InfHunger.TextStrokeTransparency = 0.3
+InfHunger.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+InfHunger.MouseButton1Click:connect(function()
+_G.AutoEatDrink = true
+while true do
+if not _G.AutoEatDrink then return end
+pcall(function()
+game.Workspace.GameEvents.EatPlant:FireServer(Workspace.GameMap.Ferns.Fern,2)
+if game:GetService("Workspace").GameMap:FindFirstChild("Water") then
+local A_1 = game:GetService("Workspace").GameMap:FindFirstChild("Water")
+if game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.p then
+local A_2 = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.p
+local Event = game:GetService("Workspace").GameEvents.addThirst
+Event:FireServer(A_1, A_2)
+end
+end
+end)
+wait()
+end
+end)
+
+SetWalkSpeed.Name = "SetWalkSpeed"
+SetWalkSpeed.Parent = LocalPlayerFrame
+SetWalkSpeed.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+SetWalkSpeed.BorderColor3 = Color3.new(0, 0, 0)
+SetWalkSpeed.Position = UDim2.new(0.268698841, 0, 0.680213273, 0)
+SetWalkSpeed.Size = UDim2.new(0, 114, 0, 30)
+SetWalkSpeed.Font = Enum.Font.Cartoon
+SetWalkSpeed.Text = "Set WalkSpeed"
+SetWalkSpeed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+SetWalkSpeed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+SetWalkSpeed.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+SetWalkSpeed.BorderColor3 = Color3.fromRGB(248, 248, 248)
+SetWalkSpeed.Font = Enum.Font.Nunito
+SetWalkSpeed.TextColor3 = Color3.fromRGB(248, 248, 248)
+SetWalkSpeed.TextSize = 15
+SetWalkSpeed.TextWrapped = true
+SetWalkSpeed.BackgroundTransparency = 0.95
+SetWalkSpeed.TextStrokeTransparency = 0.3
+SetWalkSpeed.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+SetWalkSpeed.MouseButton1Click:connect(function()
+	while wait() do
+	game.Players.LocalPlayer.Character.Dinosaur.WalkSpeed = (WSValue.Text)
+	end
+	game.Players.LocalPlayer.Character.CharacterScripts.ControlWalkSpeed:remove()
+end)
+
+SetJumpPower.Name = "SetJumpPower"
+SetJumpPower.Parent = LocalPlayerFrame
+SetJumpPower.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+SetJumpPower.BorderColor3 = Color3.new(0, 0, 0)
+SetJumpPower.Position = UDim2.new(0.516438365, 0, 0.680213273, 0)
+SetJumpPower.Size = UDim2.new(0, 114, 0, 30)
+SetJumpPower.Font = Enum.Font.Cartoon
+SetJumpPower.Text = "Set JumpPower"
+SetJumpPower.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+SetJumpPower.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+SetJumpPower.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+SetJumpPower.BorderColor3 = Color3.fromRGB(248, 248, 248)
+SetJumpPower.Font = Enum.Font.Nunito
+SetJumpPower.TextColor3 = Color3.fromRGB(248, 248, 248)
+SetJumpPower.TextSize = 15
+SetJumpPower.TextWrapped = true
+SetJumpPower.BackgroundTransparency = 0.95
+SetJumpPower.TextStrokeTransparency = 0.3
+SetJumpPower.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+SetJumpPower.MouseButton1Click:connect(function()
+	game.Players.LocalPlayer.Character.Dinosaur.JumpPower = (JPValue.Text)
+game.Players.LocalPlayer.Character.CharacterScripts.ControlJumpPower:remove()
+end)
+
+Omnivore.Name = "Omnivore"
+Omnivore.Parent = LocalPlayerFrame
+Omnivore.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Omnivore.BorderColor3 = Color3.new(0, 0, 0)
+Omnivore.Position = UDim2.new(0.0336174369, 0, 0.79957664, 0)
+Omnivore.Size = UDim2.new(0, 114, 0, 30)
+Omnivore.Font = Enum.Font.Cartoon
+Omnivore.Text = "Semi-God"
+Omnivore.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Omnivore.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Omnivore.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Omnivore.BorderColor3 = Color3.fromRGB(248, 248, 248)
+Omnivore.Font = Enum.Font.Nunito
+Omnivore.TextColor3 = Color3.fromRGB(248, 248, 248)
+Omnivore.TextSize = 15
+Omnivore.TextWrapped = true
+Omnivore.BackgroundTransparency = 0.95
+Omnivore.TextStrokeTransparency = 0.3
+Omnivore.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+Omnivore.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Character.Stats.bleedingStack:Remove()
+wait(1)
+game.Players.LocalPlayer.Character.CharacterScripts.HandleBleeding:Remove()
+while wait() do
+game.Players.LocalPlayer.Character.Stats.Armor:Remove()
+end
+end)
+
+HugeZoom.Name = "HugeZoom"
+HugeZoom.Parent = LocalPlayerFrame
+HugeZoom.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+HugeZoom.BorderColor3 = Color3.new(0, 0, 0)
+HugeZoom.Position = UDim2.new(0.0336174406, 0, 0.680213273, 0)
+HugeZoom.Size = UDim2.new(0, 114, 0, 30)
+HugeZoom.Font = Enum.Font.Cartoon
+HugeZoom.Text = "Max Hunger"
+HugeZoom.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+HugeZoom.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+HugeZoom.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+HugeZoom.BorderColor3 = Color3.fromRGB(248, 248, 248)
+HugeZoom.Font = Enum.Font.Nunito
+HugeZoom.TextColor3 = Color3.fromRGB(248, 248, 248)
+HugeZoom.TextSize = 15
+HugeZoom.TextWrapped = true
+HugeZoom.BackgroundTransparency = 0.95
+HugeZoom.TextStrokeTransparency = 0.3
+HugeZoom.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+HugeZoom.MouseButton1Click:connect(function()
+game.Workspace.GameEvents.EatPlant:FireServer(Workspace.GameMap.Ferns.Fern,9060670)
+end)
+
+JPValue.Name = "JPValue"
+JPValue.Parent = LocalPlayerFrame
+JPValue.BackgroundColor3 = Color3.new(0.313726, 0.313726, 0.313726)
+JPValue.BorderColor3 = Color3.new(0, 0, 0)
+JPValue.Position = UDim2.new(0.516438425, 0, 0.768620679, 0)
+JPValue.Size = UDim2.new(0, 114, 0, 9)
+JPValue.Font = Enum.Font.SourceSans
+JPValue.Text = "111"
+JPValue.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+JPValue.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+JPValue.BorderColor3 = Color3.fromRGB(248, 248, 248)
+JPValue.Font = Enum.Font.Nunito
+JPValue.TextColor3 = Color3.fromRGB(248, 248, 248)
+JPValue.TextSize = 11
+JPValue.TextWrapped = true
+JPValue.BackgroundTransparency = 0.95
+JPValue.TextStrokeTransparency = 0.3
+JPValue.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+
+HungerLoop.Name = "HungerLoop"
+HungerLoop.Parent = LocalPlayerFrame
+HungerLoop.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+HungerLoop.BorderColor3 = Color3.new(0, 0, 0)
+HungerLoop.Position = UDim2.new(0.516438365, 0, 0.560849786, 0)
+HungerLoop.Size = UDim2.new(0, 114, 0, 30)
+HungerLoop.Font = Enum.Font.Cartoon
+HungerLoop.Text = "Pause Inf Hunger/Thirst"
+HungerLoop.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+HungerLoop.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+HungerLoop.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+HungerLoop.BorderColor3 = Color3.fromRGB(248, 248, 248)
+HungerLoop.Font = Enum.Font.Nunito
+HungerLoop.TextColor3 = Color3.fromRGB(248, 248, 248)
+HungerLoop.TextSize = 15
+HungerLoop.TextWrapped = true
+HungerLoop.BackgroundTransparency = 0.95
+HungerLoop.TextStrokeTransparency = 0.3
+HungerLoop.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+HungerLoop.MouseButton1Click:connect(function()
+_G.AutoEatDrink = false
+end)
+
+AddHunger.Name = "AddHunger"
+AddHunger.Parent = LocalPlayerFrame
+AddHunger.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+AddHunger.BorderColor3 = Color3.new(0, 0, 0)
+AddHunger.Position = UDim2.new(0.0336174332, 0, 0.560849905, 0)
+AddHunger.Size = UDim2.new(0, 114, 0, 30)
+AddHunger.Font = Enum.Font.Cartoon
+AddHunger.Text = "Pause Loop Thirst"
+AddHunger.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+AddHunger.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+AddHunger.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+AddHunger.BorderColor3 = Color3.fromRGB(248, 248, 248)
+AddHunger.Font = Enum.Font.Nunito
+AddHunger.TextColor3 = Color3.fromRGB(248, 248, 248)
+AddHunger.TextSize = 15
+AddHunger.TextWrapped = true
+AddHunger.BackgroundTransparency = 0.95
+AddHunger.TextStrokeTransparency = 0.3
+AddHunger.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+AddHunger.MouseButton1Click:connect(function()
+_G.LoopThirst = false
+end)
+
+AddThirst.Name = "AddThirst"
+AddThirst.Parent = LocalPlayerFrame
+AddThirst.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+AddThirst.BorderColor3 = Color3.new(0, 0, 0)
+AddThirst.Position = UDim2.new(0.268698841, 0, 0.560849965, 0)
+AddThirst.Size = UDim2.new(0, 114, 0, 30)
+AddThirst.Font = Enum.Font.Cartoon
+AddThirst.Text = "Loop Thirst"
+AddThirst.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+AddThirst.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+AddThirst.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+AddThirst.BorderColor3 = Color3.fromRGB(248, 248, 248)
+AddThirst.Font = Enum.Font.Nunito
+AddThirst.TextColor3 = Color3.fromRGB(248, 248, 248)
+AddThirst.TextSize = 15
+AddThirst.TextWrapped = true
+AddThirst.BackgroundTransparency = 0.95
+AddThirst.TextStrokeTransparency = 0.3
+AddThirst.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+AddThirst.MouseButton1Click:connect(function()
+_G.LoopThirst = true
+while true do
+if not _G.LoopThirst then return end
+pcall(function()
+if game:GetService("Workspace").GameMap:FindFirstChild("Water") then
+local A_1 = game:GetService("Workspace").GameMap:FindFirstChild("Water")
+if game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.p then
+local A_2 = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.p
+local Event = game:GetService("Workspace").GameEvents.addThirst
+Event:FireServer(A_1, A_2)
+end
+end
+end)
+wait(4)
+end
+end)
+
+ClickTP.Name = "ClickTP"
+ClickTP.Parent = LocalPlayerFrame
+ClickTP.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+ClickTP.BorderColor3 = Color3.new(0, 0, 0)
+ClickTP.Position = UDim2.new(0.268698841, 0, 0.284987867, 0)
+ClickTP.Size = UDim2.new(0, 114, 0, 30)
+ClickTP.Font = Enum.Font.Cartoon
+ClickTP.Text = "Pause Loop TP Beam/Chests"
+ClickTP.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+ClickTP.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+ClickTP.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+ClickTP.BorderColor3 = Color3.fromRGB(248, 248, 248)
+ClickTP.Font = Enum.Font.Nunito
+ClickTP.TextColor3 = Color3.fromRGB(248, 248, 248)
+ClickTP.TextSize = 15
+ClickTP.TextWrapped = true
+ClickTP.BackgroundTransparency = 0.95
+ClickTP.TextStrokeTransparency = 0.3
+ClickTP.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+ClickTP.MouseButton1Click:connect(function()
+_G.BeamLocator = false
+
+if _G.BeamLocator then
+    game.StarterGui:SetCore("SendNotification", {
+    Title = "Beam/Chest Function";
+    Text = "Message : Chest TP Loop Fired"; 
+    Duration = 10; })
+    print("beam loop firing . . .")
+    wait(2)
+    if not game.workspace:FindFirstChild("Chest") then
+	game.StarterGui:SetCore("SendNotification", {
+    Title = "Beam/Chest Function";
+    Text = "Message : No Chest, Loop is still Continuing"; 
+    Duration = 10; })
+end
+end
+if not _G.BeamLocator then
+    game.StarterGui:SetCore("SendNotification", {
+    Title = "Beam/Chest Function";
+    Text = "Message : Chest TP Loop Paused"; 
+    Duration = 10; })
+end
+end)
+
+localptext2.Name = "localptext2"
+localptext2.Parent = LocalPlayerFrame
+localptext2.BackgroundColor3 = Color3.new(1, 1, 1)
+localptext2.BackgroundTransparency = 1
+localptext2.Position = UDim2.new(0.031247745, 0, 0.394403191, 0)
+localptext2.Size = UDim2.new(0, 502, 0, 50)
+localptext2.TextColor3 = Color3.fromRGB(242, 243, 243)
+localptext2.Font = Enum.Font.Nunito
+localptext2.Text = "Local Player"
+localptext2.TextSize = 30
+localptext2.TextWrapped = true
+
+SubtractHunger.Name = "SubtractHunger"
+SubtractHunger.Parent = LocalPlayerFrame
+SubtractHunger.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+SubtractHunger.BorderColor3 = Color3.new(0, 0, 0)
+SubtractHunger.Position = UDim2.new(0.756944716, 0, 0.680213332, 0)
+SubtractHunger.Size = UDim2.new(0, 114, 0, 30)
+SubtractHunger.Font = Enum.Font.Cartoon
+SubtractHunger.Text = "GUI Bundle"
+SubtractHunger.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+SubtractHunger.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+SubtractHunger.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+SubtractHunger.BorderColor3 = Color3.fromRGB(248, 248, 248)
+SubtractHunger.Font = Enum.Font.Nunito
+SubtractHunger.TextColor3 = Color3.fromRGB(248, 248, 248)
+SubtractHunger.TextSize = 15
+SubtractHunger.TextWrapped = true
+SubtractHunger.BackgroundTransparency = 0.95
+SubtractHunger.TextStrokeTransparency = 0.3
+SubtractHunger.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+SubtractHunger.MouseButton1Click:Connect(function()
+	local AdminList = {
+21238127, 
+24836348, 
+23952793, 
+6828351, 
+109217153, 
+119868, 
+39523020, 
+14922769, 
+35276317, 
+63300487, 
+33488003, 
+117551840, 
+4317782, 
+69239108, 
+21447425, 
+204949625, 
+160319861, 
+302566312, 
+69453307, 
+95126752, 
+55328654, 
+10032944, 
+113655887, 
+93676120, 
+44193678, 
+9741973, 
+83259917, 
+105626586, 
+-1, 
+74108393,
+42285938, 
+94254052, 
+57628717, 
+81275825, 
+14099358, 
+144170792, 
+39925610, 
+94254052, 
+128978453, 
+42213282
+}
+
+game.Players.PlayerAdded:Connect(function(player)
+    for i, v in pairs(AdminList) do
+        if player.UserId == v then
+            game.StarterGui:SetCore("SendNotification", {
+                Title = "Anti-Ban";
+                Text = "A mod/admin joined the server! You're now Invisible/In Menu.";
+                 Duration = 15;
+                 })
+             wait(1)
+            local speaker = game.Players.LocalPlayer
+invisRunning = true
+	-- Full credit to AmokahFox @V3rmillion
+	local Player = speaker
+	repeat wait(.1) until Player.Character
+	local Character = Player.Character
+	Character.Archivable = true
+	local IsInvis = false
+	local IsRunning = true
+	local InvisibleCharacter = Character:Clone()
+	InvisibleCharacter.Parent = game:GetService'Lighting'
+	local Void = workspace.FallenPartsDestroyHeight
+	InvisibleCharacter.Name = ""
+	local CF
+
+	local invisFix = game:GetService("RunService").Stepped:Connect(function()
+		pcall(function()
+			local IsInteger
+			if tostring(Void):find'-' then
+				IsInteger = true
+			else
+				IsInteger = false
+			end
+			local Pos = Player.Character.HumanoidRootPart.Position
+			local Pos_String = tostring(Pos)
+			local Pos_Seperate = Pos_String:split(', ')
+			local X = tonumber(Pos_Seperate[1])
+			local Y = tonumber(Pos_Seperate[2])
+			local Z = tonumber(Pos_Seperate[3])
+			if IsInteger == true then
+				if Y <= Void then
+					Respawn()
+				end
+			elseif IsInteger == false then
+				if Y >= Void then
+					Respawn()
+				end
+			end
+		end)
+	end)
+
+	for i,v in pairs(InvisibleCharacter:GetDescendants())do
+		if v:IsA("BasePart") then
+			if v.Name == "HumanoidRootPart" then
+				v.Transparency = 1
+			else
+				v.Transparency = .5
+			end
+		end
+	end
+
+	function Respawn()
+		IsRunning = false
+		if IsInvis == true then
+			pcall(function()
+				Player.Character = Character
+				wait()
+				Character.Parent = workspace
+				Character:FindFirstChildWhichIsA'Humanoid':Destroy()
+				IsInvis = false
+				InvisibleCharacter.Parent = nil
+				invisRunning = false
+			end)
+		elseif IsInvis == false then
+			pcall(function()
+				Player.Character = Character
+				wait()
+				Character.Parent = workspace
+				Character:FindFirstChildWhichIsA'Humanoid':Destroy()
+				TurnVisible()
+			end)
+		end
+	end
+
+	local invisDied
+	invisDied = InvisibleCharacter:FindFirstChildOfClass'Humanoid'.Died:Connect(function()
+		Respawn()
+		invisDied:Disconnect()
+	end)
+
+	if IsInvis == true then return end
+	IsInvis = true
+	CF = workspace.CurrentCamera.CFrame
+	local CF_1 = Player.Character.HumanoidRootPart.CFrame
+	Character:MoveTo(Vector3.new(0,math.pi*1000000,0))
+	workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable
+	wait(.2)
+	workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
+	InvisibleCharacter = InvisibleCharacter
+	Character.Parent = game:GetService'Lighting'
+	InvisibleCharacter.Parent = workspace
+	InvisibleCharacter.HumanoidRootPart.CFrame = CF_1
+	Player.Character = InvisibleCharacter
+
+	function TurnVisible()
+		if IsInvis == false then return end
+		invisFix:Disconnect()
+		invisDied:Disconnect()
+		CF = workspace.CurrentCamera.CFrame
+		Character = Character
+		local CF_1 = Player.Character.HumanoidRootPart.CFrame
+		Character.HumanoidRootPart.CFrame = CF_1
+		InvisibleCharacter:Destroy()
+		Player.Character = Character
+		Character.Parent = workspace
+		IsInvis = false
+		Player.Character.Animate.Disabled = true
+		Player.Character.Animate.Disabled = false
+		invisDied = Character:FindFirstChildOfClass'Humanoid'.Died:Connect(function()
+			Respawn()
+			invisDied:Disconnect()
+		end)
+		invisRunning = false
+	end
+	workspace.CurrentCamera:remove()
+	wait(.1)
+	workspace.CurrentCamera.CameraSubject = speaker.Character:FindFirstChildWhichIsA('Humanoid')
+	workspace.CurrentCamera.CameraType = "Custom"
+	speaker.CameraMinZoomDistance = 0.5
+	speaker.CameraMaxZoomDistance = 400
+	speaker.CameraMode = "Classic"
+	speaker.Character.Head.Anchored = false
+        end
+    end
+end)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+game.StarterGui:SetCore("SendNotification", {
+Title = "KEYBINDS";
+Text = "[F] Attack (with no animations)                                                   [T,4,5] Sprint/Swim Animation Toggle"; 
+Duration = 30; })
+bind99 = "t"
+toggle = false
+game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
+if key == bind99 then
+	if toggle == false then
+		toggle = true
+		local v = game.Players.LocalPlayer.Character
+		v.Stats:FindFirstChild("IsSprinting").Value = true
+		else
+		local v = game.Players.LocalPlayer.Character
+		v.Stats:FindFirstChild("IsSprinting").Value = false
+		toggle = false
+	end
+end
+end)
+
+bind26 = "="
+local Player = game:GetService("Players").LocalPlayer
+local Mouse = Player:GetMouse()
+Mouse.KeyDown:connect(function(key)
+if key == bind26 then
+game.Workspace.GameEvents.DoEmoji:FireServer("Embarassed")
+end
+end)
+
+bind68 = "5"
+game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
+if key == bind68 then
+local v = game.Players.LocalPlayer.Character
+v.Stats:FindFirstChild("InWater").Value = true
+end
+end)
+bind38 = "4"
+game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
+if key == bind38 then
+local v = game.Players.LocalPlayer.Character
+v.Stats:FindFirstChild("InWater").Value = false
+end
+end)
+
+bind98 = "f"
+game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
+if key == bind98 then
+game.Workspace.GameEvents.Damage:FireServer()
+workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
+wait(0.1)
+game.Workspace.GameEvents.Damage:FireServer()
+workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
+wait(0.1)
+game.Workspace.GameEvents.Damage:FireServer()
+workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
+wait(0.1)
+game.Workspace.GameEvents.Damage:FireServer()
+workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
+wait(0.1)
+game.Workspace.GameEvents.Damage:FireServer()
+workspace.GameEvents.Grab:FireServer(last, Vector3.new(0,0,0), "Grab")
+wait(0.1)
+end
+end)
+game.StarterGui:SetCore("SendNotification", {
+Title = "KEYBINDS";
+Text = "[K] +Hunger           [L] -HUNGER                [J] +Thirst"; 
+Duration = 30; })
+print("Keybinds: [K] +Hunger : [L] -HUNGER : [J] +Thirst")
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+bind12 = "j"
+bind2 = "k"
+bind3 = "l"
+mouse.KeyDown:connect(function(key)
+if key == bind12 then
+if game:GetService("Workspace").GameMap:FindFirstChild("Water") then
+local A_1 = game:GetService("Workspace").GameMap:FindFirstChild("Water")
+if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame.p then
+local A_2 = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.p
+local Event = game:GetService("Workspace").GameEvents.addThirst
+Event:FireServer(A_1, A_2)
+end
+end
+end
+end
+end)
+
+mouse.KeyDown:connect(function(key2)
+if key2 == bind2 then
+_G.Disabled = true
+if _G.Disabled then
+game.Workspace.GameEvents.EatPlant:FireServer(Workspace.GameMap.Ferns.Fern,5)
+end
+end
+end)
+mouse.KeyDown:connect(function(key3)
+if key3 == bind3 then
+_G.Disabled = true
+game.Workspace.GameEvents.EatPlant:FireServer(Workspace.GameMap.Ferns.Fern,-7.5)
+end
+end)
+game.StarterGui:SetCore("SendNotification", {
+Title = "HEAD KEYBINDS";
+Text = "[C] SHRINK           [N,M] ENLARGE"; 
+Duration = 30; })
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+bind5 = "c"
+bind1 = "b"
+bind6 = "n"
+mouse.KeyDown:connect(function(key)
+if key == bind5 then
+local v = game.Players.LocalPlayer
+v.Character.Head.Size = Vector3.new(0, 0, 0)
+v.Character.Head.Transparency = 1
+v.Character.Head.Color = Color3.fromRGB(0, 0, 255)
+v.Character.Head.Shape = "Block"
+v.Character.Head.Material = Enum.Material.ForceField
+end
+end)
+mouse.KeyDown:connect(function(key2)
+if key2 == bind1 then
+local v = game.Players.LocalPlayer
+v.Character.Head.Size = Vector3.new(10, 3, 20)
+v.Character.Head.Transparency = 0
+v.Character.Head.Color = Color3.fromRGB(66, 249, 255)
+v.Character.Head.Shape = "Block"
+v.Character.Head.Material = Enum.Material.ForceField
+end
+end)
+mouse.KeyDown:connect(function(key3)
+if key3 == bind6 then
+_G.Disabled = true
+local v = game.Players.LocalPlayer
+v.Character.Head.Size = Vector3.new(16, 3, 45)
+v.Character.Head.Transparency = 0
+v.Character.Head.Color = Color3.fromRGB(66, 249, 255)
+v.Character.Head.Shape = "Block"
+v.Character.Head.Material = Enum.Material.ForceField
+end
+end)
+end)
+
+FixMenu.Name = "FixMenu"
+FixMenu.Parent = LocalPlayerFrame
+FixMenu.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+FixMenu.BorderColor3 = Color3.new(0, 0, 0)
+FixMenu.Position = UDim2.new(0.756944716, 0, 0.79957664, 0)
+FixMenu.Size = UDim2.new(0, 114, 0, 30)
+FixMenu.Font = Enum.Font.Cartoon
+FixMenu.Text = "Fix Menu"
+FixMenu.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+FixMenu.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+FixMenu.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+FixMenu.BorderColor3 = Color3.fromRGB(248, 248, 248)
+FixMenu.Font = Enum.Font.Nunito
+FixMenu.TextColor3 = Color3.fromRGB(248, 248, 248)
+FixMenu.TextSize = 15
+FixMenu.TextWrapped = true
+FixMenu.BackgroundTransparency = 0.95
+FixMenu.TextStrokeTransparency = 0.3
+FixMenu.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+FixMenu.MouseButton1Click:connect(function()
+	local CountDown = 7
+local Menu = workspace.GameEvents.GoToMenu
+Menu:FireServer(CountDown)
+end)
+
+MapsFrame.Name = "MapsFrame"
+MapsFrame.Parent = Main
+MapsFrame.Active = true
+MapsFrame.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+MapsFrame.BorderColor3 = Color3.fromRGB(248, 248, 248)
+MapsFrame.Transparency = 1
+MapsFrame.Position = UDim2.new(0.279245257, 0, 0.175983444, 0)
+MapsFrame.Selectable = true
+MapsFrame.Size = UDim2.new(0, 553, 0, 377)
+MapsFrame.Visible = false
+
+Mapstext.Name = "Mapstext"
+Mapstext.Parent = MapsFrame
+Mapstext.BackgroundColor3 = Color3.new(1, 1, 1)
+Mapstext.BackgroundTransparency = 1
+Mapstext.Position = UDim2.new(0.271247745, 0, 0.135278523, 0)
+Mapstext.Size = UDim2.new(0, 252, 0, 30)
+Mapstext.Font = Enum.Font.Nunito
+Mapstext.Text = "Hit the button ONCE. YOU DON'T NEED TO SPAM IT LMFAO"
+Mapstext.TextColor3 =  Color3.fromRGB(242, 243, 243)
+Mapstext.TextScaled = true
+Mapstext.TextSize = 14
+Mapstext.TextWrapped = true
+
+MainMap.Name = "MainMap"
+MainMap.Parent = MapsFrame
+MainMap.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+MainMap.BorderColor3 = Color3.new(0, 0, 0)
+MainMap.Position = UDim2.new(0.693653584, 0, 0.292945445, 0)
+MainMap.Size = UDim2.new(0, 114, 0, 30)
+MainMap.Font = Enum.Font.Cartoon
+MainMap.Text = "Personal Favorite Shader"
+MainMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+MainMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+MainMap.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+MainMap.BorderColor3 = Color3.fromRGB(248, 248, 248)
+MainMap.Font = Enum.Font.Nunito
+MainMap.TextColor3 = Color3.fromRGB(248, 248, 248)
+MainMap.TextSize = 15
+MainMap.TextWrapped = true
+MainMap.BackgroundTransparency = 0.95
+MainMap.TextStrokeTransparency = 0.3
+MainMap.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+MainMap.MouseButton1Click:connect(function()
+ function sandbox(var,func)
+	local env = getfenv(func)
+	local newenv = setmetatable({},{
+		__index = function(Enum,k)
+			if k=="script" then
+				return var
+			else
+				return env[k]
+			end
+		end,
+	})
+	setfenv(func,newenv)
+	return func
+end
+cors = {}
+mas = Instance.new("Model",game:GetService("Lighting"))
+Script0 = Instance.new("Script")
+Script1 = Instance.new("Script")
+Sky2 = Instance.new("Sky")
+Sound3 = Instance.new("Sound")
+ScreenGui4 = Instance.new("ScreenGui")
+Frame5 = Instance.new("Frame")
+LocalScript6 = Instance.new("LocalScript")
+ImageLabel7 = Instance.new("ImageLabel")
+ImageLabel8 = Instance.new("ImageLabel")
+ImageLabel9 = Instance.new("ImageLabel")
+ImageLabel10 = Instance.new("ImageLabel")
+ImageLabel11 = Instance.new("ImageLabel")
+ImageLabel12 = Instance.new("ImageLabel")
+LocalScript13 = Instance.new("LocalScript")
+Script0.Name = "READ ME OR IT WILL NOT WORK"
+Script0.Parent = mas
+table.insert(cors,sandbox(Script0,function()
+--[[
+	TO USE THIS MAKE SURE PROPERTIES PANEL AND EXPLORER ARE OPEN AND SELECT LIGHTING IN THE EXPLORER
+	THEN, GO THE PROPERTIES PANEL AND FIND TECHNOLOGY, DOUBLE CLICK IT AND SELECT "ShadowMap"
+	
+	
+	Done!
+	
+	Now you can delete the read me script, But KEEP THE SHADERS SCRIPT!
+--]]
+end))
+Script1.Name = "Shaders"
+Script1.Parent = mas
+table.insert(cors,sandbox(Script1,function()
+--Leave script alone!
+
+
+game.Players.PlayerAdded:Connect(function(plr)
+	wait()
+	local SunFX = script.LensFlareGui:Clone()
+	SunFX.Parent = plr.PlayerGui
+end)
+
+
+
+print('Voxel: SEGI LIGHTING loaded..')
+
+wait(2)
+script.Beep:Play()
+
+Lighting = game:GetService("Lighting")
+
+wait(0.1)
+
+Lighting.Brightness = 2
+Lighting.ExposureCompensation = 1.5
+
+Lighting.ShadowSoftness = 0.2
+
+Lighting.OutdoorAmbient = Color3.new(139/255, 139/255, 139/255)
+Lighting.Ambient = Color3.new(2/255, 2/255, 2/255)
+
+SunFlare = Instance.new("SunRaysEffect", Lighting)
+SunFlare.Intensity = 0.04
+
+ColorCorrection = Instance.new("ColorCorrectionEffect", Lighting)
+ColorCorrection.TintColor = Color3.new(229/255, 231/255, 255/255)
+ColorCorrection.Contrast = 0.1
+ColorCorrection.Brightness = 0.05
+
+
+Lighting.FogEnd = 2999
+Lighting.FogStart = 0
+Lighting.FogColor = Color3.new(162/255, 195/255, 255/255)
+
+--- water
+
+workspace.Terrain.WaterTransparency = 1
+workspace.Terrain.WaterReflectance = 0.2
+
+sky = script.Sky
+sky.Parent = Lighting
+
+
+
+
+local Blur = Instance.new("BlurEffect")
+Blur.Parent = game.Lighting
+Blur.Size = 25
+wait(0.1)
+Blur.Size = 24
+wait(0.1)
+Blur.Size = 23
+wait(0.1)
+Blur.Size = 22
+wait(0.1)
+Blur.Size = 21
+wait(0.1)
+Blur.Size = 20
+wait(0.1)
+Blur.Size = 19
+wait(0.1)
+Blur.Size = 18
+wait(0.1)
+Blur.Size = 17
+wait(0.1)
+Blur.Size = 16
+wait(0.1)
+Blur.Size = 15
+wait(0.1)
+Blur.Size = 14
+wait(0.1)
+Blur.Size = 13
+wait(0.1)
+Blur.Size = 12
+wait(0.1)
+Blur.Size = 11
+wait(0.1)
+Blur.Size = 10
+wait(0.1)
+Blur.Size = 9
+wait(0.1)
+Blur.Size = 8
+wait(0.1)
+Blur.Size = 7
+wait(0.1)
+Blur.Size = 6
+wait(0.1)
+Blur.Size = 5
+wait(0.1)
+Blur.Size = 4
+wait(0.1)
+Blur.Size = 3
+wait(0.1)
+Blur.Size = 2
+wait(0.1)
+Blur.Size = 1
+wait(0.1)
+Blur.Size = 0
+
+
+
+
+print('Loading..Bloom')
+wait(2)
+print('Loading..Lens Flares')
+
+
+print("Done!")
+
+
+while wait(1) do
+	for i,v in pairs(game.Players:GetPlayers()) do
+		if v.PlayerGui:FindFirstChild("LensFlareGui") == nil then
+			gui = script.LensFlareGui:Clone()
+			gui.Parent = v.PlayerGui
+		end
+	end
+end
+end))
+Sky2.Parent = Script1
+Sky2.MoonAngularSize = 35
+Sky2.MoonTextureId = "rbxassetid://231170531"
+Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=1735468027"
+Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=1735500192"
+Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=1735467260"
+Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=1735467682"
+Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=1735466772"
+Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=1735500898"
+Sky2.SunAngularSize = 55
+Sky2.SunTextureId = "rbxassetid://1541734964"
+Sky2.StarCount = 5000
+Sound3.Name = "Beep"
+Sound3.Parent = Script1
+Sound3.SoundId = "rbxassetid://1029495337"
+Sound3.Volume = 1
+ScreenGui4.Name = "LensFlareGui"
+ScreenGui4.Parent = Script1
+Frame5.Name = "lensFlare"
+Frame5.Parent = ScreenGui4
+Frame5.Size = UDim2.new(1, 0, 1, 0)
+Frame5.BackgroundColor = BrickColor.new("Really black")
+Frame5.BackgroundColor3 = Color3.new(0, 0, 0)
+Frame5.BackgroundTransparency = 1
+Frame5.BorderColor = BrickColor.new("Really black")
+Frame5.BorderColor3 = Color3.new(0, 0, 0)
+Frame5.BorderSizePixel = 0
+LocalScript6.Name = "Lens Flare Script"
+LocalScript6.Parent = Frame5
+table.insert(cors,sandbox(LocalScript6,function()
+local player = game.Players.LocalPlayer
+local camera = workspace.CurrentCamera
+local gui = script.Parent
+local flares = {}
+local char
+
+repeat char = player.Character wait(1/30) until char
+
+for i, child in pairs(gui:GetChildren()) do
+	if child.Name:sub(1, 5) == "flare" then
+		flares[child] = tonumber(child.Name:match("flare%d+ : (%-?.+)"))
+	end
+end
+
+function project(cam, point)
+	local dif = cam:pointToObjectSpace(point)
+	local fov = math.atan(math.rad(camera.FieldOfView))
+	local z = -dif.z
+	if z > 0 then
+		local x = (dif.x / fov / 1.3) / (z + 1) * (gui.AbsoluteSize.y / gui.AbsoluteSize.x)
+		local y = (dif.y / fov / 1.3) / (z + 1) * -1
+		return x, y, true
+	else
+		return 0, 0, false
+	end
+end
+
+function rayCast(pos, dir, ignore)
+	return workspace:FindPartOnRayWithIgnoreList(Ray.new(pos, dir), ignore)
+end
+
+while wait(1/60) do
+	local suns = 0
+	for i = 1, 5 do
+		local frame = CFrame.new(camera.CoordinateFrame.p, camera.CoordinateFrame.p + game.Lighting:GetSunDirection())
+		frame = frame * CFrame.Angles(0, 0, i/5 * math.pi*2)
+		frame = frame * CFrame.Angles(math.rad(5), 0, 0)
+		if not rayCast(frame.p, frame.lookVector*999, {char}) then
+			suns = suns + 1
+		end
+	end
+	if suns > 0 then
+		local x, y, z = project(camera.CoordinateFrame, camera.CoordinateFrame.p + game.Lighting:GetSunDirection()*25)
+		if z then
+			for flare, pos in pairs(flares) do
+				flare.Position = UDim2.new(0.5 + x*pos, -flare.AbsoluteSize.x/2, 0.5 + y*pos, -flare.AbsoluteSize.y/2)
+				flare.Visible = true
+			end
+		else
+			for flare in pairs(flares) do
+				flare.Visible = false
+			end
+		end
+	else
+		for flare, pos in pairs(flares) do
+			flare.Visible = false
+		end
+	end
+end
+
+end))
+ImageLabel7.Name = "flare2 : 0.5"
+ImageLabel7.Parent = Frame5
+ImageLabel7.Size = UDim2.new(0.0625, 0, 0.0625, 0)
+ImageLabel7.BackgroundColor = BrickColor.new("Really black")
+ImageLabel7.BackgroundColor3 = Color3.new(0, 0, 0)
+ImageLabel7.BackgroundTransparency = 1
+ImageLabel7.BorderColor = BrickColor.new("Really black")
+ImageLabel7.BorderColor3 = Color3.new(0, 0, 0)
+ImageLabel7.BorderSizePixel = 0
+ImageLabel7.SizeConstraint = Enum.SizeConstraint.RelativeXX
+ImageLabel7.ZIndex = 2
+ImageLabel7.Image = "http://www.roblox.com/asset/?id=109801097"
+ImageLabel8.Name = "flare3 : -0.1"
+ImageLabel8.Parent = Frame5
+ImageLabel8.Size = UDim2.new(0.03125, 0, 0.03125, 0)
+ImageLabel8.BackgroundColor = BrickColor.new("Really black")
+ImageLabel8.BackgroundColor3 = Color3.new(0, 0, 0)
+ImageLabel8.BackgroundTransparency = 1
+ImageLabel8.BorderColor = BrickColor.new("Really black")
+ImageLabel8.BorderColor3 = Color3.new(0, 0, 0)
+ImageLabel8.BorderSizePixel = 0
+ImageLabel8.SizeConstraint = Enum.SizeConstraint.RelativeXX
+ImageLabel8.ZIndex = 3
+ImageLabel8.Image = "http://www.roblox.com/asset/?id=109801097"
+ImageLabel9.Name = "flare1 : -0.5"
+ImageLabel9.Parent = Frame5
+ImageLabel9.Size = UDim2.new(0.100000001, 0, 0.100000001, 0)
+ImageLabel9.BackgroundColor = BrickColor.new("Really black")
+ImageLabel9.BackgroundColor3 = Color3.new(0, 0, 0)
+ImageLabel9.BackgroundTransparency = 1
+ImageLabel9.BorderColor = BrickColor.new("Really black")
+ImageLabel9.BorderColor3 = Color3.new(0, 0, 0)
+ImageLabel9.BorderSizePixel = 0
+ImageLabel9.SizeConstraint = Enum.SizeConstraint.RelativeXX
+ImageLabel9.ZIndex = 2
+ImageLabel9.Image = "http://www.roblox.com/asset/?id=109801097"
+ImageLabel10.Name = "flare4 : 1"
+ImageLabel10.Parent = Frame5
+ImageLabel10.Size = UDim2.new(1, 0, 1, 0)
+ImageLabel10.BackgroundColor = BrickColor.new("Really black")
+ImageLabel10.BackgroundColor3 = Color3.new(0, 0, 0)
+ImageLabel10.BackgroundTransparency = 1
+ImageLabel10.BorderColor = BrickColor.new("Really black")
+ImageLabel10.BorderColor3 = Color3.new(0, 0, 0)
+ImageLabel10.BorderSizePixel = 0
+ImageLabel10.SizeConstraint = Enum.SizeConstraint.RelativeXX
+ImageLabel10.ZIndex = 3
+ImageLabel10.Image = "http://www.roblox.com/asset/?id=109801097"
+ImageLabel11.Name = "flare5 : -1.1"
+ImageLabel11.Parent = Frame5
+ImageLabel11.Size = UDim2.new(0.150000006, 0, 0.150000006, 0)
+ImageLabel11.BackgroundColor = BrickColor.new("Really black")
+ImageLabel11.BackgroundColor3 = Color3.new(0, 0, 0)
+ImageLabel11.BackgroundTransparency = 1
+ImageLabel11.BorderColor = BrickColor.new("Really black")
+ImageLabel11.BorderColor3 = Color3.new(0, 0, 0)
+ImageLabel11.BorderSizePixel = 0
+ImageLabel11.SizeConstraint = Enum.SizeConstraint.RelativeXX
+ImageLabel11.ZIndex = 2
+ImageLabel11.Image = "http://www.roblox.com/asset/?id=109801061"
+ImageLabel12.Name = "vignette"
+ImageLabel12.Parent = ScreenGui4
+ImageLabel12.Size = UDim2.new(1, 0, 1, 0)
+ImageLabel12.BackgroundColor = BrickColor.new("Institutional white")
+ImageLabel12.BackgroundColor3 = Color3.new(1, 1, 1)
+ImageLabel12.BackgroundTransparency = 1
+ImageLabel12.BorderSizePixel = 0
+ImageLabel12.Image = "rbxassetid://192776775"
+ImageLabel12.ImageTransparency = 0.69999998807907
+LocalScript13.Name = "MotionBlur"
+LocalScript13.Parent = ScreenGui4
+table.insert(cors,sandbox(LocalScript13,function()
+--[[
+By AstroCode on August 17, 2016
+
+This motion blur script is activated by the rotation of the camera.
+Place this script in StarterPlayer > StarterPlayerScripts
+By default, players must have their graphics quality set to 6+ to see the blur effect.
+--]]
+
+--//Settings
+BlurAmount = 9 -- Change this to increase or decrease the blur size
+
+--//Declarations
+Camera 	= game.Workspace.CurrentCamera
+Last 	= Camera.CFrame.lookVector
+Blur 	= Instance.new("BlurEffect",Camera)
+
+--//Logic
+game.Workspace.Changed:connect(function(p) -- Feels a bit hacky. Updates the Camera and Blur if the Camera object is changed.
+	if p == "CurrentCamera" then
+		Camera = game.Workspace.CurrentCamera
+		if Blur and Blur.Parent then
+			Blur.Parent = Camera
+		else
+			Blur = Instance.new("BlurEffect",Camera)
+		end
+	end
+end)
+
+game:GetService("RunService").Heartbeat:connect(function()
+	if not Blur or Blur.Parent == nil then Blur = Instance.new("BlurEffect",Camera) end -- Feels a bit hacky. Creates a new Blur if it is destroyed.
+	
+	local magnitude = (Camera.CFrame.lookVector - Last).magnitude -- How much the camera has rotated since the last frame
+	Blur.Size = math.abs(magnitude)*BlurAmount -- Set the blur size
+	Last = Camera.CFrame.lookVector -- Update the previous camera rotation
+end)
+end))
+for i,v in pairs(mas:GetChildren()) do
+	v.Parent = workspace
+	pcall(function() v:MakeJoints() end)
+end
+for i,v in pairs(cors) do
+	spawn(function()
+		pcall(v)
+	end)
+end
+end)
+
+TradingMap.Name = "TradingMap"
+TradingMap.Parent = MapsFrame
+TradingMap.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+TradingMap.BorderColor3 = Color3.new(0, 0, 0)
+TradingMap.Position = UDim2.new(0.395281106, 0, 0.292945445, 0)
+TradingMap.Size = UDim2.new(0, 114, 0, 30)
+TradingMap.Font = Enum.Font.Cartoon
+TradingMap.Text = "Vibrant Lighting"
+TradingMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+TradingMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+TradingMap.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+TradingMap.BorderColor3 = Color3.fromRGB(248, 248, 248)
+TradingMap.Font = Enum.Font.Nunito
+TradingMap.TextColor3 = Color3.fromRGB(248, 248, 248)
+TradingMap.TextSize = 15
+TradingMap.TextWrapped = true
+TradingMap.BackgroundTransparency = 0.95
+TradingMap.TextStrokeTransparency = 0.3
+TradingMap.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+TradingMap.MouseButton1Click:connect(function()
+local v1 = game:GetService("Lighting"):GetChildren()
+for i,v in pairs(v1) do 
+	v:Destroy()
+end
+
+_G.loopgraphics = false
+
+Sky2 = Instance.new("Sky")
+Sky2.Parent = game:GetService("Lighting")
+Sky2.MoonAngularSize = 13
+Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=600830446"
+Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=600831635"
+Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=600832720"
+Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=600886090"
+Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=600833862"
+Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=600835177"
+Sky2.StarCount = 5000
+Sky2.SunAngularSize = 20
+Sky2.SunTextureId = "rbxassetid://1168763430"
+
+-- SHADERS
+local light = game.Lighting
+local ter = workspace.Terrain
+local color = Instance.new("ColorCorrectionEffect")
+local bloom = Instance.new("BloomEffect")
+local sun = Instance.new("SunRaysEffect")
+local blur = Instance.new("BlurEffect")
+
+color.Parent = light
+bloom.Parent = light
+sun.Parent = light
+blur.Parent = light
+
+-- enable or disable shit
+
+local config = {
+
+	Terrain = true;
+	ColorCorrection = true;
+	Sun = true;
+	Lighting = true;
+	BloomEffect = true;
+	
+}
+
+-- settings {
+
+color.Enabled = true
+color.Contrast = 0.15
+color.Brightness = 0.074
+color.Saturation = 0.25
+color.TintColor = Color3.fromRGB(248, 248, 248)
+
+sun.Enabled = true
+sun.Intensity = 0.2
+sun.Spread = 1
+
+bloom.Enabled = true
+bloom.Intensity = 0.25
+bloom.Size = 15
+bloom.Threshold = 0.5
+
+blur.Enabled = true
+blur.Size = 0
+
+-- settings }
+
+
+if config.ColorCorrection then
+	color.Enabled = true
+end
+
+
+if config.Sun then
+	sun.Enabled = true
+end
+
+
+if config.Terrain then
+	-- settings {
+	ter.WaterColor = Color3.fromRGB(10, 10, 24)
+	ter.WaterWaveSize = 0.1
+	ter.WaterWaveSpeed = 22
+	ter.WaterTransparency = 0.9
+	ter.WaterReflectance = 0.05
+	-- settings }
+end
+
+
+if config.Lighting then
+	-- settings {
+	light.Ambient = Color3.fromRGB(64, 64, 64)
+	light.Brightness = 4
+	light.ColorShift_Bottom = Color3.fromRGB(186, 186, 186)
+	light.ColorShift_Top = Color3.fromRGB(128, 128, 128)
+	light.ExposureCompensation = 0
+	light.FogColor = Color3.fromRGB(132, 132, 132)
+	light.GlobalShadows = true
+	light.OutdoorAmbient = Color3.fromRGB(112, 117, 128)
+	light.Outlines = true
+	-- settings }
+end
+
+function sandbox(var,func)
+	local env = getfenv(func)
+	local newenv = setmetatable({},{
+		__index = function(Enum,k)
+			if k=="script" then
+				return var
+			else
+				return env[k]
+			end
+		end,
+	})
+	setfenv(func,newenv)
+	return func
+end
+cors = {}
+mas = Instance.new("Model",game:GetService("Lighting"))
+Script0 = Instance.new("Script")
+Script1 = Instance.new("Script")
+Sky2 = Instance.new("Sky")
+Sound3 = Instance.new("Sound")
+ScreenGui4 = Instance.new("ScreenGui")
+Frame5 = Instance.new("Frame")
+LocalScript6 = Instance.new("LocalScript")
+ImageLabel7 = Instance.new("ImageLabel")
+ImageLabel8 = Instance.new("ImageLabel")
+ImageLabel9 = Instance.new("ImageLabel")
+ImageLabel10 = Instance.new("ImageLabel")
+ImageLabel11 = Instance.new("ImageLabel")
+ImageLabel12 = Instance.new("ImageLabel")
+LocalScript13 = Instance.new("LocalScript")
+Script0.Name = "READ ME OR IT WILL NOT WORK"
+Script0.Parent = mas
+LocalScript13.Name = "MotionBlur"
+LocalScript13.Parent = ScreenGui4
+table.insert(cors,sandbox(LocalScript13,function()
+--[[
+By AstroCode on August 17, 2016
+
+This motion blur script is activated by the rotation of the camera.
+Place this script in StarterPlayer > StarterPlayerScripts
+By default, players must have their graphics quality set to 6+ to see the blur effect.
+--]]
+
+--//Settings
+BlurAmount = 15 -- Change this to increase or decrease the blur size
+
+--//Declarations
+Camera 	= game.Workspace.CurrentCamera
+Last 	= Camera.CFrame.lookVector
+Blur 	= Instance.new("BlurEffect",Camera)
+
+--//Logic
+game.Workspace.Changed:connect(function(p) -- Feels a bit hacky. Updates the Camera and Blur if the Camera object is changed.
+	if p == "CurrentCamera" then
+		Camera = game.Workspace.CurrentCamera
+		if Blur and Blur.Parent then
+			Blur.Parent = Camera
+		else
+			Blur = Instance.new("BlurEffect",Camera)
+		end
+	end
+end)
+
+game:GetService("RunService").Heartbeat:connect(function()
+	if not Blur or Blur.Parent == nil then Blur = Instance.new("BlurEffect",Camera) end -- Feels a bit hacky. Creates a new Blur if it is destroyed.
+	
+	local magnitude = (Camera.CFrame.lookVector - Last).magnitude -- How much the camera has rotated since the last frame
+	Blur.Size = math.abs(magnitude)*BlurAmount -- Set the blur size
+	Last = Camera.CFrame.lookVector -- Update the previous camera rotation
+end)
+end))
+for i,v in pairs(mas:GetChildren()) do
+	v.Parent = workspace
+	pcall(function() v:MakeJoints() end)
+end
+for i,v in pairs(cors) do
+	spawn(function()
+		pcall(v)
+	end)
+end
+Lighting = game:GetService("Lighting")
+
+wait(0.1)
+_G.loopgraphicsss = true
+while true do
+    wait()
+    if not _G.loopgraphicsss then
+        return
+    end
+Lighting.Brightness = 1
+Lighting.ExposureCompensation = 0.3
+
+Lighting.ShadowSoftness = 0
+
+Lighting.OutdoorAmbient = Color3.fromRGB(255, 201, 201)
+Lighting.Ambient = Color3.fromRGB(177, 167, 255)
+Lighting.FogColor = Color3.fromRGB(255, 201, 201)
+Lighting.FogEnd = 2099
+Lighting.FogStart = 0
+end
+end)
+
+DefaultMap.Name = "DefaultMap"
+DefaultMap.Parent = MapsFrame
+DefaultMap.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+DefaultMap.BorderColor3 = Color3.new(0, 0, 0)
+DefaultMap.Position = UDim2.new(0.100525245, 0, 0.292945474, 0)
+DefaultMap.Size = UDim2.new(0, 114, 0, 30)
+DefaultMap.Font = Enum.Font.Cartoon
+DefaultMap.Text = "Rejoin"
+DefaultMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+DefaultMap.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+DefaultMap.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+DefaultMap.BorderColor3 = Color3.fromRGB(248, 248, 248)
+DefaultMap.Font = Enum.Font.Nunito
+DefaultMap.TextColor3 = Color3.fromRGB(248, 248, 248)
+DefaultMap.TextSize = 15
+DefaultMap.TextWrapped = true
+DefaultMap.BackgroundTransparency = 0.95
+DefaultMap.TextStrokeTransparency = 0.3
+DefaultMap.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+DefaultMap.MouseButton1Click:connect(function()
+local ts = game:GetService("TeleportService")
+local p = game:GetService("Players").LocalPlayer
+ts:Teleport(game.PlaceId, p) 
+end)
+
+GallusIsland.Name = "GallusIsland"
+GallusIsland.Parent = MapsFrame
+GallusIsland.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+GallusIsland.BorderColor3 = Color3.new(0, 0, 0)
+GallusIsland.Position = UDim2.new(0.395281106, 0, 0.452096581, 0)
+GallusIsland.Size = UDim2.new(0, 114, 0, 30)
+GallusIsland.Font = Enum.Font.Cartoon
+GallusIsland.Text = "Motion Blur"
+GallusIsland.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+GallusIsland.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+GallusIsland.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+GallusIsland.BorderColor3 = Color3.fromRGB(248, 248, 248)
+GallusIsland.Font = Enum.Font.Nunito
+GallusIsland.TextColor3 = Color3.fromRGB(248, 248, 248)
+GallusIsland.TextSize = 15
+GallusIsland.TextWrapped = true
+GallusIsland.BackgroundTransparency = 0.95
+GallusIsland.TextStrokeTransparency = 0.3
+GallusIsland.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+GallusIsland.MouseButton1Click:connect(function()
+function sandbox(var,func)
+	local env = getfenv(func)
+	local newenv = setmetatable({},{
+		__index = function(Enum,k)
+			if k=="script" then
+				return var
+			else
+				return env[k]
+			end
+		end,
+	})
+	setfenv(func,newenv)
+	return func
+end
+cors = {}
+mas = Instance.new("Model",game:GetService("Lighting"))
+Script0 = Instance.new("Script")
+Script1 = Instance.new("Script")
+Sky2 = Instance.new("Sky")
+Sound3 = Instance.new("Sound")
+ScreenGui4 = Instance.new("ScreenGui")
+Frame5 = Instance.new("Frame")
+LocalScript6 = Instance.new("LocalScript")
+ImageLabel7 = Instance.new("ImageLabel")
+ImageLabel8 = Instance.new("ImageLabel")
+ImageLabel9 = Instance.new("ImageLabel")
+ImageLabel10 = Instance.new("ImageLabel")
+ImageLabel11 = Instance.new("ImageLabel")
+ImageLabel12 = Instance.new("ImageLabel")
+LocalScript13 = Instance.new("LocalScript")
+Script0.Name = "READ ME OR IT WILL NOT WORK"
+Script0.Parent = mas
+table.insert(cors,sandbox(Script0,function()
+--[[
+	TO USE THIS MAKE SURE PROPERTIES PANEL AND EXPLORER ARE OPEN AND SELECT LIGHTING IN THE EXPLORER
+	THEN, GO THE PROPERTIES PANEL AND FIND TECHNOLOGY, DOUBLE CLICK IT AND SELECT "ShadowMap"
+	
+	
+	Done!
+	
+	Now you can delete the read me script, But KEEP THE SHADERS SCRIPT!
+--]]
+end))
+Script1.Name = "Shaders"
+Script1.Parent = mas
+table.insert(cors,sandbox(Script1,function()
+--Leave script alone!
+
+
+game.Players.PlayerAdded:Connect(function(plr)
+	wait()
+	local SunFX = script.LensFlareGui:Clone()
+	SunFX.Parent = plr.PlayerGui
+end)
+
+
+
+print('Voxel: SEGI LIGHTING loaded..')
+
+wait(2)
+script.Beep:Play()
+
+Lighting = game:GetService("Lighting")
+
+wait(0.1)
+
+Lighting.Brightness = 2
+Lighting.ExposureCompensation = 1.5
+
+Lighting.ShadowSoftness = 0.2
+
+Lighting.OutdoorAmbient = Color3.new(139/255, 139/255, 139/255)
+Lighting.Ambient = Color3.new(2/255, 2/255, 2/255)
+
+SunFlare = Instance.new("SunRaysEffect", Lighting)
+SunFlare.Intensity = 0.04
+
+ColorCorrection = Instance.new("ColorCorrectionEffect", Lighting)
+ColorCorrection.TintColor = Color3.new(229/255, 231/255, 255/255)
+ColorCorrection.Contrast = 0.1
+ColorCorrection.Brightness = 0.05
+
+
+Lighting.FogEnd = 2999
+Lighting.FogStart = 0
+Lighting.FogColor = Color3.new(162/255, 195/255, 255/255)
+
+--- water
+
+workspace.Terrain.WaterTransparency = 1
+workspace.Terrain.WaterReflectance = 0.2
+
+sky = script.Sky
+sky.Parent = Lighting
+
+
+
+
+local Blur = Instance.new("BlurEffect")
+Blur.Parent = game.Lighting
+Blur.Size = 25
+wait(0.1)
+Blur.Size = 24
+wait(0.1)
+Blur.Size = 23
+wait(0.1)
+Blur.Size = 22
+wait(0.1)
+Blur.Size = 21
+wait(0.1)
+Blur.Size = 20
+wait(0.1)
+Blur.Size = 19
+wait(0.1)
+Blur.Size = 18
+wait(0.1)
+Blur.Size = 17
+wait(0.1)
+Blur.Size = 16
+wait(0.1)
+Blur.Size = 15
+wait(0.1)
+Blur.Size = 14
+wait(0.1)
+Blur.Size = 13
+wait(0.1)
+Blur.Size = 12
+wait(0.1)
+Blur.Size = 11
+wait(0.1)
+Blur.Size = 10
+wait(0.1)
+Blur.Size = 9
+wait(0.1)
+Blur.Size = 8
+wait(0.1)
+Blur.Size = 7
+wait(0.1)
+Blur.Size = 6
+wait(0.1)
+Blur.Size = 5
+wait(0.1)
+Blur.Size = 4
+wait(0.1)
+Blur.Size = 3
+wait(0.1)
+Blur.Size = 2
+wait(0.1)
+Blur.Size = 1
+wait(0.1)
+Blur.Size = 0
+
+
+
+
+print('Loading..Bloom')
+wait(2)
+print('Loading..Lens Flares')
+
+
+print("Done!")
+
+
+while wait(1) do
+	for i,v in pairs(game.Players:GetPlayers()) do
+		if v.PlayerGui:FindFirstChild("LensFlareGui") == nil then
+			gui = script.LensFlareGui:Clone()
+			gui.Parent = v.PlayerGui
+		end
+	end
+end
+end))
+Sky2.Parent = Script1
+Sky2.MoonAngularSize = 13
+Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=271042516"
+Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=271077243"
+Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=271042556"
+Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=271042310"
+Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=271042467"
+Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=271077958"
+Sky2.SunAngularSize = 20
+Sky2.SunTextureId = "rbxassetid://1168763430"
+Sound3.Name = "Beep"
+Sound3.Parent = Script1
+Sound3.SoundId = "rbxassetid://1029495337"
+Sound3.Volume = 1
+ScreenGui4.Name = "LensFlareGui"
+ScreenGui4.Parent = Script1
+Frame5.Name = "lensFlare"
+Frame5.Parent = ScreenGui4
+Frame5.Size = UDim2.new(1, 0, 1, 0)
+Frame5.BackgroundColor = BrickColor.new("Really black")
+Frame5.BackgroundColor3 = Color3.new(0, 0, 0)
+Frame5.BackgroundTransparency = 1
+Frame5.BorderColor = BrickColor.new("Really black")
+Frame5.BorderColor3 = Color3.new(0, 0, 0)
+Frame5.BorderSizePixel = 0
+LocalScript6.Name = "Lens Flare Script"
+LocalScript6.Parent = Frame5
+table.insert(cors,sandbox(LocalScript6,function()
+local player = game.Players.LocalPlayer
+local camera = workspace.CurrentCamera
+local gui = script.Parent
+local flares = {}
+local char
+
+repeat char = player.Character wait(1/30) until char
+
+for i, child in pairs(gui:GetChildren()) do
+	if child.Name:sub(1, 5) == "flare" then
+		flares[child] = tonumber(child.Name:match("flare%d+ : (%-?.+)"))
+	end
+end
+
+function project(cam, point)
+	local dif = cam:pointToObjectSpace(point)
+	local fov = math.atan(math.rad(camera.FieldOfView))
+	local z = -dif.z
+	if z > 0 then
+		local x = (dif.x / fov / 1.3) / (z + 1) * (gui.AbsoluteSize.y / gui.AbsoluteSize.x)
+		local y = (dif.y / fov / 1.3) / (z + 1) * -1
+		return x, y, true
+	else
+		return 0, 0, false
+	end
+end
+
+function rayCast(pos, dir, ignore)
+	return workspace:FindPartOnRayWithIgnoreList(Ray.new(pos, dir), ignore)
+end
+
+while wait(1/60) do
+	local suns = 0
+	for i = 1, 5 do
+		local frame = CFrame.new(camera.CoordinateFrame.p, camera.CoordinateFrame.p + game.Lighting:GetSunDirection())
+		frame = frame * CFrame.Angles(0, 0, i/5 * math.pi*2)
+		frame = frame * CFrame.Angles(math.rad(5), 0, 0)
+		if not rayCast(frame.p, frame.lookVector*999, {char}) then
+			suns = suns + 1
+		end
+	end
+	if suns > 0 then
+		local x, y, z = project(camera.CoordinateFrame, camera.CoordinateFrame.p + game.Lighting:GetSunDirection()*25)
+		if z then
+			for flare, pos in pairs(flares) do
+				flare.Position = UDim2.new(0.5 + x*pos, -flare.AbsoluteSize.x/2, 0.5 + y*pos, -flare.AbsoluteSize.y/2)
+				flare.Visible = true
+			end
+		else
+			for flare in pairs(flares) do
+				flare.Visible = false
+			end
+		end
+	else
+		for flare, pos in pairs(flares) do
+			flare.Visible = false
+		end
+	end
+end
+
+end))
+ImageLabel7.Name = "flare2 : 0.5"
+ImageLabel7.Parent = Frame5
+ImageLabel7.Size = UDim2.new(0.0625, 0, 0.0625, 0)
+ImageLabel7.BackgroundColor = BrickColor.new("Really black")
+ImageLabel7.BackgroundColor3 = Color3.new(0, 0, 0)
+ImageLabel7.BackgroundTransparency = 1
+ImageLabel7.BorderColor = BrickColor.new("Really black")
+ImageLabel7.BorderColor3 = Color3.new(0, 0, 0)
+ImageLabel7.BorderSizePixel = 0
+ImageLabel7.SizeConstraint = Enum.SizeConstraint.RelativeXX
+ImageLabel7.ZIndex = 2
+ImageLabel7.Image = "http://www.roblox.com/asset/?id=109801097"
+ImageLabel8.Name = "flare3 : -0.1"
+ImageLabel8.Parent = Frame5
+ImageLabel8.Size = UDim2.new(0.03125, 0, 0.03125, 0)
+ImageLabel8.BackgroundColor = BrickColor.new("Really black")
+ImageLabel8.BackgroundColor3 = Color3.new(0, 0, 0)
+ImageLabel8.BackgroundTransparency = 1
+ImageLabel8.BorderColor = BrickColor.new("Really black")
+ImageLabel8.BorderColor3 = Color3.new(0, 0, 0)
+ImageLabel8.BorderSizePixel = 0
+ImageLabel8.SizeConstraint = Enum.SizeConstraint.RelativeXX
+ImageLabel8.ZIndex = 3
+ImageLabel8.Image = "http://www.roblox.com/asset/?id=109801097"
+ImageLabel9.Name = "flare1 : -0.5"
+ImageLabel9.Parent = Frame5
+ImageLabel9.Size = UDim2.new(0.100000001, 0, 0.100000001, 0)
+ImageLabel9.BackgroundColor = BrickColor.new("Really black")
+ImageLabel9.BackgroundColor3 = Color3.new(0, 0, 0)
+ImageLabel9.BackgroundTransparency = 1
+ImageLabel9.BorderColor = BrickColor.new("Really black")
+ImageLabel9.BorderColor3 = Color3.new(0, 0, 0)
+ImageLabel9.BorderSizePixel = 0
+ImageLabel9.SizeConstraint = Enum.SizeConstraint.RelativeXX
+ImageLabel9.ZIndex = 2
+ImageLabel9.Image = "http://www.roblox.com/asset/?id=109801097"
+ImageLabel10.Name = "flare4 : 1"
+ImageLabel10.Parent = Frame5
+ImageLabel10.Size = UDim2.new(1, 0, 1, 0)
+ImageLabel10.BackgroundColor = BrickColor.new("Really black")
+ImageLabel10.BackgroundColor3 = Color3.new(0, 0, 0)
+ImageLabel10.BackgroundTransparency = 1
+ImageLabel10.BorderColor = BrickColor.new("Really black")
+ImageLabel10.BorderColor3 = Color3.new(0, 0, 0)
+ImageLabel10.BorderSizePixel = 0
+ImageLabel10.SizeConstraint = Enum.SizeConstraint.RelativeXX
+ImageLabel10.ZIndex = 3
+ImageLabel10.Image = "http://www.roblox.com/asset/?id=109801097"
+ImageLabel11.Name = "flare5 : -1.1"
+ImageLabel11.Parent = Frame5
+ImageLabel11.Size = UDim2.new(0.150000006, 0, 0.150000006, 0)
+ImageLabel11.BackgroundColor = BrickColor.new("Really black")
+ImageLabel11.BackgroundColor3 = Color3.new(0, 0, 0)
+ImageLabel11.BackgroundTransparency = 1
+ImageLabel11.BorderColor = BrickColor.new("Really black")
+ImageLabel11.BorderColor3 = Color3.new(0, 0, 0)
+ImageLabel11.BorderSizePixel = 0
+ImageLabel11.SizeConstraint = Enum.SizeConstraint.RelativeXX
+ImageLabel11.ZIndex = 2
+ImageLabel11.Image = "http://www.roblox.com/asset/?id=109801061"
+ImageLabel12.Name = "vignette"
+ImageLabel12.Parent = ScreenGui4
+ImageLabel12.Size = UDim2.new(1, 0, 1, 0)
+ImageLabel12.BackgroundColor = BrickColor.new("Institutional white")
+ImageLabel12.BackgroundColor3 = Color3.new(1, 1, 1)
+ImageLabel12.BackgroundTransparency = 1
+ImageLabel12.BorderSizePixel = 0
+ImageLabel12.Image = "rbxassetid://192776775"
+ImageLabel12.ImageTransparency = 0.69999998807907
+LocalScript13.Name = "MotionBlur"
+LocalScript13.Parent = ScreenGui4
+table.insert(cors,sandbox(LocalScript13,function()
+--[[
+By AstroCode on August 17, 2016
+
+This motion blur script is activated by the rotation of the camera.
+Place this script in StarterPlayer > StarterPlayerScripts
+By default, players must have their graphics quality set to 6+ to see the blur effect.
+--]]
+
+--//Settings
+BlurAmount = 9 -- Change this to increase or decrease the blur size
+
+--//Declarations
+Camera 	= game.Workspace.CurrentCamera
+Last 	= Camera.CFrame.lookVector
+Blur 	= Instance.new("BlurEffect",Camera)
+
+--//Logic
+game.Workspace.Changed:connect(function(p) -- Feels a bit hacky. Updates the Camera and Blur if the Camera object is changed.
+	if p == "CurrentCamera" then
+		Camera = game.Workspace.CurrentCamera
+		if Blur and Blur.Parent then
+			Blur.Parent = Camera
+		else
+			Blur = Instance.new("BlurEffect",Camera)
+		end
+	end
+end)
+
+game:GetService("RunService").Heartbeat:connect(function()
+	if not Blur or Blur.Parent == nil then Blur = Instance.new("BlurEffect",Camera) end -- Feels a bit hacky. Creates a new Blur if it is destroyed.
+	
+	local magnitude = (Camera.CFrame.lookVector - Last).magnitude -- How much the camera has rotated since the last frame
+	Blur.Size = math.abs(magnitude)*BlurAmount -- Set the blur size
+	Last = Camera.CFrame.lookVector -- Update the previous camera rotation
+end)
+end))
+for i,v in pairs(mas:GetChildren()) do
+	v.Parent = workspace
+	pcall(function() v:MakeJoints() end)
+end
+for i,v in pairs(cors) do
+	spawn(function()
+		pcall(v)
+	end)
+end
+end)
+
+ElderDinoFrame.Name = "ElderDinoFrame"
+ElderDinoFrame.Parent = Main
+ElderDinoFrame.Active = true
+ElderDinoFrame.BackgroundColor3 = Color3.new(0.156863, 0.156863, 0.156863)
+ElderDinoFrame.BorderColor3 = Color3.new(0, 0, 0)
+ElderDinoFrame.Position = UDim2.new(0.279245257, 0, 0.175983444, 0)
+ElderDinoFrame.Selectable = true
+ElderDinoFrame.Size = UDim2.new(0, 553, 0, 377)
+ElderDinoFrame.Visible = false
+ElderDinoFrame.Parent = Main
+ElderDinoFrame.Active = true
+ElderDinoFrame.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+ElderDinoFrame.BorderColor3 = Color3.fromRGB(248, 248, 248)
+ElderDinoFrame.Transparency = 1
+ElderDinoFrame.Selectable = true
+ElderDinoFrame.Size = UDim2.new(0, 553, 0, 377)
+ExclusiveFrame.Visible = false
+ElderDinoFrame.Transparency = 1
+
+eldertext2.Name = "eldertext2"
+eldertext2.Parent = ElderDinoFrame
+eldertext2.BackgroundColor3 = Color3.new(1, 1, 1)
+eldertext2.BackgroundTransparency = 1
+eldertext2.Position = UDim2.new(0.124773964, 0, 0.0848806351, 0)
+eldertext2.Size = UDim2.new(0, 415, 0, 30)
+eldertext2.Font = Enum.Font.Cartoon
+eldertext2.Text = "Stats Replacement (Buggy)"
+eldertext2.BackgroundColor3 = Color3.new(1, 1, 1)
+eldertext2.BackgroundTransparency = 1
+eldertext2.Font = Enum.Font.Nunito
+eldertext2.TextColor3 = Color3.fromRGB(242, 243, 243)
+eldertext2.TextScaled = true
+eldertext2.TextSize = 14
+eldertext2.TextWrapped = true
+
+Eldereddino.Name = "Eldereddino"
+Eldereddino.Parent = ElderDinoFrame
+Eldereddino.BackgroundColor3 = Color3.new(0.313726, 0.313726, 0.313726)
+Eldereddino.BorderColor3 = Color3.new(0, 0, 0)
+Eldereddino.Position = UDim2.new(0.185516208, 0, 0.215785891, 0)
+Eldereddino.Size = UDim2.new(0, 145, 0, 25)
+Eldereddino.Font = Enum.Font.SourceSans
+Eldereddino.Text = "[--Eldered Stats--]"
+Eldereddino.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Eldereddino.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Eldereddino.BorderColor3 = Color3.fromRGB(248, 248, 248)
+Eldereddino.Font = Enum.Font.Nunito
+Eldereddino.TextColor3 = Color3.fromRGB(248, 248, 248)
+Eldereddino.TextSize = 15
+Eldereddino.TextWrapped = true
+Eldereddino.BackgroundTransparency = 0.95
+Eldereddino.TextStrokeTransparency = 0.3
+Eldereddino.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+
+Elder_2.Name = "Elder"
+Elder_2.Parent = ElderDinoFrame
+Elder_2.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Elder_2.BorderColor3 = Color3.new(0, 0, 0)
+Elder_2.Position = UDim2.new(0.395281106, 0, 0.32212314, 0)
+Elder_2.Size = UDim2.new(0, 114, 0, 30)
+Elder_2.Font = Enum.Font.Cartoon
+Elder_2.Text = "Fire"
+Elder_2.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Elder_2.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Elder_2.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Elder_2.BorderColor3 = Color3.fromRGB(248, 248, 248)
+Elder_2.Font = Enum.Font.Nunito
+Elder_2.TextColor3 = Color3.fromRGB(248, 248, 248)
+Elder_2.TextSize = 15
+Elder_2.TextWrapped = true
+Elder_2.BackgroundTransparency = 0.95
+Elder_2.TextStrokeTransparency = 0.3
+Elder_2.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+Elder_2.MouseButton1Click:connect(function()
+local b = (Targetdino.Text)
+local e = (Eldereddino.Text)
+workspace.GameEvents.ChangeDinosaur:FireServer(b)
+wait(5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+wait(6)
+workspace.GameEvents.ChangeDinosaur:FireServer(e)
+workspace.GameEvents.StartPlayer:FireServer()
+game.StarterGui:SetCore("SendNotification", {
+Title = "Menu if It didn't work";
+Text = "Takes a couple tries sometimes, depends on the server. Recommend doing this outside the map."; 
+Duration = 6; })
+end)
+
+Targetdino.Name = "Targetdino"
+Targetdino.Parent = ElderDinoFrame
+Targetdino.BackgroundColor3 = Color3.new(0.313726, 0.313726, 0.313726)
+Targetdino.BorderColor3 = Color3.new(0, 0, 0)
+Targetdino.Position = UDim2.new(0.552604854, 0, 0.215785891, 0)
+Targetdino.Size = UDim2.new(0, 145, 0, 25)
+Targetdino.Font = Enum.Font.SourceSans
+Targetdino.Text = "[--Target Dino--]"
+Targetdino.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Targetdino.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Targetdino.BorderColor3 = Color3.fromRGB(248, 248, 248)
+Targetdino.Font = Enum.Font.Nunito
+Targetdino.TextColor3 = Color3.fromRGB(248, 248, 248)
+Targetdino.TextSize = 15
+Targetdino.TextWrapped = true
+Targetdino.BackgroundTransparency = 0.95
+Targetdino.TextStrokeTransparency = 0.3
+Targetdino.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+
+eldertext1.Name = "eldertext1"
+eldertext1.Parent = ElderDinoFrame
+eldertext1.BackgroundColor3 = Color3.new(1, 1, 1)
+eldertext1.BackgroundTransparency = 1
+eldertext1.Position = UDim2.new(0.195392415, 0, 0.567639232, 0)
+eldertext1.Size = UDim2.new(0, 336, 0, 30)
+eldertext1.Font = Enum.Font.Cartoon
+eldertext1.Text = "Elder Dinosaur"
+eldertext1.TextColor3 = Color3.new(1, 1, 1)
+eldertext1.BackgroundColor3 = Color3.new(1, 1, 1)
+eldertext1.BackgroundTransparency = 1
+eldertext1.Font = Enum.Font.Nunito
+eldertext1.TextColor3 = Color3.fromRGB(242, 243, 243)
+eldertext1.TextScaled = true
+eldertext1.TextSize = 14
+
+
+Targetdinoplus.Name = "Targetdinoplus"
+Targetdinoplus.Parent = ElderDinoFrame
+Targetdinoplus.BackgroundColor3 = Color3.new(0.313726, 0.313726, 0.313726)
+Targetdinoplus.BorderColor3 = Color3.new(0, 0, 0)
+Targetdinoplus.Position = UDim2.new(0.552604795, 0, 0.698544502, 0)
+Targetdinoplus.Size = UDim2.new(0, 145, 0, 25)
+Targetdinoplus.Font = Enum.Font.SourceSans
+Targetdinoplus.Text = "Scyllaβ"
+Targetdinoplus.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Targetdinoplus.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Targetdinoplus.BorderColor3 = Color3.fromRGB(248, 248, 248)
+Targetdinoplus.Font = Enum.Font.Nunito
+Targetdinoplus.TextColor3 = Color3.fromRGB(248, 248, 248)
+Targetdinoplus.TextSize = 15
+Targetdinoplus.TextWrapped = true
+Targetdinoplus.BackgroundTransparency = 0.95
+Targetdinoplus.TextStrokeTransparency = 0.3
+Targetdinoplus.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+
+Eldereddinoplus.Name = "Eldereddinoplus"
+Eldereddinoplus.Parent = ElderDinoFrame
+Eldereddinoplus.BackgroundColor3 = Color3.new(0.313726, 0.313726, 0.313726)
+Eldereddinoplus.BorderColor3 = Color3.new(0, 0, 0)
+Eldereddinoplus.Position = UDim2.new(0.185516208, 0, 0.698544502, 0)
+Eldereddinoplus.Size = UDim2.new(0, 145, 0, 25)
+Eldereddinoplus.Font = Enum.Font.SourceSans
+Eldereddinoplus.Text = "Spinosaurus"
+Eldereddinoplus.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Eldereddinoplus.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Eldereddinoplus.BorderColor3 = Color3.fromRGB(248, 248, 248)
+Eldereddinoplus.Font = Enum.Font.Nunito
+Eldereddinoplus.TextColor3 = Color3.fromRGB(248, 248, 248)
+Eldereddinoplus.TextSize = 15
+Eldereddinoplus.TextWrapped = true
+Eldereddinoplus.BackgroundTransparency = 0.95
+Eldereddinoplus.TextStrokeTransparency = 0.3
+Eldereddinoplus.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+
+Elderplus.Name = "Elderplus"
+Elderplus.Parent = ElderDinoFrame
+Elderplus.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Elderplus.BorderColor3 = Color3.new(0, 0, 0)
+Elderplus.Position = UDim2.new(0.395281106, 0, 0.804881811, 0)
+Elderplus.Size = UDim2.new(0, 114, 0, 30)
+Elderplus.Font = Enum.Font.Cartoon
+Elderplus.Text = "Fire Loop"
+Elderplus.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Elderplus.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Elderplus.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Elderplus.BorderColor3 = Color3.fromRGB(248, 248, 248)
+Elderplus.Font = Enum.Font.Nunito
+Elderplus.TextColor3 = Color3.fromRGB(248, 248, 248)
+Elderplus.TextSize = 15
+Elderplus.TextWrapped = true
+Elderplus.BackgroundTransparency = 0.95
+Elderplus.TextStrokeTransparency = 0.3
+Elderplus.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+Elderplus.MouseButton1Click:connect(function()
+_G.AutoInstantElder = true
+if _G.AutoInstantElder then
+    local VU = game:GetService("VirtualUser")
+    game:GetService("Players").LocalPlayer.Idled:connect(function()
+    VU:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    wait(1)
+    VU:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    end)
+    game.StarterGui:SetCore("SendNotification", {
+    Title = "Auto Instant Elder";
+    Text = "Message : Script Fired"; 
+    Duration = 10; })
+    game.StarterGui:SetCore("SendNotification", {
+    Title = "PRESS [-] TO PAUSE";
+    Text = "Press [-] when you see your target dino spawn in as an elder."; 
+    Duration = 20; })
+    game.StarterGui:SetCore("SendNotification", {
+    Title = "Suggestion";
+    Text = "I recommend doing in public servers with 'TP Out Da Map' & a nest for best chances."; 
+    Duration = 15; })
+    bind7 = "-"
+	game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
+	if key == bind7 then
+		_G.AutoInstantElder = false
+		game.StarterGui:SetCore("SendNotification", {
+		Title = "Auto Instant Elder";
+		Text = "Message : Script Paused"; 
+		Duration = 5; })
+	end
+end)
+end
+
+_G.AutoInstantElder = true
+--DNA Farm Script
+while true do
+wait()
+if not _G.AutoInstantElder then return end
+    if not game.Players.LocalPlayer.Character then
+    	local a = (Eldereddinoplus.Text)
+		local targ = (Targetdinoplus.Text)
+        local CountDown = 7
+        local t = 1
+        local c = game.Players.LocalPlayer.Character
+        local Menu = workspace.GameEvents.GoToMenu
+        workspace.GameEvents.ChangeDinosaur:FireServer(a)
+Menu:FireServer(CountDown)
+wait(5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+Menu:FireServer(CountDown)
+wait(6)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+workspace.GameEvents.StartPlayer:FireServer()
+    end
+    wait(3)
+    if game.Players.LocalPlayer.Character then
+        wait(3)
+    end
+    if game.Players.LocalPlayer.Character then
+        workspace.GameEvents.GoToMenu:FireServer(7)
+        wait(8)
+    end
+end
+end)
+
+
+ModFrame.Name = "ModFrame"
+ModFrame.Parent = Main
+ModFrame.Active = true
+ModFrame.BackgroundColor3 = Color3.new(0.156863, 0.156863, 0.156863)
+ModFrame.BorderColor3 = Color3.new(0, 0, 0)
+ModFrame.Position = UDim2.new(0.279245257, 0, 0.175983444, 0)
+ModFrame.Selectable = true
+ModFrame.Size = UDim2.new(0, 553, 0, 377)
+ModFrame.Visible = false
+
+modtextlol.Name = "modtextlol"
+modtextlol.Parent = ModFrame
+modtextlol.BackgroundColor3 = Color3.new(1, 1, 1)
+modtextlol.BackgroundTransparency = 1
+modtextlol.Position = UDim2.new(0.271247745, 0, 0.135278523, 0)
+modtextlol.Size = UDim2.new(0, 252, 0, 30)
+modtextlol.Font = Enum.Font.Cartoon
+modtextlol.Text = "Mod"
+modtextlol.TextColor3 = Color3.new(1, 1, 1)
+modtextlol.TextScaled = true
+modtextlol.TextSize = 14
+modtextlol.TextWrapped = true
+
+Whitelist.Name = "Whitelist"
+Whitelist.Parent = ModFrame
+Whitelist.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Whitelist.BorderColor3 = Color3.new(0, 0, 0)
+Whitelist.Position = UDim2.new(0.259657234, 0, 0.42026636, 0)
+Whitelist.Size = UDim2.new(0, 114, 0, 30)
+Whitelist.Font = Enum.Font.Cartoon
+Whitelist.Text = "Whitelist User"
+Whitelist.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Whitelist.TextSize = 15
+Whitelist.TextWrapped = true
+Whitelist.MouseButton1Click:connect(function()
+	game.StarterGui:SetCore("SendNotification", {
+Title = "Moderation";
+Text = "You do not have permission!";
+Duration = 5;
+})
+end)
+
+moduserid.Name = "moduserid"
+moduserid.Parent = ModFrame
+moduserid.BackgroundColor3 = Color3.new(0.313726, 0.313726, 0.313726)
+moduserid.BorderColor3 = Color3.new(0, 0, 0)
+moduserid.Position = UDim2.new(0.326565027, 0, 0.290056467, 0)
+moduserid.Size = UDim2.new(0, 190, 0, 25)
+moduserid.Font = Enum.Font.SourceSans
+moduserid.Text = "--USER ID--"
+moduserid.TextColor3 = Color3.new(0, 0, 0)
+moduserid.TextSize = 14
+
+Blacklist.Name = "Blacklist"
+Blacklist.Parent = ModFrame
+Blacklist.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Blacklist.BorderColor3 = Color3.new(0, 0, 0)
+Blacklist.Position = UDim2.new(0.53452158, 0, 0.42026636, 0)
+Blacklist.Size = UDim2.new(0, 114, 0, 30)
+Blacklist.Font = Enum.Font.Cartoon
+Blacklist.Text = "Blacklist User"
+Blacklist.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Blacklist.TextSize = 15
+Blacklist.TextWrapped = true
+Blacklist.MouseButton1Click:connect(function()
+	game.StarterGui:SetCore("SendNotification", {
+Title = "Moderation";
+Text = "You do not have permission!";
+Duration = 5;
+})
+end)
+
+ExclusiveFrame.Name = "ExclusiveFrame"
+ExclusiveFrame.Parent = Main
+ExclusiveFrame.Active = true
+ExclusiveFrame.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+ExclusiveFrame.BorderColor3 = Color3.fromRGB(248, 248, 248)
+ExclusiveFrame.Transparency = 1
+ExclusiveFrame.Position = UDim2.new(0.279245287, 0, 0.175983444, 0)
+ExclusiveFrame.Selectable = true
+ExclusiveFrame.Size = UDim2.new(0, 553, 0, 377)
+ExclusiveFrame.Visible = false
+ExclusiveFrame.Transparency = 1
+
+textspecial.Name = "textspecial"
+textspecial.Parent = ExclusiveFrame
+textspecial.BackgroundColor3 = Color3.new(1, 1, 1)
+textspecial.BackgroundTransparency = 1
+textspecial.Position = UDim2.new(0.271247745, 0, 0.0636604801, 0)
+textspecial.Size = UDim2.new(0, 252, 0, 30)
+textspecial.Font = Enum.Font.Nunito
+textspecial.Text = "Dinosaur Related"
+textspecial.TextColor3 = Color3.fromRGB(242, 243, 243)
+textspecial.TextScaled = true
+textspecial.TextSize = 14
+textspecial.TextWrapped = true
+
+God.Name = "God"
+God.Parent = ExclusiveFrame
+God.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+God.BorderColor3 = Color3.new(0, 0, 0)
+God.Position = UDim2.new(0.51824671, 0, 0.18153961, 0)
+God.Size = UDim2.new(0, 114, 0, 30)
+God.Font = Enum.Font.Cartoon
+God.Text = "Semi-God Mode"
+God.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+God.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+God.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+God.BorderColor3 = Color3.fromRGB(248, 248, 248)
+God.Font = Enum.Font.Nunito
+God.TextColor3 = Color3.fromRGB(248, 248, 248)
+God.TextSize = 15
+God.TextWrapped = true
+God.BackgroundTransparency = 0.95
+God.TextStrokeTransparency = 0.3
+God.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+God.MouseButton1Click:connect(function()
+
+end)
+
+InvisibleFossil.Name = "InvisibleFossil"
+InvisibleFossil.Parent = ExclusiveFrame
+InvisibleFossil.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+InvisibleFossil.BorderColor3 = Color3.new(0, 0, 0)
+InvisibleFossil.Position = UDim2.new(0.270507157, 0, 0.18153961, 0)
+InvisibleFossil.Size = UDim2.new(0, 114, 0, 30)
+InvisibleFossil.Font = Enum.Font.Cartoon
+InvisibleFossil.Text = "Invisible Fossil"
+InvisibleFossil.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+InvisibleFossil.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+InvisibleFossil.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+InvisibleFossil.BorderColor3 = Color3.fromRGB(248, 248, 248)
+InvisibleFossil.Font = Enum.Font.Nunito
+InvisibleFossil.TextColor3 = Color3.fromRGB(248, 248, 248)
+InvisibleFossil.TextSize = 15
+InvisibleFossil.TextWrapped = true
+InvisibleFossil.BackgroundTransparency = 0.95
+InvisibleFossil.TextStrokeTransparency = 0.3
+InvisibleFossil.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+InvisibleFossil.MouseButton1Click:connect(function()
+	game.Players.LocalPlayer.Character.Hips:Remove()
+end)
+
+NoBleed.Name = "NoBleed"
+NoBleed.Parent = ExclusiveFrame
+NoBleed.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+NoBleed.BorderColor3 = Color3.new(0, 0, 0)
+NoBleed.Position = UDim2.new(0.0354257859, 0, 0.18153964, 0)
+NoBleed.Size = UDim2.new(0, 114, 0, 30)
+NoBleed.Font = Enum.Font.Cartoon
+NoBleed.Text = "No Bleed"
+NoBleed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+NoBleed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+NoBleed.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+NoBleed.BorderColor3 = Color3.fromRGB(248, 248, 248)
+NoBleed.Font = Enum.Font.Nunito
+NoBleed.TextColor3 = Color3.fromRGB(248, 248, 248)
+NoBleed.TextSize = 15
+NoBleed.TextWrapped = true
+NoBleed.BackgroundTransparency = 0.95
+NoBleed.TextStrokeTransparency = 0.3
+NoBleed.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+NoBleed.MouseButton1Click:connect(function()
+
+end)
+
+SafeLog.Name = "SafeLog"
+SafeLog.Parent = ExclusiveFrame
+SafeLog.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+SafeLog.BorderColor3 = Color3.new(0, 0, 0)
+SafeLog.Position = UDim2.new(0.758753061, 0, 0.181539565, 0)
+SafeLog.Size = UDim2.new(0, 114, 0, 30)
+SafeLog.Font = Enum.Font.Cartoon
+SafeLog.Text = "Remove humanoid (Rejoin)"
+SafeLog.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+SafeLog.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+SafeLog.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+SafeLog.BorderColor3 = Color3.fromRGB(248, 248, 248)
+SafeLog.Font = Enum.Font.Nunito
+SafeLog.TextColor3 = Color3.fromRGB(248, 248, 248)
+SafeLog.TextSize = 15
+SafeLog.TextWrapped = true
+SafeLog.BackgroundTransparency = 0.95
+SafeLog.TextStrokeTransparency = 0.3
+SafeLog.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+SafeLog.MouseButton1Click:Connect(function()
+	local p = game.Players.LocalPlayer
+local h = p.Character:FindFirstChildOfClass'Humanoid';
+        for _, Child in pairs(p.Character:GetChildren()) do
+            if (Child:IsA'LocalScript') then
+                Child.Disabled = true;
+            end
+        end
+        h:Destroy();
+        for _, Child in pairs(p.Character:GetChildren()) do
+            if (Child:IsA'LocalScript') then
+                Child.Disabled = false;
+            end
+        end
+        while wait() do
+            if (God == true) then
+                w.Camera.CameraSubject = xo;
+            else
+                break;
+            end
+        end
+end)
+
+CanSwim.Name = "CanSwim"
+CanSwim.Parent = ExclusiveFrame
+CanSwim.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+CanSwim.BorderColor3 = Color3.new(0, 0, 0)
+CanSwim.Position = UDim2.new(0.0354257673, 0, 0.316818148, 0)
+CanSwim.Size = UDim2.new(0, 114, 0, 30)
+CanSwim.Font = Enum.Font.Cartoon
+CanSwim.Text = "Can Swim"
+CanSwim.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+CanSwim.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+CanSwim.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+CanSwim.BorderColor3 = Color3.fromRGB(248, 248, 248)
+CanSwim.Font = Enum.Font.Nunito
+CanSwim.TextColor3 = Color3.fromRGB(248, 248, 248)
+CanSwim.TextSize = 15
+CanSwim.TextWrapped = true
+CanSwim.BackgroundTransparency = 0.95
+CanSwim.TextStrokeTransparency = 0.3
+CanSwim.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+CanSwim.MouseButton1Click:connect(function()
+	game.Players.LocalPlayer.Character.Stats.canSwim.Value = true
+end)
+
+textspecial2.Name = "textspecial2"
+textspecial2.Parent = ExclusiveFrame
+textspecial2.BackgroundColor3 = Color3.new(1, 1, 1)
+textspecial2.BackgroundTransparency = 1
+textspecial2.Position = UDim2.new(0.271247745, 0, 0.612732112, 0)
+textspecial2.Size = UDim2.new(0, 252, 0, 30)
+textspecial2.Font = Enum.Font.Nunito
+textspecial2.Text = "Extra Utilities"
+textspecial2.TextColor3 =  Color3.fromRGB(242, 243, 243)
+textspecial2.TextScaled = true
+textspecial2.TextSize = 14
+textspecial2.TextWrapped = true
+
+InstaMenu.Name = "InstaMenu"
+InstaMenu.Parent = ExclusiveFrame
+InstaMenu.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+InstaMenu.BorderColor3 = Color3.new(0, 0, 0)
+InstaMenu.Position = UDim2.new(0.270507157, 0, 0.316818178, 0)
+InstaMenu.Size = UDim2.new(0, 114, 0, 30)
+InstaMenu.Font = Enum.Font.Cartoon
+InstaMenu.Text = "Tree Swing+"
+InstaMenu.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+InstaMenu.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+InstaMenu.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+InstaMenu.BorderColor3 = Color3.fromRGB(248, 248, 248)
+InstaMenu.Font = Enum.Font.Nunito
+InstaMenu.TextColor3 = Color3.fromRGB(248, 248, 248)
+InstaMenu.TextSize = 15
+InstaMenu.TextWrapped = true
+InstaMenu.BackgroundTransparency = 0.95
+InstaMenu.TextStrokeTransparency = 0.3
+InstaMenu.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+InstaMenu.MouseButton1Click:connect(function()
+game.StarterGui:SetCore("SendNotification", {
+Title = "HEAD KEYBINDS";
+Text = "[C] SHRINK           [N] ENLARGE"; 
+Duration = 30; })
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+bind5 = "c"
+bind6 = "n"
+mouse.KeyDown:connect(function(key)
+if key == bind5 then
+local v = game.Players.LocalPlayer
+v.Character.Head.Size = Vector3.new(0, 0, 0)
+v.Character.Head.Transparency = 0
+v.Character.Head.Color = Color3.fromRGB(66, 249, 255)
+v.Character.Head.Shape = "Block"
+v.Character.Head.Material = Enum.Material.ForceField
+game.StarterGui:SetCore("SendNotification", {
+Title = "Hitbox";
+Text = "Head-Hitbox Changed: None."; 
+Duration = 5; })
+end
+end)
+mouse.KeyDown:connect(function(key3)
+if key3 == bind6 then
+local v = game.Players.LocalPlayer
+v.Character.Head.Size = Vector3.new(10, 3, 20)
+v.Character.Head.Transparency = 0
+v.Character.Head.Color = Color3.fromRGB(66, 249, 255)
+v.Character.Head.Shape = "Block"
+v.Character.Head.Material = Enum.Material.ForceField
+game.StarterGui:SetCore("SendNotification", {
+Title = "Hitbox";
+Text = "Head-Hitbox Changed: large."; 
+Duration = 5; })
+end
+end)
+end)
+
+BetterSpeed.Name = "BetterSpeed"
+BetterSpeed.Parent = ExclusiveFrame
+BetterSpeed.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+BetterSpeed.BorderColor3 = Color3.new(0, 0, 0)
+BetterSpeed.Position = UDim2.new(0.520055056, 0, 0.316818178, 0)
+BetterSpeed.Size = UDim2.new(0, 114, 0, 30)
+BetterSpeed.Font = Enum.Font.Cartoon
+BetterSpeed.Text = "TP Out Da Map With Nest Placed"
+BetterSpeed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+BetterSpeed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+BetterSpeed.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+BetterSpeed.BorderColor3 = Color3.fromRGB(248, 248, 248)
+BetterSpeed.Font = Enum.Font.Nunito
+BetterSpeed.TextColor3 = Color3.fromRGB(248, 248, 248)
+BetterSpeed.TextSize = 15
+BetterSpeed.TextWrapped = true
+BetterSpeed.BackgroundTransparency = 0.95
+BetterSpeed.TextStrokeTransparency = 0.3
+BetterSpeed.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+BetterSpeed.MouseButton1Click:connect(function()
+Part0 = Instance.new("Part", game.Workspace)
+Part0.Anchored = true
+Part0.Transparency = 0
+Part0.Material = Enum.Material.ForceField
+Part0.Size = Vector3.new(200000000000000000, 1, 200000000000000000)
+Part0.CFrame = CFrame.new(24, 2.5, 30, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part0.Position = Vector3.new(39900, 39900, 39900)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(39900, 39950, 39900)
+local v1 = "gangg"
+local event = game:GetService("Workspace").GameFunctions.PackFunctions.CreatePack
+
+event:InvokeServer(v1)
+
+local v1 = game:GetService("Workspace").Packs.gangg
+local v2 = "Bubble"
+local event = game:GetService("Workspace").GameFunctions.PackFunctions.CreateNest
+
+event:InvokeServer(v1, v2)
+local function bro()
+	local script40 = Instance.new('LocalScript', Part0)
+	
+	function zigzag(X)return math.acos(math.cos(X*math.pi))/math.pi end
+	counter=0
+	
+	while wait(0.1)do
+		script40.Parent.Color=Color3.fromHSV(zigzag(counter),1,1)
+		counter = counter + 0.0005
+	end
+end
+coroutine.wrap(bro)()
+end)
+
+InfOxygen.Name = "InfOxygen"
+InfOxygen.Parent = ExclusiveFrame
+InfOxygen.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+InfOxygen.BorderColor3 = Color3.new(0, 0, 0)
+InfOxygen.Position = UDim2.new(0.758753061, 0, 0.316818178, 0)
+InfOxygen.Size = UDim2.new(0, 114, 0, 30)
+InfOxygen.Font = Enum.Font.Cartoon
+InfOxygen.Text = "Inf Oxygen/Moistness"
+InfOxygen.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+InfOxygen.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+InfOxygen.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+InfOxygen.BorderColor3 = Color3.fromRGB(248, 248, 248)
+InfOxygen.Font = Enum.Font.Nunito
+InfOxygen.TextColor3 = Color3.fromRGB(248, 248, 248)
+InfOxygen.TextSize = 15
+InfOxygen.TextWrapped = true
+InfOxygen.BackgroundTransparency = 0.95
+InfOxygen.TextStrokeTransparency = 0.3
+InfOxygen.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+InfOxygen.MouseButton1Click:connect(function()
+	game.Players.LocalPlayer.Character.CharacterScripts.UnderWater:Remove()
+end)
+GodBaro.Name = "GodBaro"
+GodBaro.Parent = ExclusiveFrame
+GodBaro.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+GodBaro.BorderColor3 = Color3.new(0, 0, 0)
+GodBaro.Position = UDim2.new(0.1354257822, 0, 0.74652642, 0)
+GodBaro.Size = UDim2.new(0, 114, 0, 30)
+GodBaro.Font = Enum.Font.Cartoon
+GodBaro.Text = "Earrape"
+GodBaro.TextColor3 = Color3.new(0.172549, 0.439216, 0)
+GodBaro.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+GodBaro.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+GodBaro.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+GodBaro.BorderColor3 = Color3.fromRGB(248, 248, 248)
+GodBaro.Font = Enum.Font.Nunito
+GodBaro.TextColor3 = Color3.fromRGB(248, 248, 248)
+GodBaro.TextSize = 15
+GodBaro.TextWrapped = true
+GodBaro.BackgroundTransparency = 0.95
+GodBaro.TextStrokeTransparency = 0.3
+GodBaro.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+GodBaro.MouseButton1Click:connect(function()
+	_G.EARRAPE = true
+while true do
+wait(2)
+if not _G.EARRAPE then return end
+local v1 = nil
+local v2 = "Growl"
+local event = game:GetService("Workspace").GameEvents.PlaySound
+event:FireServer(v1, v2)
+for _,plr in pairs(game.Players:GetPlayers()) do
+pcall(function()
+for _,obj in pairs(plr.Character.Head:GetChildren()) do
+if obj:IsA("Sound") then
+obj:Play()
+obj:Play()
+obj:Play()
+wait(0.01)
+obj:Play()
+obj:Play()
+end
+end
+end)
+end
+end
+end)
+
+KillerGhost.Name = "KillerGhost"
+KillerGhost.Parent = ExclusiveFrame
+KillerGhost.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+KillerGhost.BorderColor3 = Color3.new(0, 0, 0)
+KillerGhost.Position = UDim2.new(0.658753061, 0, 0.74652642, 0)
+KillerGhost.Size = UDim2.new(0, 114, 0, 30)
+KillerGhost.Font = Enum.Font.Cartoon
+KillerGhost.Text = "Earrape off"
+KillerGhost.TextColor3 = Color3.new(0.611765, 0, 0)
+KillerGhost.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+KillerGhost.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+KillerGhost.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+KillerGhost.BorderColor3 = Color3.fromRGB(248, 248, 248)
+KillerGhost.Font = Enum.Font.Nunito
+KillerGhost.TextColor3 = Color3.fromRGB(248, 248, 248)
+KillerGhost.TextSize = 15
+KillerGhost.TextWrapped = true
+KillerGhost.BackgroundTransparency = 0.95
+KillerGhost.TextStrokeTransparency = 0.3
+KillerGhost.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+KillerGhost.MouseButton1Click:connect(function()
+_G.EARRAPE = false
+end)
+
+AdminsaurHunter.Name = "AdminsaurHunter"
+AdminsaurHunter.Parent = ExclusiveFrame
+AdminsaurHunter.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+AdminsaurHunter.BorderColor3 = Color3.new(0, 0, 0)
+AdminsaurHunter.Position = UDim2.new(0.400055115, 0, 0.746526361, 0)
+AdminsaurHunter.Size = UDim2.new(0, 114, 0, 30)
+AdminsaurHunter.Font = Enum.Font.Cartoon
+AdminsaurHunter.Text = "Buy Skin/Dinosaur"
+AdminsaurHunter.TextColor3 = Color3.new(0.815686, 0.729412, 0.0745098)
+AdminsaurHunter.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+AdminsaurHunter.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+AdminsaurHunter.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+AdminsaurHunter.BorderColor3 = Color3.fromRGB(248, 248, 248)
+AdminsaurHunter.Font = Enum.Font.Nunito
+AdminsaurHunter.TextColor3 = Color3.fromRGB(248, 248, 248)
+AdminsaurHunter.TextSize = 15
+AdminsaurHunter.TextWrapped = true
+AdminsaurHunter.BackgroundTransparency = 0.95
+AdminsaurHunter.TextStrokeTransparency = 0.3
+AdminsaurHunter.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+AdminsaurHunter.MouseButton1Click:connect(function()
+	for i = 1, 1 do
+
+    spawn(function() print(workspace.GameFunctions.PurchasingDino:InvokeServer(BuySkinValue.Text))
+end)
+end
+end)
+
+BuySkinValue.Name = "JPValue"
+BuySkinValue.Parent = ExclusiveFrame
+BuySkinValue.BackgroundColor3 = Color3.new(0.313726, 0.313726, 0.313726)
+BuySkinValue.BorderColor3 = Color3.new(0, 0, 0)
+BuySkinValue.Position = UDim2.new(0.40, 0, 0.838620679, 0)
+BuySkinValue.Size = UDim2.new(0, 114, 0, 9)
+BuySkinValue.Font = Enum.Font.SourceSans
+BuySkinValue.Text = "[--Skin Name--]"
+BuySkinValue.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+BuySkinValue.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+BuySkinValue.BorderColor3 = Color3.fromRGB(248, 248, 248)
+BuySkinValue.Font = Enum.Font.Nunito
+BuySkinValue.TextColor3 = Color3.fromRGB(248, 248, 248)
+BuySkinValue.TextSize = 11
+BuySkinValue.TextWrapped = true
+BuySkinValue.BackgroundTransparency = 1
+BuySkinValue.TextStrokeTransparency = 0.3
+BuySkinValue.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+
+
+
+textspecial5.Name = "textspecial5"
+textspecial5.Parent = ExclusiveFrame
+textspecial5.BackgroundColor3 = Color3.new(1, 1, 1)
+textspecial5.BackgroundTransparency = 1
+textspecial5.Position = UDim2.new(0.400055115, 0, 0.884974632, 0)
+textspecial5.Size = UDim2.new(0, 114, 0, 15)
+textspecial5.Font = Enum.Font.Nunito
+textspecial5.Text = "Use my Farm for DNA :3"
+textspecial5.TextColor3 = Color3.new(1, 1, 1)
+textspecial5.TextScaled = true
+textspecial5.TextSize = 20
+textspecial5.TextWrapped = true
+
+SuperPlio.Name = "SuperPlio"
+SuperPlio.Parent = GUIHead
+SuperPlio.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+SuperPlio.BorderColor3 = Color3.new(0, 0, 0)
+SuperPlio.Position = UDim2.new(0.01, 0, 0.07, 0)
+SuperPlio.Size = UDim2.new(0,340, 0, 50)
+SuperPlio.Text = ""
+SuperPlio.TextColor3 = Color3.new(0.25098, 0.431373, 0.815686)
+SuperPlio.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+SuperPlio.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+SuperPlio.BorderColor3 = Color3.fromRGB(248, 248, 248)
+SuperPlio.Font = Enum.Font.Nunito
+SuperPlio.TextColor3 = Color3.fromRGB(248, 248, 248)
+SuperPlio.TextSize = 40
+SuperPlio.TextWrapped = true
+SuperPlio.BackgroundTransparency = 1
+SuperPlio.TextStrokeTransparency = 1
+SuperPlio.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+SuperPlio.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+SuperPlio.BorderColor3 = Color3.fromRGB(248, 248, 248)
+SuperPlio.TextColor3 = Color3.fromRGB(248, 248, 248)
+SuperPlio.TextWrapped = true
+SuperPlio.BackgroundTransparency = 1
+SuperPlio.TextStrokeTransparency = 0.7
+SuperPlio.MouseButton1Click:connect(function()
+
+end)
+
+Grab.Name = "Grab"
+Grab.Parent = ExclusiveFrame
+Grab.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Grab.BorderColor3 = Color3.new(0, 0, 0)
+Grab.Position = UDim2.new(0.270507187, 0, 0.452096701, 0)
+Grab.Size = UDim2.new(0, 114, 0, 30)
+Grab.Font = Enum.Font.Cartoon
+Grab.Text = "Domain Expansion"
+Grab.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Grab.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Grab.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Grab.BorderColor3 = Color3.fromRGB(248, 248, 248)
+Grab.Font = Enum.Font.Nunito
+Grab.TextColor3 = Color3.fromRGB(248, 248, 248)
+Grab.TextSize = 15
+Grab.TextWrapped = true
+Grab.BackgroundTransparency = 0.95
+Grab.TextStrokeTransparency = 0.3
+Grab.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+Grab.MouseButton1Click:connect(function()
+_G.loopgraphicsss = false
+local v1 = game:GetService("Lighting"):GetChildren()
+for i,v in pairs(v1) do 
+	v:Destroy()
+end
+
+if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+local s = Instance.new("Sound")
+s.Name = "Sound"
+s.SoundId = "http://www.roblox.com/asset/?id=6590147536"
+s.Volume = 1000
+s.archivable = false
+s.Parent = game.Workspace
+s:play()
+local s = Instance.new("Fire", game.Players.LocalPlayer.Character:FindFirstChild("Head"))
+s.Size =  5
+s.Heat = 25
+s.Color = Color3.fromRGB(17, 17, 17)
+s.SecondaryColor = Color3.fromRGB(255, 201, 201)
+end
+
+
+Sky2 = Instance.new("Sky")
+Sky2.Parent = game:GetService("Lighting")
+Sky2.MoonAngularSize = 13
+Sky2.SkyboxBk = "http://www.roblox.com/asset/?id=401664839"
+Sky2.SkyboxDn = "http://www.roblox.com/asset/?id=401664862"
+Sky2.SkyboxFt = "http://www.roblox.com/asset/?id=401664960"
+Sky2.SkyboxLf = "http://www.roblox.com/asset/?id=401664881"
+Sky2.SkyboxRt = "http://www.roblox.com/asset/?id=401664901"
+Sky2.SkyboxUp = "http://www.roblox.com/asset/?id=401664936"
+Sky2.SunAngularSize = 20
+Sky2.SunTextureId = "rbxassetid://1168763430"
+
+-- SHADERS
+local light = game.Lighting
+local ter = workspace.Terrain
+local color = Instance.new("ColorCorrectionEffect")
+local bloom = Instance.new("BloomEffect")
+local sun = Instance.new("SunRaysEffect")
+local blur = Instance.new("BlurEffect")
+
+color.Parent = light
+bloom.Parent = light
+sun.Parent = light
+blur.Parent = light
+
+-- enable or disable shit
+
+local config = {
+
+	Terrain = true;
+	ColorCorrection = true;
+	Sun = true;
+	Lighting = true;
+	BloomEffect = true;
+	
+}
+
+-- settings {
+
+color.Enabled = true
+color.Contrast = 0.15
+color.Brightness = 0.074
+color.Saturation = 0.25
+color.TintColor = Color3.fromRGB(248, 248, 248)
+
+sun.Enabled = true
+sun.Intensity = 0.2
+sun.Spread = 1
+
+bloom.Enabled = true
+bloom.Intensity = 0.25
+bloom.Size = 15
+bloom.Threshold = 0.5
+
+blur.Enabled = true
+blur.Size = 0
+
+-- settings }
+
+
+if config.ColorCorrection then
+	color.Enabled = true
+end
+
+
+if config.Sun then
+	sun.Enabled = true
+end
+
+
+if config.Terrain then
+	-- settings {
+	ter.WaterColor = Color3.fromRGB(10, 10, 24)
+	ter.WaterWaveSize = 0.1
+	ter.WaterWaveSpeed = 22
+	ter.WaterTransparency = 0.9
+	ter.WaterReflectance = 0.05
+	-- settings }
+end
+
+
+if config.Lighting then
+	-- settings {
+	light.Ambient = Color3.fromRGB(64, 64, 64)
+	light.Brightness = 4
+	light.ColorShift_Bottom = Color3.fromRGB(186, 186, 186)
+	light.ColorShift_Top = Color3.fromRGB(128, 128, 128)
+	light.ExposureCompensation = 0
+	light.FogColor = Color3.fromRGB(132, 132, 132)
+	light.GlobalShadows = true
+	light.OutdoorAmbient = Color3.fromRGB(112, 117, 128)
+	light.Outlines = true
+	-- settings }
+end
+
+function sandbox(var,func)
+	local env = getfenv(func)
+	local newenv = setmetatable({},{
+		__index = function(Enum,k)
+			if k=="script" then
+				return var
+			else
+				return env[k]
+			end
+		end,
+	})
+	setfenv(func,newenv)
+	return func
+end
+cors = {}
+mas = Instance.new("Model",game:GetService("Lighting"))
+Script0 = Instance.new("Script")
+Script1 = Instance.new("Script")
+Sky2 = Instance.new("Sky")
+Sound3 = Instance.new("Sound")
+ScreenGui4 = Instance.new("ScreenGui")
+Frame5 = Instance.new("Frame")
+LocalScript6 = Instance.new("LocalScript")
+ImageLabel7 = Instance.new("ImageLabel")
+ImageLabel8 = Instance.new("ImageLabel")
+ImageLabel9 = Instance.new("ImageLabel")
+ImageLabel10 = Instance.new("ImageLabel")
+ImageLabel11 = Instance.new("ImageLabel")
+ImageLabel12 = Instance.new("ImageLabel")
+LocalScript13 = Instance.new("LocalScript")
+Script0.Name = "READ ME OR IT WILL NOT WORK"
+Script0.Parent = mas
+LocalScript13.Name = "MotionBlur"
+LocalScript13.Parent = ScreenGui4
+table.insert(cors,sandbox(LocalScript13,function()
+--[[
+By AstroCode on August 17, 2016
+
+This motion blur script is activated by the rotation of the camera.
+Place this script in StarterPlayer > StarterPlayerScripts
+By default, players must have their graphics quality set to 6+ to see the blur effect.
+--]]
+
+--//Settings
+BlurAmount = 15 -- Change this to increase or decrease the blur size
+
+--//Declarations
+Camera 	= game.Workspace.CurrentCamera
+Last 	= Camera.CFrame.lookVector
+Blur 	= Instance.new("BlurEffect",Camera)
+
+--//Logic
+game.Workspace.Changed:connect(function(p) -- Feels a bit hacky. Updates the Camera and Blur if the Camera object is changed.
+	if p == "CurrentCamera" then
+		Camera = game.Workspace.CurrentCamera
+		if Blur and Blur.Parent then
+			Blur.Parent = Camera
+		else
+			Blur = Instance.new("BlurEffect",Camera)
+		end
+	end
+end)
+
+game:GetService("RunService").Heartbeat:connect(function()
+	if not Blur or Blur.Parent == nil then Blur = Instance.new("BlurEffect",Camera) end -- Feels a bit hacky. Creates a new Blur if it is destroyed.
+	
+	local magnitude = (Camera.CFrame.lookVector - Last).magnitude -- How much the camera has rotated since the last frame
+	Blur.Size = math.abs(magnitude)*BlurAmount -- Set the blur size
+	Last = Camera.CFrame.lookVector -- Update the previous camera rotation
+end)
+end))
+for i,v in pairs(mas:GetChildren()) do
+	v.Parent = workspace
+	pcall(function() v:MakeJoints() end)
+end
+for i,v in pairs(cors) do
+	spawn(function()
+		pcall(v)
+	end)
+end
+Lighting = game:GetService("Lighting")
+
+wait(0.1)
+_G.loopgraphics = true
+while true do
+    wait()
+    if not _G.loopgraphics then
+        return
+    end
+Lighting.Brightness = 1
+Lighting.ExposureCompensation = 0.3
+
+Lighting.ShadowSoftness = 0
+
+Lighting.OutdoorAmbient = Color3.fromRGB(17, 17, 17)
+Lighting.Ambient = Color3.fromRGB(17, 17, 17)
+Lighting.FogColor = Color3.fromRGB(94, 0, 0)
+Lighting.FogEnd = 999
+Lighting.FogStart = 0
+end
+end)
+
+
+RemoveParts.Name = "RemoveParts"
+RemoveParts.Parent = ExclusiveFrame
+RemoveParts.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+RemoveParts.BorderColor3 = Color3.new(0, 0, 0)
+RemoveParts.Position = UDim2.new(0.51824671, 0, 0.452096701, 0)
+RemoveParts.Size = UDim2.new(0, 114, 0, 30)
+RemoveParts.Font = Enum.Font.Cartoon
+RemoveParts.Text = "Remove Parts"
+RemoveParts.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+RemoveParts.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+RemoveParts.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+RemoveParts.BorderColor3 = Color3.fromRGB(248, 248, 248)
+RemoveParts.Font = Enum.Font.Nunito
+RemoveParts.TextColor3 = Color3.fromRGB(248, 248, 248)
+RemoveParts.TextSize = 15
+RemoveParts.TextWrapped = true
+RemoveParts.BackgroundTransparency = 0.95
+RemoveParts.TextStrokeTransparency = 0.3
+RemoveParts.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+RemoveParts.MouseButton1Click:connect(function()
+	game.Players.LocalPlayer.Character.Tail1:Remove()
+game.Players.LocalPlayer.Character.Neck1:Remove()
+end)
+
+UnderLight.Name = "UnderLight"
+UnderLight.Parent = ExclusiveFrame
+UnderLight.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+UnderLight.BorderColor3 = Color3.new(0, 0, 0)
+UnderLight.Position = UDim2.new(0.035425812, 0, 0.452096701, 0)
+UnderLight.Size = UDim2.new(0, 114, 0, 30)
+UnderLight.Font = Enum.Font.Cartoon
+UnderLight.Text = "Invite All"
+UnderLight.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+UnderLight.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+UnderLight.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+UnderLight.BorderColor3 = Color3.fromRGB(248, 248, 248)
+UnderLight.Font = Enum.Font.Nunito
+UnderLight.TextColor3 = Color3.fromRGB(248, 248, 248)
+UnderLight.TextSize = 15
+UnderLight.TextWrapped = true
+UnderLight.BackgroundTransparency = 0.95
+UnderLight.TextStrokeTransparency = 0.3
+UnderLight.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+UnderLight.MouseButton1Click:connect(function()
+for i,v in pairs(game.Workspace.Packs:GetChildren()) do
+for x,z in pairs(game.Players:GetChildren()) do
+if v.PackLeader.Value == game.Players.LocalPlayer.Name then
+v = v.PackLeader.Parent
+	if z ~= game.Players.LocalPlayer.Name then
+local A_1 = z
+local A_2 = game:GetService("Workspace").Packs[v.Name]
+local Event = game:GetService("Workspace").GameFunctions.PackFunctions.InviteToPack
+Event:InvokeServer(A_1, A_2)
+	end
+end
+end
+end
+end)
+
+Sparkles.Name = "Sparkles"
+Sparkles.Parent = ExclusiveFrame
+Sparkles.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Sparkles.BorderColor3 = Color3.new(0, 0, 0)
+Sparkles.Position = UDim2.new(0.035425812, 0, 0.579417646, 0)
+Sparkles.Size = UDim2.new(0, 114, 0, 30)
+Sparkles.Font = Enum.Font.Cartoon
+Sparkles.Text = "Sparkes and Flame Effects"
+Sparkles.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Sparkles.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Sparkles.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Sparkles.BorderColor3 = Color3.fromRGB(248, 248, 248)
+Sparkles.Font = Enum.Font.Nunito
+Sparkles.TextColor3 = Color3.fromRGB(248, 248, 248)
+Sparkles.TextSize = 15
+Sparkles.TextWrapped = true
+Sparkles.BackgroundTransparency = 0.95
+Sparkles.TextStrokeTransparency = 0.3
+Sparkles.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+Sparkles.MouseButton1Click:connect(function()
+if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+local s = Instance.new("PointLight", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.Brightness = 3
+s.Color = Color3.fromRGB(175, 221, 255)
+s.Range = 60
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Sparkles", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.SparkleColor = Color3.fromRGB(125, 187, 221)
+local s = Instance.new("Fire", game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+s.Size =  15
+s.Color = Color3.fromRGB(125, 187, 221)
+s.SecondaryColor = Color3.fromRGB(180, 128, 255)
+end
+end)
+
+Fire.Name = "Fire"
+Fire.Parent = ExclusiveFrame
+Fire.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Fire.BorderColor3 = Color3.new(0, 0, 0)
+Fire.Position = UDim2.new(0.756944776, 0, 0.452096701, 0)
+Fire.Size = UDim2.new(0, 114, 0, 30)
+Fire.Font = Enum.Font.Cartoon
+Fire.Text = "Fish Fly"
+Fire.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Fire.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Fire.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Fire.BorderColor3 = Color3.fromRGB(248, 248, 248)
+Fire.Font = Enum.Font.Nunito
+Fire.TextColor3 = Color3.fromRGB(248, 248, 248)
+Fire.TextSize = 15
+Fire.TextWrapped = true
+Fire.BackgroundTransparency = 0.95
+Fire.TextStrokeTransparency = 0.3
+Fire.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+Fire.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Character.CharacterScripts.InWater:Remove()
+end)
+
+Headless.Name = "Headless"
+Headless.Parent = ExclusiveFrame
+Headless.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Headless.BorderColor3 = Color3.new(0, 0, 0)
+Headless.Position = UDim2.new(0.756944776, 0, 0.57676512, 0)
+Headless.Size = UDim2.new(0, 114, 0, 30)
+Headless.Font = Enum.Font.Cartoon
+Headless.Text = "Turn Into Glass (Only for you)"
+Headless.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Headless.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Headless.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Headless.BorderColor3 = Color3.fromRGB(248, 248, 248)
+Headless.Font = Enum.Font.Nunito
+Headless.TextColor3 = Color3.fromRGB(248, 248, 248)
+Headless.TextSize = 15
+Headless.TextWrapped = true
+Headless.BackgroundTransparency = 0.95
+Headless.TextStrokeTransparency = 0.3
+Headless.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+Headless.MouseButton1Click:connect(function()
+if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+if v.ClassName == "UnionOperation" then
+v.Transparency = 0.6
+v.Material = Enum.Material.Glass
+v.Size = v.Size*Vector3.new(1,1,1)
+end
+end
+end
+end)
+
+FunFrame.Name = "FunFrame"
+FunFrame.Parent = Main
+FunFrame.Active = true
+FunFrame.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+FunFrame.BorderColor3 = Color3.fromRGB(248, 248, 248)
+FunFrame.Transparency = 1
+FunFrame.Position = UDim2.new(0.279245257, 0, 0.175983444, 0)
+FunFrame.Selectable = true
+FunFrame.Size = UDim2.new(0, 553, 0, 377)
+FunFrame.Visible = false
+
+Textfun2.Name = "Textfun2"
+Textfun2.Parent = FunFrame
+Textfun2.BackgroundColor3 = Color3.new(1, 1, 1)
+Textfun2.BackgroundTransparency = 1
+Textfun2.Position = UDim2.new(0.269439429, 0, 0.0291777253, 0)
+Textfun2.Size = UDim2.new(0, 252, 0, 30)
+Textfun2.Font = Enum.Font.Nunito
+Textfun2.Text = "War Dinos I Recommend"
+Textfun2.TextColor3 = Color3.fromRGB(242, 243, 243)
+Textfun2.TextScaled = true
+Textfun2.TextSize = 14
+Textfun2.TextWrapped = true
+
+Sit.Name = "Sit"
+Sit.Parent = FunFrame
+Sit.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Sit.BorderColor3 = Color3.new(0, 0, 0)
+Sit.Position = UDim2.new(0.033617463, 0, 0.597985148, 0)
+Sit.Size = UDim2.new(0, 114, 0, 30)
+Sit.Font = Enum.Font.Cartoon
+Sit.Text = "Apatosaurus"
+Sit.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Sit.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Sit.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Sit.BorderColor3 = Color3.fromRGB(248, 248, 248)
+Sit.Font = Enum.Font.Nunito
+Sit.TextColor3 = Color3.fromRGB(248, 248, 248)
+Sit.TextSize = 15
+Sit.TextWrapped = true
+Sit.BackgroundTransparency = 0.95
+Sit.TextStrokeTransparency = 0.3
+Sit.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+Sit.MouseButton1Click:connect(function()
+	local a = "Apatosaurus"
+local targ = "Apatosaurus"
+workspace.GameEvents.ChangeDinosaur:FireServer(a)
+wait(2.5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+wait(3)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+end)
+
+EarRape.Name = "EarRape"
+EarRape.Parent = FunFrame
+EarRape.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+EarRape.BorderColor3 = Color3.new(0, 0, 0)
+EarRape.Position = UDim2.new(0.393472821, 0, 0.29559797, 0)
+EarRape.Size = UDim2.new(0, 114, 0, 30)
+EarRape.Font = Enum.Font.Cartoon
+EarRape.Text = "Glass Lusotitan"
+EarRape.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+EarRape.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+EarRape.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+EarRape.BorderColor3 = Color3.fromRGB(248, 248, 248)
+EarRape.Font = Enum.Font.Nunito
+EarRape.TextColor3 = Color3.fromRGB(248, 248, 248)
+EarRape.TextSize = 15
+EarRape.TextWrapped = true
+EarRape.BackgroundTransparency = 0.95
+EarRape.TextStrokeTransparency = 0.3
+EarRape.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+EarRape.MouseButton1Click:connect(function()
+	local a = "Glass Lusotitan"
+local targ = "Glass Lusotitan"
+workspace.GameEvents.ChangeDinosaur:FireServer(a)
+wait(2.5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+wait(3)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+end)
+
+ChatTroll.Name = "ChatTroll"
+ChatTroll.Parent = FunFrame
+ChatTroll.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+ChatTroll.BorderColor3 = Color3.new(0, 0, 0)
+ChatTroll.Position = UDim2.new(0.756944716, 0, 0.173582047, 0)
+ChatTroll.Size = UDim2.new(0, 114, 0, 30)
+ChatTroll.Font = Enum.Font.Cartoon
+ChatTroll.Text = "Kaiju Giraffatitan"
+ChatTroll.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+ChatTroll.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+ChatTroll.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+ChatTroll.BorderColor3 = Color3.fromRGB(248, 248, 248)
+ChatTroll.Font = Enum.Font.Nunito
+ChatTroll.TextColor3 = Color3.fromRGB(248, 248, 248)
+ChatTroll.TextSize = 15
+ChatTroll.TextWrapped = true
+ChatTroll.BackgroundTransparency = 0.95
+ChatTroll.TextStrokeTransparency = 0.3
+ChatTroll.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+ChatTroll.MouseButton1Click:connect(function()
+	local a = "Kaiju Giraffatitan"
+local targ = "Kaiju Giraffatitan"
+workspace.GameEvents.ChangeDinosaur:FireServer(a)
+wait(2.5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+wait(3)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+end)
+
+FakeHealth.Name = "FakeHealth"
+FakeHealth.Parent = FunFrame
+FakeHealth.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+FakeHealth.BorderColor3 = Color3.new(0, 0, 0)
+FakeHealth.Position = UDim2.new(0.51824671, 0, 0.173582047, 0)
+FakeHealth.Size = UDim2.new(0, 114, 0, 30)
+FakeHealth.Font = Enum.Font.Cartoon
+FakeHealth.Text = "Puertasaurus"
+FakeHealth.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+FakeHealth.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+FakeHealth.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+FakeHealth.BorderColor3 = Color3.fromRGB(248, 248, 248)
+FakeHealth.Font = Enum.Font.Nunito
+FakeHealth.TextColor3 = Color3.fromRGB(248, 248, 248)
+FakeHealth.TextSize = 15
+FakeHealth.TextWrapped = true
+FakeHealth.BackgroundTransparency = 0.95
+FakeHealth.TextStrokeTransparency = 0.3
+FakeHealth.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+FakeHealth.MouseButton1Click:connect(function()
+	local a = "Glass Puertasaurus"
+local targ = "Glass Puertasaurus"
+workspace.GameEvents.ChangeDinosaur:FireServer(a)
+wait(2.5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+wait(3)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+end)
+
+FakeArmor.Name = "FakeArmor"
+FakeArmor.Parent = FunFrame
+FakeArmor.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+FakeArmor.BorderColor3 = Color3.new(0, 0, 0)
+FakeArmor.Position = UDim2.new(0.268698841, 0, 0.173582047, 0)
+FakeArmor.Size = UDim2.new(0, 114, 0, 30)
+FakeArmor.Font = Enum.Font.Cartoon
+FakeArmor.Text = "Galactic Barosaurus"
+FakeArmor.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+FakeArmor.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+FakeArmor.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+FakeArmor.BorderColor3 = Color3.fromRGB(248, 248, 248)
+FakeArmor.Font = Enum.Font.Nunito
+FakeArmor.TextColor3 = Color3.fromRGB(248, 248, 248)
+FakeArmor.TextSize = 15
+FakeArmor.TextWrapped = true
+FakeArmor.BackgroundTransparency = 0.95
+FakeArmor.TextStrokeTransparency = 0.3
+FakeArmor.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+FakeArmor.MouseButton1Click:connect(function()
+	local a = "Galactic Barosaurus"
+local targ = "Galactic Barosaurus"
+workspace.GameEvents.ChangeDinosaur:FireServer(a)
+wait(2.5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+wait(3)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+end)
+
+FakeBleed.Name = "FakeBleed"
+FakeBleed.Parent = FunFrame
+FakeBleed.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+FakeBleed.BorderColor3 = Color3.new(0, 0, 0)
+FakeBleed.Position = UDim2.new(0.0336174555, 0, 0.173582047, 0)
+FakeBleed.Size = UDim2.new(0, 114, 0, 30)
+FakeBleed.Font = Enum.Font.Cartoon
+FakeBleed.Text = "Sauroposeidon"
+FakeBleed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+FakeBleed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+FakeBleed.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+FakeBleed.BorderColor3 = Color3.fromRGB(248, 248, 248)
+FakeBleed.Font = Enum.Font.Nunito
+FakeBleed.TextColor3 = Color3.fromRGB(248, 248, 248)
+FakeBleed.TextSize = 15
+FakeBleed.TextWrapped = true
+FakeBleed.BackgroundTransparency = 0.95
+FakeBleed.TextStrokeTransparency = 0.3
+FakeBleed.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+FakeBleed.MouseButton1Click:connect(function()
+	local a = "Glass Sauroposeidon"
+local targ = "Glass Sauroposeidon"
+workspace.GameEvents.ChangeDinosaur:FireServer(a)
+wait(2.5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+wait(3)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+end)
+
+Textfun.Name = "Textfun"
+Textfun.Parent = FunFrame
+Textfun.BackgroundColor3 = Color3.new(1, 1, 1)
+Textfun.BackgroundTransparency = 1
+Textfun.Position = UDim2.new(0.269439429, 0, 0.458885968, 0)
+Textfun.Size = UDim2.new(0, 252, 0, 30)
+Textfun.Font = Enum.Font.Nunito
+Textfun.Text = "You Need Their Skins In Order to Instantly Spawn Them."
+Textfun.TextColor3 = Color3.fromRGB(242, 243, 243)
+Textfun.TextSize = 14
+Textfun.TextWrapped = true
+
+SetDays.Name = "SetDays"
+SetDays.Parent = FunFrame
+SetDays.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+SetDays.BorderColor3 = Color3.new(0, 0, 0)
+SetDays.Position = UDim2.new(0.0336173773, 0, 0.71469605, 0)
+SetDays.Size = UDim2.new(0, 114, 0, 30)
+SetDays.Font = Enum.Font.Cartoon
+SetDays.Text = "Solar Bringer Megavore"
+SetDays.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+SetDays.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+SetDays.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+SetDays.BorderColor3 = Color3.fromRGB(248, 248, 248)
+SetDays.Font = Enum.Font.Nunito
+SetDays.TextColor3 = Color3.fromRGB(248, 248, 248)
+SetDays.TextSize = 15
+SetDays.TextWrapped = true
+SetDays.BackgroundTransparency = 0.95
+SetDays.TextStrokeTransparency = 0.3
+SetDays.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+SetDays.MouseButton1Click:connect(function()
+	local a = "Solar Bringer Megavore"
+local targ = "Solar Bringer Megavore"
+workspace.GameEvents.ChangeDinosaur:FireServer(a)
+wait(2.5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+wait(3)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+end)
+
+AdminsaurButton.Name = "AdminsaurButton"
+AdminsaurButton.Parent = FunFrame
+AdminsaurButton.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+AdminsaurButton.BorderColor3 = Color3.new(0, 0, 0)
+AdminsaurButton.Position = UDim2.new(0.268698841, 0, 0.597985148, 0)
+AdminsaurButton.Size = UDim2.new(0, 114, 0, 30)
+AdminsaurButton.Font = Enum.Font.Cartoon
+AdminsaurButton.Text = "Jaws of the Jurassic"
+AdminsaurButton.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+AdminsaurButton.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+AdminsaurButton.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+AdminsaurButton.BorderColor3 = Color3.fromRGB(248, 248, 248)
+AdminsaurButton.Font = Enum.Font.Nunito
+AdminsaurButton.TextColor3 = Color3.fromRGB(248, 248, 248)
+AdminsaurButton.TextSize = 15
+AdminsaurButton.TextWrapped = true
+AdminsaurButton.BackgroundTransparency = 0.95
+AdminsaurButton.TextStrokeTransparency = 0.3
+AdminsaurButton.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+AdminsaurButton.MouseButton1Click:connect(function()
+	local a = "Jaws of the Jurrassic"
+local targ = "Jaws of the Jurrassic"
+workspace.GameEvents.ChangeDinosaur:FireServer(a)
+wait(2.5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+wait(3)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+end)
+
+Suicide.Name = "Suicide"
+Suicide.Parent = FunFrame
+Suicide.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Suicide.BorderColor3 = Color3.new(0, 0, 0)
+Suicide.Position = UDim2.new(0.51824671, 0, 0.597985148, 0)
+Suicide.Size = UDim2.new(0, 114, 0, 30)
+Suicide.Font = Enum.Font.Cartoon
+Suicide.Text = "Sea Master Mosasaurus"
+Suicide.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Suicide.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Suicide.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Suicide.BorderColor3 = Color3.fromRGB(248, 248, 248)
+Suicide.Font = Enum.Font.Nunito
+Suicide.TextColor3 = Color3.fromRGB(248, 248, 248)
+Suicide.TextSize = 15
+Suicide.TextWrapped = true
+Suicide.BackgroundTransparency = 0.95
+Suicide.TextStrokeTransparency = 0.3
+Suicide.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+Suicide.MouseButton1Click:connect(function()
+	local a = "Sea Master Mosasaurus"
+local targ = "Sea Master Mosasaurus"
+workspace.GameEvents.ChangeDinosaur:FireServer(a)
+wait(2.5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+wait(3)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+end)
+
+DailyDNA.Name = "DailyDNA"
+DailyDNA.Parent = FunFrame
+DailyDNA.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+DailyDNA.BorderColor3 = Color3.new(0, 0, 0)
+DailyDNA.Position = UDim2.new(0.756944716, 0, 0.597985148, 0)
+DailyDNA.Size = UDim2.new(0, 114, 0, 30)
+DailyDNA.Font = Enum.Font.Cartoon
+DailyDNA.Text = "Leedsichthys"
+DailyDNA.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+DailyDNA.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+DailyDNA.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+DailyDNA.BorderColor3 = Color3.fromRGB(248, 248, 248)
+DailyDNA.Font = Enum.Font.Nunito
+DailyDNA.TextColor3 = Color3.fromRGB(248, 248, 248)
+DailyDNA.TextSize = 15
+DailyDNA.TextWrapped = true
+DailyDNA.BackgroundTransparency = 0.95
+DailyDNA.TextStrokeTransparency = 0.3
+DailyDNA.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+DailyDNA.MouseButton1Click:connect(function()
+	local a = "Leedsichthys"
+local targ = "Leedsichthys"
+workspace.GameEvents.ChangeDinosaur:FireServer(a)
+wait(2.5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+wait(3)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+end)
+
+BuySkin.Name = "BuySkin"
+BuySkin.Parent = FunFrame
+BuySkin.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+BuySkin.BorderColor3 = Color3.new(0, 0, 0)
+BuySkin.Position = UDim2.new(0.266890436, 0, 0.71469605, 0)
+BuySkin.Size = UDim2.new(0, 114, 0, 30)
+BuySkin.Font = Enum.Font.Cartoon
+BuySkin.Text = "Withered Willow Futalognkosaurus"
+BuySkin.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+BuySkin.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+BuySkin.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+BuySkin.BorderColor3 = Color3.fromRGB(248, 248, 248)
+BuySkin.Font = Enum.Font.Nunito
+BuySkin.TextColor3 = Color3.fromRGB(248, 248, 248)
+BuySkin.TextSize = 15
+BuySkin.TextWrapped = true
+BuySkin.BackgroundTransparency = 0.95
+BuySkin.TextStrokeTransparency = 0.3
+BuySkin.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+BuySkin.MouseButton1Click:connect(function()
+	local a = "Withered Willow Futalognkosaurus"
+local targ = "Withered Willow Futalognkosaurus"
+workspace.GameEvents.ChangeDinosaur:FireServer(a)
+wait(2.5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+wait(3)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+end)
+
+AlbinoTerror.Name = "Albino Terror"
+AlbinoTerror.Parent = FunFrame
+AlbinoTerror.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+AlbinoTerror.BorderColor3 = Color3.new(0, 0, 0)
+AlbinoTerror.Position = UDim2.new(0.51824671, 0, 0.71469605, 0)
+AlbinoTerror.Size = UDim2.new(0, 114, 0, 30)
+AlbinoTerror.Font = Enum.Font.Cartoon
+AlbinoTerror.Text = "Spinosaurus"
+AlbinoTerror.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+AlbinoTerror.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+AlbinoTerror.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+AlbinoTerror.BorderColor3 = Color3.fromRGB(248, 248, 248)
+AlbinoTerror.Font = Enum.Font.Nunito
+AlbinoTerror.TextColor3 = Color3.fromRGB(248, 248, 248)
+AlbinoTerror.TextSize = 15
+AlbinoTerror.TextWrapped = true
+AlbinoTerror.BackgroundTransparency = 0.95
+AlbinoTerror.TextStrokeTransparency = 0.3
+AlbinoTerror.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+AlbinoTerror.MouseButton1Click:connect(function()
+	local a = "Spinosaurus"
+local targ = "Spinosaurus"
+workspace.GameEvents.ChangeDinosaur:FireServer(a)
+wait(2.5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+wait(3)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+end)
+
+HotheadMegavore.Name = "HotheadMegavore"
+HotheadMegavore.Parent = FunFrame
+HotheadMegavore.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+HotheadMegavore.BorderColor3 = Color3.new(0, 0, 0)
+HotheadMegavore.Position = UDim2.new(0.756944716, 0, 0.71469605, 0)
+HotheadMegavore.Size = UDim2.new(0, 114, 0, 30)
+HotheadMegavore.Font = Enum.Font.Cartoon
+HotheadMegavore.Text = "Violex Filius"
+HotheadMegavore.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+HotheadMegavore.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+HotheadMegavore.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+HotheadMegavore.BorderColor3 = Color3.fromRGB(248, 248, 248)
+HotheadMegavore.Font = Enum.Font.Nunito
+HotheadMegavore.TextColor3 = Color3.fromRGB(248, 248, 248)
+HotheadMegavore.TextSize = 15
+HotheadMegavore.TextWrapped = true
+HotheadMegavore.BackgroundTransparency = 0.95
+HotheadMegavore.TextStrokeTransparency = 0.3
+HotheadMegavore.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+HotheadMegavore.MouseButton1Click:connect(function()
+	local a = "Violex Filius"
+local targ = "Violex Filius"
+workspace.GameEvents.ChangeDinosaur:FireServer(a)
+wait(2.5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+wait(3)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+end)
+
+Shake.Name = "Shake"
+Shake.Parent = FunFrame
+Shake.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Shake.BorderColor3 = Color3.new(0, 0, 0)
+Shake.Position = UDim2.new(0.51824671, 0, 0.826101899, 0)
+Shake.Size = UDim2.new(0, 114, 0, 30)
+Shake.Font = Enum.Font.Cartoon
+Shake.Text = "Fossil Thalassomedon"
+Shake.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Shake.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+Shake.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+Shake.BorderColor3 = Color3.fromRGB(248, 248, 248)
+Shake.Font = Enum.Font.Nunito
+Shake.TextColor3 = Color3.fromRGB(248, 248, 248)
+Shake.TextSize = 15
+Shake.TextWrapped = true
+Shake.BackgroundTransparency = 0.95
+Shake.TextStrokeTransparency = 0.3
+Shake.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+Shake.MouseButton1Click:connect(function()
+	local a = "Fossil Thalassomedon"
+local targ = "Fossil Thalassomedon"
+workspace.GameEvents.ChangeDinosaur:FireServer(a)
+wait(2.5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+wait(3)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+end)
+
+SwimAnimation.Name = "SwimAnimation"
+SwimAnimation.Parent = FunFrame
+SwimAnimation.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+SwimAnimation.BorderColor3 = Color3.new(0, 0, 0)
+SwimAnimation.Position = UDim2.new(0.756944716, 0, 0.826101899, 0)
+SwimAnimation.Size = UDim2.new(0, 114, 0, 30)
+SwimAnimation.Font = Enum.Font.Cartoon
+SwimAnimation.Text = "Leviathan Shastasaurus"
+SwimAnimation.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+SwimAnimation.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+SwimAnimation.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+SwimAnimation.BorderColor3 = Color3.fromRGB(248, 248, 248)
+SwimAnimation.Font = Enum.Font.Nunito
+SwimAnimation.TextColor3 = Color3.fromRGB(248, 248, 248)
+SwimAnimation.TextSize = 15
+SwimAnimation.TextWrapped = true
+SwimAnimation.BackgroundTransparency = 0.95
+SwimAnimation.TextStrokeTransparency = 0.3
+SwimAnimation.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+SwimAnimation.MouseButton1Click:connect(function()
+	local a = "Leviathan Shastasaurus"
+local targ = "Leviathan Shastasaurus"
+workspace.GameEvents.ChangeDinosaur:FireServer(a)
+wait(2.5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+wait(3)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+end)
+
+AntiAFK.Name = "AntiAFK"
+AntiAFK.Parent = FunFrame
+AntiAFK.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+AntiAFK.BorderColor3 = Color3.new(0, 0, 0)
+AntiAFK.Position = UDim2.new(0.0336174071, 0, 0.82469605, 0)
+AntiAFK.Size = UDim2.new(0, 114, 0, 30)
+AntiAFK.Font = Enum.Font.Cartoon
+AntiAFK.Text = "Galactic Terror"
+AntiAFK.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+AntiAFK.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+AntiAFK.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+AntiAFK.BorderColor3 = Color3.fromRGB(248, 248, 248)
+AntiAFK.Font = Enum.Font.Nunito
+AntiAFK.TextColor3 = Color3.fromRGB(248, 248, 248)
+AntiAFK.TextSize = 15
+AntiAFK.TextWrapped = true
+AntiAFK.BackgroundTransparency = 0.95
+AntiAFK.TextStrokeTransparency = 0.3
+AntiAFK.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+AntiAFK.MouseButton1Click:connect(function()
+	local a = "Galactic Terror"
+local targ = "Galactic Terror"
+workspace.GameEvents.ChangeDinosaur:FireServer(a)
+wait(2.5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+wait(3)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+end)
+
+AntiBan.Name = "AntiBan"
+AntiBan.Parent = FunFrame
+AntiBan.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+AntiBan.BorderColor3 = Color3.new(0, 0, 0)
+AntiBan.Position = UDim2.new(0.268698782, 0, 0.82499605, 0)
+AntiBan.Size = UDim2.new(0, 114, 0, 30)
+AntiBan.Font = Enum.Font.Cartoon
+AntiBan.Text = "Avinychus"
+AntiBan.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+AntiBan.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+AntiBan.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+AntiBan.BorderColor3 = Color3.fromRGB(248, 248, 248)
+AntiBan.Font = Enum.Font.Nunito
+AntiBan.TextColor3 = Color3.fromRGB(248, 248, 248)
+AntiBan.TextSize = 15
+AntiBan.TextWrapped = true
+AntiBan.BackgroundTransparency = 0.95
+AntiBan.TextStrokeTransparency = 0.3
+AntiBan.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+AntiBan.MouseButton1Click:connect(function()
+	local a = "Avinychus"
+local targ = "Avinychus"
+workspace.GameEvents.ChangeDinosaur:FireServer(a)
+wait(2.5)
+workspace.GameEvents.StartPlayer:FireServer()
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+wait(3)
+workspace.GameEvents.ChangeDinosaur:FireServer(targ)
+end)
+
+AutomationFrame.Name = "AutomationFrame"
+AutomationFrame.Parent = Main
+AutomationFrame.Active = true
+AutomationFrame.BackgroundColor3 = Color3.new(0.156863, 0.156863, 0.156863)
+AutomationFrame.BorderColor3 = Color3.new(0, 0, 0)
+AutomationFrame.Position = UDim2.new(0.279245257, 0, 0.175983444, 0)
+AutomationFrame.Selectable = true
+AutomationFrame.Size = UDim2.new(0, 553, 0, 377)
+AutomationFrame.Visible = false
+
+Textauto.Name = "Textauto"
+Textauto.Parent = AutomationFrame
+Textauto.BackgroundColor3 = Color3.new(1, 1, 1)
+Textauto.BackgroundTransparency = 1
+Textauto.Position = UDim2.new(0.269439429, 0, 0.222811669, 0)
+Textauto.Size = UDim2.new(0, 252, 0, 30)
+Textauto.Font = Enum.Font.Cartoon
+Textauto.Text = "Automation"
+Textauto.TextColor3 = Color3.new(1, 1, 1)
+Textauto.TextScaled = true
+Textauto.TextSize = 14
+Textauto.TextWrapped = true
+
+AutoSwim.Name = "AutoSwim"
+AutoSwim.Parent = AutomationFrame
+AutoSwim.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+AutoSwim.BorderColor3 = Color3.new(0, 0, 0)
+AutoSwim.Position = UDim2.new(0.691845238, 0, 0.380478591, 0)
+AutoSwim.Size = UDim2.new(0, 114, 0, 30)
+AutoSwim.Font = Enum.Font.Cartoon
+AutoSwim.Text = "Auto Swim"
+AutoSwim.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+AutoSwim.TextSize = 15
+AutoSwim.TextWrapped = true
+AutoSwim.MouseButton1Click:connect(function()
+	local Robo = "Up"
+local Exploit = true
+local Event = game:GetService("Workspace").GameEvents.Swimming
+Event:FireServer(Robo, Exploit)
+end)
+
+AutoAttack.Name = "AutoAttack"
+AutoAttack.Parent = AutomationFrame
+AutoAttack.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+AutoAttack.BorderColor3 = Color3.new(0, 0, 0)
+AutoAttack.Position = UDim2.new(0.393472791, 0, 0.380478591, 0)
+AutoAttack.Size = UDim2.new(0, 114, 0, 30)
+AutoAttack.Font = Enum.Font.Cartoon
+AutoAttack.Text = "Auto Attack"
+AutoAttack.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+AutoAttack.TextSize = 15
+AutoAttack.TextWrapped = true
+AutoAttack.MouseButton1Click:connect(function()
+	while true do
+wait()
+game.Workspace.GameEvents.Damage:FireServer("Workspace")
+end
+end)
+
+AutoSprint.Name = "AutoSprint"
+AutoSprint.Parent = AutomationFrame
+AutoSprint.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+AutoSprint.BorderColor3 = Color3.new(0, 0, 0)
+AutoSprint.Position = UDim2.new(0.0987169296, 0, 0.380478621, 0)
+AutoSprint.Size = UDim2.new(0, 114, 0, 30)
+AutoSprint.Font = Enum.Font.Cartoon
+AutoSprint.Text = "Auto Sprint"
+AutoSprint.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+AutoSprint.TextSize = 15
+AutoSprint.TextWrapped = true
+AutoSprint.MouseButton1Click:connect(function()
+	game.Workspace.GameEvents.Sprint:FireServer("true")
+end)
+
+SprintDisable.Name = "SprintDisable"
+SprintDisable.Parent = AutomationFrame
+SprintDisable.BackgroundColor3 = Color3.new(0.364706, 0.364706, 0.364706)
+SprintDisable.BorderColor3 = Color3.new(0, 0, 0)
+SprintDisable.Position = UDim2.new(0.0987169296, 0, 0.460054219, 0)
+SprintDisable.Size = UDim2.new(0, 114, 0, 30)
+SprintDisable.Font = Enum.Font.Cartoon
+SprintDisable.Text = "Disable"
+SprintDisable.TextColor3 = Color3.new(0.509804, 0, 0.00784314)
+SprintDisable.TextSize = 15
+SprintDisable.TextWrapped = true
+SprintDisable.MouseButton1Click:connect(function()
+	game.Workspace.GameEvents.Sprint:FireServer("false")
+end)
+
+SwimDisable.Name = "SwimDisable"
+SwimDisable.Parent = AutomationFrame
+SwimDisable.BackgroundColor3 = Color3.new(0.364706, 0.364706, 0.364706)
+SwimDisable.BorderColor3 = Color3.new(0, 0, 0)
+SwimDisable.Position = UDim2.new(0.691845298, 0, 0.460054219, 0)
+SwimDisable.Size = UDim2.new(0, 114, 0, 30)
+SwimDisable.Font = Enum.Font.Cartoon
+SwimDisable.Text = "Disable"
+SwimDisable.TextColor3 = Color3.new(0.509804, 0, 0.00784314)
+SwimDisable.TextSize = 15
+SwimDisable.TextWrapped = true
+SwimDisable.MouseButton1Click:connect(function()
+	local Robo = "Stop"
+local Exploit = false
+local Event = game:GetService("Workspace").GameEvents.Swimming
+Event:FireServer(Robo)
+end)
+
+DNAFarmFrame.Name = "DNAFarmFrame"
+DNAFarmFrame.Parent = Main
+DNAFarmFrame.Active = true
+DNAFarmFrame.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+DNAFarmFrame.BorderColor3 = Color3.fromRGB(248, 248, 248)
+DNAFarmFrame.Transparency = 1
+DNAFarmFrame.Position = UDim2.new(0.279245257, 0, 0.175983444, 0)
+DNAFarmFrame.Selectable = true
+DNAFarmFrame.Size = UDim2.new(0, 553, 0, 377)
+DNAFarmFrame.Visible = false
+
+TextDNAfarm.Name = "TextDNAfarm"
+TextDNAfarm.Parent = DNAFarmFrame
+TextDNAfarm.BackgroundColor3 = Color3.new(1, 1, 1)
+TextDNAfarm.BackgroundTransparency = 1
+TextDNAfarm.Position = UDim2.new(0.271247745, 0, 0.275278523, 0)
+TextDNAfarm.Size = UDim2.new(0, 252, 0, 60)
+TextDNAfarm.Font = Enum.Font.Nunito
+TextDNAfarm.Text = "Make your Brachiosaurus 97% Young Adult and your Diplodocus baby 1% and hit fire da farm (Not as Consistent in Private Servers)."
+TextDNAfarm.TextColor3 = Color3.fromRGB(242, 243, 243)
+TextDNAfarm.TextScaled = true
+TextDNAfarm.TextWrapped = true
+
+StopDNALoop = Instance.new("TextButton")
+StopDNALoop.Name = "StartDNALoop"
+StopDNALoop.Parent = DNAFarmFrame
+StopDNALoop.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+StopDNALoop.BorderColor3 = Color3.new(0, 0, 0)
+StopDNALoop.Position = UDim2.new(0.395281106, 0, 0.553181486, 0)
+StopDNALoop.Size = UDim2.new(0, 114, 0, 30)
+StopDNALoop.Font = Enum.Font.Cartoon
+StopDNALoop.Text = "Pause DNA Farm"
+StopDNALoop.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+StopDNALoop.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+StopDNALoop.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+StopDNALoop.BorderColor3 = Color3.fromRGB(248, 248, 248)
+StopDNALoop.Font = Enum.Font.Nunito
+StopDNALoop.TextColor3 = Color3.fromRGB(248, 248, 248)
+StopDNALoop.TextSize = 15
+StopDNALoop.TextWrapped = true
+StopDNALoop.BackgroundTransparency = 0.95
+StopDNALoop.TextStrokeTransparency = 0.3
+StopDNALoop.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+StopDNALoop.MouseButton1Click:connect(function()
+    _G.DNAFarmActive = false
+    game.StarterGui:SetCore("SendNotification", {
+    Title = "DNA FARM";
+    Text = "Paused"; 
+    Duration = 5; })
+    end)
+
+StartDNALoop.Name = "StartDNALoop"
+StartDNALoop.Parent = DNAFarmFrame
+StartDNALoop.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+StartDNALoop.BorderColor3 = Color3.new(0, 0, 0)
+StartDNALoop.Position = UDim2.new(0.395281106, 0, 0.436181486, 0)
+StartDNALoop.Size = UDim2.new(0, 114, 0, 30)
+StartDNALoop.Font = Enum.Font.Cartoon
+StartDNALoop.Text = "DNA Farm"
+StartDNALoop.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+StartDNALoop.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
+StartDNALoop.BackgroundColor3 = Color3.fromRGB(242, 243, 243)
+StartDNALoop.BorderColor3 = Color3.fromRGB(248, 248, 248)
+StartDNALoop.Font = Enum.Font.Nunito
+StartDNALoop.TextColor3 = Color3.fromRGB(248, 248, 248)
+StartDNALoop.TextSize = 15
+StartDNALoop.TextWrapped = true
+StartDNALoop.BackgroundTransparency = 0.95
+StartDNALoop.TextStrokeTransparency = 0.3
+StartDNALoop.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
+StartDNALoop.MouseButton1Click:connect(function()
+--[[ if not game.Players.LocalPlayer.Character then
+workspace.GameEvents.StartPlayer:FireServer()
+wait(4)
+end
+
+local player = game.Players.LocalPlayer
+player.Character.HumanoidRootPart.CFrame = CFrame.new(99999, 717.906067, -99972.128204)
+wait(3)
+workspace.GameEvents.GoToMenu:FireServer(7) ]]
+
+--DNA Farm Options | Spell DINO NAMES CORRECTLY!
+local YoungAdult = "Brachiosaurus" --Has to be 97% Young Adult (preferably: Baro)
+local Baby = "Diplodocus" --Has to be Baby, any % will do (preferably: Pue, Leed, Shasta, Sauroposeidon)
+local no = false
+local yes = true
+
+_G.DNAFarmActive = yes
+
+if _G.DNAFarmActive then
+    local VU = game:GetService("VirtualUser")
+    game:GetService("Players").LocalPlayer.Idled:connect(function()
+    VU:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    wait(1)
+    VU:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    end)
+    game.StarterGui:SetCore("SendNotification", {
+    Title = "DNA FARM";
+    Text = "Launched : Anti-AFK Relaunched"; 
+    Duration = 5; })
+    print("Anti-AFK Ran")
+end
+
+--DNA Farm Script
+while true do
+wait()
+if not _G.DNAFarmActive then return end
+    if not game.Players.LocalPlayer.Character then
+        local CountDown = 7
+        local t = 1
+        local c = game.Players.LocalPlayer.Character
+        local Menu = workspace.GameEvents.GoToMenu
+        workspace.GameEvents.ChangeDinosaur:FireServer(YoungAdult)
+        Menu:FireServer(CountDown)
+        wait(2.5)
+        workspace.GameEvents.StartPlayer:FireServer()
+        workspace.GameEvents.ChangeDinosaur:FireServer(Baby)
+        wait(3)
+        workspace.GameEvents.ChangeDinosaur:FireServer(Baby)
+        workspace.GameEvents.StartPlayer:FireServer()
+    end
+    wait(3)
+    if game.Players.LocalPlayer.Character then
+        wait(3)
+    end
+    if game.Players.LocalPlayer.Character then
+        workspace.GameEvents.GoToMenu:FireServer(7)
+        wait(8)
+    end
+end
+end)
+
+local togglegui = false
+bind = "y"
+game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
+if key == bind then
+	 if togglegui == false then
+        togglegui = true
+        Main.Visible = true
+		else
+		togglegui = false
+		Main.Visible = false
+	end
+end
+end)
+
+function bypass()
+LocalPlayerFrame.Visible = true
+for i,v in pairs(game.CoreGui:GetChildren()) do
+for _,child in pairs(v:GetChildren()) do
+if v:findFirstChild("Main") then
+while wait(.1) do
+v.Name = math.random()*100
+end
+end
+end
+end
+end
+bypass()
