@@ -5962,9 +5962,14 @@ NoBleed.TextColor3 = Color3.new(0.611765, 0.611765, 0.611765)
 NoBleed.TextSize = 18
 NoBleed.TextWrapped = true
 NoBleed.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.Stats.bleedingStack:Remove()
+game.Players.LocalPlayer.Character.Stats.bleedingStack:Remove()
 wait(1)
 game.Players.LocalPlayer.Character.CharacterScripts.HandleBleeding:Remove()
+game.StarterGui:SetCore("SendNotification", {
+Title = "Dinosaur Protection";
+Text = "No Bleed Enabled";
+Duration = 15;
+})
 end)
 
 SafeLog.Name = "SafeLog"
@@ -12093,7 +12098,14 @@ NoBleed.BackgroundTransparency = 0.95
 NoBleed.TextStrokeTransparency = 0.3
 NoBleed.TextStrokeColor3 = Color3.fromRGB(17, 17, 17)
 NoBleed.MouseButton1Click:connect(function()
-
+game.Players.LocalPlayer.Character.Stats.bleedingStack:Remove()
+wait(1)
+game.Players.LocalPlayer.Character.CharacterScripts.HandleBleeding:Remove()
+game.StarterGui:SetCore("SendNotification", {
+Title = "Dinosaur Protection";
+Text = "No Bleed Enabled";
+Duration = 15;
+})
 end)
 
 SafeLog.Name = "SafeLog"
